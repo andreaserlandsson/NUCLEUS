@@ -1,0 +1,7 @@
+
+
+
+Disc - The center plate which the player can rotate. The gluon points are located on this disc.
+Gluon point - The attachment points on which the protons attach.
+Overfilling - Attaching too many protons to a attach point, creating a different element than intended. If the intended element is hydrogen (1 proton)
+			  and a helium nucleus is assembled instead (2 protons) this is called overfilling. Overfilling leads to game over. 
