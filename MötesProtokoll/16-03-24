@@ -1,0 +1,51 @@
+MeetingAgenda
+
+  Date: 160324 
+
+  Facilitator: Andreas Erlandsson
+
+  Participants: Herman Carlström, Erik Jansson, Miranda Bånnsgård
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - Finalize game premise
+  - Set timeframe for RAD
+  - Start RAD
+
+2. Reports (15 min) from previous meeting
+
+  - Supervisor OK:ed rough game idea.
+  - Supervisor gave tips concerning libGDX
+  - ---"------ gave general tips
+
+3. Discussion items (35 min) 
+
+  - Game Premise
+	   - A central (by the player controlled) rotatable disc is used to catch an appropriate number of protons and neutrons used to build elements forming a molecule. The protons are shot in toward the center at random. A level is done when the elements have been correctly assembled.
+	   - The mechanisms of losing are discussed.
+	   - Game flow (sketch):
+          > Every level is started with a finite number of protons (and neutrons?) that can be caught. The player tries to attach all the necessary protons (and neutrons?) to correctly assemble the objective elements on the level. If too many protons (or neutrons?) are missed or an incorrect element is assembled due to overfilling, the level is lost. 
+
+  - Timeframe for RAD
+     - Start RAD today and RAD to be mostly complete by lv2. Group decides to meet up during spring break week 2.
+
+  - Misc 
+     - Possible addition: All elements need a certain no of protons as well as neutrons. Causes player to have to keep track of two different values for every gluon point (see jargon text file).
+
+
+4. Outcomes and assignments (5 min) 
+ 
+  - push Jargon text-file to repo
+  - Start a RAD Google drive document after meeting.
+  - Erik makes mock-up pictures for RAD.
+  - Group meet during spring break.
+  - RAD to be complete by thursday lv2.
+
+  - From outcomes, 1), 2) and 3) (re)assign each groupmember 
+  issues to solve.
+
+5. Wrap up
+
+  - Unresolved issues: RAD
+  - Time for next meeting: 160406 13:00

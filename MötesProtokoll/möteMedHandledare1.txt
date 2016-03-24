@@ -1,0 +1,76 @@
+LibGDX android spelmotor, 2D ja!
+	har ett implem. bibli. för att bygga ramverk,  menyer och shit likt javaFX eller swing	
+
+jmonkey spelmotor, 3D så njaa...
+
+
+efter påsk. analys model och domain model är samma sak: 
+	notera skildnaden på classmodell och domain modell
+	ska ej handla om hur man implementerar/codar saken
+	ha bara med saker som "finns i verkligheten"
+
+	Atom{}
+	Nucleon{charge}
+	Board{}
+	Disk{}
+	
+	feedback näst tor (va även klar med grunden till RAD)
+
+	redovisning med flergrupper 
+
+
+två möten varje vecka
+
+gå igenom betygambitioner
+
+komplexitet framför kvantiet
+
+täntke så mycke på grafiken, detta är en programmergings kurs
+
+functional req. 
+	man ska kunna snurra på disken
+	saker som direk går att testas
+
+non-func. req.
+	svårara att kolla ifall det går att funka
+	
+
+ingen bibl.kod i själva applikationen
+	
+	model{
+		logken, det som gör spelet till det det är
+		data (om man itne använder databas)
+	}
+ 	
+	view{
+		frågar modelen var den ska rita upp saker 
+		och hur det ska se ut/utritningen
+		här ska bibl.koden ligga
+	}
+
+	controller{
+		tar hand om input från användaren
+		säger till model vad använderen gör
+		ev. skickar till view att den borde ändra på sig
+			view frågar då model vad den ska göra
+		main class
+	}
+
+
+controller har action listner till lidGDX (ex. collider) och säger då till model att object har haft en collision
+	istället för att model kallar på collider (EJ OKEJ) 
+
+model har interfaces som innehåller allt 
+
+SDD är mer teknisk, en efterträdare ska kunna med hjälp av SDD'n fortsätta utvecka projektet
+
+RAD: är täcnkt för icke utvecklare/kunder
+	scope: var appen kommer finnas tillgänglig
+	2.
+		1. vad ska systemet göra och vad ska använder kunna göra (använd id till funktions req. så att när något implemeteras i koden kan man skriva "implemeted id x" i git när man pushar )
+		2. förklaring av saker som är svårare att direkt kolla
+		3. minst 5 user cases: (main flow mall finns i någon försläsnings bild) användaren följer main flow, varje steg har ett alternativ flow som förklara vad händer om användaren gör fel 
+		   
+
+LÄS IGENOM projectPM
+ingen onödig documentation i koden 

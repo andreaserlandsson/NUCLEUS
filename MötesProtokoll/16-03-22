@@ -1,0 +1,62 @@
+
+  Date: 22/03 -16
+
+  Facilitator: Herman
+
+  Participants: Andréas, Erik, Herman, Miranda
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - Vi ska spika vad vi ska göra, exakt hur spelet ska fungera och (almänt) se ut
+
+
+2. Reports (15 min) from previous meeting
+
+  - Inget att raportera från förra mötet
+
+
+3. Discussion items (35 min) 
+
+  - Vi diskuterar punkt 1:
+
+  - android eller desktop application? kan fortfarande ha samma spel
+
+  - utnytja databaser på något viss 
+
+
+spel 1:
+  Man snurarar en disk som har en eller fler punkter som ska bli olika atomer, nulkider skuts mot centrum av disken, nukliden (proton eller neutron) kommer att skutas från en random punkt på skärmkanten mot mitten, ifall den iten träffar något flyger den ut från skärmen. 
+  
+  Utmaningen blir att bygga en given atom eller molekyl utan att göra en ostabil atom kärna som iten är tillräckligt sfärisk eller har för lite neutroner, protonantalet blir för högt och stämmer inte med atomen, det tar slut på protoner att skickas (ifall man har ett begränsat antal nuklider (proton eller neutron)), två nuklider (proton eller neutron) kan skjutas mot mitten samtidigt ifall det är två neutroner sprängs de ifall man inte fångar upp en (eftersom de krockar i mitten), samma för två protoner och ifall det är en neutron och en proton så stusar de ifrån varan (?) 
+  implementera 
+  träffas av gammaray -> backgrunden snurar och punkterna är fast
+  träffas av beta -> spegelvänt
+  träffas av alfa -> punkter svajar eller kanske att man även kan flytta punkterna i ledet mot mittpunkten
+
+  Lyser vid skärmkanten är det kommer en neutron eller Proton i rätt färg
+  Ingen kvadrat som disken finns på utan disken är hela spelplan och nukliden (neutron eller proton) "uppstår" i kanten av disken
+  Ifall det itne blir så fluid motion så är det fortfarande rätt snyggt med tetris-style-riggid
+
+  under the hud: flytta på nukliden istället för alla färstpunkter men på skärmen händer motsatsen
+
+
+spel 2:
+  - nuklid (mer än två färger) mot centrum som är en disk som man snurrar där de fastnar på de redan exicesterande nukliderna och ifall man får 5 som nuddar varan försvinner de och man får poäng 
+
+
+4. Outcomes and assignments (5 min) 
+
+  - 
+
+
+5. Wrap up
+
+  - fråga handledare: 
+    - Android app eller Desktop app
+    - Vilka kod-rader kommer att räknas, ifall vi gör Android app kommer vi ens upp i rätt mängd rader? kommer vi gå långt över? tar vi oss vatten över huvudet? 
+    - ifall vi kör desktop, javaFX eller swing? är det ett tilrcäkligt komplext spel för en desktop app
+    - hur implementerar man detta i javaFX och i Swing? 
+    - fluidmotion för svårt? är det att den repaintar tillräckligt fort
+
+  - Time and location for next meeting
