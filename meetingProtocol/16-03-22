@@ -8,55 +8,56 @@
 1. Objectives (5 min). Resolve any issues preventing the team to 
   continue.
 
-  - Vi ska spika vad vi ska göra, exakt hur spelet ska fungera och (almänt) se ut
+  - We shall decide exaclty what the project will be about.
 
 
 2. Reports (15 min) from previous meeting
 
-  - Inget att raportera från förra mötet
+  - Nothing from last meeting to report
 
 
 3. Discussion items (35 min) 
 
-  - Vi diskuterar punkt 1:
+  - We discus point 1, we want to make a game.
 
-  - android eller desktop application? kan fortfarande ha samma spel
+  - android or desktop application?
 
-  - utnytja databaser på något viss 
-
-
-spel 1:
-  Man snurarar en disk som har en eller fler punkter som ska bli olika atomer, nulkider skuts mot centrum av disken, nukliden (proton eller neutron) kommer att skutas från en random punkt på skärmkanten mot mitten, ifall den iten träffar något flyger den ut från skärmen. 
-  
-  Utmaningen blir att bygga en given atom eller molekyl utan att göra en ostabil atom kärna som iten är tillräckligt sfärisk eller har för lite neutroner, protonantalet blir för högt och stämmer inte med atomen, det tar slut på protoner att skickas (ifall man har ett begränsat antal nuklider (proton eller neutron)), två nuklider (proton eller neutron) kan skjutas mot mitten samtidigt ifall det är två neutroner sprängs de ifall man inte fångar upp en (eftersom de krockar i mitten), samma för två protoner och ifall det är en neutron och en proton så stusar de ifrån varan (?) 
-  implementera 
-  träffas av gammaray -> backgrunden snurar och punkterna är fast
-  träffas av beta -> spegelvänt
-  träffas av alfa -> punkter svajar eller kanske att man även kan flytta punkterna i ledet mot mittpunkten
-
-  Lyser vid skärmkanten är det kommer en neutron eller Proton i rätt färg
-  Ingen kvadrat som disken finns på utan disken är hela spelplan och nukliden (neutron eller proton) "uppstår" i kanten av disken
-  Ifall det itne blir så fluid motion så är det fortfarande rätt snyggt med tetris-style-riggid
-
-  under the hud: flytta på nukliden istället för alla färstpunkter men på skärmen händer motsatsen
+  - Would like to use databases somehow 
 
 
-spel 2:
-  - nuklid (mer än två färger) mot centrum som är en disk som man snurrar där de fastnar på de redan exicesterande nukliderna och ifall man får 5 som nuddar varan försvinner de och man får poäng 
+Game idéa 1:
+	the palyer spins a disk wich has a 2 or more points on which to build atoms on, nuclides (protons or neutrons) will fire from an random point of the edge of the screen towards the centrum and the player will spin the disk so thata the "atom-point" catches the nuclide and there by attempts too build a designated atom, if the player does not catch the nuclide it will fly past the disk and out of the screen.   
 
+	The main chalange will be too build the atoms/molycules without catching too many protons.
+  	
+	Idéas for losing, hightning the chalange:
+		gammaray -> everything/every input is mirrord for 10 sec
+		betaray -> the backround spins (i.e. the nuclides) and the disk is still
+		aflaray -> everything is a bit "groggy" or perhaps that you can move the atom-points towards and out from the centrum aswell as sping dem 
+		catching the nuclides so that they from a non-sfferical atom, making an unstable atom makes you lose
+		not catching enough neutrons makes the atom unstale and makes you lose
+		there is a finit amouts of protons and nuetrons so that you can lose from not catching enough of them
+
+	Game design idéas
+		the point from where the next nuclide will shot will be slightly lght upp
+	
+	even if the game does not does not end upp with so muych fuild motions it would sort of "add to the charm" (tetris)		
+
+Game idéa 2:
+	nuclides (mote tehn protons and neutrons) fires towards teh centrum and the point is to not get a too big centrum and survie for as long as possible. if 4 or 5 of the sam enuclide are touching they dissapera and you get points
 
 4. Outcomes and assignments (5 min) 
-
-  - 
+	we will go with game idéa 1 and decide after the supporvise-meeting if we will make it for android or desktop
 
 
 5. Wrap up
+	ask the suppporviser:	
+		android or desktop app
+		what sort of code will count
+		javaFX or swing
+		will it be able too make it "fluid motion"
 
-  - fråga handledare: 
-    - Android app eller Desktop app
-    - Vilka kod-rader kommer att räknas, ifall vi gör Android app kommer vi ens upp i rätt mängd rader? kommer vi gå långt över? tar vi oss vatten över huvudet? 
-    - ifall vi kör desktop, javaFX eller swing? är det ett tilrcäkligt komplext spel för en desktop app
-    - hur implementerar man detta i javaFX och i Swing? 
-    - fluidmotion för svårt? är det att den repaintar tillräckligt fort
-
-  - Time and location for next meeting
+	next meeting:
+		date: 	16-03-24
+		time: 	13:00
+		place:	M-building
