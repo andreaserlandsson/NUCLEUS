@@ -1,0 +1,36 @@
+MeetingAgenda
+
+  Date: 160414
+  Facilitator: Herman Carlström
+
+  Participants: Andreas Erlandsson, Erik Jansson, Miranda Bånnsgård, Hannes Lagerroth
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - We are welcoming Hannes in to the group! He has been briefed on the project and has already developed a good understanding of the tasks involved.
+
+  - Slight re-definition of the domain-model and Use-cases.
+
+  
+2. Reports (15 min) from previous meeting
+
+  - The work with the two models have functioned great, and just need to be polished until Monday.
+  - Game rulez have been finalized and everyone (Hannes included) clearly understand the game objectives.
+  - Been OK'ed from supervisor regarding use-cases, domain-model and the overall contents of the RAD.
+
+3. Discussion items (35 min) 
+
+  - As soon as we have corrected the issues from last week (see point 2) we will begin the programming. We have set up a trello for the group to be able to administrate objectives and tasks to each group member efficiently. As we now are five(5) people the communication will be slightly more difficult. 
+  - Discussed new features to implement into the model(and possibly the project) as we now are five(5) people, instead of four(4). Possible additions are; leaderbord, awards and achievements, different setting options, GAMMA and BETA particles (see RAD).
+  - Discussed the modularity of different objects (highscore, saving, levels etc.)
+
+4. Outcomes and assignments (5 min) 
+  - Look up dependency-injection.
+  - Finish the two models until monday.
+  - Polish the use-cases we have.
+  - Set up the programming environment (LIBGDX into android-studio's).
+
+5. Wrap up
+  - Unresolved issues: Do our use-cases cover our entire idea? 
+  - Time for next meeting: 160418 14:00
