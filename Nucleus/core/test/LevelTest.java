@@ -18,17 +18,17 @@ public class LevelTest {
     }
 
     @Test
-    public void testNucleons() {
+    public void testGetNucleons() {
+
+    }
+
+    @Test
+    public void testGetMolecule() {
 
     }
 
     @Test
     public void testOutOfBounds(){
-
-    }
-
-    @Test
-    public void testMolecule() {
 
     }
 

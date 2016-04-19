@@ -8,6 +8,9 @@ import com.nucleus.Nucleus;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "Nucleus";
+		config.width = 540;
+		config.height = 960;
 		new LwjglApplication(new Nucleus(), config);
 	}
 }

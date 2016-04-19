@@ -5,9 +5,18 @@ package com.nucleus;
  */
 public class Molecule {
     private int rotation = 0;
+    private GluonPoint[] gluons;
 
-    public Molecule(){
-        
+    public Molecule(GluonPoint[] gluons){
+        this.gluons = gluons;
+    }
+
+    public void setRotation(int rot){
+        rotation = rot;
+    }
+
+    public int getRotation(){
+        return rotation;
     }
 
 }
