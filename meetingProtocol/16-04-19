@@ -1,0 +1,32 @@
+MeetingAgenda
+
+  Date: 160324 
+
+  Facilitator: Herman Carlström
+  Participants: Herman Carlström, Erik Jansson, Miranda Bånnsgård, Andreas Erlandsson, Hannes Lagerroth.
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  Problems with android studio. Should be fixed for all, but more problems may arise.
+
+2. Reports (15 min) from previous meeting
+
+  - All but the polish on user-case is done. This as we don't know how far we will get, and how complicated we should have the use-cases.
+  - The android-studio with LIBGDX is setup and working for everyone.
+
+3. Discussion items (35 min) 
+
+  - Who will work with what, and who should code what part? Workload dividaton.
+  - Change the domain-model to be more UML-like (graphics).
+  - How to set up the testing environment.
+
+4. Outcomes and assignments (5 min) 
+ 
+ - Divided the group into two groups, one group to fix the testing environment and one to fix the fe RAD and Unit-case from supervisor feedback.
+
+
+5. Wrap up
+
+  - The android-studio with LIBGDX is setup and working for everyone.
+  - Time for next meeting: 160421 - 10:00.
