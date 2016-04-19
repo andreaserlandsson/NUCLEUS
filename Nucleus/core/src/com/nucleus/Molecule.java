@@ -15,7 +15,7 @@ public class Molecule {
     }
 
     public int getRotation(){
-        return rotation;g
+        return rotation;
     }
 
 }
