@@ -10,4 +10,12 @@ public class Molecule {
         
     }
 
+    public void setRotation(int rot){
+        rotation = rot;
+    }
+
+    public int getRotation(){
+        return rotation;g
+    }
+
 }
