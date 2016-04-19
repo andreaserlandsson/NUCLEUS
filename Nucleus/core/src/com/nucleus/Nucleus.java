@@ -9,11 +9,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Nucleus extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
+		LevelParser.levelParse(); //extremely temporary, delete!!
 	}
 
 	@Override
@@ -23,5 +24,7 @@ public class Nucleus extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(img, 0, 0);
 		batch.end();
+
+
 	}
 }
