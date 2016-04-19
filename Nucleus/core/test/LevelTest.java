@@ -23,6 +23,11 @@ public class LevelTest {
     }
 
     @Test
+    public void testOutOfBounds(){
+
+    }
+
+    @Test
     public void testMolecule() {
 
     }
@@ -33,7 +38,5 @@ public class LevelTest {
     }
 
     @Test
-    public void test
-
 
 }
