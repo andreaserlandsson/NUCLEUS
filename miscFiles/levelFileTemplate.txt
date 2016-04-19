@@ -1,5 +1,6 @@
 int levelNo
-moleculeFilename
+int noOfGluonPoints
+int moleculeFilename
 int noOfProtons
 int noOfNeutrons
 int difficultyMultiplier 
