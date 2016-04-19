@@ -6,14 +6,15 @@ import java.util.Arrays;
 // A class for reading and parsing .txt files that will be levels.
 public class LevelParser {
 
-    private static String levelString = ""; //temporary
+
     //private static int[] intList;   //obsolete?
-    public static void levelParse() {
-        splitLevelString(replaceCharacters(readFromFile()));
+    public static int [] levelParse() {
+        return splitLevelString(replaceCharacters(readFromFile()));
     }
 
     // method to read from a file and return a single String.
     public static String readFromFile() {
+        String levelString = "";
         try {
             Scanner sc;
             File file = new File("level_1.txt");    //temporary as we have no way to get a file
@@ -42,13 +43,15 @@ public class LevelParser {
         return temp;
     }
     //split a string where there is a new line
-    public static void splitLevelString (String str) {
+    public static int[] splitLevelString (String str) {
+
         String[] strings = str.split("\n");
-        int[] numbers = new int[strings.length];
-        for (int i = 0; i < numbers.length; i++)
+        int[] levelField = new int[strings.length];
+        for (int i = 0; i < levelField.length; i++)
         {
-            numbers[i] = Integer.parseInt(strings[i]);
+            levelField[i] = Integer.parseInt(strings[i]);
         }
-        System.out.println(Arrays.toString(numbers));
+        System.out.println(Arrays.toString(levelField));
+    return levelField;
     }
 }
