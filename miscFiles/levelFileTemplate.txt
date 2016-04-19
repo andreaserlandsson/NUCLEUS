@@ -1,0 +1,10 @@
+int levelNo
+moleculeFilename
+int noOfProtons
+int noOfNeutrons
+int difficultyMultiplier 
+int coordinateX int coordinateY noOfProtonsNeeded noOfNeutronsNeeded
+int coordinateX int coordinateY noOfProtonsNeeded noOfNeutronsNeeded
+int coordinateX int coordinateY noOfProtonsNeeded noOfNeutronsNeeded
+int coordinateX int coordinateY noOfProtonsNeeded noOfNeutronsNeeded
+…
