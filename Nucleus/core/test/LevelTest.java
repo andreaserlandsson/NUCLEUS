@@ -1,3 +1,8 @@
+import com.nucleus.GluonPoint;
+import com.nucleus.Level;
+import com.nucleus.Molecule;
+import com.nucleus.Proton;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -18,13 +23,15 @@ public class LevelTest {
     }
 
     @Test
-    public void testGetNucleons() {
-
-    }
-
-    @Test
-    public void testGetMolecule() {
-
+    public void testNucleons() {
+        GluonPoint[] gluons = new GluonPoint[2];
+        gluons[0] = new GluonPoint(1,1,1,1);
+        gluons[1] = new GluonPoint(2,2,2,2);
+        Molecule molecule = new Molecule(gluons);
+        Level level = new Level(1, molecule);
+        assertTrue(level.getNucleons().size() == 0);
+        level.addFlyingNucleon(new Proton());
+        assertTrue(level.getNucleons() != null);
     }
 
     @Test
@@ -36,6 +43,4 @@ public class LevelTest {
     public void testRotation(){
 
     }
-
-
 }

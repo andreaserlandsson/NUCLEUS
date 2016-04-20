@@ -19,4 +19,8 @@ public class Molecule {
         return rotation;
     }
 
+    public boolean moleculeFilled() {//dummy value
+        return false;
+    }
+
 }

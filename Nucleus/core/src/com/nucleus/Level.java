@@ -17,4 +17,8 @@ public class Level{
         return airborneNucleons;
     }
 
+    public void addAirborneNucleon(Nucleon nucleon){
+        airborneNucleons.add(nucleon);
+    }
+
 }
