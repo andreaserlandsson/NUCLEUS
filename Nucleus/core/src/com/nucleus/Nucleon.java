@@ -7,8 +7,8 @@ public class Nucleon implements  INucleon {
 
     private Vector position;
     private Vector velocity;
-    private final int width = 0;   //Dummy value. Sizes will be used for collision detection purposes
-    private final int height = 0;  //and will be properly determined later.
+    private final int radius = 0;   //Dummy value. Sizes will be used for collision detection purposes
+                                    //and will be properly determined later.
     private boolean isVisible = false;
 
     public Nucleon(){

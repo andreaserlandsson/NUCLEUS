@@ -6,7 +6,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.nucleus.Level;
+
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+
 import com.nucleus.LevelParser;
 
 public class NucleusView extends ApplicationAdapter {
@@ -14,17 +17,22 @@ public class NucleusView extends ApplicationAdapter {
     Texture img;
 
     private OrthographicCamera cam;
+    private Viewport viewport;
 
     @Override
     public void create () {
         batch = new SpriteBatch();
         img = new Texture("bg.png");
         cam = new OrthographicCamera();
-        cam.setToOrtho(true, 136, Gdx.graphics.getHeight());
+
+        cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        viewport = new ExtendViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
+                Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), cam); // Supposed to keep aspect ratio but doesnt work..
         System.out.println("level 1  is; ");
         LevelParser.levelParse(1); //extremely temporary, delete!!
         System.out.println("level 2 is ;");
         LevelParser.levelParse(2);
+
     }
 
     @Override
@@ -34,6 +42,11 @@ public class NucleusView extends ApplicationAdapter {
         batch.begin();
         batch.draw(img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        viewport.update(width, height);
     }
 
     @Override
