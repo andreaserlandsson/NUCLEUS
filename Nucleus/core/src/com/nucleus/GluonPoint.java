@@ -6,6 +6,7 @@ public class GluonPoint implements IGluonPoint {
     private Vector position;
     private int protonsNeeded;
     private int neutronsNeeded;
+    private int radius;
 
     public GluonPoint(int posX, int posY, int pNeeded, int nNeeded){
         this.position = new Vector(posX, posY);
