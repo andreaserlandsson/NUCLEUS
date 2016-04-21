@@ -1,9 +1,7 @@
 package com.nucleus;
 
-/**
- * Created by erik on 19/04/16.
- */
-public class GluonPoint {
+
+public class GluonPoint implements IGluonPoint {
 
     private int posX;
     private int posY;
@@ -17,4 +15,8 @@ public class GluonPoint {
         this.neutronsNeeded = nNeeded;
     }
 
+    @Override
+    public boolean isFull() {
+        return false;
+    }
 }

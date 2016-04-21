@@ -1,9 +1,7 @@
 package com.nucleus;
 
-/**
- * Created by erik on 19/04/16.
- */
-public class Molecule {
+
+public class Molecule implements IMolecule {
     private int rotation = 0;
     private GluonPoint[] gluons;
 
