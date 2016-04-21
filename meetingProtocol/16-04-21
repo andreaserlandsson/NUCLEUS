@@ -1,0 +1,52 @@
+MeetingAgenda
+
+  Date: 16-04-21
+
+  Facilitator: Erik Jansson 
+
+  Participants: Herman Carlström, Andreas Erlandsson, Miranda Bånnsgård
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - Briefing
+  - View and controller and class structure
+  - Issue listing
+
+2. Reports (15 min) from previous meeting
+
+  - Briefing
+  - Progress on UML
+  - Basic skeletal class structure somewhat done
+  - RAD and use cases have been refined
+
+3. Discussion items (35 min) 
+
+  - Collision handler:
+    > Connects to level.
+    > Nucleon and gluon should extend a Vector class. This allows the collision checker to check between types Nucleon and GluonPoint even though they are
+      different types
+
+  - Input controller:
+    > One input controller to molecule
+    > Menu controller and level controller (which will pause and bring up pause menu?)(which are later problems)
+
+  - Level size/coordinate system:
+    > Needs to be fixed so the vectors can "relate to something".
+
+  - Interfaces for mocking:
+    > Interfaces should be made to allow for easier testing (dependency injection). Also to allow for polymorphism
+
+  - Later issue: allow differing screen sizes and aspect ratios
+
+
+4. Outcomes and assignments (5 min) 
+
+  - Miranda makes CollisionHandler which takes classes that extend Vector
+  - Erik makes Vector class and integrates with Nucleon and Proton. Looks inte Level size/coordinate system and testing.
+  - Herman finishes LevelBuilder and creates interfaces for models.
+  - Andreas looks into NucleonCannon
+
+5. Wrap up
+
+  - See 4.
