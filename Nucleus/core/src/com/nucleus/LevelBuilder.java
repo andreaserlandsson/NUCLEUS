@@ -21,8 +21,5 @@ public class LevelBuilder{
         }
         Molecule molecule = new Molecule(gluonPoints);
 
-
-
-
     }
 }
