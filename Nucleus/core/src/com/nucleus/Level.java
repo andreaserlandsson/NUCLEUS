@@ -3,7 +3,7 @@ package com.nucleus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Level{
+public class Level{ //add level size
     private int level;
     private List<Nucleon> airborneNucleons = new ArrayList<Nucleon>();
     private Molecule molecule;

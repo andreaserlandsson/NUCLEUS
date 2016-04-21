@@ -30,7 +30,7 @@ public class LevelTest {
         Molecule molecule = new Molecule(gluons);
         Level level = new Level(1, molecule);
         assertTrue(level.getNucleons().size() == 0);
-        level.addFlyingNucleon(new Proton());
+        level.addAirborneNucleon(new Proton());
         assertTrue(level.getNucleons() != null);
     }
 
