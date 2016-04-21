@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 
 public class LevelBuilder{
 
-    public static Level buildLevel(int level) {
+    public static Level buildLevel(int width, int height, int level) {
         int[] levelSpecs = LevelParser.levelParse(level);
         int levelNo = levelSpecs[0];
         int noOfGluonPoints = levelSpecs[1];
@@ -28,7 +28,7 @@ public class LevelBuilder{
 
         NucleonGun nucleonGun = new NucleonGun();
         Molecule molecule = new Molecule(gluonPoints);
-        Level newLevel = new Level(levelNo, molecule);
+        Level newLevel = new Level(width, height, nucleonGun, molecule);
         return newLevel;
     }
 }

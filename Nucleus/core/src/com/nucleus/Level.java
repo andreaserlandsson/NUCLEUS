@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level implements ILevel { //add level size
-    private int level;
+    private int width;
+    private int height;
+    private NucleonGun gun;
     private List<Nucleon> airborneNucleons = new ArrayList<Nucleon>();
     private Molecule molecule;
 
-    public Level(int level, Molecule molecule){
-        this.level = level;
+    public Level(int width, int height, NucleonGun gun, Molecule molecule){
+        this.width = width;
+        this.height = height;
+        this.gun = gun;
         this.molecule = molecule;
     }
 
@@ -17,8 +21,13 @@ public class Level implements ILevel { //add level size
         return airborneNucleons;
     }
 
-    public void addAirborneNucleon(Nucleon nucleon){
+    public void addAirborneNucleon(){
+        Nucleon nucleon = new Proton();//gun.shoot();
         airborneNucleons.add(nucleon);
+    }
+
+    public void outOfBoundsCheck(){ // checks if any nucleons in airbornNucleons is out of bounds
+
     }
 
 }

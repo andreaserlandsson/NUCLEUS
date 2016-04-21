@@ -6,13 +6,13 @@ public class NucleusGame {
     private int height;
     private int width;
 
-    public NucleusGame(int height, int width){
+    public NucleusGame(int width, int height){
         this.height = height;
         this.width= width;
     }
 
     public void buildLevel(int lvl){
-        LevelBuilder.buildLevel(lvl);
+        level = LevelBuilder.buildLevel(width, height, lvl);
     }
 
     public int getHeight(){
@@ -22,5 +22,10 @@ public class NucleusGame {
     public int getWidth(){
         return width;
     }
+
+    public Level getLevel(){
+        return level;
+    }
+
 
 }
