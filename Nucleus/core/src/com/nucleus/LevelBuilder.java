@@ -1,13 +1,14 @@
 package com.nucleus;
 
 
-import java.util.PriorityQueue;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class LevelBuilder{
 
     public static Level buildLevel(int width, int height, int level) {
         int[] levelSpecs = LevelParser.levelParse(level);
-        int levelNo = levelSpecs[0];
+        int levelNo = levelSpecs[0]; //obsolete?
         int noOfGluonPoints = levelSpecs[1];
         int moleculeFilename = levelSpecs[2];
         int noOfProtons = levelSpecs[3];
@@ -21,14 +22,23 @@ public class LevelBuilder{
             gluonPoints[j] = new GluonPoint(levelSpecs[i], levelSpecs[i + 1], levelSpecs[i + 2], levelSpecs[i + 3]);
             j++;
         }
-        PriorityQueue<Nucleon> pq = new PriorityQueue<Nucleon>(noOfProtons+noOfNeutrons);
+        ArrayList<Nucleon> nucleonList = new ArrayList<Nucleon>(noOfProtons+noOfNeutrons);
         for(int i = 0; i < noOfNeutrons; i++) {
-
+            nucleonList.add(new Neutron(0,0,0,0));
         }
+        for (int y = 0; y<noOfProtons;y++) {
+            nucleonList.add(new Proton(0,0,0,0));
+        }
+        Collections.shuffle(nucleonList);
 
-        NucleonGun nucleonGun = new NucleonGun();
+
+        NucleonGun nucleonGun = new NucleonGun(nucleonList);
         Molecule molecule = new Molecule(gluonPoints);
+
         Level newLevel = new Level(width, height, nucleonGun, molecule);
+
         return newLevel;
     }
+
+
 }
