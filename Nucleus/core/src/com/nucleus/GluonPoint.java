@@ -5,16 +5,18 @@ package com.nucleus;
  */
 public class GluonPoint {
 
-    private int posX;
-    private int posY;
+    private Vector position;
     private int protonsNeeded;
     private int neutronsNeeded;
 
     public GluonPoint(int posX, int posY, int pNeeded, int nNeeded){
-        this.posX = posX;
-        this.posY = posY;
+        this.position = new Vector(posX, posY);
         this.protonsNeeded = pNeeded;
         this.neutronsNeeded = nNeeded;
+    }
+
+    public Vector getPosition(){
+        return position;
     }
 
 }
