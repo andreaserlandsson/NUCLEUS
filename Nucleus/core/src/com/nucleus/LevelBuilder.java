@@ -3,8 +3,8 @@ package com.nucleus;
 
 public class LevelBuilder{
 
-    public void buildLevel() {
-        int[] levelSpecs = LevelParser.levelParse();
+    public static void buildLevel(int level) {
+        int[] levelSpecs = LevelParser.levelParse(level);
         int levelNo = levelSpecs[0];
         int noOfGluonPoints = levelSpecs[1];
         int moleculeFilename = levelSpecs[2];

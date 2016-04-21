@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nucleus.Level;
 import com.nucleus.LevelParser;
 
 public class NucleusView extends ApplicationAdapter {
@@ -20,7 +21,10 @@ public class NucleusView extends ApplicationAdapter {
         img = new Texture("bg.png");
         cam = new OrthographicCamera();
         cam.setToOrtho(true, 136, Gdx.graphics.getHeight());
-        LevelParser.levelParse(); //extremely temporary, delete!!
+        System.out.println("level 1  is; ");
+        LevelParser.levelParse(1); //extremely temporary, delete!!
+        System.out.println("level 2 is ;");
+        LevelParser.levelParse(2);
     }
 
     @Override

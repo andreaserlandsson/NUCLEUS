@@ -8,16 +8,16 @@ public class LevelParser {
 
 
     //private static int[] intList;   //obsolete?
-    public static int [] levelParse() {
-        return splitLevelString(replaceCharacters(readFromFile()));
+    public static int [] levelParse(int level) {
+        return splitLevelString(replaceCharacters(readFromFile(level)));
     }
 
     // method to read from a file and return a single String.
-    public static String readFromFile() {
+    public static String readFromFile(int level) {
         String levelString = "";
         try {
             Scanner sc;
-            File file = new File("level_1.txt");    //temporary as we have no way to get a file
+            File file = new File("level_" + Integer.toString(level) + ".txt");    //temporary as we have no way to get a file
             sc = new Scanner(file);
             while (sc.hasNextLine()) {
                 String lineInput = sc.nextLine();
