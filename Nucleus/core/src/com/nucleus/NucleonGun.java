@@ -9,4 +9,10 @@ public class NucleonGun implements INucleonGun{
     public NucleonGun(ArrayList<Nucleon> nucleons){
 
     }
+    /*
+    The following are super temporary dummy-methods to satisfy the interface INucleonGun
+     */
+    public INucleon shoot(){return new Nucleon(1,1,1,1);}
+
+    public boolean isEmpty(){return false;}
 }
