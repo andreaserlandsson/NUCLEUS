@@ -3,7 +3,7 @@ package com.nucleus;
 
 public class Molecule implements IMolecule {
     private int rotation = 0;
-    private GluonPoint[] gluons;
+    private IGluonPoint[] gluons;
 
     public Molecule(GluonPoint[] gluons){
         this.gluons = gluons;

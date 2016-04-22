@@ -17,6 +17,16 @@ public class Vector {
         this.y = y;
     }
 
+    public void add(Vector vect){
+        this.x = this.x + vect.getX();
+        this.y = this.y + vect.getY();
+    }
+
+    public void multiply(float t){
+        this.x = (int)(x*t);
+        this.y = (int)(y*t);
+    }
+
     public int getX(){
         return x;
     }
@@ -24,5 +34,7 @@ public class Vector {
     public int getY(){
         return y;
     }
+
+
 
 }

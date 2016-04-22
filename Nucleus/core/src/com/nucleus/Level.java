@@ -6,23 +6,23 @@ import java.util.List;
 public class Level implements ILevel { //add level size
     private int width;
     private int height;
-    private NucleonGun gun;
-    private List<Nucleon> airborneNucleons = new ArrayList<Nucleon>();
-    private Molecule molecule;
+    private INucleonGun gun;
+    private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
+    private IMolecule molecule;
 
-    public Level(int width, int height, NucleonGun gun, Molecule molecule){
+    public Level(int width, int height, INucleonGun gun, IMolecule molecule){
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
     }
 
-    public List<Nucleon> getNucleons(){
+    public List<INucleon> getNucleons(){
         return airborneNucleons;
     }
 
     public void addAirborneNucleon(){
-        Nucleon nucleon = new Proton();//gun.shoot();
+        INucleon nucleon = new Proton();//gun.shoot();
         airborneNucleons.add(nucleon);
     }
 
