@@ -1,10 +1,15 @@
-import com.nucleus.GluonPoint;
+import com.nucleus.IGluonPoint;
+import com.nucleus.INucleon;
+import com.nucleus.INucleonGun;
 import com.nucleus.Level;
 import com.nucleus.Molecule;
-import com.nucleus.Proton;
+import com.nucleus.NucleonGun;
+import com.nucleus.mocks.MockGluon;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertTrue;
 
@@ -23,14 +28,16 @@ public class LevelTest {
     }
 
     @Test
-    public void testNucleons() {
-        GluonPoint[] gluons = new GluonPoint[2];
-        gluons[0] = new GluonPoint(1,1,1,1);
-        gluons[1] = new GluonPoint(2,2,2,2);
+    public void testgetNucleons() {
+        IGluonPoint[] gluons = new MockGluon[2];
+        gluons[0] = new MockGluon(1,1,1,1);
+        gluons[1] = new MockGluon(2,2,2,2);
         Molecule molecule = new Molecule(gluons);
-        Level level = new Level(1, molecule);
+        ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
+        INucleonGun gun = new NucleonGun(nucleons);
+        Level level = new Level(1, 1, gun, molecule);
         assertTrue(level.getNucleons().size() == 0);
-        level.addAirborneNucleon(new Proton());
+        level.addAirborneNucleon();
         assertTrue(level.getNucleons() != null);
     }
 
