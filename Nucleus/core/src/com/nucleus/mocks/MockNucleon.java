@@ -10,8 +10,17 @@ public class MockNucleon implements INucleon {
     private Vector position;
     private Vector velocity;
     private final int radius = 0;   //Dummy value. Sizes will be used for collision detection purposes
-    //and will be properly determined later.
+                                    //and will be properly determined later.
     private boolean isVisible = false;
+
+    public MockNucleon(){
+
+    }
+
+    public MockNucleon(int posX, int posY, int velX, int velY){
+        this.position = new Vector(posX, posY);
+        this.velocity = new Vector(velX, velY);
+    }
 
     public Vector getPosition(){
         return position;
