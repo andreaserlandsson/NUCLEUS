@@ -15,14 +15,14 @@ public class LevelBuilder{
         int noOfNeutrons = levelSpecs[4];
         int difficultyMultiplier = levelSpecs[5];
 
-        GluonPoint[] gluonPoints = new GluonPoint[noOfGluonPoints];
+        IGluonPoint[] gluonPoints = new GluonPoint[noOfGluonPoints];
 
         int j = 0;
         for (int i = 6; i < levelSpecs.length; i = i+4) {
             gluonPoints[j] = new GluonPoint(levelSpecs[i], levelSpecs[i + 1], levelSpecs[i + 2], levelSpecs[i + 3]);
             j++;
         }
-        ArrayList<Nucleon> nucleonList = new ArrayList<Nucleon>(noOfProtons+noOfNeutrons);
+        ArrayList<INucleon> nucleonList = new ArrayList<INucleon>(noOfProtons+noOfNeutrons);
         for(int i = 0; i < noOfNeutrons; i++) {
             nucleonList.add(new Neutron(0,0,0,0));
         }
@@ -32,8 +32,8 @@ public class LevelBuilder{
         Collections.shuffle(nucleonList);
 
 
-        NucleonGun nucleonGun = new NucleonGun(nucleonList);
-        Molecule molecule = new Molecule(gluonPoints);
+        INucleonGun nucleonGun = new NucleonGun(nucleonList);
+        IMolecule molecule = new Molecule(gluonPoints);
 
         Level newLevel = new Level(width, height, nucleonGun, molecule);
 

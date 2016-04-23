@@ -5,7 +5,7 @@ public class Molecule implements IMolecule {
     private int rotation = 0;
     private IGluonPoint[] gluons;
 
-    public Molecule(GluonPoint[] gluons){
+    public Molecule(IGluonPoint[] gluons){
         this.gluons = gluons;
     }
 
