@@ -21,10 +21,10 @@ public class NucleonGun {
             Nucleon a = nucleonList.get(arrayIndex);
             nucleonList.remove(arrayIndex);
             arrayIndex --;
-
+            
             //ta en random start pos
             //  x-led och y-led (ett led mste va maximerat ås inget )
-            //ve
+            //vektro....?
             return true;
         } else{
             System.out.println("nucleonList is empty");
