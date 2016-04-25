@@ -4,9 +4,9 @@ import com.nucleus.INucleonGun;
 import com.nucleus.Level;
 import com.nucleus.Molecule;
 import com.nucleus.NucleonGun;
-import com.nucleus.mocks.MockGluon;
-import com.nucleus.mocks.MockNucleon;
-import com.nucleus.mocks.MockNucleonGun;
+import mocks.MockGluon;
+import mocks.MockNucleon;
+import mocks.MockNucleonGun;
 
 import org.junit.Ignore;
 import org.junit.Test;
