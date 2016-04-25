@@ -29,8 +29,9 @@ public class LevelBuilder{
         for(int i = 0; i < noOfNeutrons; i++) {
             nucleonList.add(new Neutron(0,0,0,0));
         }
-        for (int y = 0; y<noOfProtons;y++) {
-            nucleonList.add(new Proton(0,0,0,0));
+
+        for (int y = 0; y < noOfProtons; y++) {
+            nucleonList.add(new Proton(0, 0, 0, 0));
         }
         Collections.shuffle(nucleonList);
 
@@ -41,7 +42,7 @@ public class LevelBuilder{
         Level newLevel = new Level(width, height, nucleonGun, molecule);
 
         return  newLevel;
-    }
 
+    }
 
 }
