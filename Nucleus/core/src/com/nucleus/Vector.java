@@ -17,14 +17,12 @@ public class Vector {
         this.y = y;
     }
 
-    public void add(Vector vect){
-        this.x = this.x + vect.getX();
-        this.y = this.y + vect.getY();
+    public Vector add(Vector vect){
+        return new Vector(x + vect.getX(), y + vect.getY());
     }
 
-    public void multiply(float t){
-        this.x = (int)(x*t);
-        this.y = (int)(y*t);
+    public Vector multiply(float t){
+        return new Vector((int)(x*t), (int)(y*t));
     }
 
     public int getX(){

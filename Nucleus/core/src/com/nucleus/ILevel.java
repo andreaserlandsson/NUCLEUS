@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface ILevel {
 
-    List<INucleon> getNucleons();
-    void addAirborneNucleon();
+    List<INucleon> getAirborneNucleons();
+    void addAirborneNucleon(INucleon nucleon);
 
 
 

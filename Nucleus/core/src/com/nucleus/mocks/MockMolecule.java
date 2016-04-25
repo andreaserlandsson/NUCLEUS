@@ -22,7 +22,7 @@ public class MockMolecule implements IMolecule {
         return rotation;
     }
 
-    public boolean moleculeFilled(){
+    public boolean isFull(){
         return false;
     }
 }
