@@ -1,4 +1,4 @@
-package com.nucleus.mocks;
+package mocks;
 
 import com.nucleus.INucleon;
 import com.nucleus.INucleonGun;
