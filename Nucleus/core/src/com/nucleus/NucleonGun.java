@@ -12,19 +12,19 @@ public class NucleonGun implements INucleonGun{
 
     public NucleonGun(ArrayList<INucleon> nucleons){
         nucleons = nucleonList;
-        arrayIndex = nucleonList.size();
+        arrayIndex = nucleonList.size() - 1;
     }
 
     @Override
-    public INucleon shoot(){ //return
+    public INucleon shoot() {
         if (!isEmpty()) {
             INucleon a = nucleonList.get(arrayIndex);
             nucleonList.remove(arrayIndex);
             arrayIndex --;
-            return a;
-        } else{
+            return a; // returns
+        } else {
             System.out.println("nucleonList is empty");
-            return null; // hmmm vill vi verkligen detta?
+            return null; //
         }
     }
 
@@ -33,6 +33,7 @@ public class NucleonGun implements INucleonGun{
         if (arrayIndex >= 0) {
             return false;
         } else {
+            System.out.println("nucleonList is empty");
             return true;
         }
     }
