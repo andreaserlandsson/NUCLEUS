@@ -1,0 +1,38 @@
+MeetingAgenda
+
+  Date: 160425 13:15
+
+  Facilitator: Herman Carlström
+
+  Participants: Herman Carlström, Erik Jansson, Miranda Bånnsgård, Andreas Erlandsson, Hannes Lagerroth.
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - Still problems wíth how to solve controllers, and how they will work with everything else.
+
+2. Reports (15 min) from previous meeting
+
+  - Still not fixed controllers. Collision handler is on it's way. 
+  - Fixed a vector for position and speed.
+  - InputHandler, not fixed.
+  - Started with tests. One or so completed.
+  - SOME Mock classes finito, dependency injection as well.
+
+3. Discussion items (35 min) 
+
+  - How to solve controllers, might have a fix. 
+  - How everyone is doing, and what they are doing.
+  - Package structure, how to implement and what sort should we have?
+  - Use cases must be finished soon. 
+  - MUSTFix the finalized UML-diagram. 
+
+4. Outcomes and assignments (5 min) 
+  
+  - Assigned all group members to fix all the above, or atleast have a solution that we can present to supervisor.
+
+
+5. Wrap up
+
+  - Unresolved issues: None really. For now.
+  - Time for next meeting: 160426 13:15 (mini meeting, might not make agenda), otherwise 160428 10:00.
