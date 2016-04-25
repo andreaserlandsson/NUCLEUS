@@ -23,7 +23,6 @@ public class Level implements ILevel { //add level size
 
     public void addAirborneNucleon(){
         INucleon nucleon = new Proton();//gun.shoot();
-        airborneNucleons.add(nucleon);
     }
 
     public void outOfBoundsCheck(){ // checks if any nucleons in airbornNucleons is out of bounds

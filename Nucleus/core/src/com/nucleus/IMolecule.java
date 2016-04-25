@@ -4,7 +4,7 @@ public interface IMolecule {
 
     void setRotation(int r);
     int getRotation();
-    boolean moleculeFilled();
+    boolean isFull();
 
 
 }

@@ -37,7 +37,7 @@ public class LevelBuilder{
 
         Level newLevel = new Level(width, height, nucleonGun, molecule);
 
-        return newLevel;
+        return  newLevel;
     }
 
 

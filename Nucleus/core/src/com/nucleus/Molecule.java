@@ -17,7 +17,7 @@ public class Molecule implements IMolecule {
         return rotation;
     }
 
-    public boolean moleculeFilled() {//dummy value
+    public boolean isFull() {//dummy value
         return false;
     }
 
