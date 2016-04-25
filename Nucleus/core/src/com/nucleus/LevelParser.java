@@ -24,8 +24,8 @@ public class LevelParser {
                 levelString = levelString + lineInput + "\n";
             }
             sc.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return levelString;
     }
