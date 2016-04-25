@@ -17,6 +17,7 @@ public class LevelBuilder{
         int noOfNeutrons = levelSpecs[4];
         int difficultyMultiplier = levelSpecs[5];
 
+
         IGluonPoint[] gluonPoints = new GluonPoint[noOfGluonPoints];
 
         int j = 0;

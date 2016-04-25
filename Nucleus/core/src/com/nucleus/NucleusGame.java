@@ -8,7 +8,7 @@ public class NucleusGame extends Game {
     @Override
     public void create(){
         Gdx.app.log("NucleusGame", "created");
-        Level level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 2);
+        Level level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
         setScreen(new GameScreen(level));
     }
 
