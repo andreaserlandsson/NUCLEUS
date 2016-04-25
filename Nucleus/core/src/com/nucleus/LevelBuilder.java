@@ -20,6 +20,7 @@ public class LevelBuilder{
         IGluonPoint[] gluonPoints = new GluonPoint[noOfGluonPoints];
 
         int j = 0;
+<<<<<<< HEAD
         for (int i = 6; i < levelSpecs.length; i = i+4) {
             Gdx.app.log("Hej","hej");
             gluonPoints[j] = new GluonPoint(levelSpecs[i], levelSpecs[i + 1], levelSpecs[i + 2], levelSpecs[i + 3]);
@@ -28,12 +29,22 @@ public class LevelBuilder{
         ArrayList<INucleon> nucleonList = new ArrayList<INucleon>(noOfProtons+noOfNeutrons);
         for(int i = 0; i < noOfNeutrons; i++) {
             nucleonList.add(new Neutron(0,0,0,0));
+=======
+        for (int i = 6; i < levelSpecs.length; i = i + 4) {
+            gluonPoints[j] = new GluonPoint(levelSpecs[i], levelSpecs[i + 1], levelSpecs[i + 2], levelSpecs[i + 3]);
+            j++;
         }
-        for (int y = 0; y<noOfProtons;y++) {
-            nucleonList.add(new Proton(0,0,0,0));
+        ArrayList<Nucleon> nucleonList = new ArrayList<Nucleon>(noOfProtons + noOfNeutrons);
+        for (int i = 0; i < noOfNeutrons; i++) {
+            nucleonList.add(new Neutron(0, 0, 0, 0));
+>>>>>>> nucleonGun
+        }
+        for (int y = 0; y < noOfProtons; y++) {
+            nucleonList.add(new Proton(0, 0, 0, 0));
         }
         Collections.shuffle(nucleonList);
 
+<<<<<<< HEAD
 
         INucleonGun nucleonGun = new NucleonGun(nucleonList);
         IMolecule molecule = new Molecule(gluonPoints);
@@ -41,7 +52,12 @@ public class LevelBuilder{
         Level newLevel = new Level(width, height, nucleonGun, molecule);
 
         return  newLevel;
+=======
+        NucleonGun nucleonGun = new NucleonGun(nucleonList);
+        Molecule molecule = new Molecule(gluonPoints);
+        Level newLevel = new Level(molecule,nucleonGun);
+        return newLevel;
+>>>>>>> nucleonGun
     }
-
 
 }
