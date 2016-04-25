@@ -37,7 +37,7 @@ public class LevelParser {
         while(str.charAt(j) == ' ') {
         j++;
         }
-        
+
         for(int i = j; i < str.length(); i++) {
             if (str.charAt(i) == ' ') {
                 temp = temp + "\n";
