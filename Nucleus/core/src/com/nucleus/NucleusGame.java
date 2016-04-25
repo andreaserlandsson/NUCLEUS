@@ -1,31 +1,23 @@
 package com.nucleus;
 
-public class NucleusGame {
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 
-    Level level;
-    private int height;
-    private int width;
+public class NucleusGame extends Game {
 
-    public NucleusGame(int width, int height){
-        this.height = height;
-        this.width= width;
+    @Override
+    public void create(){
+        Gdx.app.log("NucleusGame", "created");
+        Level level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
+        setScreen(new GameScreen(level));
     }
 
-    public void buildLevel(int lvl){
-        level = LevelBuilder.buildLevel(width, height, lvl);
+    @Override
+    public void dispose(){
+        super.dispose();
     }
 
-    public int getHeight(){
-        return height;
-    }
 
-    public int getWidth(){
-        return width;
-    }
-
-    public Level getLevel(){
-        return level;
-    }
 
 
 }

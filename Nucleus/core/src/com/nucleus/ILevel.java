@@ -6,7 +6,8 @@ public interface ILevel {
 
     List<INucleon> getAirborneNucleons();
     void addAirborneNucleon(INucleon nucleon);
-
+    INucleonGun getNucleonGun();
+    void outOfBoundsCheck();
 
 
 }
