@@ -111,14 +111,4 @@ public class NucleonGunTest {
         assertTrue(mockShotNucleon.getVelocity().getX() > 0);
         assertTrue(mockShotNucleon.getVelocity().getY() > 0);
     }
-
-    @Test
-    public void testThis() {
-        System.out.println("testThis");
-
-    }
-
-    public void testThisNoAt() {
-        System.out.println("testThisNoAt");
-    }
 }
