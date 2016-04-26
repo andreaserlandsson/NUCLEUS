@@ -9,7 +9,7 @@ import com.nucleus.Vector;
 public class MockNucleon implements INucleon {
     private Vector position;
     private Vector velocity;
-    private final int radius = 0;   //Dummy value. Sizes will be used for collision detection purposes
+    private final int radius = 3;   //Dummy value. Sizes will be used for collision detection purposes
                                     //and will be properly determined later.
     private boolean isVisible = false;
 
@@ -35,5 +35,10 @@ public class MockNucleon implements INucleon {
     }
     public void setVelocity(int x, int y){
         velocity.setCoordinates(x, y);
+    }
+
+    @Override
+    public int getRadius() {
+        return radius;
     }
 }

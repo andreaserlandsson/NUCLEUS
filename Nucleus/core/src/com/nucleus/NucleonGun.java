@@ -62,7 +62,6 @@ public class NucleonGun implements INucleonGun{
         if (arrayIndex >= 0) {
             return false;
         } else {
-            System.out.println("nucleonList is empty");
             return true;
         }
     }
