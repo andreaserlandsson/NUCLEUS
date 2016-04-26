@@ -35,4 +35,8 @@ public class Nucleon implements  INucleon {
     public void setVelocity(int x, int y) {
         velocity.setCoordinates(x, y);
     }
+
+    public int getRadius(){
+        return radius;
+    }
 }

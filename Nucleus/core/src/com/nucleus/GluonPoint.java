@@ -27,4 +27,8 @@ public class GluonPoint implements IGluonPoint {
         position.setCoordinates(x, y);
     }
 
+    public int getRadius(){
+        return radius;
+    }
+
 }
