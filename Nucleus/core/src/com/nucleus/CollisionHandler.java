@@ -3,7 +3,7 @@ package com.nucleus;
 public class CollisionHandler {
 
 
-    public static boolean hasCollide(GluonPoint gluonPoint, Nucleon nucleon){
+    public static boolean collision(GluonPoint gluonPoint, Nucleon nucleon){
 
         double distance;
         int xPosGluonPoint = gluonPoint.getPosition().getX();
@@ -22,7 +22,7 @@ public class CollisionHandler {
 
     }
 
-    
+
 
 
 
