@@ -16,7 +16,6 @@ public class CollisionHandlerTest {
         IGluonPoint gluon = new GluonPoint(4,5,1,1);
         INucleon nucleon = new Nucleon(5,4,1,1);
         assertTrue(CollisionHandler.collision(gluon,nucleon));
-
     }
     
 }
