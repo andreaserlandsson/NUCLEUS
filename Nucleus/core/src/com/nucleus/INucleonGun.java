@@ -4,7 +4,7 @@ package com.nucleus;
  * Created by erik on 22/04/16.
  */
 public interface INucleonGun {
-    INucleon shoot();
+    INucleon shoot(); //should take a delta value, to time the guns shots
     boolean isEmpty();
 
 }

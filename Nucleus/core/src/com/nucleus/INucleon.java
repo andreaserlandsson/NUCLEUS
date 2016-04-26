@@ -8,6 +8,7 @@ public interface INucleon {
     Vector getPosition();
     Vector getVelocity();
 
+    void update(float delta);
 
     void setPosition(int x, int y);
     void setVelocity(int x, int y);

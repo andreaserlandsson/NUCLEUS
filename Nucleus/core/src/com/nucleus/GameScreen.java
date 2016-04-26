@@ -21,7 +21,8 @@ public class GameScreen implements Screen {
         Gdx.app.log("Rendering",Float.toString(1/delta));
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //level.update(delta);
+
+        level.update(delta);
     }
 
     @Override
