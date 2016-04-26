@@ -4,7 +4,7 @@ public class CollisionHandler {
 
 
 
-    public static boolean collision(GluonPoint gluonPoint, Nucleon nucleon){
+    public static boolean collision(IGluonPoint gluonPoint, INucleon nucleon){
 
         double distance;
         int xPosGluonPoint = gluonPoint.getPosition().getX();
