@@ -9,15 +9,18 @@ public class NucleonGun implements INucleonGun{
 
     private ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
     private int arrayIndex;
+    private int width;
+    private int height;
 
-    public NucleonGun(ArrayList<INucleon> nucleons){
-        nucleons = nucleonList;
+    public NucleonGun(int width, int heigth, ArrayList<INucleon> nucleons){
+        nucleonList = nucleons;
+        this.height = heigth;
+        this.width = width;
         arrayIndex = nucleonList.size() - 1;
     }
 
     @Override
     public INucleon shoot() {
-        if (!isEmpty()) {
             INucleon a = nucleonList.get(arrayIndex);
             nucleonList.remove(arrayIndex);
             arrayIndex --;
@@ -27,26 +30,26 @@ public class NucleonGun implements INucleonGun{
 		    config.height = 512;
              */
             //sets the start position for the nucleon
-            int x = (int)Math.random()*3;
+            int x = (int)(Math.random()*3);
             switch(x){
                 //längs med toppen
                 case 0:
-                    a.setPosition(288/(int)Math.random()*287+1,0); // We do not divide by zero
+                    a.setPosition((int)(Math.random()*width) , 0); // We do not divide by zero
                     break;
 
                 //längs med botten
                 case 1:
-                    a.setPosition(288/(int)Math.random()*287+1, 512); // We do not divide by zero
+                    a.setPosition((int)(Math.random()*width) , height); // We do not divide by zero
                     break;
 
                 //lång med vänster långsida
                 case 2:
-                    a.setPosition(0,512/(int)Math.random()*511 +1); // We do not divide by zero
+                    a.setPosition(0 , (int)(Math.random()*height)); // We do not divide by zero
                     break;
 
                 //längs med höger långsida
-                case 4:
-                    a.setPosition(288, 512/(int)Math.random()*511 +1); // We do not divide by zero
+                case 3:
+                    a.setPosition(width, (int)(Math.random()*height)); // We do not divide by zero
                     break;
 
                 default:
@@ -54,13 +57,8 @@ public class NucleonGun implements INucleonGun{
             }
 
             //sets the next position for the nucleon ELLER?
-            a.setVelocity((int)(288/2*(Math.random()/10+0.01)), (int)(512/2*(Math.random()/10+0.01)));
-
+            a.setVelocity((int)(width/2*(Math.random()/10+0.01)), (int)(height/2*(Math.random()/10+0.01)));
             return a;
-        } else {
-            System.out.println("nucleonList is empty");
-            return null;
-        }
     }
 
     @Override

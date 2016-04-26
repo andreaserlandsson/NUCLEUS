@@ -1,5 +1,6 @@
 package com.nucleus;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class LevelParser {
                 levelString = levelString + lineInput + "\n";
             }
             sc.close();
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return levelString;

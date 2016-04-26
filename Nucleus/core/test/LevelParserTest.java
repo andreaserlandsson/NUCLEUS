@@ -3,11 +3,25 @@ import org.junit.Test;
 import java.util.Arrays;
 
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 
 public class LevelParserTest {
+
+    //test for reading a file, in this case level_1. Maybe will need to test all seperate levels?
+    @Test
+    public void checkFileReader(){
+        int [] level = LevelParser.levelParse(1);
+        assertNotNull(level);
+        assertTrue(level.length%2 == 0);
+        String mockLevel1 = "[1, 3, 3, 4, 5, 1, 6, 61, 62, 63, 7, 71, 72, 73, 8, 81, 82, 83]";
+        assertTrue(Arrays.toString(level).equals(mockLevel1));
+    }
+
+
 
     //Testing for levelparser, and if the methods return what we want them to. NOT test for reading
     // a certain level file!

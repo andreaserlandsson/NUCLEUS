@@ -51,7 +51,11 @@ public class NucleonGunTest {
 
     @Test
     public void testShootWhenEmpty(){
-    }
+        ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
+        MockNucleonGun mockGun = new MockNucleonGun(nucleonList);
+        assertTrue(mockGun.isEmpty());
+        //how to check shoot when empty?
+        }
 
     @Test
     public void testLoopForShoot() {

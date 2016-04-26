@@ -15,13 +15,14 @@ public class MockNucleonGun implements INucleonGun {
         this.nucleons = nucleons;
     }
 
-    public INucleon shoot(){
-        INucleon nucleon = nucleons.get(0);
-        nucleons.remove(0);
-        return nucleon;
-    }
+    public INucleon shoot() {
+            INucleon nucleon = nucleons.get(0);
+            nucleons.remove(0);
+            return nucleon;
+        }
 
     public boolean isEmpty() {
+
         return nucleons.isEmpty();
     }
 }

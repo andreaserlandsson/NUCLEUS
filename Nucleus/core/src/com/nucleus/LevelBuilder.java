@@ -36,7 +36,7 @@ public class LevelBuilder{
         Collections.shuffle(nucleonList);
 
 
-        INucleonGun nucleonGun = new NucleonGun(nucleonList);
+        INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList);
         IMolecule molecule = new Molecule(gluonPoints);
 
         Level newLevel = new Level(width, height, nucleonGun, molecule);
