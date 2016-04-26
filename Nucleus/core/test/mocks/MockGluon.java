@@ -33,4 +33,24 @@ public class MockGluon implements IGluonPoint {
     public int getRadius() {
         return radius;
     }
+
+    @Override
+    public boolean addProton() {
+        return true;
+    }
+
+    @Override
+    public int getProtons() {
+        return 0;
+    }
+
+    @Override
+    public boolean addNeutron() {
+        return true;
+    }
+
+    @Override
+    public int getNeutrons() {
+        return 0;
+    }
 }
