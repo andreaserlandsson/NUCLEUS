@@ -24,8 +24,8 @@ public class LevelParser {
                 levelString = levelString + lineInput + "\n";
             }
             sc.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return levelString;
     }
@@ -33,7 +33,12 @@ public class LevelParser {
     // Strings are inmutable, so need to make a copy of the string to be able to change letters.
     public static String replaceCharacters(String str) {
         String temp = "";
-        for(int i = 0; i < str.length(); i++) {
+        int j = 0;
+        while(str.charAt(j) == ' ') {
+        j++;
+        }
+
+        for(int i = j; i < str.length(); i++) {
             if (str.charAt(i) == ' ') {
                 temp = temp + "\n";
             } else {
@@ -51,7 +56,7 @@ public class LevelParser {
         {
             levelField[i] = Integer.parseInt(strings[i]);
         }
-        System.out.println(Arrays.toString(levelField));
+        //System.out.println(Arrays.toString(levelField));
     return levelField;
     }
 }
