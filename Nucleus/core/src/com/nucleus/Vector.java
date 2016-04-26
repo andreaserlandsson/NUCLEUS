@@ -21,8 +21,16 @@ public class Vector {
         return new Vector(x + vect.getX(), y + vect.getY());
     }
 
+    public Vector subtract(Vector vect){
+        return new Vector(x - vect.getX(), y - vect.getY());
+    }
+
     public Vector multiply(float t){
         return new Vector((int)(x*t), (int)(y*t));
+    }
+
+    public float abs(){
+        return (float)Math.sqrt(x*x + y*y);
     }
 
     public int getX(){
