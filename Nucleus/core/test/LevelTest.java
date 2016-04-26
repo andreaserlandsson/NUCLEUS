@@ -86,6 +86,7 @@ public class LevelTest {
 
         Level level = new Level(10, 10, gun, molecule);
         level.update(1);
+        level.update(1);
         assertTrue(level.getAirborneNucleons().get(0).getPosition().getX() == 2);
         assertTrue(level.getAirborneNucleons().get(0).getPosition().getY() == 2);
 
