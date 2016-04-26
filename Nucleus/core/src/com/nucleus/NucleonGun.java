@@ -25,10 +25,6 @@ public class NucleonGun implements INucleonGun{
             nucleonList.remove(arrayIndex);
             arrayIndex --;
 
-            /*
-            config.width = 288;
-		    config.height = 512;
-             */
             //sets the start position for the nucleon
             int x = (int)(Math.random()*3);
             switch(x){
