@@ -36,12 +36,7 @@ public class LevelTest {
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
-<<<<<<< HEAD
         INucleonGun gun = new NucleonGun(1,1,nucleons);
-=======
-        INucleonGun gun = new MockNucleonGun(nucleons);
->>>>>>> 194062b4781907546909b88f2a44aa45e779c10f
-
         Level level = new Level(1, 1, gun, molecule);
         assertTrue(level.getAirborneNucleons().size() == 0);
         level.addAirborneNucleon(new MockNucleon());
@@ -55,12 +50,7 @@ public class LevelTest {
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
-<<<<<<< HEAD
         INucleonGun gun = new NucleonGun(1,1,nucleons);
-=======
-        INucleonGun gun = new MockNucleonGun(nucleons);
->>>>>>> 194062b4781907546909b88f2a44aa45e779c10f
-
         Level level = new Level(1, 1, gun, molecule);
         assertTrue(level.getAirborneNucleons().size() == 0);
     }
