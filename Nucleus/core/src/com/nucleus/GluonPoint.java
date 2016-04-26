@@ -5,9 +5,9 @@ public class GluonPoint implements IGluonPoint {
 
     private Vector position;
     private int protonsNeeded;
-    private int protons;
+    private int protonAmnt;
     private int neutronsNeeded;
-    private int neutrons;
+    private int neutronAmnt;
     private final int radius = 0; // dummy value will be calibrated later
 
     public GluonPoint(int posX, int posY, int pNeeded, int nNeeded){
@@ -16,13 +16,8 @@ public class GluonPoint implements IGluonPoint {
         this.neutronsNeeded = nNeeded;
     }
 
-    @Override
     public boolean isFull() {
-        if (protons == protonsNeeded && neutrons == neutronsNeeded) {
-            return true;
-        } else {
-            return false;
-        }
+        return protonAmnt == protonsNeeded && neutronAmnt == neutronsNeeded;
     }
 
     public Vector getPosition(){
@@ -37,31 +32,30 @@ public class GluonPoint implements IGluonPoint {
         return radius;
     }
 
-    @Override
+
     public boolean addNeutron() { // if this returns false the game is lost
-        if (!isFull() && neutrons > neutronsNeeded) {
-            neutrons++;
+        if (!isFull() && neutronsNeeded > neutronAmnt) {
+            neutronAmnt++;
             return true;
         } else {
             return false;
         }
     }
 
-    public int getNeutrons() {
-        return neutrons;
+    public int getNeutronAmnt() {
+        return neutronAmnt;
     }
 
-    @Override
     public boolean addProton() { // if this returns false the game is lost
-        if (!isFull() && protons > protonsNeeded) {
-            protons++;
+        if (!isFull() && protonsNeeded > protonAmnt) {
+            protonAmnt++;
             return true;
         } else {
             return false;
         }
     }
 
-    public int getProtons() {
-        return protons;
+    public int getProtonAmnt() {
+        return protonAmnt;
     }
 }

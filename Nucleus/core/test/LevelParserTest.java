@@ -13,7 +13,7 @@ public class LevelParserTest {
 
     //test for reading a file, in this case level_1. Maybe will need to test all seperate levels?
     @Test
-    public void checkFileReader(){
+    public void testReadFromFile(){
         int [] level = LevelParser.levelParse(1);
         assertNotNull(level);
         assertTrue(level.length%2 == 0);
@@ -28,7 +28,7 @@ public class LevelParserTest {
 
     //Test if correctly removes spaces and returns a new row instead.
     @Test
-    public void stringParser() {
+    public void testReplaceCharacters() {
         String str1 = "1\n2\n3\n4\n5\n6 7";
         String str2 = " 1\n2\n3\n4\n5";
         String str3 = "1 2 3 4 5 6 ";
@@ -40,7 +40,7 @@ public class LevelParserTest {
 
     //test if correctly makes field out of the text.
     @Test
-    public void levelSplitter(){
+    public void testSplitLevelString(){
         String str1 = "1\n2\n3\n4\n5";
         String str2 = "12\n3\n4\n5";
         assertTrue(Arrays.toString(LevelParser.splitLevelString(str1)).equals("[1, 2, 3, 4, 5]"));
@@ -49,7 +49,7 @@ public class LevelParserTest {
 
     // test for method a working with method b.
     @Test
-    public void textToLevel() {
+    public void testLevelParser() {
         String level1 = "1 2 3 4 5 6";
         String level2 = "1 2 3 45 6";
         assertTrue(Arrays.toString(LevelParser.splitLevelString(LevelParser.replaceCharacters(level1))).equals("[1, 2, 3, 4, 5, 6]"));

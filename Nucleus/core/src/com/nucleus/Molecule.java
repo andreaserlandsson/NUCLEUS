@@ -17,8 +17,13 @@ public class Molecule implements IMolecule {
         return rotation;
     }
 
-    public boolean isFull() {//dummy value
-        return false;
+    public boolean isFull() { //dummy value
+        for (IGluonPoint gluon : gluons) {
+            if (!(gluon.isFull())) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

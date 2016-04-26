@@ -7,7 +7,7 @@ public interface IGluonPoint {
     void setPosition(int x, int y);
     int getRadius();
     boolean addProton();
-    int getProtons();
+    int getProtonAmnt();
     boolean addNeutron();
-    int getNeutrons();
+    int getNeutronAmnt();
 }
