@@ -12,5 +12,6 @@ public interface INucleon {
     void setPosition(int x, int y);
     void setVelocity(int x, int y);
 
+    int getRadius();
 
 }
