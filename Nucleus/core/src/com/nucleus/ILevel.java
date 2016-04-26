@@ -8,6 +8,7 @@ public interface ILevel {
     void addAirborneNucleon(INucleon nucleon);
     INucleonGun getNucleonGun();
     void outOfBoundsCheck();
+    void update(float delta);
 
 
 }

@@ -22,7 +22,8 @@ public class MockNucleonGun implements INucleonGun {
         }
 
     public boolean isEmpty() {
-
-        return nucleons.isEmpty();
+        if (nucleons.size()==0)
+            return true;
+        return false;
     }
 }

@@ -22,6 +22,10 @@ public class MockNucleon implements INucleon {
         this.velocity = new Vector(velX, velY);
     }
 
+    public void update(float delta){
+        position = position.add(velocity.multiply(delta));
+    }
+
     public Vector getPosition(){
         return position;
     }

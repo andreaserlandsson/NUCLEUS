@@ -31,7 +31,7 @@ public class Level implements ILevel {
         return airborneNucleons;
     }
 
-
+    /*Function should probably be removed*/
     public void addAirborneNucleon(INucleon nucleon){
         airborneNucleons.add(nucleon);
     }

@@ -40,7 +40,7 @@ public class MockGluon implements IGluonPoint {
     }
 
     @Override
-    public int getProtons() {
+    public int getProtonsNeeded() {
         return 0;
     }
 
@@ -50,7 +50,7 @@ public class MockGluon implements IGluonPoint {
     }
 
     @Override
-    public int getNeutrons() {
+    public int getNeutronsNeeded() {
         return 0;
     }
 }
