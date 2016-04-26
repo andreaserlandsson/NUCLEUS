@@ -12,7 +12,7 @@ public class CollisionHandler {
         int xPosNucleon = nucleon.getPosition().getX();
         int yPosNucleon = nucleon.getPosition().getY();
 
-        distance = Math.sqrt((xPosGluonPoint-xPosNucleon)^2 + (yPosGluonPoint-yPosNucleon)^2);
+        distance = Math.sqrt( Math.pow((xPosGluonPoint-xPosNucleon),2) + Math.pow((yPosGluonPoint-yPosNucleon),2));
 
 
         if((distance < gluonPoint.getRadius() + nucleon.getRadius())){
@@ -25,12 +25,6 @@ public class CollisionHandler {
         //Need width and height from the gamescreen? Or something...
 
     }
-
-
-
-
-
-
 
 
 
