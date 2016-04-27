@@ -19,15 +19,19 @@ public class GameScreen implements Screen {
     private SpriteBatch batch;
     private Texture bg;
     private Texture proton, neutron, molecule;
+    private Texture x;
 
 
     public GameScreen(Level level){
         this.level = level;
-        this.cam = new OrthographicCamera(280, 560);
-        cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //this.cam = new OrthographicCamera(280, 560);
+        //cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         bg = new Texture("bg.png");
         molecule = new Texture("1.png");
+        molecule.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         proton = new Texture("proton.png");
+        proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        x = new Texture("x.png");
         batch = new SpriteBatch();
     }
 
@@ -39,7 +43,6 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         level.update(delta);
-        Gdx.app.log("Nucleons left in gun", Integer.toString(level.getNucleonGun().getAmmoLeft()));
 
         batch.begin();
         batch.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -47,7 +50,9 @@ public class GameScreen implements Screen {
         for(INucleon nucleon : level.getAirborneNucleons()){
             batch.draw(proton, nucleon.getPosition().getX(), nucleon.getPosition().getY());
         }
-        batch.draw(molecule, 140, 206, 25, 100);
+        //batch.draw(x,0,0);
+        //batch.draw(x,285,0);
+        batch.draw(molecule, 140, 206);
         batch.end();
 
     }

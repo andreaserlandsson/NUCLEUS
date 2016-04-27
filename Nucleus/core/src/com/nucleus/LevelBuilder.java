@@ -1,8 +1,6 @@
 package com.nucleus;
 
 
-import com.badlogic.gdx.Gdx;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -23,7 +21,6 @@ public class LevelBuilder {
         //Loop to assign each gluon point the values it needs for each level.
         int j = 0;
         for (int i = 6; i < levelSpecs.length; i = i+4) {
-            Gdx.app.log("Hej","hej");
             gluonPoints[j] = new GluonPoint(levelSpecs[i], levelSpecs[i + 1], levelSpecs[i + 2], levelSpecs[i + 3]);
             j++;
         }

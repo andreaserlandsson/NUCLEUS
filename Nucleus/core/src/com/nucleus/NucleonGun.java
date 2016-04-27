@@ -12,9 +12,9 @@ public class NucleonGun implements INucleonGun{
     private int width;
     private int height;
 
-    public NucleonGun(int width, int heigth, ArrayList<INucleon> nucleons){
+    public NucleonGun(int width, int height, ArrayList<INucleon> nucleons){
         nucleonList = nucleons;
-        this.height = heigth;
+        this.height = height;
         this.width = width;
         arrayIndex = nucleonList.size() - 1;
     }
@@ -58,9 +58,10 @@ public class NucleonGun implements INucleonGun{
             //sets the next position for the nucleon ELLER?
             //a.setVelocity((int)(2*(Math.random()/10+0.01)), (int)(height/2*(Math.random()/10+0.01)));
 
-        //Test
+        //Test -  super temp!!
         Vector velocityVect = new Vector(width/2,height/2).subtract(a.getPosition());
         a.setVelocity(velocityVect.getX(), velocityVect.getY());
+        //a.setVelocity((int)(velocityVect.getX()*0.5), (int)(velocityVect.getY()*0.5));
         return a;
     }
 
