@@ -4,25 +4,52 @@ package com.nucleus;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Created by erik on 25/04/16.
  */
 public class GameScreen implements Screen {
-    Level level;
+    private Level level;
+
+    private OrthographicCamera cam;
+
+    private SpriteBatch batch;
+    private Texture bg;
+    private Texture proton, neutron, molecule;
+
 
     public GameScreen(Level level){
         this.level = level;
+        this.cam = new OrthographicCamera(280, 560);
+        cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        bg = new Texture("bg.png");
+        molecule = new Texture("1.png");
+        proton = new Texture("proton.png");
+        batch = new SpriteBatch();
     }
 
     @Override
-    public void render(float delta){
-        Gdx.app.log("Rendering",Float.toString(delta));
-        Gdx.app.log("Rendering",Float.toString(1/delta));
+    public void render(float delta) {
+        //Gdx.app.log("Delta", Float.toString(delta));
+        //Gdx.app.log("FPS", Float.toString(1 / delta));
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         level.update(delta);
+        Gdx.app.log("Nucleons left in gun", Integer.toString(level.getNucleonGun().getAmmoLeft()));
+
+        batch.begin();
+        batch.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batch.enableBlending();
+        for(INucleon nucleon : level.getAirborneNucleons()){
+            batch.draw(proton, nucleon.getPosition().getX(), nucleon.getPosition().getY());
+        }
+        batch.draw(molecule, 140, 206, 25, 100);
+        batch.end();
+
     }
 
     @Override
@@ -32,7 +59,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show(){
-        Gdx.app.log("GameScreen", "resizing");
+        Gdx.app.log("GameScreen", "showing");
     }
 
     @Override
