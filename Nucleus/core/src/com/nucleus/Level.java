@@ -9,7 +9,7 @@ public class Level implements ILevel {
 
     private float runTime = 0;
     private float lastUpdateTime = 0;
-    private float dummyUpdateVariable = 0;
+    private float dummyUpdateVariable = 1;
 
     private INucleonGun gun;
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
