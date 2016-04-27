@@ -9,7 +9,7 @@ public class Level implements ILevel {
 
     private float runTime = 0;
     private float lastUpdateTime = 0;
-    private float dummyUpdateVariable = 1;
+    private float dummyUpdateVariable = 0;
 
     private INucleonGun gun;
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
@@ -41,8 +41,8 @@ public class Level implements ILevel {
             INucleon nucleon = airborneNucleons.get(i);
             int x = nucleon.getPosition().getX();
             int y = nucleon.getPosition().getY();
-            if (x + nucleon.getRadius()>width || x-nucleon.getRadius()<0 ||
-                    y+nucleon.getRadius()>height || y-nucleon.getRadius()<0){
+            if (x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
+                    y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0){
                 airborneNucleons.remove(i);
                 i--;
             }
@@ -50,17 +50,20 @@ public class Level implements ILevel {
     }
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
     //TODO: add a collision check that also evaluates which gluon point to fill
+    //TODO: add a win check (molecule.isFull()) and after, a loss check (airborneNucleons is empty and gun is empty)
     public void update(float delta){
         runTime += delta;
+
+        if(runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
+            lastUpdateTime = runTime;
+            airborneNucleons.add(gun.shoot());
+        }
         for(INucleon nucleon : airborneNucleons){
             nucleon.update(delta);
         }
         outOfBoundsCheck();
 
-        if(runTime - lastUpdateTime > dummyUpdateVariable) {
-            lastUpdateTime = runTime;
-            airborneNucleons.add(gun.shoot());
-        }
+
     }
 
 }
