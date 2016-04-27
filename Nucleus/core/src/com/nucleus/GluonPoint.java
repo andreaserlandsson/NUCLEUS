@@ -5,9 +5,9 @@ public class GluonPoint implements IGluonPoint {
 
     private Vector position;
     private int protonsNeeded;
-    private int protons;
+    private int protons = 0;
     private int neutronsNeeded;
-    private int neutrons;
+    private int neutrons = 0;
     private final int radius = 0; // dummy value will be calibrated later
 
     public GluonPoint(int posX, int posY, int pNeeded, int nNeeded){
@@ -39,7 +39,7 @@ public class GluonPoint implements IGluonPoint {
 
     @Override
     public boolean addNeutron() { // if this returns false the game is lost
-        if (!isFull() && neutrons > neutronsNeeded) {
+        if (!isFull() && neutrons < neutronsNeeded) {
             neutrons++;
             return true;
         } else {
@@ -53,7 +53,7 @@ public class GluonPoint implements IGluonPoint {
 
     @Override
     public boolean addProton() { // if this returns false the game is lost
-        if (!isFull() && protons > protonsNeeded) {
+        if (!isFull() && protons < protonsNeeded) {
             protons++;
             return true;
         } else {
