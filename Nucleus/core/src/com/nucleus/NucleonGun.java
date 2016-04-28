@@ -1,6 +1,7 @@
 package com.nucleus;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by erik on 19/04/16.
@@ -30,25 +31,27 @@ public class NucleonGun implements INucleonGun{
         arrayIndex --;
 
         //sets the start position for the nucleon
-        int x = (int)(Math.random()*3);
+        Random rand = new Random();
+        int x = rand.nextInt(4);
+        
         switch(x){
-            //längs med toppen
+            //along the top screen edge
             case 0:
-                a.setPosition((int)(Math.random()*width) , 0); // We do not divide by zero
+                a.setPosition(rand.nextInt(width) , height);
                 break;
-                //längs med botten
+            //along the bottom screen edge
             case 1:
-                a.setPosition((int)(Math.random()*width) , height); // We do not divide by zero
+                a.setPosition(rand.nextInt(width) , 0);
                 break;
 
-                //lång med vänster långsida
+            //along the left screen edge
             case 2:
-                a.setPosition(0 , (int)(Math.random()*height)); // We do not divide by zero
+                a.setPosition(0 , rand.nextInt(height));
                 break;
 
-                //längs med höger långsida
+            //along the right screen edge
             case 3:
-                a.setPosition(width, (int)(Math.random()*height)); // We do not divide by zero
+                a.setPosition(width, rand.nextInt(height));
                 break;
 
             default:
