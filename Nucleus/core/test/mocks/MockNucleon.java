@@ -17,7 +17,7 @@ public class MockNucleon implements INucleon {
 
     }
 
-    public MockNucleon(int posX, int posY, int velX, int velY){
+    public MockNucleon(float posX, float posY, float velX, float velY){
         this.position = new Vector(posX, posY);
         this.velocity = new Vector(velX, velY);
     }
@@ -34,10 +34,10 @@ public class MockNucleon implements INucleon {
     }
 
 
-    public void setPosition(int x, int y){
+    public void setPosition(float x, float y){
         position.setCoordinates(x, y);
     }
-    public void setVelocity(int x, int y){
+    public void setVelocity(float x, float y){
         velocity.setCoordinates(x, y);
     }
 
