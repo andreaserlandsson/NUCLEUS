@@ -13,6 +13,10 @@ public class GluonPointTest {
         gluonPoint.addNeutron();
         gluonPoint.addProton();
 
+        if (gluonPoint.getNeutronsNeeded() == gluonPoint.getProtonsNeeded()){
+            System.out.println("This text should NOT be printed. This means the number of neutron is not equal to the number of protons whne it whould be");
+        }
+
         if (gluonPoint.isFull()){
             System.out.println("This text should NOT be printed. This means the gluon point thinks it is full when it should not be full");
         }
