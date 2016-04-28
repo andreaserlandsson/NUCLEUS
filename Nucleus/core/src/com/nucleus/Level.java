@@ -39,8 +39,8 @@ public class Level implements ILevel {
     public void outOfBoundsCheck(){ // checks if any nucleons in airborne Nucleons is out of bounds
         for (int i=0; i<airborneNucleons.size(); i++){
             INucleon nucleon = airborneNucleons.get(i);
-            int x = nucleon.getPosition().getX();
-            int y = nucleon.getPosition().getY();
+            float x = nucleon.getPosition().getX();
+            float y = nucleon.getPosition().getY();
             if (x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
                     y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0){
                 airborneNucleons.remove(i);

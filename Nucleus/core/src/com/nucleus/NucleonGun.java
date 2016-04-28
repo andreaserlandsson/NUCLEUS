@@ -33,7 +33,7 @@ public class NucleonGun implements INucleonGun{
         //sets the start position for the nucleon
         Random rand = new Random();
         int x = rand.nextInt(4);
-        
+
         switch(x){
             //along the top screen edge
             case 0:
@@ -58,13 +58,8 @@ public class NucleonGun implements INucleonGun{
                 break;
             }
 
-            //sets the next position for the nucleon ELLER?
-            //a.setVelocity((int)(2*(Math.random()/10+0.01)), (int)(height/2*(Math.random()/10+0.01)));
-
-        //Test -  super temp!!
-        Vector velocityVect = new Vector(width/2,height/2).subtract(a.getPosition());
+        Vector velocityVect = new Vector(width/2.0f,height/2.0f).subtract(a.getPosition());
         a.setVelocity(velocityVect.getX(), velocityVect.getY());
-        //a.setVelocity((int)(velocityVect.getX()*0.5), (int)(velocityVect.getY()*0.5));
         return a;
     }
 

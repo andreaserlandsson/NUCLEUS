@@ -31,11 +31,11 @@ public class Nucleon implements  INucleon {
         return velocity;
     }
 
-    public void setPosition(int x, int y){
+    public void setPosition(float x, float y){
         position.setCoordinates(x, y);
     }
 
-    public void setVelocity(int x, int y) {
+    public void setVelocity(float x, float y) {
         velocity.setCoordinates(x, y);
     }
 
