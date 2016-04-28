@@ -1,0 +1,42 @@
+MeetingAgenda
+
+  Date: 28/04 - 16
+
+  Facilitator: Andréas Erlandsson
+
+  Participants: Andréas Erlandsson, Miranda Bånnsgård, Hermna Carlström and Erik Jansson
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - After talking to our supervisoser we need to:
+    Reconstruction of alot of things
+    LevelBuilder rewriten
+    LevelParser moved to a subsystem
+    stan and find bugs
+    fix view classes
+    fix some new packages
+
+2. Reports (15 min) from previous meeting
+
+  - Class diagram UML is almost done (need some small changes after talking to our supervisor)
+  
+  - We have an upp and runing-, non interactiv- game 
+
+3. Discussion items (35 min) 
+
+  - We disscus how our LevelBuilder and our LevelParser shall be rebuilt.
+  
+  - We will not do much coding for the rest of this week, but instead do A LOT next week. This is because of FestU Valborgkalset which some of us will be very occupied with.
+
+4. Outcomes and assignments (5 min) 
+
+  - Recode and reconstruct some code
+
+  - Make sure Miranda, Andréas and Hannes gets some more code lines done.
+
+  - Do a lot of coing next week
+
+5. Wrap up
+
+  - 04/05 - 16 in M1204 at 10:00
