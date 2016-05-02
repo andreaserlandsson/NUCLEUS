@@ -3,14 +3,14 @@ package com.nucleus;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
-import java.util.Arrays;
+
 // A class for reading and parsing .txt files that will be levels.
 public class LevelParser {
 
 
     //private static int[] intList;   //obsolete?
-    public static int [] levelParse(int level) {
-        return splitLevelString(replaceCharacters(readFromFile(level)));
+    public static LevelData levelParse(int level) {
+        return splitLevelString((readFromFile(level)));
     }
 
     // method to read from a file and return a single String.
@@ -31,33 +31,17 @@ public class LevelParser {
         return levelString;
     }
 
-    // Strings are inmutable, so need to make a copy of the string to be able to change letters.
-    public static String replaceCharacters(String str) {
-        String temp = "";
-        int j = 0;
-        while(str.charAt(j) == ' ') {
-        j++;
-        }
-
-        for(int i = j; i < str.length(); i++) {
-            if (str.charAt(i) == ' ') {
-                temp = temp + "\n";
-            } else {
-                temp = temp + str.charAt(i);
-            }
-        }
-        return temp;
-    }
     //split a string where there is a new line
-    public static int[] splitLevelString (String str) {
-
-        String[] strings = str.split("\n");
+    public static LevelData splitLevelString (String str) {
+        String temp = str.replaceAll(" ", "\n");
+        String[] strings = temp.split("\n");
         int[] levelField = new int[strings.length];
         for (int i = 0; i < levelField.length; i++)
         {
             levelField[i] = Integer.parseInt(strings[i]);
         }
-        //System.out.println(Arrays.toString(levelField));
-    return levelField;
+        LevelData levelData = new LevelData(levelField);
+        return levelData;
     }
+
 }

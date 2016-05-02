@@ -1,6 +1,5 @@
 package com.nucleus;
 
-
 public class GluonPoint implements IGluonPoint {
 
     private Vector position;
@@ -8,8 +7,8 @@ public class GluonPoint implements IGluonPoint {
     private int neutronsNeeded;
     private final int radius = 0; // dummy value will be calibrated later
 
-    public GluonPoint(int posX, int posY, int pNeeded, int nNeeded){
-        this.position = new Vector(posX, posY);
+    public GluonPoint(Vector gluonPositions, int pNeeded, int nNeeded){
+        this.position = new Vector((int)gluonPositions.getX(), (int)gluonPositions.getY());
         this.protonsNeeded = pNeeded;
         this.neutronsNeeded = nNeeded;
     }

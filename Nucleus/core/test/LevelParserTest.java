@@ -52,8 +52,9 @@ public class LevelParserTest {
     public void testLevelParser() {
         String level1 = "1 2 3 4 5 6";
         String level2 = "1 2 3 45 6";
-        assertTrue(Arrays.toString(LevelParser.splitLevelString(LevelParser.replaceCharacters(level1))).equals("[1, 2, 3, 4, 5, 6]"));
-        assertTrue(Arrays.toString(LevelParser.splitLevelString(LevelParser.replaceCharacters(level2))).equals("[1, 2, 3, 45, 6]"));
+        Arrays.toString(LevelParser.levelParse(1));
+        assertTrue(Arrays.toString(LevelParser.splitLevelString(LevelParser.(level1)).equals("[1, 2, 3, 4, 5, 6]"));
+        assertTrue(Arrays.toString(LevelParser.splitLevelString(LevelParser.(level2)).equals("[1, 2, 3, 45, 6]"));
 
     }
 
