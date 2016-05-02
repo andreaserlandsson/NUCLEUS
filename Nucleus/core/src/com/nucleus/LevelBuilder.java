@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class LevelBuilder {
 
-    // Reads levelfile and gets all information that is needed for that certain level.
+    // Builds level and from all data that is needed for that certain level.
     public static Level buildLevel(int width, int height, int levelNr) {
         LevelData levelData = LevelParser.levelParse(levelNr);
 

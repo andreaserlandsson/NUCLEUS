@@ -1,4 +1,5 @@
 import com.nucleus.GluonPoint;
+import com.nucleus.Vector;
 
 import org.junit.Test;
 
@@ -9,7 +10,8 @@ public class GluonPointTest {
 
     @Test
     public void testGluonPointFilled() {
-        GluonPoint gluonPoint = new GluonPoint(1, 1, 2, 2);
+        Vector v = new Vector(1,1);
+        GluonPoint gluonPoint = new GluonPoint(v, 2, 2);
         gluonPoint.addNeutron();
         gluonPoint.addProton();
 

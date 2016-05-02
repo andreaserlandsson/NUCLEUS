@@ -5,7 +5,6 @@ import com.nucleus.NucleonGun;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import mocks.MockNucleon;
 import static org.junit.Assert.assertTrue;

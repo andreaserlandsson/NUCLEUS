@@ -18,7 +18,6 @@ public class LevelData {
     final int neutronAmount = 4;
     final int difficultyLevel = 5;
     final int firstGluon = 6;
-    Point position;
 
     //Sets the variables for a level by parsing the int[] field from
     //LevelParser.
