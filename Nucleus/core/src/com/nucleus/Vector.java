@@ -4,15 +4,15 @@ package com.nucleus;
  * Created by erik on 21/04/16.
  */
 public class Vector {
-    private int x;
-    private int y;
+    private float x;
+    private float y;
 
-    public Vector(int x, int y){
+    public Vector(float x, float y){
         this.x=x;
         this.y=y;
     }
 
-    public void setCoordinates(int x, int y){
+    public void setCoordinates(float x, float y){
         this.x = x;
         this.y = y;
     }
@@ -26,18 +26,18 @@ public class Vector {
     }
 
     public Vector multiply(float t){
-        return new Vector((int)(x*t), (int)(y*t));
+        return new Vector(x*t, y*t);
     }
 
     public float abs(){
         return (float)Math.sqrt(x*x + y*y);
     }
 
-    public int getX(){
+    public float getX(){
         return x;
     }
 
-    public int getY(){
+    public float getY(){
         return y;
     }
 

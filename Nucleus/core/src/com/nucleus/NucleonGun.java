@@ -1,6 +1,7 @@
 package com.nucleus;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by erik on 19/04/16.
@@ -12,9 +13,9 @@ public class NucleonGun implements INucleonGun{
     private int width;
     private int height;
 
-    public NucleonGun(int width, int heigth, ArrayList<INucleon> nucleons){
+    public NucleonGun(int width, int height, ArrayList<INucleon> nucleons){
         nucleonList = nucleons;
-        this.height = heigth;
+        this.height = height;
         this.width = width;
         arrayIndex = nucleonList.size() - 1;
     }

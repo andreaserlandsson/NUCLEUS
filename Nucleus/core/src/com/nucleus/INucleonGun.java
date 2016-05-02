@@ -6,7 +6,5 @@ package com.nucleus;
 public interface INucleonGun {
     INucleon shoot(); //should take a delta value, to time the guns shots
     boolean isEmpty();
-    //Temporary method
-    int getAmmoLeft();
 
 }

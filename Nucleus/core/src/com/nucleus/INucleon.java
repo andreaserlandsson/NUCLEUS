@@ -10,8 +10,8 @@ public interface INucleon {
 
     void update(float delta);
 
-    void setPosition(int x, int y);
-    void setVelocity(int x, int y);
+    void setPosition(float x, float y);
+    void setVelocity(float x, float y);
 
     int getRadius();
 
