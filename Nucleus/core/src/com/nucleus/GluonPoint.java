@@ -9,7 +9,7 @@ public class GluonPoint implements IGluonPoint {
     private final int radius = 0; // dummy value will be calibrated later
 
     public GluonPoint(Vector gluonPositions, int pNeeded, int nNeeded){
-        this.position = new Vector((int)gluonPositions.getX(), (int)gluonPositions.getY());
+        this.position = new Vector(gluonPositions.getX(), gluonPositions.getY());
         this.protonsNeeded = pNeeded;
         this.neutronsNeeded = nNeeded;
     }
