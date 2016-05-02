@@ -23,12 +23,24 @@ public class Level implements ILevel {
         this.molecule = molecule;
     }
 
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
     public INucleonGun getNucleonGun(){
         return gun;
     }
 
     public List<INucleon> getAirborneNucleons(){
         return airborneNucleons;
+    }
+
+    public IMolecule getMolecule(){
+        return molecule;
     }
 
     /*Function should probably be removed*/
@@ -62,8 +74,5 @@ public class Level implements ILevel {
             nucleon.update(delta);
         }
         outOfBoundsCheck();
-
-
     }
-
 }
