@@ -7,8 +7,15 @@ public class LevelBuilder {
 
     // Builds level and from all data that is needed for that certain level.
     public static Level buildLevel(int width, int height, int levelNr) {
-        LevelData levelData = LevelParser.levelParse(levelNr);
-        System.out.println("new exception here");
+        LevelData levelData;
+        try {
+            levelData = LevelParser.levelParse(levelNr);
+        } catch (Exception e) {
+            System.out.println("new exception here");
+        } finally {
+            levelData = null;
+        }
+        
         // Fill a <INucleon> list with all protons and neutrons that it can pass onto the Gun.
         // Scrambles it before passing, so that there is a random order of protons/neutrons.
 

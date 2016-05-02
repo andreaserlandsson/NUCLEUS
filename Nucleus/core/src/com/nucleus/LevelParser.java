@@ -9,12 +9,12 @@ public class LevelParser {
 
 
     //private static int[] intList;   //obsolete?
-    public static LevelData levelParse(int level) {
+    public static LevelData levelParse(int level) throws Exception {
         return splitLevelString((readFromFile(level)));
     }
 
     // method to read from a file and return a single String.
-    public static String readFromFile(int level) {
+    public static String readFromFile(int level) throws Exception {
         String levelString = "";
         try {
             Scanner sc;
@@ -26,7 +26,7 @@ public class LevelParser {
             }
             sc.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        throw new Exception();
         }
         return levelString;
     }
