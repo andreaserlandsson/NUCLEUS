@@ -4,7 +4,6 @@ package com.nucleus;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ public class GameScreen implements Screen {
     //private OrthographicCamera cam;
 
     private SpriteBatch batch;
-    private Texture bg;
 
     public GameScreen(Level level){
         this.level = level;
