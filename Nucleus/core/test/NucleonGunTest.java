@@ -2,11 +2,8 @@ import com.nucleus.INucleon;
 import com.nucleus.INucleonGun;
 import com.nucleus.NucleonGun;
 import com.nucleus.Vector;
-
 import org.junit.Test;
-
 import java.util.ArrayList;
-
 import mocks.MockNucleon;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;

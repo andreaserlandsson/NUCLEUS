@@ -1,22 +1,18 @@
 import com.nucleus.IGluonPoint;
 import com.nucleus.Molecule;
 import com.nucleus.Vector;
-
 import org.junit.Test;
-
 import mocks.MockGluon;
-
 import static org.junit.Assert.assertTrue;
-
 
 public class GluonPointRotationTest {
 
-
-
-
     IGluonPoint[] gluonPoints = new MockGluon[1];
     Molecule m = new Molecule(gluonPoints);
+
     //Tests for rotation of a gluonPoint. First, ordinary tests to see that the method works.
+
+    //Test for rotation 90 degrees right, and that the method correctly returns the new values.
     @Test
     public void rotate90DegreesRight(){
         Vector centre = new Vector(0,0);
@@ -28,6 +24,7 @@ public class GluonPointRotationTest {
         assertTrue(rotatedPosition.getY() == result.getY());
     }
 
+    //Test to do same rotation, but this time left.
     @Test
     public void rotate90DegreesLeft(){
         Vector centre = new Vector(0,0);
@@ -39,6 +36,7 @@ public class GluonPointRotationTest {
         assertTrue(rotatedPosition.getY() == result.getY());
     }
 
+    //Test to rotate back and forth, to see that no values are lost.
     @Test
     public void rotate90DegreesLeftThenRight(){
         Vector centre = new Vector(0,0);
