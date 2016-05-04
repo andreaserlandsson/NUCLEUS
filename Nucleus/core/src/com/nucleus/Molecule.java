@@ -13,6 +13,7 @@ public class Molecule implements IMolecule {
         rotation = rot;
     }
 
+
     public int getRotation(){
         return rotation;
     }
@@ -24,6 +25,14 @@ public class Molecule implements IMolecule {
             }
         }
         return true;
+    }
+
+    public Vector rotate(Vector center, Vector position, double angle) {
+        angle = angle * Math.PI/180;
+        Vector deltaPos = position.subtract(center);
+        float nPosX = (float)(deltaPos.getX()*Math.cos(angle) + deltaPos.getY()*Math.sin(angle));
+        float nPosY = (float)(-deltaPos.getX() * Math.sin(angle) + deltaPos.getY()*Math.cos(angle));
+        return  new Vector(nPosX,nPosY);
     }
 
 }
