@@ -1,0 +1,34 @@
+MeetingAgenda
+
+  Date: 2016-05-04
+
+  Facilitator: Hannes Lagerroth
+
+  Participants: Andréas Erlandsson, Miranda Bånnsgård, Hermna Carlström, Erik Jansson and Hannes Lagerroth
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - Time, other courses
+  
+  - Otherwise, nothing
+
+2. Reports (15 min) from previous meeting
+
+  - Started refactoring code
+
+3. Discussion items (35 min) 
+
+  - Check out "Tween"
+  
+  - Use matrix operation for rotation?
+  
+  - Helper class with constants?
+  
+4. Outcomes and assignments (5 min) 
+
+  - Resume refactoring and developing code
+  
+  - Evaluate how we handle width and height
+
+5. Wrap up
