@@ -3,9 +3,7 @@ package mocks;
 import com.nucleus.INucleon;
 import com.nucleus.Vector;
 
-/**
- * Created by erik on 22/04/16.
- */
+
 public class MockNucleon implements INucleon {
     private Vector position;
     private Vector velocity;
@@ -17,9 +15,9 @@ public class MockNucleon implements INucleon {
 
     }
 
-    public MockNucleon(float posX, float posY, float velX, float velY){
-        this.position = new Vector(posX, posY);
-        this.velocity = new Vector(velX, velY);
+    public MockNucleon(Vector pos, Vector vel){
+        this.position = pos;
+        this.velocity = vel;
     }
 
     public void update(float delta){

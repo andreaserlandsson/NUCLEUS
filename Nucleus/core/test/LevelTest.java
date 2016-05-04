@@ -33,9 +33,9 @@ public class LevelTest {
 
     @Test
     public void testGetNucleons() {
-        Vector v = new Vector(1,1);
+        Vector gluonPos = new Vector(1,1);
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(v,1,1);
+        gluons[0] = new MockGluon(gluonPos,1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -48,9 +48,9 @@ public class LevelTest {
 
     @Test
     public void testGetNucleonsWhenEmpty(){
-        Vector v = new Vector(0,0);
+        Vector gluonPos = new Vector(0,0);
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(v,1,1);
+        gluons[0] = new MockGluon(gluonPos,1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -61,13 +61,15 @@ public class LevelTest {
 
     @Test
     public void testOutOfBounds(){
-        Vector v = new Vector(0,0);
+        Vector gluonPos = new Vector(0,0);
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(v,1,1);
+        gluons[0] = new MockGluon(gluonPos,1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
-        INucleon nucleon = new MockNucleon(13,13,0,0); //levelSize + radius
+        Vector nucleonPos = new Vector(13,13);
+        Vector nucleonVel = new Vector(0,0);
+        INucleon nucleon = new MockNucleon(nucleonPos,nucleonVel); //levelSize + radius
         nucleons.add(nucleon);
         INucleonGun gun = new MockNucleonGun(nucleons);
 
@@ -79,13 +81,15 @@ public class LevelTest {
 
     @Test
     public void testUpdate(){
-        Vector v = new Vector(0,0);
+        Vector gluonPos = new Vector(1,1);
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(v,1,1);
+        gluons[0] = new MockGluon(gluonPos,1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
-        INucleon nucleon = new MockNucleon(1,1,1,1);
+        Vector nucleonPos = new Vector(1,1);
+        Vector nucleonVel = new Vector(1,1);
+        INucleon nucleon = new MockNucleon(nucleonPos,nucleonVel);
         nucleons.add(nucleon);
         INucleonGun gun = new MockNucleonGun(nucleons);
 

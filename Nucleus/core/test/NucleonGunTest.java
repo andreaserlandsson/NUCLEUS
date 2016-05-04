@@ -20,7 +20,9 @@ public class NucleonGunTest {
     //Test for empty gun, and that is indeed empty when empty, and not empty when not.
     @Test
     public void testEmptyGun() {
-        INucleon mockNucleon = new MockNucleon(1,1,0,0);
+        Vector nucleonPos = new Vector(0,0);
+        Vector nucleonVel = new Vector(0,0);
+        INucleon mockNucleon = new MockNucleon(nucleonPos,nucleonVel);
         ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
         ArrayList<INucleon> emptyNucleonList = new ArrayList<INucleon>();
         nucleonList.add(mockNucleon);
@@ -33,7 +35,9 @@ public class NucleonGunTest {
     //Test that a gun is empty after shooting its only ammo.
     @Test
     public void testGunEmptyAfterShoot() {
-        INucleon mockNucleon = new MockNucleon(1,1,0,0);
+        Vector nucleonPos = new Vector(0,0);
+        Vector nucleonVel = new Vector(0,0);
+        INucleon mockNucleon = new MockNucleon(nucleonPos,nucleonVel);
         ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
         nucleonList.add(mockNucleon);
         INucleonGun mockGun = new NucleonGun(width,heigth,nucleonList);
@@ -45,7 +49,9 @@ public class NucleonGunTest {
     //Test that a gun is not empty after if there is still ammo left.
     @Test
     public void testMultipleShoots() {
-        INucleon mockNucleon = new MockNucleon(1,1,0,0);
+        Vector nucleonPos = new Vector(0,0);
+        Vector nucleonVel = new Vector(0,0);
+        INucleon mockNucleon = new MockNucleon(nucleonPos,nucleonVel);
         ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
         nucleonList.add(mockNucleon);
         nucleonList.add(mockNucleon);
@@ -71,7 +77,9 @@ public class NucleonGunTest {
     //Test that gun is empty when have shot all ammo that it has got.
     @Test
     public void testLoopForShoot() {
-        INucleon mockNucleon = new MockNucleon(1,1,0,0);
+        Vector nucleonPos = new Vector(0,0);
+        Vector nucleonVel = new Vector(0,0);
+        INucleon mockNucleon = new MockNucleon(nucleonPos,nucleonVel);
         ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
         for (int i = 0; i < 10; i++) {
             nucleonList.add(mockNucleon);
@@ -87,7 +95,9 @@ public class NucleonGunTest {
 
     @Test
     public void testShootPosition() {
-        INucleon mockNucleon = new MockNucleon(1,1,0,0);
+        Vector nucleonPos = new Vector(0,0);
+        Vector nucleonVel = new Vector(0,0);
+        INucleon mockNucleon = new MockNucleon(nucleonPos,nucleonVel);
         INucleon mockShotNucleon;
         ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
         nucleonList.add(mockNucleon);
@@ -102,7 +112,9 @@ public class NucleonGunTest {
     //Test for gun setting velocity and that it is always positive and greater than zero (0).
     @Test
     public void testShootVelocity() {
-        INucleon mockNucleon = new MockNucleon(1,1,0,0);
+        Vector nucleonPos = new Vector(0,0);
+        Vector nucleonVel = new Vector(0,0);
+        INucleon mockNucleon = new MockNucleon(nucleonPos,nucleonVel);
         INucleon mockShotNucleon;
         ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
         nucleonList.add(mockNucleon);
