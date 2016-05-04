@@ -27,8 +27,4 @@ public class MockNucleonGun implements INucleonGun {
         return false;
     }
 
-    @Override
-    public int getAmmoLeft() {
-        return 0;
-    }
 }
