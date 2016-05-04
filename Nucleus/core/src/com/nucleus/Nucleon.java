@@ -14,9 +14,9 @@ public class Nucleon implements  INucleon {
 
     }
 
-    public Nucleon(int posX, int posY, int velX, int velY){
-        this.position = new Vector(posX, posY);
-        this.velocity = new Vector(velX, velY);
+    public Nucleon(Vector position, Vector vector){
+        this.position = position;
+        this.velocity = vector;
     }
 
     public void update(float delta){

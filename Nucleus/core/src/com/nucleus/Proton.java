@@ -9,7 +9,7 @@ public class Proton extends Nucleon {
         super();
     }
 
-    public Proton(int posX, int posY, int velX, int velY){
-        super(posX, posY, velX, velY);
+    public Proton(Vector position, Vector vector){
+        super(position, vector);
     }
 }
