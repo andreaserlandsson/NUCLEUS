@@ -9,8 +9,8 @@ public class Neutron extends Nucleon{
         super();
     }
 
-    public Neutron(int posX, int posY, int velX, int velY){
-        super(posX, posY, velX, velY);
+    public Neutron(Vector position, Vector vector){
+        super(position, vector);
     }
 
 }

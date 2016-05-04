@@ -16,10 +16,10 @@ public class LevelBuilder {
 
         ArrayList<INucleon> nucleonList = new ArrayList<INucleon>(levelData.noOfProtons+levelData.noOfNeutrons);
         for(int i = 0; i < levelData.noOfNeutrons; i++) {
-            nucleonList.add(new Neutron(0,0,0,0));
+            nucleonList.add(new Neutron(new Vector(0,0),new Vector(0,0)));
         }
         for (int y = 0; y < levelData.noOfProtons; y++) {
-            nucleonList.add(new Proton(0, 0, 0, 0));
+            nucleonList.add(new Proton(new Vector(0,0),new Vector(0,0)));
         }
         Collections.shuffle(nucleonList);
 
