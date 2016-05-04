@@ -17,8 +17,8 @@ public class MockNucleon implements INucleon {
 
     }
 
-    public MockNucleon(int posX, int posY, int velX, int velY){
-        this.position = new Vector(posX, posY);
+    public MockNucleon(Vector v, int velX, int velY){
+        this.position = v;
         this.velocity = new Vector(velX, velY);
     }
 

@@ -13,8 +13,8 @@ public class MockGluon implements IGluonPoint {
     private int neutronsNeeded;
     private final int radius = 2; //Dummy value will be defined later
 
-    public MockGluon(int posX, int posY, int pNeeded, int nNeeded){
-        this.position = new Vector(posX, posY);
+    public MockGluon(Vector v, int pNeeded, int nNeeded){
+        this.position = v;
         this.protonsNeeded = pNeeded;
         this.neutronsNeeded = nNeeded;
     }
