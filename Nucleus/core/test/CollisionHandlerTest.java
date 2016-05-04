@@ -3,6 +3,7 @@ import com.nucleus.GluonPoint;
 import com.nucleus.IGluonPoint;
 import com.nucleus.INucleon;
 import com.nucleus.Nucleon;
+import com.nucleus.Vector;
 
 import static  org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -19,15 +20,17 @@ public class CollisionHandlerTest {
 
     @Test
     public void testOfCollisionBetweenGluonAndNucleon(){
-        IGluonPoint gluon = new MockGluon(1,1,1,1);//should not collide, not even close
+        Vector v = new Vector(1,1);
+        IGluonPoint gluon = new MockGluon(v,1,1);//should not collide, not even close
         INucleon nucleon = new MockNucleon(5,5,1,1);
         assertFalse(CollisionHandler.collision(gluon,nucleon));
 
-        IGluonPoint gluon2 = new MockGluon(1,1,1,1);//on the same position, should collide
+        IGluonPoint gluon2 = new MockGluon(v,1,1);//on the same position, should collide
         INucleon nucleon2 = new MockNucleon(1,1,1,1);
-        assertTrue(CollisionHandler.collision(gluon2,nucleon2));
 
-        IGluonPoint gluon3 = new MockGluon(3,3,1,1);
+        assertTrue(CollisionHandler.collision(gluon2,nucleon2));
+        Vector v2 = new Vector(3,3);
+        IGluonPoint gluon3 = new MockGluon(v2,1,1);
         //radius on MockGluon is 2
         INucleon nucleon3 = new MockNucleon(6,6,1,1);
         //radius on Mocknucleon is 2

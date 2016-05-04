@@ -59,7 +59,7 @@ public class NucleonGun implements INucleonGun{
                 break;
             }
 
-        Vector velocityVect = new Vector(width/2.0f,height/2.0f).subtract(a.getPosition());
+        Vector velocityVect = new Vector(width/2.0f,(float)height/2.0f).subtract(a.getPosition());
         a.setVelocity(velocityVect.getX(), velocityVect.getY());
         return a;
     }

@@ -10,7 +10,7 @@ public class GluonPointTest {
 
     @Test
     public void testGluonPointFilled() {
-        Vector v = new Vector(1,1);
+        Vector v = new Vector(0,0);
         GluonPoint gluonPoint = new GluonPoint(v, 2, 2);
         gluonPoint.addNeutron();
         gluonPoint.addProton();

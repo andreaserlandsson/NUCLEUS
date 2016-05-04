@@ -4,6 +4,7 @@ import com.nucleus.INucleonGun;
 import com.nucleus.Level;
 import com.nucleus.Molecule;
 import com.nucleus.NucleonGun;
+import com.nucleus.Vector;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -32,8 +33,9 @@ public class LevelTest {
 
     @Test
     public void testGetNucleons() {
+        Vector v = new Vector(1,1);
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(1,1,1,1);
+        gluons[0] = new MockGluon(v,1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -46,8 +48,9 @@ public class LevelTest {
 
     @Test
     public void testGetNucleonsWhenEmpty(){
+        Vector v = new Vector(0,0);
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(1,1,1,1);
+        gluons[0] = new MockGluon(v,1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -58,8 +61,9 @@ public class LevelTest {
 
     @Test
     public void testOutOfBounds(){
+        Vector v = new Vector(0,0);
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(1,1,1,1);
+        gluons[0] = new MockGluon(v,1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -75,8 +79,9 @@ public class LevelTest {
 
     @Test
     public void testUpdate(){
+        Vector v = new Vector(0,0);
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(1,1,1,1);
+        gluons[0] = new MockGluon(v,1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
