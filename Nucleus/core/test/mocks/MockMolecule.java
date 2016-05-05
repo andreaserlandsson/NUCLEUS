@@ -31,5 +31,4 @@ public class MockMolecule implements IMolecule {
     public Vector rotate(Vector v1, Vector v2, double d) {
         return null;
     }
-
 }
