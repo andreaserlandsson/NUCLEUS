@@ -28,11 +28,8 @@ public class MockMolecule implements IMolecule {
         return false;
     }
 
-<<<<<<< HEAD
 
     public Vector rotate(Vector v1, Vector v2, double d) {
         return null;
     }
-=======
->>>>>>> featureMoleculeTest
 }
