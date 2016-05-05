@@ -12,7 +12,7 @@ public class NucleusGame extends Game {
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
         Level level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
         setScreen(new GameScreen(level));
-        InputAdapter r = new InputController(level);
+        InputController r = new InputController(level);
         //TODO SKA DETA VARA EN INPUTADAPTER ELLER AV TYPEN INPUTCONTROLLER???
         Gdx.input.setInputProcessor(r);
     }

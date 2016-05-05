@@ -9,7 +9,7 @@ public class InputController extends InputAdapter implements InputAdapterInterfa
 
     @Override
     public boolean keyDown(int x){
-        System.out.println("rotating stuff");
+        //Temporär, borde här kalla på en annan controller för rotatonen i sig
         level.getMolecule().setRotation(1);
         return true;
     }
