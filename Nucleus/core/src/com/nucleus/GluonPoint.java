@@ -34,7 +34,6 @@ public class GluonPoint implements IGluonPoint {
     public boolean addNeutron() { // if this returns false the game is lost
         if (!isFull() && neutronsNeeded > 0) {
             neutronsNeeded--;
-
             return true;
         } else {
             return false;
@@ -46,7 +45,6 @@ public class GluonPoint implements IGluonPoint {
     }
 
     public boolean addProton() { // if this returns false the game is lost
-
         if (!isFull() && protonsNeeded > 0) {
             protonsNeeded--;
             return true;
