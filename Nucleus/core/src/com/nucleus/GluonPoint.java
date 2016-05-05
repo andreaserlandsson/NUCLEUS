@@ -22,7 +22,7 @@ public class GluonPoint implements IGluonPoint {
         return position;
     }
 
-    public void setPosition(int x, int y){
+    public void setPosition(float x, float y){
         position.setCoordinates(x, y);
     }
 

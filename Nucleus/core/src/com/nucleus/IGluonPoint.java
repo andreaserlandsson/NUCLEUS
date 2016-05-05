@@ -4,7 +4,7 @@ package com.nucleus;
 public interface IGluonPoint {
     boolean isFull();
     Vector getPosition();
-    void setPosition(int x, int y);
+    void setPosition(float x, float y);
     int getRadius();
     boolean addProton();
     int getProtonsNeeded();

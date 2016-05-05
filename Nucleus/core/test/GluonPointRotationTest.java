@@ -72,4 +72,18 @@ public class GluonPointRotationTest {
         assertTrue(Math.abs(rotated.getY()-result.getY()) < 0.001);
     }
 
+    @Test
+    public void sad() {
+        Vector hej = new Vector(-10,-10);
+        Vector kuk = new Vector(20,10);
+        Vector fan = kuk.subtract(hej);
+        System.out.println(fan.getX());
+        System.out.println(fan.getY());
+        Vector korv = fan.add(hej);
+        System.out.println(korv.getX());
+        System.out.println(korv.getY());
+
+
+    }
+
 }
