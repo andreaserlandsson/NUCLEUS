@@ -20,7 +20,7 @@ public class MockGluon implements IGluonPoint {
     }
 
     public boolean isFull(){
-       return false;
+       return true;
     }
     public Vector getPosition(){
         return position;

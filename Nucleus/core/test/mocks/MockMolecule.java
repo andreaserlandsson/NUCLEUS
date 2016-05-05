@@ -14,6 +14,7 @@ public class MockMolecule implements IMolecule {
     public MockMolecule(IGluonPoint[] gluons){
         this.gluons = gluons;
     }
+
     public void setRotation(int r){
         rotation=r;
     }
@@ -22,7 +23,8 @@ public class MockMolecule implements IMolecule {
         return rotation;
     }
 
-    public boolean isFull(){
+    public boolean isFull() { //dummy value
         return false;
     }
+
 }
