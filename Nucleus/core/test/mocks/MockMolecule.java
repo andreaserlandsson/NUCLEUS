@@ -1,8 +1,8 @@
 package mocks;
 
-import com.nucleus.IGluonPoint;
-import com.nucleus.IMolecule;
-import com.nucleus.Vector;
+import com.nucleus.Model.IGluonPoint;
+import com.nucleus.Model.IMolecule;
+import com.nucleus.Model.Vector;
 
 /**
  * Created by erik on 22/04/16.

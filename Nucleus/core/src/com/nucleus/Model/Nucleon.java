@@ -1,23 +1,22 @@
-package mocks;
+package com.nucleus.Model;
 
-import com.nucleus.Model.INucleon;
-import com.nucleus.Model.Vector;
+/**
+ * Created by erik on 19/04/16.
+ */
+public class Nucleon implements com.nucleus.Model.INucleon {
 
-
-public class MockNucleon implements INucleon {
     private Vector position;
     private Vector velocity;
-    private final int radius = 3;   //Dummy value. Sizes will be used for collision detection purposes
+    private final int radius = 0;   //Dummy value. Sizes will be used for collision detection purposes
                                     //and will be properly determined later.
-    private boolean isVisible = false;
 
-    public MockNucleon(){
+    public Nucleon(){
 
     }
 
-    public MockNucleon(Vector pos, Vector vel){
-        this.position = pos;
-        this.velocity = vel;
+    public Nucleon(Vector position, Vector vector){
+        this.position = position;
+        this.velocity = vector;
     }
 
     public void update(float delta){
@@ -27,20 +26,20 @@ public class MockNucleon implements INucleon {
     public Vector getPosition(){
         return position;
     }
+
     public Vector getVelocity(){
         return velocity;
     }
 
-
     public void setPosition(float x, float y){
         position.setCoordinates(x, y);
     }
-    public void setVelocity(float x, float y){
+
+    public void setVelocity(float x, float y) {
         velocity.setCoordinates(x, y);
     }
 
-    @Override
-    public int getRadius() {
+    public int getRadius(){
         return radius;
     }
 }

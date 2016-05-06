@@ -3,7 +3,7 @@ package com.nucleus.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.nucleus.NucleusGame;
+import com.nucleus.ThirdParty.NucleusGame;
 
 public class HtmlLauncher extends GwtApplication {
 
