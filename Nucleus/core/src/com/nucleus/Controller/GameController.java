@@ -14,10 +14,8 @@ public class GameController implements IController {
     }
 
     public void rotation(){
-
     }
 
     public void pause(){
-
     }
 }
