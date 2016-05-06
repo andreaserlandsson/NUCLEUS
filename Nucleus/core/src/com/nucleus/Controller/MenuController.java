@@ -1,6 +1,7 @@
 package com.nucleus.Controller;
 
 /**
+<<<<<<< HEAD
  * Created by erik on 06/05/16.
  */
 public class MenuController implements ControllerState {
