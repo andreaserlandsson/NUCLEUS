@@ -3,7 +3,7 @@ package com.nucleus;
 import com.badlogic.gdx.InputProcessor;
 
 
-public class InputAdapter implements InputProcessor, InputAdapterInterface {
+public class InputAdapter implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {

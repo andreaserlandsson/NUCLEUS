@@ -25,7 +25,9 @@ public class MockGluon implements IGluonPoint {
     public Vector getPosition(){
         return position;
     }
-    public void setPosition(int x, int y){
+
+    @Override
+    public void setPosition(float x, float y){
         position.setCoordinates(x, y);
     }
 
