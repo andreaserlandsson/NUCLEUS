@@ -31,4 +31,8 @@ public class InputAdapter extends NInputProcessor {
         currentState.drag(screenX, screenY, pointer);
         return true;
     }
+
+    public void setState(ControllerState newState){
+        currentState = newState;
+    }
 }

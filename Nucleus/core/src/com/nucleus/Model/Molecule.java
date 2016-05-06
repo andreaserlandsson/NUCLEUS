@@ -1,8 +1,8 @@
 package com.nucleus.Model;
 
 
-public class Molecule implements com.nucleus.Model.IMolecule {
-    private int rotation;
+public class Molecule implements IMolecule {
+    private float rotation;
     private com.nucleus.Model.IGluonPoint[] gluons;
 
     //VÄLDIGT TILLFÄLLIG!!!!!!!!
@@ -13,7 +13,7 @@ public class Molecule implements com.nucleus.Model.IMolecule {
         this.gluons = gluons;
     }
 
-    public void setRotation(int rot){
+    public void setRotation(float rot){
         rotation = rot;
         //temporärt
         for (com.nucleus.Model.IGluonPoint gluon : gluons) {
@@ -24,7 +24,7 @@ public class Molecule implements com.nucleus.Model.IMolecule {
 
 
 
-    public int getRotation(){
+    public float getRotation(){
         return rotation;
     }
 

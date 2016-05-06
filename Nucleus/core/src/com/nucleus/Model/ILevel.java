@@ -4,9 +4,12 @@ import java.util.List;
 
 public interface ILevel {
 
-    List<INucleon> getAirborneNucleons();
-    void addAirborneNucleon(INucleon nucleon);
+    int getWidth();
+    int getHeight();
     INucleonGun getNucleonGun();
+    List<INucleon> getAirborneNucleons();
+    public IMolecule getMolecule();
+    void addAirborneNucleon(INucleon nucleon);
     void outOfBoundsCheck();
     void update(float delta);
 

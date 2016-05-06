@@ -3,7 +3,7 @@ package com.nucleus.Model;
 /**
  * Created by erik on 21/04/16.
  */
-public class Vector {
+public class Vector { //KANSKE SKA FLYTTAS TILL UTILS? DEN ANVÄNDS AV MODELL SÅVÄL SOM CONTROLLER
     private float x;
     private float y;
 
@@ -41,6 +41,8 @@ public class Vector {
         return y;
     }
 
-
+    public float scalar(Vector vect){
+        return x * vect.getX() + y * vect.getY();
+    }
 
 }

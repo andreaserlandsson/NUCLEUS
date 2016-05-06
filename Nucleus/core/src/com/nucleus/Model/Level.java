@@ -31,15 +31,15 @@ public class Level implements com.nucleus.Model.ILevel {
         return height;
     }
 
-    public com.nucleus.Model.INucleonGun getNucleonGun(){
+    public INucleonGun getNucleonGun(){
         return gun;
     }
 
-    public List<com.nucleus.Model.INucleon> getAirborneNucleons(){
+    public List<INucleon> getAirborneNucleons(){
         return airborneNucleons;
     }
 
-    public com.nucleus.Model.IMolecule getMolecule(){
+    public IMolecule getMolecule(){
         return molecule;
     }
 
