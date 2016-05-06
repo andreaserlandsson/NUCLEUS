@@ -18,13 +18,16 @@ public class LevelBuilder {
         // Fill a <INucleon> list with all protons and neutrons that it can pass onto the Gun.
         // Scrambles it before passing, so that there is a random order of protons/neutrons.
         if (levelData != null) {
-            Vector pos = new Vector(0,0);
-            Vector vel = new Vector(0,0);
+
             ArrayList<INucleon> nucleonList = new ArrayList<INucleon>(levelData.noOfProtons + levelData.noOfNeutrons);
             for (int i = 0; i < levelData.noOfNeutrons; i++) {
+                Vector pos = new Vector(0,0);
+                Vector vel = new Vector(0,0);
                 nucleonList.add(new Neutron(pos,vel));
             }
             for (int y = 0; y < levelData.noOfProtons; y++) {
+                Vector pos = new Vector(0,0);
+                Vector vel = new Vector(0,0);
                 nucleonList.add(new Proton(pos,vel));
             }
             Collections.shuffle(nucleonList);
