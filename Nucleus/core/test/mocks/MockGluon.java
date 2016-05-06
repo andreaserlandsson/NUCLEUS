@@ -29,6 +29,7 @@ public class MockGluon implements IGluonPoint {
     @Override
     public void setPosition(float x, float y) {
         position.setCoordinates(x,y);
+
     }
 
     @Override

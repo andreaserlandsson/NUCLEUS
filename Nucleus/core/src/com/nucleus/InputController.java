@@ -1,6 +1,6 @@
 package com.nucleus;
 
-public class InputController extends InputAdapter implements InputAdapterInterface{
+public class InputController extends InputAdapter {
 
     Level level;
     public InputController(Level level){

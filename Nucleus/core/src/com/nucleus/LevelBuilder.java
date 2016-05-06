@@ -11,30 +11,28 @@ public class LevelBuilder {
         try {
             levelData = LevelParser.levelParse(levelNr);
         } catch (LevelNotExistingException e) {
-           e.printStackTrace(); //level does not exist, throws exception.
+           e.printStackTrace(); //level does not exist, catches exception.
+                                //Should possibly be higher up.
         }
         
         // Fill a <INucleon> list with all protons and neutrons that it can pass onto the Gun.
         // Scrambles it before passing, so that there is a random order of protons/neutrons.
         if (levelData != null) {
-            ArrayList<INucleon> nucleonList = new ArrayList<INucleon>(levelData.getNoOfProtons() + levelData.getNoOfProtons());
-            for (int i = 0; i < levelData.getNoOfNeutrons(); i++) {
-                Vector v1 = new Vector(0,0);
-                Vector v2 = new Vector(0,0);
-                nucleonList.add(new Neutron(v1,v2));
+            Vector pos = new Vector(0,0);
+            Vector vel = new Vector(0,0);
+            ArrayList<INucleon> nucleonList = new ArrayList<INucleon>(levelData.noOfProtons + levelData.noOfNeutrons);
+            for (int i = 0; i < levelData.noOfNeutrons; i++) {
+                nucleonList.add(new Neutron(pos,vel));
             }
-            for (int y = 0; y < levelData.getNoOfProtons(); y++) {
-                Vector v1 = new Vector(0,0);
-                Vector v2 = new Vector(0,0);
-                nucleonList.add(new Proton(v1,v2));
+            for (int y = 0; y < levelData.noOfProtons; y++) {
+                nucleonList.add(new Proton(pos,vel));
             }
             Collections.shuffle(nucleonList);
 
             INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList);
             IMolecule molecule = new Molecule(levelData.gluonPoints);
 
-            Level newLevel = new Level(width, height, nucleonGun, molecule);
-            return newLevel;
+            return new Level(width, height, nucleonGun, molecule);
         }
         return null;
 
