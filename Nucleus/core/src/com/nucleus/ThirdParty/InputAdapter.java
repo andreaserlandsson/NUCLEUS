@@ -1,29 +1,34 @@
 package com.nucleus.ThirdParty;
 
-import com.nucleus.Controller.IController;
-import com.nucleus.Model.Level;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.nucleus.Controller.ControllerState;
+import com.nucleus.Controller.GameController;
+import com.nucleus.Model.ILevel;
 
 public class InputAdapter extends NInputProcessor {
 
-    Level level;
-    List<IController> controllers = new ArrayList<IController>();
-    IController activeController;
+    ControllerState controlGame;
+    ControllerState controlMenu;
+    ControllerState controlPauseMenu;
+
+    ControllerState currentState;
+
+    ILevel level;
 
 
-    public InputAdapter(com.nucleus.Model.Level level){
-        this.level = level;;
+    public InputAdapter(ILevel level){
+        this.level = level;
+        controlGame = new GameController(level);
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
+        currentState.touch(screenX, screenY, pointer, button);
+        return true;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
+        currentState.drag(screenX, screenY, pointer);
+        return true;
     }
 }
