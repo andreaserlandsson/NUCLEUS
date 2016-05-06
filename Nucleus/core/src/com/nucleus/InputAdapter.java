@@ -1,23 +1,10 @@
 package com.nucleus;
 
-import com.badlogic.gdx.InputProcessor;
+public class InputAdapter extends NInputProcessor {
 
-
-public class InputAdapter implements InputProcessor {
-
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
+    Level level;
+    public InputAdapter(Level level){
+        this.level = level;
     }
 
     @Override
@@ -26,22 +13,7 @@ public class InputAdapter implements InputProcessor {
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
         return false;
     }
 }
