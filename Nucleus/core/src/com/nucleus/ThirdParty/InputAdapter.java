@@ -1,10 +1,20 @@
 package com.nucleus.ThirdParty;
 
+import com.nucleus.Controller.IController;
+import com.nucleus.Model.Level;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class InputAdapter extends NInputProcessor {
 
-    com.nucleus.Model.Level level;
+    Level level;
+    List<IController> controllers = new ArrayList<IController>();
+    IController activeController;
+
+
     public InputAdapter(com.nucleus.Model.Level level){
-        this.level = level;
+        this.level = level;;
     }
 
     @Override
