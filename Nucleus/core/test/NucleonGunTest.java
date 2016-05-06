@@ -117,7 +117,8 @@ public class NucleonGunTest {
         nucleonList.add(mockNucleon);
         INucleonGun mockGun = new NucleonGun(width,heigth,nucleonList);
         mockShotNucleon = mockGun.shoot();
-        assertTrue(mockShotNucleon.getVelocity().getX() > 0);
-        assertTrue(mockShotNucleon.getVelocity().getY() > 0);
+        assertTrue(mockShotNucleon.getVelocity().getX() > 0 || mockShotNucleon.getVelocity().getX() <0);
+        assertTrue(mockShotNucleon.getVelocity().getY() > 0 || mockShotNucleon.getVelocity().getY() < 0);
+
     }
 }
