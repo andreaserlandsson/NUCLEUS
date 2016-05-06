@@ -2,7 +2,7 @@ package com.nucleus.Model;
 
 
 public class Molecule implements com.nucleus.Model.IMolecule {
-    private int rotation ;
+    private int rotation;
     private com.nucleus.Model.IGluonPoint[] gluons;
 
     //VÄLDIGT TILLFÄLLIG!!!!!!!!
