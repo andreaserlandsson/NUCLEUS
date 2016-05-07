@@ -33,10 +33,8 @@ public class StartScreen implements Screen {
     protected Stage stage;
     private Viewport viewport;
     private OrthographicCamera camera;
-    private TextureAtlas atlas;
     protected Skin skin;
     private Level level;
-    private List<IView> views = new ArrayList<IView>();
 
 
 
@@ -45,12 +43,10 @@ public class StartScreen implements Screen {
         //this.cam = new OrthographicCamera(280, 560);
         //cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-       // views.add(new BackgroundView());
+        //views.add(new BackgroundView());
         batch = new SpriteBatch();
         level = com.nucleus.Utils.LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
 
-
-        //atlas = new TextureAtlas("atlas.txt");
         skin = new Skin(Gdx.files.internal("uiskin.json"));
 
 
@@ -64,9 +60,8 @@ public class StartScreen implements Screen {
 
         stage = new Stage(viewport, batch);
 
-        //Stage should controll input:
+        //Stage should control input:
         Gdx.input.setInputProcessor(stage);
-
 
 
     }
@@ -78,10 +73,6 @@ public class StartScreen implements Screen {
 
         stage.act();
         stage.draw();
-
-        for(IView view : views){
-            view.render(batch);
-        }
     }
 
     @Override
@@ -121,6 +112,7 @@ public class StartScreen implements Screen {
         exitButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.log("exitButton", "clicked");
                 Gdx.app.exit();
             }
         });
@@ -155,9 +147,6 @@ public class StartScreen implements Screen {
     @Override
     public void dispose() {
         skin.dispose();
-        atlas.dispose();
-
     }
-
 }
 

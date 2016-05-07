@@ -6,7 +6,7 @@ import com.nucleus.Model.Vector;
 /**
  * Created by erik on 06/05/16.
  */
-public class GameController implements ControllerState{
+public class GameController implements ControllerState {
 
     ILevel level;
     Vector lastTouch = new Vector(0,0);
