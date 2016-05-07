@@ -1,7 +1,7 @@
 package mocks;
 
-import com.nucleus.INucleon;
-import com.nucleus.INucleonGun;
+import com.nucleus.Model.INucleon;
+import com.nucleus.Model.INucleonGun;
 
 import java.util.ArrayList;
 
