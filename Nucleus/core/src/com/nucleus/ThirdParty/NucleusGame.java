@@ -2,7 +2,7 @@ package com.nucleus.ThirdParty;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.nucleus.ThirdParty.NInputProcessor;
+import com.nucleus.Screens.StartScreen;
 
 public class NucleusGame extends Game {
 

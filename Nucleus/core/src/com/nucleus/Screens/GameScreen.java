@@ -1,4 +1,4 @@
-package com.nucleus.ThirdParty;
+package com.nucleus.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
