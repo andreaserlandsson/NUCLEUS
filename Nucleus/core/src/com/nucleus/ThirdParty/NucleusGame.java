@@ -1,7 +1,8 @@
-package com.nucleus;
+package com.nucleus.ThirdParty;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.nucleus.ThirdParty.NInputProcessor;
 
 public class NucleusGame extends Game {
 

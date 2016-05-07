@@ -1,9 +1,14 @@
-package com.nucleus;
+package com.nucleus.ThirdParty;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nucleus.Model.Level;
+import com.nucleus.Views.IView;
+import com.nucleus.Views.BackgroundView;
+import com.nucleus.Views.MoleculeView;
+import com.nucleus.Views.NucleonView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +17,9 @@ import java.util.List;
  * Created by Quaxi on 04/05/16.
  */
 public class StartScreen implements Screen {
-
     private Level level;
 
-    private List<View> views = new ArrayList<View>();
+    private List<IView> views = new ArrayList<IView>();
     //private OrthographicCamera cam;
 
     private SpriteBatch batch;
@@ -29,11 +33,10 @@ public class StartScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        for(View view : views){
+        for(IView view : views){
             view.render(batch);
         }
     }
@@ -67,5 +70,6 @@ public class StartScreen implements Screen {
     public void dispose() {
         // Leave blank
     }
+
 }
 
