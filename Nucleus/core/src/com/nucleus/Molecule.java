@@ -9,10 +9,17 @@ public class Molecule implements IMolecule {
         this.gluons = gluons;
     }
 
+    public IGluonPoint getGluonPoint(int i){
+        return gluons[i];
+    }
+
+    public int getNrOfGluonPoint(){
+        return gluons.length;
+    }
+
     public void setRotation(int rot){
         rotation = rot;
     }
-
 
     public int getRotation(){
         return rotation;

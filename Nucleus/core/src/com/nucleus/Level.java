@@ -15,6 +15,8 @@ public class Level implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
 
+    private CollisionHandler collisionHandler = new CollisionHandler();
+    private boolean gameIsLost = false;
 
     public Level(int width, int height, INucleonGun gun, IMolecule molecule){
         this.width = width;
@@ -60,8 +62,28 @@ public class Level implements ILevel {
             }
         }
     }
+
+    //TODO: check if nucleon is proton or neutron and add the correct sort to the gluon point
+    public void gluonCollisionCheck(){
+        for (int i = 0; i < airborneNucleons.size(); i++) {
+            for (int j  = 0; j < molecule.getNrOfGluonPoint(); j++){
+                if (collisionHandler.collision(molecule.getGluonPoint(j), airborneNucleons.get(i))) {
+                    airborneNucleons.remove(i); // removes a nucleon which has collided with a gluon point
+                    if (molecule.getGluonPoint(j).isFull()){ //checks if the collided gluon was all ready full, REMOVE THIS AND ALLWAYS CHECK IN THE "update(float delta)" METHOD?
+                        gameIsLost = true;
+                    } else {
+                        if (true) { // check if nucleon is proton
+                            molecule.getGluonPoint(j).addProton();
+                        } else { // or neutron
+                            molecule.getGluonPoint(j).addNeutron();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
-    //TODO: add a collision check that also evaluates which gluon point to fill
     //TODO: add a win check (molecule.isFull()) and after, a loss check (airborneNucleons is empty and gun is empty)
     public void update(float delta){
         runTime += delta;
@@ -73,6 +95,7 @@ public class Level implements ILevel {
         for(INucleon nucleon : airborneNucleons){
             nucleon.update(delta);
         }
+        gluonCollisionCheck();
         outOfBoundsCheck();
     }
 }

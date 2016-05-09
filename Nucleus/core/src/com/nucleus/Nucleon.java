@@ -21,12 +21,6 @@ public class Nucleon implements  INucleon {
 
     public void update(float delta){
         position = position.add(velocity.multiply(delta));
-        for () { //gå igenom alla gluon points
-            if (true){ //kolla ifall det finns någon collision mellan gluon pointen och nucleonen
-                //gluon pointen addproton eller addneutron
-                //remove nucleonen från airborn
-            }
-        }
     }
 
     public Vector getPosition(){

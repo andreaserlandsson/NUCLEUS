@@ -2,6 +2,8 @@ package com.nucleus;
 
 public interface IMolecule {
 
+    IGluonPoint getGluonPoint(int i);
+    int getNrOfGluonPoint();
     void setRotation(int r);
     int getRotation();
     boolean isFull();
