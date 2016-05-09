@@ -14,7 +14,7 @@ public class Molecule implements IMolecule {
     }
 
     public void setRotation(float rot){
-        rotation = rot;
+        rotation = rotation + rot;
         //temporärt
         for (com.nucleus.Model.IGluonPoint gluon : gluons) {
             Vector newPos = rotate(centerT, gluon.getPosition(), rot);

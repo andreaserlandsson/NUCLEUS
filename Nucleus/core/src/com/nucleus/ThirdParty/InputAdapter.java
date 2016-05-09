@@ -18,6 +18,7 @@ public class InputAdapter extends NInputProcessor {
     public InputAdapter(ILevel level){
         this.level = level;
         controlGame = new GameController(level);
+        currentState = controlGame;
     }
 
     @Override

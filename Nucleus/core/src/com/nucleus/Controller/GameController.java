@@ -10,6 +10,7 @@ public class GameController implements ControllerState{
 
     ILevel level;
     Vector lastTouch = new Vector(0,0);
+    float rotationMultiplier = 40; //A constant that is used to scale the rotation angle
 
     public GameController(ILevel level){
         this.level = level;
@@ -36,6 +37,6 @@ public class GameController implements ControllerState{
         Vector rotationVector = rOrthogonal.multiply(1/rOrthogonal.abs()).multiply(effectiveRotationLength);
         float rotationAngle = (float) Math.atan(rotationVector.abs()/r.abs());
 
-        return rotationAngle;
+        return rotationMultiplier * rotationAngle;
     }
 }
