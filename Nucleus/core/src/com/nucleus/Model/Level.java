@@ -3,7 +3,7 @@ package com.nucleus.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Level implements com.nucleus.Model.ILevel {
+public class Level implements ILevel {
     private int width;
     private int height;
 
@@ -11,12 +11,12 @@ public class Level implements com.nucleus.Model.ILevel {
     private float lastUpdateTime = 0;
     private float dummyUpdateVariable = 1;
 
-    private com.nucleus.Model.INucleonGun gun;
-    private List<com.nucleus.Model.INucleon> airborneNucleons = new ArrayList<com.nucleus.Model.INucleon>();
-    private com.nucleus.Model.IMolecule molecule;
+    private INucleonGun gun;
+    private List<INucleon> airborneNucleons = new ArrayList<com.nucleus.Model.INucleon>();
+    private IMolecule molecule;
 
 
-    public Level(int width, int height, com.nucleus.Model.INucleonGun gun, com.nucleus.Model.IMolecule molecule){
+    public Level(int width, int height, INucleonGun gun, IMolecule molecule){
         this.width = width;
         this.height = height;
         this.gun = gun;
@@ -44,13 +44,13 @@ public class Level implements com.nucleus.Model.ILevel {
     }
 
     /*Function should probably be removed*/
-    public void addAirborneNucleon(com.nucleus.Model.INucleon nucleon){
+    public void addAirborneNucleon(INucleon nucleon){
         airborneNucleons.add(nucleon);
     }
 
     public void outOfBoundsCheck(){ // checks if any nucleons in airborne Nucleons is out of bounds
         for (int i=0; i<airborneNucleons.size(); i++){
-            com.nucleus.Model.INucleon nucleon = airborneNucleons.get(i);
+            INucleon nucleon = airborneNucleons.get(i);
             float x = nucleon.getPosition().getX();
             float y = nucleon.getPosition().getY();
             if (x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||

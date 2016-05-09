@@ -3,9 +3,6 @@ package com.nucleus.Controller;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Vector;
 
-/**
- * Created by erik on 06/05/16.
- */
 public class GameController implements ControllerState {
 
     ILevel level;

@@ -1,12 +1,14 @@
 package com.nucleus.Utils;
 
+import com.nucleus.Model.Level;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class LevelBuilder {
 
     // Builds level and from all data that is needed for that certain level.
-    public static com.nucleus.Model.Level buildLevel(int width, int height, int levelNr) {
+    public static Level buildLevel(int width, int height, int levelNr) {
         LevelData levelData = null;
         try {
             levelData = LevelParser.levelParse(levelNr);
@@ -35,7 +37,7 @@ public class LevelBuilder {
             com.nucleus.Model.INucleonGun nucleonGun = new com.nucleus.Model.NucleonGun(width, height, nucleonList);
             com.nucleus.Model.IMolecule molecule = new com.nucleus.Model.Molecule(levelData.gluonPoints);
 
-            return new com.nucleus.Model.Level(width, height, nucleonGun, molecule);
+            return new Level(width, height, nucleonGun, molecule);
         }
         return null;
 
