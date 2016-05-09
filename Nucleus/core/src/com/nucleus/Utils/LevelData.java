@@ -1,21 +1,25 @@
 package com.nucleus.Utils;
 
-public class LevelData {
-    com.nucleus.Model.IGluonPoint[] gluonPoints;
-    int levelNo;
-    int noOfGluonPoints;
-    int moleculeFilename;
-    int noOfProtons;
-    int noOfNeutrons;
-    int difficultyMultiplier;
+import com.nucleus.Model.IGluonPoint;
 
-    final int levelNumberIndex = 0;
-    final int gluonAmountIndex = 1;
-    final int moleculeNameIndex = 2;
-    final int protonAmountIndex = 3;
-    final int neutronAmountIndex = 4;
-    final int difficultyLevelIndex = 5;
-    final int firstGluonIndex = 6;
+public class LevelData {
+    public IGluonPoint[] gluonPoints;
+    public int levelNo;
+    public int noOfGluonPoints;
+    public int moleculeFilename;
+    public int noOfProtons;
+    public int noOfNeutrons;
+    public int difficultyMultiplier;
+
+    public final int levelNumberIndex = 0;
+    public final int gluonAmountIndex = 1;
+    public final int moleculeNameIndex = 2;
+    public final int protonAmountIndex = 3;
+    public final int neutronAmountIndex = 4;
+    public final int difficultyMultiplierIndex = 5;
+    public final int firstGluonIndex = 6;
+
+
 
     //Sets the variables for a level by parsing the int[] field from
     //LevelParser.
@@ -26,12 +30,12 @@ public class LevelData {
         this.moleculeFilename = levelSpecs[moleculeNameIndex];
         this.noOfProtons = levelSpecs[protonAmountIndex];
         this.noOfNeutrons = levelSpecs[neutronAmountIndex];
-        this.difficultyMultiplier = levelSpecs[difficultyLevelIndex];
+        this.difficultyMultiplier = levelSpecs[difficultyMultiplierIndex];
 
         //Fills a list with gluonPoints with their corresponding values for
         // Cordinates and neuclons needed.
 
-        gluonPoints = new com.nucleus.Model.IGluonPoint[noOfGluonPoints];
+        gluonPoints = new IGluonPoint[noOfGluonPoints];
         int j = 0;
 
         //for loop starts with 6, as we are on the sixth index in the array where the gluonpoints starts.
@@ -44,61 +48,6 @@ public class LevelData {
             gluonPoints[j] = new com.nucleus.Model.GluonPoint(position, protonsNeeded, neutronsNeeded);
             j++;
         }
-    }
 
-    public com.nucleus.Model.IGluonPoint[] getGluonPoints() {
-        return gluonPoints;
     }
-
-    public int getLevelNo() {
-        return levelNo;
-    }
-
-    public int getNoOfGluonPoints() {
-        return noOfGluonPoints;
-    }
-
-    public int getMoleculeFilename() {
-        return moleculeFilename;
-    }
-
-    public int getNoOfProtons() {
-        return noOfProtons;
-    }
-
-    public int getNoOfNeutrons() {
-        return noOfNeutrons;
-    }
-
-    public int getDifficultyMultiplier() {
-        return difficultyMultiplier;
-    }
-
-    public int getLevelNumberIndex() {
-        return levelNumberIndex;
-    }
-
-    public int getGluonAmountIndex() {
-        return gluonAmountIndex;
-    }
-
-    public int getMoleculeNameIndex() {
-        return moleculeNameIndex;
-    }
-
-    public int getProtonAmountIndex() {
-        return protonAmountIndex;
-    }
-
-    public int getNeutronAmountIndex() {
-        return neutronAmountIndex;
-    }
-
-    public int getDifficultyLevelIndex() {
-        return difficultyLevelIndex;
-    }
-
-    public int getFirstGluonIndex() {
-        return firstGluonIndex;
-    }
-}
+  }
