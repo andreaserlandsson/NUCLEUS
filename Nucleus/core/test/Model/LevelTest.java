@@ -17,6 +17,8 @@ import mocks.MockGluon;
 import mocks.MockNucleon;
 import mocks.MockNucleonGun;
 
+
+
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -35,9 +37,9 @@ public class LevelTest {
 
     @Test
     public void testGetNucleons() {
-        Vector gluonPos = new Vector(1,1);
+
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(gluonPos,1,1);
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -50,9 +52,9 @@ public class LevelTest {
 
     @Test
     public void testGetNucleonsWhenEmpty(){
-        Vector gluonPos = new Vector(0,0);
+
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(gluonPos,1,1);
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -63,9 +65,10 @@ public class LevelTest {
 
     @Test
     public void testOutOfBounds(){
-        Vector gluonPos = new Vector(0,0);
+
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(gluonPos,1,1);
+
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -83,9 +86,10 @@ public class LevelTest {
 
     @Test
     public void testUpdate(){
-        Vector gluonPos = new Vector(1,1);
+
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(gluonPos,1,1);
+
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
