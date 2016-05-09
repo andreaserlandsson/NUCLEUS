@@ -3,20 +3,20 @@ package com.nucleus.Model;
 
 public class Molecule implements IMolecule {
     private float rotation;
-    private com.nucleus.Model.IGluonPoint[] gluons;
+    private IGluonPoint[] gluons;
 
     //VÄLDIGT TILLFÄLLIG!!!!!!!!
     Vector centerT = new Vector(280/2,512/2);
     //VÄLDIGT TILLFÄLLIG!!!!!!!!
 
-    public Molecule(com.nucleus.Model.IGluonPoint[] gluons){
+    public Molecule(IGluonPoint[] gluons){
         this.gluons = gluons;
     }
 
     public void setRotation(float rot){
-        rotation = rot;
+        rotation = rotation + rot;
         //temporärt
-        for (com.nucleus.Model.IGluonPoint gluon : gluons) {
+        for (IGluonPoint gluon : gluons) {
             Vector newPos = rotate(centerT, gluon.getPosition(), rot);
             gluon.setPosition(newPos.getX(), newPos.getY());
         }
@@ -29,7 +29,7 @@ public class Molecule implements IMolecule {
     }
 
     public boolean isFull() { //dummy value
-        for (com.nucleus.Model.IGluonPoint gluon : gluons) {
+        for (IGluonPoint gluon : gluons) {
             if (!(gluon.isFull())) {
                 return false;
             }

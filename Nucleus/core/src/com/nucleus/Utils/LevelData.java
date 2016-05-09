@@ -1,6 +1,8 @@
 package com.nucleus.Utils;
 
+import com.nucleus.Model.GluonPoint;
 import com.nucleus.Model.IGluonPoint;
+import com.nucleus.Model.Vector;
 
 public class LevelData {
     public IGluonPoint[] gluonPoints;
@@ -40,12 +42,12 @@ public class LevelData {
 
         //for loop starts with 6, as we are on the sixth index in the array where the gluonpoints starts.
         for (int i = firstGluonIndex; i < levelSpecs.length; i = i+4) {
-            com.nucleus.Model.Vector position = new com.nucleus.Model.Vector(levelSpecs[i], levelSpecs[i+1]);
+            Vector position = new Vector(levelSpecs[i], levelSpecs[i+1]);
             int protonsNeeded = levelSpecs[i+2];
             int neutronsNeeded = levelSpecs[i+3];
 
             //Sets the value for the specific gluonpoint
-            gluonPoints[j] = new com.nucleus.Model.GluonPoint(position, protonsNeeded, neutronsNeeded);
+            gluonPoints[j] = new GluonPoint(position, protonsNeeded, neutronsNeeded);
             j++;
         }
 

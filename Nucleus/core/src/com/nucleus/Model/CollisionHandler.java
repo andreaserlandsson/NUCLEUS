@@ -2,7 +2,7 @@ package com.nucleus.Model;
 
 public class CollisionHandler {
 
-    public static boolean collision(com.nucleus.Model.IGluonPoint gluonPoint, com.nucleus.Model.INucleon nucleon){
+    public static boolean collision(IGluonPoint gluonPoint, INucleon nucleon){
 
         float distance = gluonPoint.getPosition().subtract(nucleon.getPosition()).abs();
 

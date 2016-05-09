@@ -3,7 +3,7 @@ package com.nucleus.Model;
 /**
  * Created by erik on 19/04/16.
  */
-public class Proton extends com.nucleus.Model.Nucleon {
+public class Proton extends Nucleon {
 
     public Proton(){
         super();

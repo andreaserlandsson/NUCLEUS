@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.nucleus.Screens.StartScreen;
 
+
 public class NucleusGame extends Game {
 
     @Override
@@ -13,6 +14,7 @@ public class NucleusGame extends Game {
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
         setScreen(new StartScreen());
        // Gdx.input.setInputProcessor(new NInputProcessor());
+
     }
 
     @Override

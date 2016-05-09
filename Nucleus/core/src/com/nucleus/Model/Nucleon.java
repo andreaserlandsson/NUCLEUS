@@ -3,7 +3,7 @@ package com.nucleus.Model;
 /**
  * Created by erik on 19/04/16.
  */
-public class Nucleon implements com.nucleus.Model.INucleon {
+public class Nucleon implements INucleon {
 
     private Vector position;
     private Vector velocity;

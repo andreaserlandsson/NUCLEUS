@@ -70,7 +70,7 @@ public class Level implements ILevel {
             lastUpdateTime = runTime;
             airborneNucleons.add(gun.shoot());
         }
-        for(com.nucleus.Model.INucleon nucleon : airborneNucleons){
+        for(INucleon nucleon : airborneNucleons){
             nucleon.update(delta);
         }
         outOfBoundsCheck();
