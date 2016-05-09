@@ -32,11 +32,12 @@ public class GameController implements ControllerState{
     public float findRotationAngle(Vector delta){
         Vector r = lastTouch.subtract(new Vector(level.getWidth()/2.0f, level.getHeight()/2.0f));
         Vector rOrthogonal = new Vector(r.getY(), -r.getX());
-
-        float effectiveRotationLength = delta.scalar(rOrthogonal.multiply((1/rOrthogonal.abs())));
-        Vector rotationVector = rOrthogonal.multiply(1/rOrthogonal.abs()).multiply(effectiveRotationLength);
+        Vector rOrthoUnit = rOrthogonal.multiply((1/rOrthogonal.abs()));
+        float effectiveRotationLength = delta.scalar(rOrthoUnit);
+        Vector rotationVector = rOrthoUnit.multiply(effectiveRotationLength);
         float rotationAngle = (float) Math.atan(rotationVector.abs()/r.abs());
-
+        if (effectiveRotationLength<0)
+            rotationAngle = -rotationAngle;
         return rotationMultiplier * rotationAngle;
     }
 }
