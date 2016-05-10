@@ -12,16 +12,19 @@ public class Level implements ILevel {
     private float dummyUpdateVariable = 1;
 
     private INucleonGun gun;
-    private List<INucleon> airborneNucleons = new ArrayList<com.nucleus.Model.INucleon>();
+    private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
+    private IGluonPoint[] gluons;
 
 
-    public Level(int width, int height, INucleonGun gun, IMolecule molecule){
+    public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
+        this.gluons = gluons;
     }
+
 
     public int getWidth(){
         return width;
@@ -43,6 +46,11 @@ public class Level implements ILevel {
         return molecule;
     }
 
+    //Possible obsolete, required for bugtesting at the moment
+    public IGluonPoint[] getGluons() {
+        return gluons;
+    }
+
     /*Function should probably be removed*/
     public void addAirborneNucleon(INucleon nucleon){
         airborneNucleons.add(nucleon);
@@ -60,11 +68,33 @@ public class Level implements ILevel {
             }
         }
     }
+    private void removeNuc(INucleon nuc){
+        airborneNucleons.remove(nuc);
+    }
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
     //TODO: add a collision check that also evaluates which gluon point to fill
     //TODO: add a win check (molecule.isFull()) and after, a loss check (airborneNucleons is empty and gun is empty)
+    INucleon rem;
     public void update(float delta){
         runTime += delta;
+        for (IGluonPoint gluon : gluons) {
+            for (INucleon nucleon:airborneNucleons){
+                if (CollisionHandler.collision(gluon,nucleon)) {
+                        if (nucleon.getClass().equals(Proton.class)) {
+                            gluon.addProton();
+                            nucleon.setVelocity(0,0);
+                             rem = nucleon;
+
+                        } else {
+                            gluon.addNeutron();
+                            nucleon.setVelocity(0,0);
+                             rem = nucleon;
+
+                        }
+                }
+            }
+        }
+        //removeNuc(rem);
 
         if(runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
             lastUpdateTime = runTime;
@@ -75,4 +105,6 @@ public class Level implements ILevel {
         }
         outOfBoundsCheck();
     }
+
+
 }

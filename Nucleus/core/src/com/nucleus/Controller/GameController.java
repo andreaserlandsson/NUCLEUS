@@ -1,20 +1,29 @@
 package com.nucleus.Controller;
 
+import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Vector;
 
 public class GameController implements ControllerState {
-
+    IGluonPoint[] gluons;
     ILevel level;
     Vector lastTouch = new Vector(0,0);
     float rotationMultiplier = 40; //A constant that is used to scale the rotation angle
 
     public GameController(ILevel level){
         this.level = level;
+        gluons = level.getGluons();
     }
 
     public void touch(int screenX, int screenY, int pointer, int button){
-        return;
+        System.out.println("MOUSE X IS :  "+ screenX);
+        System.out.println("MOUSE Y IS :  " +screenY);
+
+        System.out.println("GLUON X IS :  " +gluons[1].getPosition().getX());
+        System.out.println("GLUON Y IS :  " +gluons[1].getPosition().getY());
+
+
+
     }
 
     public void drag(int screenX, int screenY, int pointer){

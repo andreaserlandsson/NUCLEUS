@@ -4,8 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nucleus.Model.CollisionHandler;
+import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.Level;
+import com.nucleus.Model.Molecule;
 import com.nucleus.Views.IView;
 import com.nucleus.Views.BackgroundView;
 import com.nucleus.Views.MoleculeView;
@@ -38,7 +42,6 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         level.update(delta);
-
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 

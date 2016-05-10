@@ -3,7 +3,7 @@ package com.nucleus.Model;
 
 public class Molecule implements IMolecule {
     private float rotation;
-    private IGluonPoint[] gluons;
+    public IGluonPoint[] gluons;
 
     //VÄLDIGT TILLFÄLLIG!!!!!!!!
     Vector centerT = new Vector(280/2,512/2);
@@ -38,11 +38,15 @@ public class Molecule implements IMolecule {
     }
 
     public Vector rotate(Vector center, Vector position, double angle) {
-        angle = angle * Math.PI/180;
+        angle = -angle * Math.PI/180;
         Vector deltaPos = position.subtract(center);
         float nPosX = (float)(deltaPos.getX()*Math.cos(angle) + deltaPos.getY()*Math.sin(angle));
         float nPosY = (float)(-deltaPos.getX() * Math.sin(angle) + deltaPos.getY()*Math.cos(angle));
         return new Vector(nPosX, nPosY).add(center);
+    }
+
+    public IGluonPoint[] getGluons(){
+        return gluons;
     }
 
 }

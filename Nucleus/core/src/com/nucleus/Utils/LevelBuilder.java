@@ -45,7 +45,7 @@ public class LevelBuilder {
             INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList);
             IMolecule molecule = new Molecule(levelData.gluonPoints);
 
-            return new Level(width, height, nucleonGun, molecule);
+            return new Level(width, height, nucleonGun, molecule, levelData.gluonPoints);
         }
         return null;
 
