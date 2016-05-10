@@ -62,8 +62,6 @@ public class GameScreen implements Screen {
         Gdx.app.log("GameScreen", "showing");
     }
 
-
-
     @Override
     public void hide(){
         Gdx.app.log("GameScreen", "hide called");
