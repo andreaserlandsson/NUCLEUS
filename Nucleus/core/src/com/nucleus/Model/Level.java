@@ -95,9 +95,11 @@ public class Level implements ILevel {
 
     public void collisionCheck(){
         INucleon collidingNucleon = null;
+
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
                 if (CollisionHandler.collision(gluon, nucleon)) {
+
                     if (nucleon.getClass().equals(Proton.class)) {
                         if (gluon.getProtonsNeeded() > 0){
                             gluon.addProton();
@@ -108,6 +110,7 @@ public class Level implements ILevel {
                             System.out.println("NOT HUNGRY");
                         }
                     }
+
 
                     else {
                         if (gluon.getNeutronsNeeded() > 0){
@@ -122,7 +125,6 @@ public class Level implements ILevel {
                 }
             }
         }
-
         if (collidingNucleon != null){
             removeNucleon(collidingNucleon);
         }
@@ -143,6 +145,4 @@ public class Level implements ILevel {
             removeOutOfBoundsNucleons();
         }
     }
-
-
 }
