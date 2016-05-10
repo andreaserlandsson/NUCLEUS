@@ -55,6 +55,6 @@ public class GluonPoint implements IGluonPoint {
     }
 
     public int getProtonsNeeded() {
-        return maxProtons - currentNeutrons;
+        return maxProtons - currentProtons;
     }
 }

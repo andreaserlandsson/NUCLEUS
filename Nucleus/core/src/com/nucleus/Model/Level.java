@@ -105,9 +105,10 @@ public class Level implements ILevel {
                                 System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
                             }
                             else {
-                                System.out.println("NOT HUNGRY BAD BAD BAD");
+                                System.out.println("NOT HUNGRY");
                             }
                         }
+
 
                         else {
                             if (gluon.getNeutronsNeeded() > 0){
@@ -116,12 +117,13 @@ public class Level implements ILevel {
                                 System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
                             }
                             else {
-                                System.out.println("NOT HUNGRY BAD BAD BAD");
+                                System.out.println("NOT HUNGRY");
                             }
                         }
                 }
             }
         }
+
         if (collidingNucleon != null){
             removeNucleon(collidingNucleon);
         }
@@ -131,6 +133,7 @@ public class Level implements ILevel {
             lastUpdateTime = runTime;
             airborneNucleons.add(gun.shoot());
         }
+
         for(INucleon nucleon : airborneNucleons){
             nucleon.update(delta);
         }

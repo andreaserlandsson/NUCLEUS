@@ -27,14 +27,15 @@ public class MoleculeViewable implements IViewable {
         this.gluonPoints = molecule.getGluons();
     }
 
+
     public void render(SpriteBatch batch){
         batch.begin();
 
         for (IGluonPoint gluonPoint : gluonPoints) {
 
             if (gluonPoint.getNeutronsNeeded() <= 0){
-                float x = gluonPoint.getPosition().getX()-halfProton.getWidth()/2+5;
-                float y = gluonPoint.getPosition().getY()-halfProton.getHeight()/2-1;
+                float x = gluonPoint.getPosition().getX()-halfNeutron.getWidth()/2+5;
+                float y = gluonPoint.getPosition().getY()-halfNeutron.getHeight()/2-1;
                 batch.draw(halfNeutron, x, y);
             }
 
@@ -55,6 +56,7 @@ public class MoleculeViewable implements IViewable {
                 1.0f,
                 1.0f,
                 molecule.getRotation());
+
         batch.end();
     }
 }
