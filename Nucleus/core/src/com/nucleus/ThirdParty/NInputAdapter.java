@@ -14,7 +14,6 @@ public class NInputAdapter extends NInputProcessor {
 
     ILevel level;
 
-
     public NInputAdapter(ILevel level){
         this.level = level;
         controlGame = new GameController(level);

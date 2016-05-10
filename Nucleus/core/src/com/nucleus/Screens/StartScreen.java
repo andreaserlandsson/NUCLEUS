@@ -40,21 +40,18 @@ public class StartScreen implements Screen {
 
         this.listener = new MenuListener();
 
+
+        //Initialising graphics
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("uiskin.json"));
-
-        batch = new SpriteBatch();
         camera = new OrthographicCamera();
         viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
         viewport.apply();
-
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         camera.update();
-
         stage = new Stage(viewport, batch);
+
         Gdx.input.setInputProcessor(stage);
-
-
     }
 
     @Override
