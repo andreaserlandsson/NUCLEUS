@@ -16,6 +16,12 @@ public class GameController implements ControllerState {
     }
 
     public void touch(int screenX, int screenY, int pointer, int button){
+        System.out.println("X ÄR  " + screenX);
+        System.out.println("Y ÄR  " + screenY);
+
+        System.out.println("GLUON POINT X ==" + gluons[0].getPosition().getX());
+        System.out.println("GLUON POINT y ==" + gluons[0].getPosition().getY());
+
     }
 
     public void drag(int screenX, int screenY, int pointer){
