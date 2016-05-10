@@ -18,7 +18,7 @@ import mocks.MockNucleon;
 import mocks.MockNucleonGun;
 
 
-
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -80,7 +80,7 @@ public class LevelTest {
 
         Level level = new Level(10, 10, gun, molecule,gluons);
         level.addAirborneNucleon(level.getNucleonGun().shoot());
-        level.outOfBoundsCheck();
+        level.removeOutOfBoundsNucleons();
         assertTrue(level.getAirborneNucleons().size() == 0);
     }
 
@@ -113,11 +113,9 @@ public class LevelTest {
 
     @Test
     public void testGluonCollisionCheck(){
-        Vector gluonPos = new Vector(2,2);
-        Vector gluonPos2 = new Vector(3,3);
-        IGluonPoint[] gluons = new MockGluon[2];
-        gluons[0] = new MockGluon(gluonPos,1,0);
-        gluons[0] = new MockGluon(gluonPos2,1,0);
+        IGluonPoint[] gluons = new MockGluon[1];
+
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -125,20 +123,15 @@ public class LevelTest {
         Vector nucleonVel = new Vector(1,1);
         INucleon nucleon = new MockNucleon(nucleonPos,nucleonVel);
         nucleons.add(nucleon);
-        nucleons.add(nucleon);
         INucleonGun gun = new MockNucleonGun(nucleons);
 
-        Level level = new Level(10, 10, gun, molecule);
+        Level level = new Level(10, 10, gun, molecule,gluons);
 
         level.update(1);
-        assertTrue(level.getAirborneNucleons().size() == 1);
-        level.gluonCollisionCheck();
-        assertTrue(level.getAirborneNucleons().size() == 0);
-        assertTrue(level.getMolecule().getGluonPoint(0).isFull());
-        assertTrue(level.getAirborneNucleons().size() == 0);
+        assertTrue(level.getGluons()[0].getProtonsNeeded() == 1);
+
         level.update(1);
-        assertTrue(level.getAirborneNucleons().size() == 1);
-        assertTrue(level.getMolecule().getGluonPoint(1).isFull());
-        assertTrue(level.getAirborneNucleons().size() == 0);
+        assertTrue(level.getGluons()[0].getProtonsNeeded() == 0);
+
     }
 }

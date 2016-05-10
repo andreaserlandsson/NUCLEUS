@@ -21,7 +21,7 @@ public class MockGluon implements IGluonPoint {
     }
 
     public boolean isFull(){
-       return true;
+        return true;
     }
     public Vector getPosition(){
         return position;
@@ -40,12 +40,13 @@ public class MockGluon implements IGluonPoint {
 
     @Override
     public boolean addProton() {
+        protonsNeeded --;
         return true;
     }
 
     @Override
     public int getProtonsNeeded() {
-        return 0;
+        return protonsNeeded;
     }
 
     @Override

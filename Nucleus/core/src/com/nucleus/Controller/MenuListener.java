@@ -22,7 +22,7 @@ public class MenuListener extends ClickListener {
             Gdx.app.log("coordinates:","x:" + x + "y: " + y);
             Gdx.app.log("event:", event.toString());
             Gdx.app.log("playButton", "clicked");
-            controller.changeLevel(1);
+            controller.startLevelChoose(1);
         }
 
         if (event.getTarget().toString().equals("Label: Options")){
@@ -37,5 +37,18 @@ public class MenuListener extends ClickListener {
             Gdx.app.log("exitButton", "clicked");
             controller.exit();
         }
+
+        if (event.getTarget().toString().equals("Label: Level 1")){
+            controller.changeLevel(1);
+        }
+
+        if (event.getTarget().toString().equals("Label: Level 2")){
+            //DO STUFF
+        }
+
+        if (event.getTarget().toString().equals("Label: Level 2")){
+            controller.exit();
+        }
+
     }
 }

@@ -4,8 +4,6 @@ import com.nucleus.*;
 
 public interface IMolecule {
 
-    int getNrOfGluonPoint();
-    IGluonPoint getGluonPoint(int i);
     void setRotation(float r);
     float getRotation();
     boolean isFull();

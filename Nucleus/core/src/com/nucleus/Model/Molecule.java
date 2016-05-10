@@ -30,8 +30,6 @@ public class Molecule implements IMolecule {
         }
     }
 
-
-
     public float getRotation(){
         return rotation;
     }
@@ -52,9 +50,4 @@ public class Molecule implements IMolecule {
         float nPosY = (float)(-deltaPos.getX() * Math.sin(angle) + deltaPos.getY()*Math.cos(angle));
         return new Vector(nPosX, nPosY).add(center);
     }
-
-    public IGluonPoint[] getGluons(){
-        return gluons;
-    }
-
 }

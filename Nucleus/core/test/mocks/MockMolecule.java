@@ -20,24 +20,6 @@ public class MockMolecule implements IMolecule {
         rotation=r;
     }
 
-<<<<<<< HEAD
-    @Override
-    public int getNrOfGluonPoint() {
-        return gluons.length;
-    }
-
-    @Override
-    public IGluonPoint getGluonPoint(int i) {
-        return gluons[i];
-    }
-
-    @Override
-    public void setRotation(float r) {
-
-    }
-
-=======
->>>>>>> develop
     public float getRotation(){
         return rotation;
     }
