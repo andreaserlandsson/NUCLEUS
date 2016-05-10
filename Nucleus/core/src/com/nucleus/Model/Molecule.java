@@ -6,10 +6,10 @@ public class Molecule implements IMolecule {
     public IGluonPoint[] gluons;
 
     //Todo change from hardcoded values
-    Vector centerT = new Vector(280/2,512/2);
-
-    public Molecule(IGluonPoint[] gluons){
+    Vector centerT;
+    public Molecule(int width, int heigth,IGluonPoint[] gluons){
         this.gluons = gluons;
+        centerT = new Vector(width/2, heigth/2);
     }
 
     public void setRotation(float rot){

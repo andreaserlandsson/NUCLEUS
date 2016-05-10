@@ -37,7 +37,7 @@ public class MoleculeTest {
     com.nucleus.Model.IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
 
     //molecule with three different gluonpoints.
-   com.nucleus.Model.IMolecule molecule = new com.nucleus.Model.Molecule(gluons);
+   com.nucleus.Model.IMolecule molecule = new com.nucleus.Model.Molecule(0,0,gluons);
 
 
     //TODO more tests since Molecule has new methods.

@@ -21,7 +21,7 @@ public class MoleculeViewable implements IViewable {
     public MoleculeViewable(IMolecule molecule){
         this.molecule = molecule;
         this.moleculeTexture = new Texture("1.png");
-        this.halfProton = new Texture("Proton.png");
+        this.halfProton = new Texture("proton.png");
         this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
         this.gluonPoints = molecule.getGluons();
     }
