@@ -74,23 +74,24 @@ public class LevelChooseScreen implements Screen {
         mainTable.padBottom(15f).padTop(30f);
 
         //Create buttons
-        TextButton playButton = new TextButton("Level 1", skin);
-        TextButton optionsButton = new TextButton("Level 2", skin);
-        TextButton exitButton = new TextButton("Level 3", skin);
+        TextButton level1Button = new TextButton("Level 1", skin);
+        TextButton level2Button = new TextButton("Level 2", skin);
+        TextButton level3Button = new TextButton("Level 3", skin);
 
         stage.addListener(listener);
 
         //Add listeners to buttons
-        playButton.addListener(listener);
-        optionsButton.addListener(listener);
-        exitButton.addListener(listener);
+        level1Button.addListener(listener);
+        level2Button.addListener(listener);
+        level3Button.addListener(listener);
 
         //Add buttons to table
-        mainTable.add(playButton);
+        mainTable.add(level1Button);
         mainTable.row();
-        mainTable.add(optionsButton);
+        mainTable.add(level2Button);
         mainTable.row();
-        mainTable.add(exitButton);
+        mainTable.add(level3Button);
+
 
         //Add table to stage
         stage.addActor(mainTable);
