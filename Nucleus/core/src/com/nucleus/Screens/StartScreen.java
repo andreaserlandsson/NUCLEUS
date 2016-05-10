@@ -14,7 +14,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
+import com.nucleus.ThirdParty.NInputAdapter;
+import com.nucleus.Utils.LevelBuilder;
 
 /**
  * Created by Quaxi on 04/05/16.
@@ -88,8 +91,6 @@ public class StartScreen implements Screen {
         mainTable.top();
         mainTable.padBottom(15f).padTop(30f);
 
-
-
         //Create buttons
         TextButton playButton = new TextButton("Play", skin);
         TextButton optionsButton = new TextButton("Options", skin);
@@ -100,7 +101,10 @@ public class StartScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.app.log("playButton", "clicked");
+                Gdx.input.setInputProcessor(new NInputAdapter(level));
                 ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(level));
+                ILevel level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
+
             }
         });
         exitButton.addListener(new ClickListener(){
