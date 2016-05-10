@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
 import com.nucleus.ThirdParty.NInputAdapter;
@@ -29,7 +30,7 @@ public class StartScreen implements Screen {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private Level level;
+    private ClickListener listener;
 
 
 
@@ -39,11 +40,11 @@ public class StartScreen implements Screen {
         //cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         //views.add(new BackgroundView());
+
+        this.listener = new MenuController();
+
         batch = new SpriteBatch();
-        level = com.nucleus.Utils.LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
-
         skin = new Skin(Gdx.files.internal("uiskin.json"));
-
 
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
@@ -54,8 +55,6 @@ public class StartScreen implements Screen {
         camera.update();
 
         stage = new Stage(viewport, batch);
-
-        //Stage should control input:
         Gdx.input.setInputProcessor(stage);
 
 
@@ -96,20 +95,18 @@ public class StartScreen implements Screen {
         TextButton optionsButton = new TextButton("Options", skin);
         TextButton exitButton = new TextButton("Exit", skin);
 
-        //Add listeners to buttons
-        playButton.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.log("playButton", "clicked");
-                Gdx.input.setInputProcessor(new NInputAdapter(level));
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(level));
-                ILevel level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
 
-            }
-        });
+
+        stage.addListener(listener);
+
+        //Add listeners to buttons
+        playButton.addListener(listener);
+        optionsButton.addListener(listener);
+
         exitButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.log("event:", event.toString());
                 Gdx.app.log("exitButton", "clicked");
                 Gdx.app.exit();
             }

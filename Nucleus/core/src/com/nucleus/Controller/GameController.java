@@ -14,6 +14,9 @@ public class GameController implements ControllerState {
     }
 
     public void touch(int screenX, int screenY, int pointer, int button){
+        System.out.println("x: " + screenX + "y: " + screenY + "pointer: " + pointer + "button: " + button);
+
+
         return;
     }
 
