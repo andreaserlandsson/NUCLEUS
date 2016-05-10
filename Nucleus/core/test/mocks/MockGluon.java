@@ -39,7 +39,7 @@ public class MockGluon implements IGluonPoint {
     }
 
     @Override
-    public boolean addProton() {
+    public void addProton() {
         return true;
     }
 
@@ -49,7 +49,7 @@ public class MockGluon implements IGluonPoint {
     }
 
     @Override
-    public boolean addNeutron() {
+    public void addNeutron() {
         return true;
     }
 

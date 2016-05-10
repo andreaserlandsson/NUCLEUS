@@ -3,19 +3,23 @@ package com.nucleus.Model;
 public class GluonPoint implements IGluonPoint {
 
     private Vector position;
-    private int protonsNeeded;
-    private int neutronsNeeded;
+    private int currentProtons;
+    private int currentNeutrons;
+    private int maxProtons;
+    private int maxNeutrons;
 
     private final int radius = 10; // dummy value will be calibrated later
 
-    public GluonPoint(Vector positions, int pNeeded, int nNeeded){
+    public GluonPoint(Vector positions, int maxProtons, int maxNeutrons){
         this.position = positions;
-        this.protonsNeeded = pNeeded;
-        this.neutronsNeeded = nNeeded;
+        this.maxProtons = maxProtons;
+        this.maxNeutrons = maxNeutrons;
+        currentNeutrons = 0;
+        currentProtons = 0;
     }
 
     public boolean isFull() {
-        return protonsNeeded == 0 && neutronsNeeded == 0;
+        return getProtonsNeeded() == 0 && getNeutronsNeeded() == 0;
     }
 
     public Vector getPosition(){
@@ -38,29 +42,19 @@ public class GluonPoint implements IGluonPoint {
         return radius;
     }
 
-    public boolean addNeutron() { // if this returns false the game is lost
-        if (!isFull() && neutronsNeeded > 0) {
-            neutronsNeeded--;
-            return true;
-        } else {
-            return false;
-        }
+    public void addNeutron() { // if this returns false the game is lost
+        currentNeutrons++;
+    }
+
+    public void addProton() { // if this returns false the game is lost
+        currentProtons++;
     }
 
     public int getNeutronsNeeded() {
-        return neutronsNeeded;
-    }
-
-    public boolean addProton() { // if this returns false the game is lost
-        if (!isFull() && protonsNeeded > 0) {
-            protonsNeeded--;
-            return true;
-        } else {
-            return false;
-        }
+        return maxNeutrons - currentNeutrons;
     }
 
     public int getProtonsNeeded() {
-        return protonsNeeded;
+        return maxProtons - currentNeutrons;
     }
 }

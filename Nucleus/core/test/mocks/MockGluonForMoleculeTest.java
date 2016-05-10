@@ -43,7 +43,7 @@ public class MockGluonForMoleculeTest implements IGluonPoint {
 
 
     //Need this method implemented for the MoleculeTest
-    public boolean addNeutron() {
+    public void addNeutron() {
         if (!isFull() && neutronsNeeded > 0) {
             neutronsNeeded--;
 
@@ -58,7 +58,7 @@ public class MockGluonForMoleculeTest implements IGluonPoint {
     }
 
     //Need this method implemented for the MoleculeTest
-    public boolean addProton() {
+    public void addProton() {
 
         if (!isFull() && protonsNeeded > 0) {
             protonsNeeded--;

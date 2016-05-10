@@ -104,8 +104,8 @@ public class Level implements ILevel {
             for (INucleon nucleon : airborneNucleons){
                 if (CollisionHandler.collision(gluon, nucleon)) {
                         if (nucleon.getClass().equals(Proton.class)) {
-                            if (gluon.addProton()) {
-                                nucleon.setVelocity(0,0);
+                            if (gluon.getProtonsNeeded() > 0){
+                                gluon.addProton();
                                 collidingNucleon = nucleon;
                                 System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
                             }
@@ -115,8 +115,8 @@ public class Level implements ILevel {
                         }
 
                         else {
-                            if (gluon.addNeutron()){
-                                nucleon.setVelocity(0,0);
+                            if (gluon.getNeutronsNeeded() > 0){
+                                gluon.addNeutron();
                                 collidingNucleon = nucleon;
                                 System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
                             }

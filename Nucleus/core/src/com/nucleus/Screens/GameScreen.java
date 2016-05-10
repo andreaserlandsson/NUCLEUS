@@ -37,8 +37,6 @@ public class GameScreen implements Screen {
         batch.setProjectionMatrix(cam.combined);
     }
 
-
-
     @Override
     public void render(float delta) {
         level.update(delta);
