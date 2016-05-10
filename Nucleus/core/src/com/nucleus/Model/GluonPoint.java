@@ -38,7 +38,6 @@ public class GluonPoint implements IGluonPoint {
         return radius;
     }
 
-
     public boolean addNeutron() { // if this returns false the game is lost
         if (!isFull() && neutronsNeeded > 0) {
             neutronsNeeded--;

@@ -16,6 +16,7 @@ public class Level implements ILevel {
     private IMolecule molecule;
     private IGluonPoint[] gluons;
 
+
     public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
         this.width = width;
         this.height = height;
@@ -82,29 +83,45 @@ public class Level implements ILevel {
     //TODO: add a collision check that also evaluates which gluon point to fill
     //TODO: add a win check (molecule.isFull()) and after, a loss check (airborneNucleons is empty and gun is empty)
 
-    //Wtf is this?
-    INucleon rem;
+
+    private void winGame() {
+        System.out.println("YOU HAVE WON YAY!!");
+    }
+
+    private void loseGame(){
+        System.out.println("You lost :(((");
+    }
 
     public void update(float delta){
+
+        INucleon rem = null;
+        int protons = 0;
+        int nucleons = 0;
+
         runTime += delta;
         for (IGluonPoint gluon : gluons) {
-            for (INucleon nucleon:airborneNucleons){
-                if (CollisionHandler.collision(gluon,nucleon)) {
+            for (INucleon nucleon : airborneNucleons){
+                if (CollisionHandler.collision(gluon, nucleon)) {
                         if (nucleon.getClass().equals(Proton.class)) {
                             gluon.addProton();
                             nucleon.setVelocity(0,0);
-                             rem = nucleon;
+                            rem = nucleon;
+                            System.out.println(protons + " protons out of " + gluon.getProtonsNeeded() );
 
                         } else {
                             gluon.addNeutron();
                             nucleon.setVelocity(0,0);
-                             rem = nucleon;
+                            rem = nucleon;
+                            System.out.println(protons + " neutrons out of " + gluon.getNeutronsNeeded() );
+
 
                         }
                 }
             }
         }
-        //removeNucleon(rem);
+        if (rem != null){
+            removeNucleon(rem);
+        }
 
         if(runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
             lastUpdateTime = runTime;
@@ -113,6 +130,15 @@ public class Level implements ILevel {
         for(INucleon nucleon : airborneNucleons){
             nucleon.update(delta);
         }
+
+        if (molecule.isFull()){
+            winGame();
+        }
+
+        else if (gun.isEmpty()){
+            loseGame();
+        }
+
         removeOutOfBoundsNucleons();
     }
 
