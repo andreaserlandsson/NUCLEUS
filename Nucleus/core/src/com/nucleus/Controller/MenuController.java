@@ -21,8 +21,6 @@ public class MenuController {
 
     private void options(){
 
-
-
     }
 
     public void exit(){
