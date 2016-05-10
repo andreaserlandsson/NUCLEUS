@@ -1,4 +1,4 @@
-package com.nucleus.Views;
+package com.nucleus.Viewable;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,12 +9,12 @@ import java.util.List;
 /**
  * Created by erik on 28/04/16.
  */
-public class NucleonView implements IView {
+public class NucleonViewable implements IViewable {
 
     private List<INucleon> nucleons;
     private Texture proton, neutron;
 
-    public NucleonView(List<INucleon> nucleons){
+    public NucleonViewable(List<INucleon> nucleons){
         this.nucleons = nucleons;
         proton = new Texture("proton.png");
     }

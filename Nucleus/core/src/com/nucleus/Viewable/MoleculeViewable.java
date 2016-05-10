@@ -1,4 +1,4 @@
-package com.nucleus.Views;
+package com.nucleus.Viewable;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,13 +9,13 @@ import com.nucleus.Model.IMolecule;
 /**
  * Created by erik on 28/04/16.
  */
-public class MoleculeView implements IView {
+public class MoleculeViewable implements IViewable {
     private Texture moleculeTexture;
     private TextureRegion moleculeTextureRegion;
     private IMolecule molecule;
 
     //TODO: add support for loading different level textures
-    public MoleculeView(IMolecule molecule){
+    public MoleculeViewable(IMolecule molecule){
         this.molecule = molecule;
         this.moleculeTexture = new Texture("1.png");
         this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
