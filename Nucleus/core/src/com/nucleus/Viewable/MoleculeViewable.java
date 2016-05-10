@@ -21,7 +21,8 @@ public class MoleculeViewable implements IViewable {
     public MoleculeViewable(IMolecule molecule){
         this.molecule = molecule;
         this.moleculeTexture = new Texture("1.png");
-        this.halfProton = new Texture("Proton.png");
+        this.halfProton = new Texture("protonHalf.png");
+        this.halfNeutron = new Texture("neutronHalf.png");
         this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
         this.gluonPoints = molecule.getGluons();
     }
@@ -29,7 +30,20 @@ public class MoleculeViewable implements IViewable {
     public void render(SpriteBatch batch){
         batch.begin();
 
-        //batch.draw(halfProton, gluonPoints[0].getPosition().getY(), gluonPoints[0].getPosition().getX());
+        for (IGluonPoint gluonPoint : gluonPoints) {
+
+            if (gluonPoint.getNeutronsNeeded() <= 0){
+                float x = gluonPoint.getPosition().getX()-halfProton.getWidth()/2+5;
+                float y = gluonPoint.getPosition().getY()-halfProton.getHeight()/2-1;
+                batch.draw(halfNeutron, x, y);
+            }
+
+            if (gluonPoint.getProtonsNeeded() <= 0){
+                float x = gluonPoint.getPosition().getX()-halfProton.getWidth()/2-5;
+                float y = gluonPoint.getPosition().getY()-halfProton.getHeight()/2-1;
+                batch.draw(halfProton, x, y);
+            }
+        }
 
         batch.draw(moleculeTextureRegion,
                 Gdx.graphics.getWidth() / 2 - moleculeTexture.getWidth() / 2,

@@ -1,12 +1,14 @@
 package com.nucleus.Model;
 
 
+import com.badlogic.gdx.Gdx;
+
 public class Molecule implements IMolecule {
     private float rotation;
     public IGluonPoint[] gluons;
 
     //Todo change from hardcoded values
-    Vector centerT = new Vector(280/2,512/2);
+    Vector centerT = new Vector(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
 
     public Molecule(IGluonPoint[] gluons){
         this.gluons = gluons;

@@ -97,6 +97,7 @@ public class Level implements ILevel {
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
                 if (CollisionHandler.collision(gluon, nucleon)) {
+
                         if (nucleon.getClass().equals(Proton.class)) {
                             if (gluon.getProtonsNeeded() > 0){
                                 gluon.addProton();
