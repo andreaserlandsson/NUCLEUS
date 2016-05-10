@@ -9,52 +9,59 @@ import com.nucleus.Model.Vector;
 public class MockGluon implements IGluonPoint {
 
     private Vector position;
-    private int protonsNeeded;
-    private int neutronsNeeded;
-    private final int radius = 2; //Dummy value will be defined later
+    private int currentProtons;
+    private int currentNeutrons;
+    private int maxProtons;
+    private int maxNeutrons;
+    private final int radius = 2; // dummy value will be calibrated later
 
-
-    public MockGluon(Vector v, int pNeeded, int nNeeded){
-        this.position = v;
-        this.protonsNeeded = pNeeded;
-        this.neutronsNeeded = nNeeded;
+    public MockGluon(Vector gluonPositions, int pNeeded, int nNeeded){
+        this.position = gluonPositions;
+        this.maxProtons = pNeeded;
+        this.maxNeutrons = nNeeded;
+        currentNeutrons = 0;
+        currentProtons = 0;
     }
 
-    public boolean isFull(){
-       return true;
+
+
+    public boolean isFull() { //this method is needed for the Molecule.isFull()-test
+        return getNeutronsNeeded() == 0 && getProtonsNeeded() == 0;
     }
-    public Vector getPosition(){
+
+    @Override
+    public com.nucleus.Model.Vector getPosition() {
         return position;
     }
 
-    @Override
-    public void setPosition(float x, float y) {
-        position.setCoordinates(x,y);
 
+    public void setPosition(float x, float y){
+        position.setCoordinates(x, y);
     }
 
-    @Override
-    public int getRadius() {
+
+    public int getRadius(){
         return radius;
     }
 
-    @Override
-    public void addProton() {
-        return true;
+
+
+    public void addProton() { // if this returns false the game is lost
+        currentProtons++;
     }
 
-    @Override
-    public int getProtonsNeeded() {
-        return 0;
+    //Need this method implemented for the MoleculeTest
+    public void addNeutron() { // if this returns false the game is lost
+        currentNeutrons++;
     }
 
-    @Override
-    public void addNeutron() {
-        return true;
-    }
-
-    @Override
     public int getNeutronsNeeded() {
-        return 0;
+        return maxNeutrons - currentNeutrons;
+    }
+
+
+
+    public int getProtonsNeeded() {
+        return maxProtons - currentNeutrons;
     }
 }
