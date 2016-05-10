@@ -11,6 +11,12 @@ public class Level implements ILevel {
     private float lastUpdateTime = 0;
     private float dummyUpdateVariable = 1;
 
+    private enum GameState{
+        RUNNING, PAUSED
+    }
+
+    private GameState currentState;
+
     private INucleonGun gun;
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
@@ -85,7 +91,7 @@ public class Level implements ILevel {
         System.out.println("YOU HAVE WON YAY!!");
     }
 
-    private void loseGame(){
+    private void loseGame() {
         System.out.println("You lost :(((");
     }
 
