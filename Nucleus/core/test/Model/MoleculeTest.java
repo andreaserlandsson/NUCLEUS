@@ -1,13 +1,16 @@
 package Model;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 
 import mocks.MockGluon;
 
+import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.Vector;
 
 import com.nucleus.Model.Molecule;
+import com.nucleus.Model.IGluonPoint;
 
 
 import static  org.junit.Assert.assertFalse;
@@ -22,29 +25,26 @@ public class MoleculeTest {
     Vector v3 = new Vector(300,300);
     //the positions for all gluons.
 
+    IGluonPoint gluon1 = new MockGluon(v1,1,1);
+    IGluonPoint gluon2 = new MockGluon(v2,1,1);
+    IGluonPoint gluon3 = new MockGluon(v3,1,1);
 
-
-
-    com.nucleus.Model.IGluonPoint gluon1 = new MockGluon(v1,1,1);
-    com.nucleus.Model.IGluonPoint gluon2 = new MockGluon(v2,1,1);
-    com.nucleus.Model.IGluonPoint gluon3 = new MockGluon(v3,1,1);
-
-    com.nucleus.Model.IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
+    IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
 
 
     //molecule with three different gluonpoints.
-    com.nucleus.Model.IMolecule molecule = new Molecule(gluons);
+    IMolecule molecule = new Molecule(gluons);
 
     @Test
     public void testOfMoleculeGetRotation(){
-        //rotation is set to 0
-        //This should be true then
-        assertTrue(molecule.getRotation() == 0);
-        //molecule.setRotation(2);
-        //System.out.println(molecule.getRotation());
-        //molecule.setRotation(2);
-        //assertFalse(molecule.getRotation() == 0);
-        //assertTrue(molecule.getRotation() == 2.0);
+
+        IMolecule molecule1 = new Molecule(gluons);
+
+        //initial rotation is set to 0
+        assertTrue(molecule1.getRotation() == 0);
+        molecule1.setRotation(20);
+        assertFalse(molecule1.getRotation() == 0);
+        assertTrue(molecule1.getRotation()==20.0);
     }
 
     @Test
@@ -86,42 +86,33 @@ public class MoleculeTest {
 
     @Test
     public void testOfMoleculeSetRotation(){
-        //TODO
 
-        //here the new position of all the gluonpoints are decided,
-        //uses the rotate-method.
-            //the center of the molecule is needed
-            //for each gluonpoint, a new position is calculated
-            //then this new position is set
-
-        //all gluonpoints are getting a new postion depending on the
-        //angle rotated.
-
-        System.out.println();
+        IMolecule molecule2 = new Molecule(gluons);
+        molecule2.setRotation(100);
+        assertFalse(molecule2.getRotation() == 10);
+        assertTrue(molecule2.getRotation() == 100);
     }
-
-
-
-
-
-
-
 
 
     @Test
     public void testOfMoleculeRotate(){
-        //TODO
+        Vector center = new Vector(100,100);
+        Vector position = new Vector(200,100);
+        Double angle = 90.0;
 
-        //Rotate the molecule
-        //vector that is the center, a vector for a position, a some angle
+        //new position should be (100, 200) with rotation 90 degrees
+        Vector vector222 = molecule.rotate(center,position,angle);
 
-        //angle
-        Vector vector1 = new Vector(1,1);
-        Vector vector2 = new Vector(2,2);
-        Double d = 2.0;
-        molecule.rotate(vector1,vector2,d);
+        assertFalse(vector222.getX() == 200.0);
+        assertFalse(vector222.getY() == 100.0);
+        assertTrue(vector222.getX() == 100.0);
+        assertTrue(vector222.getY() == 200.0);
 
-
-
+        //new position should be (100, 0) with rotation -90 degrees
+        Vector vector333 = molecule.rotate(center,position,-90);
+        assertTrue(vector333.getX() == 100.0);
+        assertTrue(vector333.getY() == 0.0);
+        assertFalse(vector333.getX() == 200.0);
+        assertFalse(vector333.getY() == 100.0);
     }
 }

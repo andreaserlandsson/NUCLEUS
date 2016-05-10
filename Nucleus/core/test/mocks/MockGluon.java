@@ -27,7 +27,7 @@ public class MockGluon implements IGluonPoint {
 
     @Override
     public com.nucleus.Model.Vector getPosition() {
-        return null;
+        return position;
     }
 
 
