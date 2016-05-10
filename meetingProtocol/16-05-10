@@ -1,0 +1,46 @@
+MeetingAgenda
+
+  Date: 160510
+
+  Facilitator: Herman Carlström
+
+  Participants: Herman Carlström, Miranda Bånnsgård, Andreas Erlandsson, Erik Jansson and Hannes Lagerroth.
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - To much involvment from libGDX library.
+  - Unstructured agenda - who will do what.
+
+2. Reports (15 min) from previous meeting
+ 
+  - Package structure done and running.
+  - Tween is no good. 
+  - Rotation is done. 
+  - Width height class seems bad.
+  
+3. Discussion items (35 min) 
+
+  - Controllers almost done.
+  - Need two listeners for input, or just one?
+  - What do we need to do with use-cases? 
+  - Sequence diagram - Heinz is the woman!
+  - RAD, SSD, UML and all other stuff need to be finalized!
+  - Refractor all bad code!
+  - Make more levels!
+  - Mirrored logic - is this a problem?
+  - Fix win and lose stuff.
+  - Fix pause menu.
+
+4. Outcomes and assignments (5 min) 
+  
+  - Fix all visual stuff
+  - Make more levels.
+  - Update update in level.
+  - Fix tests for moleculle.
+
+5. Wrap up
+
+  - Unresolved issues: Important dates!!!!!
+    How will the controllers actually work with the inputListeners?
+  - Time for next meeting: 160512 10:00 

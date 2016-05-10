@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Viewable.IViewable;
 import com.nucleus.Viewable.BackgroundViewable;
+import com.nucleus.Viewable.IViewable;
 import com.nucleus.Viewable.MoleculeViewable;
 import com.nucleus.Viewable.NucleonViewable;
 
