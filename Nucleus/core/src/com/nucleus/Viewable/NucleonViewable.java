@@ -18,10 +18,11 @@ public class NucleonViewable implements IViewable {
     public NucleonViewable(List<INucleon> nucleons){
         this.nucleons = nucleons;
         proton = new Texture("proton.png");
+        proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         neutron = new Texture("neutron.png");
+        neutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
-    //TODO: implement something to differentiate between protons and Nucleons
     @Override
     public void render(SpriteBatch batch){
         batch.begin();

@@ -20,8 +20,11 @@ public class MoleculeViewable implements IViewable {
     public MoleculeViewable(IMolecule molecule){
         this.molecule = molecule;
         this.moleculeTexture = new Texture("1.png");
+        moleculeTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         this.halfProton = new Texture("protonHalf.png");
+        halfProton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         this.halfNeutron = new Texture("neutronHalf.png");
+        halfNeutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
         this.gluonPoints = molecule.getGluons();
     }
@@ -45,8 +48,6 @@ public class MoleculeViewable implements IViewable {
 
     public void render(SpriteBatch batch){
         batch.begin();
-        drawGluons(batch);
-
 
         batch.draw(moleculeTextureRegion,
                 Gdx.graphics.getWidth() / 2 - moleculeTexture.getWidth() / 2,
@@ -58,6 +59,8 @@ public class MoleculeViewable implements IViewable {
                 1.0f,
                 1.0f,
                 molecule.getRotation());
+
+        drawGluons(batch);
 
         batch.end();
     }
