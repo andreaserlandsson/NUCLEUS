@@ -36,7 +36,7 @@ public class GameController implements ControllerState {
         float effectiveRotationLength = delta.scalar(rOrthoUnit);
         Vector rotationVector = rOrthoUnit.multiply(effectiveRotationLength);
         float rotationAngle = (float) Math.atan(rotationVector.abs()/r.abs());
-        if (effectiveRotationLength<0)
+        if (effectiveRotationLength>0)
             rotationAngle = -rotationAngle;
         return rotationMultiplier * rotationAngle;
     }
