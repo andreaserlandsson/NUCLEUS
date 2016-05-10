@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuController;
+import com.nucleus.Controller.MenuListener;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
 import com.nucleus.ThirdParty.NInputAdapter;
@@ -33,15 +34,11 @@ public class StartScreen implements Screen {
     private ClickListener listener;
 
 
-
     public StartScreen()
     {
-        //this.cam = new OrthographicCamera(280, 560);
-        //cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
         //views.add(new BackgroundView());
 
-        this.listener = new MenuController();
+        this.listener = new MenuListener();
 
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("uiskin.json"));
@@ -84,9 +81,7 @@ public class StartScreen implements Screen {
 
         //Create Table
         Table mainTable = new Table();
-        //Set table to fill stage
         mainTable.setFillParent(true);
-        //Set alignment of contents in the table.
         mainTable.top();
         mainTable.padBottom(15f).padTop(30f);
 
@@ -95,22 +90,12 @@ public class StartScreen implements Screen {
         TextButton optionsButton = new TextButton("Options", skin);
         TextButton exitButton = new TextButton("Exit", skin);
 
-
-
         stage.addListener(listener);
 
         //Add listeners to buttons
         playButton.addListener(listener);
         optionsButton.addListener(listener);
-
-        exitButton.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.log("event:", event.toString());
-                Gdx.app.log("exitButton", "clicked");
-                Gdx.app.exit();
-            }
-        });
+        exitButton.addListener(listener);
 
         //Add buttons to table
         mainTable.add(playButton);
