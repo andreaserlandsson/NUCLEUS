@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
 
     public GameScreen(ILevel level){
         this.level = level;
-        this.cam = new OrthographicCamera(280, 560);
+        this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));

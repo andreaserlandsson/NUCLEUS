@@ -15,7 +15,7 @@ public class Level implements ILevel {
         RUNNING, PAUSED
     }
 
-    private GameState currentState;
+    private GameState currentState = GameState.RUNNING;
 
     private INucleonGun gun;
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
@@ -62,12 +62,10 @@ public class Level implements ILevel {
     }
 
     public boolean isOutOfBoundsCheck(INucleon nucleon){
-
         float x = nucleon.getPosition().getX();
         float y = nucleon.getPosition().getY();
         return x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
                 y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0;
-
     }
 
     //TODO: Check so this still works correctly with tests
@@ -81,8 +79,8 @@ public class Level implements ILevel {
         }
     }
 
-    private void removeNucleon(INucleon nuc){
-        airborneNucleons.remove(nuc);
+    private void removeNucleon(INucleon nucleon){
+        airborneNucleons.remove(nucleon);
     }
 
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
@@ -95,52 +93,55 @@ public class Level implements ILevel {
         System.out.println("You lost :(((");
     }
 
-    public void update(float delta){
-
+    public void collisionCheck(){
         INucleon collidingNucleon = null;
-        runTime += delta;
-
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
                 if (CollisionHandler.collision(gluon, nucleon)) {
-                        if (nucleon.getClass().equals(Proton.class)) {
-                            if (gluon.getProtonsNeeded() > 0){
-                                gluon.addProton();
-                                collidingNucleon = nucleon;
-                                System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
-                            }
-                            else {
-                                System.out.println("NOT HUNGRY BAD BAD BAD");
-                            }
+                    if (nucleon.getClass().equals(Proton.class)) {
+                        if (gluon.getProtonsNeeded() > 0){
+                            gluon.addProton();
+                            collidingNucleon = nucleon;
+                            System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
                         }
-
                         else {
-                            if (gluon.getNeutronsNeeded() > 0){
-                                gluon.addNeutron();
-                                collidingNucleon = nucleon;
-                                System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
-                            }
-                            else {
-                                System.out.println("NOT HUNGRY BAD BAD BAD");
-                            }
+                            System.out.println("NOT HUNGRY");
                         }
+                    }
+
+                    else {
+                        if (gluon.getNeutronsNeeded() > 0){
+                            gluon.addNeutron();
+                            collidingNucleon = nucleon;
+                            System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
+                        }
+                        else {
+                            System.out.println("NOT HUNGRY");
+                        }
+                    }
                 }
             }
         }
+
         if (collidingNucleon != null){
             removeNucleon(collidingNucleon);
         }
+    }
 
 
-        if(runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
-            lastUpdateTime = runTime;
-            airborneNucleons.add(gun.shoot());
+    public void update(float delta){
+        if(currentState==GameState.RUNNING) {
+            runTime += delta;
+            collisionCheck();
+            if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
+                lastUpdateTime = runTime;
+                airborneNucleons.add(gun.shoot());
+            }
+            for (INucleon nucleon : airborneNucleons) {
+                nucleon.update(delta);
+            }
+            removeOutOfBoundsNucleons();
         }
-        for(INucleon nucleon : airborneNucleons){
-            nucleon.update(delta);
-        }
-
-        removeOutOfBoundsNucleons();
     }
 
 
