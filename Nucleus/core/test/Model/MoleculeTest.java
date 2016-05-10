@@ -33,12 +33,14 @@ public class MoleculeTest {
 
 
     //molecule with three different gluonpoints.
-    IMolecule molecule = new Molecule(gluons);
+
+
+    IMolecule molecule = new Molecule(0,0,gluons);
 
     @Test
     public void testOfMoleculeGetRotation(){
 
-        IMolecule molecule1 = new Molecule(gluons);
+        IMolecule molecule1 = new Molecule(0,0,gluons);
 
         //initial rotation is set to 0
         assertTrue(molecule1.getRotation() == 0);
@@ -87,7 +89,7 @@ public class MoleculeTest {
     @Test
     public void testOfMoleculeSetRotation(){
 
-        IMolecule molecule2 = new Molecule(gluons);
+        IMolecule molecule2 = new Molecule(0,0,gluons);
         molecule2.setRotation(100);
         assertFalse(molecule2.getRotation() == 10);
         assertTrue(molecule2.getRotation() == 100);
