@@ -16,7 +16,6 @@ public class Level implements ILevel {
     private IMolecule molecule;
     private IGluonPoint[] gluons;
 
-
     public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
         this.width = width;
         this.height = height;
@@ -24,7 +23,6 @@ public class Level implements ILevel {
         this.molecule = molecule;
         this.gluons = gluons;
     }
-
 
     public int getWidth(){
         return width;
@@ -56,25 +54,39 @@ public class Level implements ILevel {
         airborneNucleons.add(nucleon);
     }
 
-    public void outOfBoundsCheck(){ // checks if any nucleons in airborne Nucleons is out of bounds
+    public boolean isOutOfBoundsCheck(INucleon nucleon){
+
+        float x = nucleon.getPosition().getX();
+        float y = nucleon.getPosition().getY();
+
+        return x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
+                y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0;
+
+
+    }
+
+    //TODO: Check so this still works correctly with tests
+    public void removeNeutron(){ // checks if any nucleons in airborne Nucleons is out of bounds
         for (int i=0; i<airborneNucleons.size(); i++){
             INucleon nucleon = airborneNucleons.get(i);
-            float x = nucleon.getPosition().getX();
-            float y = nucleon.getPosition().getY();
-            if (x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
-                    y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0){
+            if (isOutOfBoundsCheck(nucleon)){
                 airborneNucleons.remove(i);
                 i--;
             }
         }
     }
+
     private void removeNuc(INucleon nuc){
         airborneNucleons.remove(nuc);
     }
+
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
     //TODO: add a collision check that also evaluates which gluon point to fill
     //TODO: add a win check (molecule.isFull()) and after, a loss check (airborneNucleons is empty and gun is empty)
+
+    //Wtf is this?
     INucleon rem;
+
     public void update(float delta){
         runTime += delta;
         for (IGluonPoint gluon : gluons) {
@@ -103,7 +115,7 @@ public class Level implements ILevel {
         for(INucleon nucleon : airborneNucleons){
             nucleon.update(delta);
         }
-        outOfBoundsCheck();
+        removeNeutron();
     }
 
 

@@ -80,7 +80,7 @@ public class LevelTest {
 
         Level level = new Level(10, 10, gun, molecule,gluons);
         level.addAirborneNucleon(level.getNucleonGun().shoot());
-        level.outOfBoundsCheck();
+        level.removeNeutron();
         assertTrue(level.getAirborneNucleons().size() == 0);
     }
 
