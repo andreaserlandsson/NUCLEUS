@@ -5,9 +5,8 @@ public class Molecule implements IMolecule {
     private float rotation;
     public IGluonPoint[] gluons;
 
-    //VÄLDIGT TILLFÄLLIG!!!!!!!!
+    //Todo change from hardcoded values
     Vector centerT = new Vector(280/2,512/2);
-    //VÄLDIGT TILLFÄLLIG!!!!!!!!
 
     public Molecule(IGluonPoint[] gluons){
         this.gluons = gluons;
@@ -15,6 +14,7 @@ public class Molecule implements IMolecule {
 
     public void setRotation(float rot){
         rotation = rotation + rot;
+
         //temporärt
         for (IGluonPoint gluon : gluons) {
             Vector newPos = rotate(centerT, gluon.getPosition(), rot);

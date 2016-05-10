@@ -53,7 +53,7 @@ public class MockGluon implements IGluonPoint {
     }
 
     public int getNeutronsNeeded() {
-        return 0;
+        return neutronsNeeded;
     }
 
     //Need this method implemented for the MoleculeTest
@@ -68,6 +68,6 @@ public class MockGluon implements IGluonPoint {
     }
 
     public int getProtonsNeeded() {
-        return 0;
+        return protonsNeeded;
     }
 }
