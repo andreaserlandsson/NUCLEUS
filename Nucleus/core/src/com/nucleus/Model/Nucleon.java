@@ -7,7 +7,7 @@ public class Nucleon implements INucleon {
 
     private Vector position;
     private Vector velocity;
-    private final int radius = 0;   //Dummy value. Sizes will be used for collision detection purposes
+    private final int radius = 10;   //Dummy value. Sizes will be used for collision detection purposes
                                     //and will be properly determined later.
 
     public Nucleon(){

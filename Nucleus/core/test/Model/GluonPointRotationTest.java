@@ -20,7 +20,7 @@ public class GluonPointRotationTest {
     @Test
     public void rotate90DegreesRight(){
         gluonPos.setCoordinates(1,1);
-        double angle = 90.0;
+        double angle = -90.0;
         Vector rotatedPosition = m.rotate(centre,gluonPos,angle);
         Vector result = new Vector(1,-1);
         assertTrue(rotatedPosition.getX() == result.getX());
@@ -31,7 +31,7 @@ public class GluonPointRotationTest {
     @Test
     public void rotate90DegreesLeft(){
         gluonPos.setCoordinates(1,1);
-        double angle = -90.0;
+        double angle = 90.0;
         Vector rotatedPosition = m.rotate(centre,gluonPos,angle);
         Vector result = new Vector(-1,1);
         assertTrue(rotatedPosition.getX() == result.getX());
@@ -42,8 +42,8 @@ public class GluonPointRotationTest {
     @Test
     public void rotate90DegreesLeftThenRight(){
         gluonPos.setCoordinates(1,1);
-        double leftRotation = -90.0;
-        double rightRotation = 90;
+        double leftRotation = 90.0;
+        double rightRotation = -90;
         Vector leftRotated = m.rotate(centre,gluonPos,leftRotation);
         Vector rightRotated = m.rotate(centre,leftRotated,rightRotation);
         Vector result = new Vector(1,1);
@@ -56,7 +56,7 @@ public class GluonPointRotationTest {
     @Test
     public void negativeValuesAndRotationTest(){
         gluonPos.setCoordinates(-1,-1);
-        double rotation = -45.0;
+        double rotation = 45.0;
         Vector rotated = m.rotate(centre,gluonPos,rotation);
         Vector result = new Vector(-1.11E-16f,-1.414f);
         assertTrue(Math.abs(rotated.getX()-result.getX()) < 0.001);
@@ -67,7 +67,7 @@ public class GluonPointRotationTest {
     @Test
     public void oneDegreeRotation (){
         gluonPos.setCoordinates(1,1);
-        double rotation = -1;
+        double rotation = 1;
         Vector rotated = m.rotate(centre,gluonPos,rotation);
         Vector result = new Vector(0.9823f,1.017f);
         assertTrue(Math.abs(rotated.getX()-result.getX()) < 0.001);

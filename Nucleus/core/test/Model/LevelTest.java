@@ -44,7 +44,7 @@ public class LevelTest {
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
         INucleonGun gun = new NucleonGun(1,1,nucleons);
-        Level level = new Level(1, 1, gun, molecule);
+        Level level = new Level(1, 1, gun, molecule,gluons);
         assertTrue(level.getAirborneNucleons().size() == 0);
         level.addAirborneNucleon(new MockNucleon());
         assertTrue(level.getAirborneNucleons() != null);
@@ -59,7 +59,7 @@ public class LevelTest {
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
         INucleonGun gun = new NucleonGun(1,1,nucleons);
-        Level level = new Level(1, 1, gun, molecule);
+        Level level = new Level(1, 1, gun, molecule,gluons);
         assertTrue(level.getAirborneNucleons().size() == 0);
     }
 
@@ -78,7 +78,7 @@ public class LevelTest {
         nucleons.add(nucleon);
         INucleonGun gun = new MockNucleonGun(nucleons);
 
-        Level level = new Level(10, 10, gun, molecule);
+        Level level = new Level(10, 10, gun, molecule,gluons);
         level.addAirborneNucleon(level.getNucleonGun().shoot());
         level.outOfBoundsCheck();
         assertTrue(level.getAirborneNucleons().size() == 0);
@@ -99,7 +99,7 @@ public class LevelTest {
         nucleons.add(nucleon);
         INucleonGun gun = new MockNucleonGun(nucleons);
 
-        Level level = new Level(10, 10, gun, molecule);
+        Level level = new Level(10, 10, gun, molecule,gluons);
 
         level.update(1);
         assertTrue(level.getAirborneNucleons().get(0).getPosition().getX() == 2);
