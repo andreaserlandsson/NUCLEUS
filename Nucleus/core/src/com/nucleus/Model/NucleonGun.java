@@ -15,6 +15,7 @@ public class NucleonGun implements INucleonGun {
     private int difficultyMultiplier;
 
     public NucleonGun(int width, int height, ArrayList<INucleon> nucleons, int difficultyMultiplier){
+
         nucleonList = nucleons;
         this.height = height;
         this.width = width;

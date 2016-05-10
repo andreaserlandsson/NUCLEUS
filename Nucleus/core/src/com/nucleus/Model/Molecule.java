@@ -3,14 +3,16 @@ package com.nucleus.Model;
 
 public class Molecule implements IMolecule {
     private float rotation;
+    private int width;
+    private int height;
     public IGluonPoint[] gluons;
-
-    //Todo change from hardcoded values
-    Vector centerT;
+    private Vector centerT;
     public Molecule(int width, int heigth,IGluonPoint[] gluons){
         this.gluons = gluons;
         centerT = new Vector(width/2, heigth/2);
+
     }
+
 
     public void setRotation(float rot){
         rotation = rotation + rot;

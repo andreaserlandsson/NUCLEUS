@@ -34,6 +34,7 @@ public class MoleculeTest {
 
     //molecule with three different gluonpoints.
 
+
     IMolecule molecule = new Molecule(0,0,gluons);
 
     @Test
