@@ -58,25 +58,23 @@ public class Level implements ILevel {
 
         float x = nucleon.getPosition().getX();
         float y = nucleon.getPosition().getY();
-
         return x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
                 y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0;
-
 
     }
 
     //TODO: Check so this still works correctly with tests
-    public void removeNeutron(){ // checks if any nucleons in airborne Nucleons is out of bounds
+    public void removeOutOfBoundsNucleons(){ // checks if any nucleons in airborne Nucleons is out of bounds
         for (int i=0; i<airborneNucleons.size(); i++){
             INucleon nucleon = airborneNucleons.get(i);
             if (isOutOfBoundsCheck(nucleon)){
-                airborneNucleons.remove(i);
+                removeNucleon(nucleon);
                 i--;
             }
         }
     }
 
-    private void removeNuc(INucleon nuc){
+    private void removeNucleon(INucleon nuc){
         airborneNucleons.remove(nuc);
     }
 
@@ -106,7 +104,7 @@ public class Level implements ILevel {
                 }
             }
         }
-        //removeNuc(rem);
+        //removeNucleon(rem);
 
         if(runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
             lastUpdateTime = runTime;
@@ -115,7 +113,7 @@ public class Level implements ILevel {
         for(INucleon nucleon : airborneNucleons){
             nucleon.update(delta);
         }
-        removeNeutron();
+        removeOutOfBoundsNucleons();
     }
 
 
