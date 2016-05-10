@@ -3,21 +3,25 @@ package com.nucleus.Model;
 
 public class Molecule implements IMolecule {
     private float rotation;
+    private int width;
+    private int height;
+    private Vector center;
     public IGluonPoint[] gluons;
 
-    //Todo change from hardcoded values
-    Vector centerT = new Vector(280/2,512/2);
 
-    public Molecule(IGluonPoint[] gluons){
+    public Molecule(int width, int height, IGluonPoint[] gluons){
         this.gluons = gluons;
+        center = new Vector(width,height);
+
     }
+
 
     public void setRotation(float rot){
         rotation = rotation + rot;
 
         //temporärt
         for (IGluonPoint gluon : gluons) {
-            Vector newPos = rotate(centerT, gluon.getPosition(), rot);
+            Vector newPos = rotate(center, gluon.getPosition(), rot);
             gluon.setPosition(newPos.getX(), newPos.getY());
         }
     }

@@ -12,12 +12,14 @@ public class NucleonGun implements INucleonGun {
     private int arrayIndex;
     private int width;
     private int height;
+    private int difficultMultiplier;
 
-    public NucleonGun(int width, int height, ArrayList<INucleon> nucleons){
+    public NucleonGun(int width, int height, ArrayList<INucleon> nucleons, int difficultMultiplier){
         nucleonList = nucleons;
         this.height = height;
         this.width = width;
         arrayIndex = nucleonList.size() - 1;
+        this.difficultMultiplier = difficultMultiplier;
     }
     //Temporary method
     public int getAmmoLeft(){
@@ -60,7 +62,7 @@ public class NucleonGun implements INucleonGun {
             }
 
         Vector velocityVect = new Vector(width/2.0f,height/2.0f).subtract(a.getPosition());
-        a.setVelocity(velocityVect.getX()/3, velocityVect.getY()/3);
+        a.setVelocity(difficultMultiplier*velocityVect.getX()/3, difficultMultiplier*velocityVect.getY()/3);
         return a;
     }
 
