@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
 import com.nucleus.Views.IView;
 import com.nucleus.Views.BackgroundView;
@@ -17,14 +18,14 @@ import java.util.List;
  * Created by erik on 25/04/16.
  */
 public class GameScreen implements Screen {
-    private Level level;
+    private ILevel level;
 
     private List<IView> views = new ArrayList<IView>();
     //private OrthographicCamera cam;
 
     private SpriteBatch batch;
 
-    public GameScreen(Level level){
+    public GameScreen(ILevel level){
         this.level = level;
         //this.cam = new OrthographicCamera(280, 560);
         //cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
