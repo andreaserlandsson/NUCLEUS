@@ -1,43 +1,27 @@
 package com.nucleus.Controller;
 
+import com.nucleus.ThirdParty.MenuControllerAdapter;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.nucleus.Model.ILevel;
-import com.nucleus.Screens.GameScreen;
-import com.nucleus.Screens.LevelChooseScreen;
-import com.nucleus.ThirdParty.NInputAdapter;
-import com.nucleus.Utils.LevelBuilder;
-
+/**
+ * Created by Quaxi on 10/05/16.
+ */
 public class MenuController {
 
-    public void changeLevel(int levelNum){
+    MenuControllerAdapter adapter;
 
-        Gdx.app.log("level1Button", "received");
-
-        ILevel level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), levelNum);
-        Gdx.input.setInputProcessor(new NInputAdapter(level));
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(level));
-
-    }
-    
-    public void startLevelChoose(int levelNum){
-
-        ILevel level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
-        Gdx.input.setInputProcessor(new NInputAdapter(level));
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen());
-
+    public MenuController() {
+        adapter = new MenuControllerAdapter();
     }
 
-    private void options(){
-
+    public void startLevelChoose(int i) {
+        adapter.startLevelChoose(i);
     }
 
-    public void exit(){
-        Gdx.app.exit();
+    public void exit() {
+        adapter.exit();
     }
 
-
-
-
+    public void changeLevel(int i) {
+        adapter.changeLevel(i);
+    }
 }
