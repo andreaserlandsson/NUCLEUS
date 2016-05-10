@@ -23,7 +23,6 @@ public class LevelMenuListener extends ClickListener {
         }
 
         if (event.getTarget().toString().equals("Label: Options")){
-
             //DO STUFF
         }
 

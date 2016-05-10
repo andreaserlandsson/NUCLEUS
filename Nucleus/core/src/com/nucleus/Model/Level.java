@@ -105,7 +105,10 @@ public class Level implements ILevel {
                                 gluon.addProton();
                                 nucleon.setVelocity(0,0);
                                 collidingNucleon = nucleon;
-                                System.out.println("Ate neutron!" + gluon.getProtonsNeeded() + " Protons left");
+                                System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
+                            }
+                            else {
+                                System.out.println("NOT HUNGRY BAD BAD BAD");
                             }
                         }
 
@@ -114,7 +117,10 @@ public class Level implements ILevel {
                                 gluon.addNeutron();
                                 nucleon.setVelocity(0,0);
                                 collidingNucleon = nucleon;
-                                System.out.println(gluon.getNeutronsNeeded() + " Neutrons left" );
+                                System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
+                            }
+                            else {
+                                System.out.println("NOT HUNGRY BAD BAD BAD");
                             }
                         }
                 }
@@ -122,10 +128,6 @@ public class Level implements ILevel {
         }
         if (collidingNucleon != null){
             removeNucleon(collidingNucleon);
-        }
-
-        if (molecule.isFull()){
-            winGame();
         }
 
 
