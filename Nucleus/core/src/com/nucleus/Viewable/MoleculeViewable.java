@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.nucleus.Model.GluonPoint;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.IMolecule;
 
@@ -27,10 +26,7 @@ public class MoleculeViewable implements IViewable {
         this.gluonPoints = molecule.getGluons();
     }
 
-
-    public void render(SpriteBatch batch){
-        batch.begin();
-
+    private void drawGluons(SpriteBatch batch){
         for (IGluonPoint gluonPoint : gluonPoints) {
 
             if (gluonPoint.getNeutronsNeeded() <= 0){
@@ -45,6 +41,12 @@ public class MoleculeViewable implements IViewable {
                 batch.draw(halfProton, x, y);
             }
         }
+    }
+
+    public void render(SpriteBatch batch){
+        batch.begin();
+        drawGluons(batch);
+
 
         batch.draw(moleculeTextureRegion,
                 Gdx.graphics.getWidth() / 2 - moleculeTexture.getWidth() / 2,
