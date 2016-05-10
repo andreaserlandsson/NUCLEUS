@@ -80,9 +80,6 @@ public class Level implements ILevel {
     }
 
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
-    //TODO: add a collision check that also evaluates which gluon point to fill
-    //TODO: add a win check (molecule.isFull()) and after, a loss check (airborneNucleons is empty and gun is empty)
-
 
     private void winGame() {
         System.out.println("YOU HAVE WON YAY!!");
