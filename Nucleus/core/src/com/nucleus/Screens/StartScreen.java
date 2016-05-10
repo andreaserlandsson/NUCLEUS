@@ -72,6 +72,7 @@ public class StartScreen implements Screen {
         camera.update();
     }
 
+
     @Override
     public void show(){
         Gdx.app.log("GameScreen", "showing");

@@ -22,6 +22,14 @@ public class GluonPoint implements IGluonPoint {
         return position;
     }
 
+    public float getX(){
+        return position.getX();
+    }
+
+    public float getY(){
+        return position.getY();
+    }
+
     public void setPosition(float x, float y){
         position.setCoordinates(x, y);
     }
@@ -29,7 +37,6 @@ public class GluonPoint implements IGluonPoint {
     public int getRadius(){
         return radius;
     }
-
 
     public boolean addNeutron() { // if this returns false the game is lost
         if (!isFull() && neutronsNeeded > 0) {

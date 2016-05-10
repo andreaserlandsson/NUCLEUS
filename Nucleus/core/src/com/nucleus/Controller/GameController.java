@@ -22,6 +22,8 @@ public class GameController implements ControllerState {
         System.out.println("GLUON POINT X ==" + gluons[0].getPosition().getX());
         System.out.println("GLUON POINT y ==" + gluons[0].getPosition().getY());
 
+
+        return;
     }
 
     public void drag(int screenX, int screenY, int pointer){

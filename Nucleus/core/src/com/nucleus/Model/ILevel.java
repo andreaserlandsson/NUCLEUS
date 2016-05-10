@@ -10,7 +10,7 @@ public interface ILevel {
     List<INucleon> getAirborneNucleons();
      IMolecule getMolecule();
     void addAirborneNucleon(INucleon nucleon);
-    void outOfBoundsCheck();
+    void removeOutOfBoundsNucleons();
     void update(float delta);
     IGluonPoint[] getGluons();
 

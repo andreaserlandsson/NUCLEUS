@@ -2,11 +2,11 @@ package com.nucleus.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.nucleus.Model.CollisionHandler;
-import com.nucleus.Model.IGluonPoint;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Viewable.IViewable;
 import com.nucleus.Viewable.BackgroundViewable;
@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class GameScreen implements Screen {
     private ILevel level;
+
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
@@ -37,6 +38,8 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
     }
+
+
 
     @Override
     public void render(float delta) {
@@ -58,6 +61,8 @@ public class GameScreen implements Screen {
     public void show(){
         Gdx.app.log("GameScreen", "showing");
     }
+
+
 
     @Override
     public void hide(){

@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.LevelMenuListener;
 import com.nucleus.Controller.MenuListener;
 
 /**
@@ -32,7 +31,7 @@ public class LevelChooseScreen implements Screen {
     {
 
         //Initialising graphics
-        listener = new LevelMenuListener();
+        listener = new MenuListener();
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("uiskin.json"));
         camera = new OrthographicCamera();

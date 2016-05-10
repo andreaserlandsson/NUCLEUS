@@ -22,8 +22,6 @@ public class Molecule implements IMolecule {
         }
     }
 
-
-
     public float getRotation(){
         return rotation;
     }
