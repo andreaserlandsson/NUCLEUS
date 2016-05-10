@@ -13,6 +13,16 @@ public class MenuController {
 
     public void changeLevel(int levelNum){
 
+        Gdx.app.log("level1Button", "received");
+
+        ILevel level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), levelNum);
+        Gdx.input.setInputProcessor(new NInputAdapter(level));
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(level));
+
+    }
+    
+    public void startLevelChoose(int levelNum){
+
         ILevel level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
         Gdx.input.setInputProcessor(new NInputAdapter(level));
         ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen());
@@ -26,6 +36,8 @@ public class MenuController {
     public void exit(){
         Gdx.app.exit();
     }
+
+
 
 
 }
