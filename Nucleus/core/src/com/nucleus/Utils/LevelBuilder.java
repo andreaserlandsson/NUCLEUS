@@ -1,12 +1,22 @@
 package com.nucleus.Utils;
 
+import com.nucleus.Model.IMolecule;
+import com.nucleus.Model.INucleon;
+import com.nucleus.Model.INucleonGun;
+import com.nucleus.Model.Level;
+import com.nucleus.Model.Molecule;
+import com.nucleus.Model.Neutron;
+import com.nucleus.Model.NucleonGun;
+import com.nucleus.Model.Proton;
+import com.nucleus.Model.Vector;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class LevelBuilder {
 
     // Builds level and from all data that is needed for that certain level.
-    public static com.nucleus.Model.Level buildLevel(int width, int height, int levelNr) {
+    public static Level buildLevel(int width, int height, int levelNr) {
         LevelData levelData = null;
         try {
             levelData = LevelParser.levelParse(levelNr);
@@ -19,23 +29,23 @@ public class LevelBuilder {
         // Scrambles it before passing, so that there is a random order of protons/neutrons.
         if (levelData != null) {
 
-            ArrayList<com.nucleus.Model.INucleon> nucleonList = new ArrayList<com.nucleus.Model.INucleon>(levelData.noOfProtons + levelData.noOfNeutrons);
+            ArrayList<INucleon> nucleonList = new ArrayList<INucleon>(levelData.noOfProtons + levelData.noOfNeutrons);
             for (int i = 0; i < levelData.noOfNeutrons; i++) {
-                com.nucleus.Model.Vector pos = new com.nucleus.Model.Vector(0,0);
-                com.nucleus.Model.Vector vel = new com.nucleus.Model.Vector(0,0);
-                nucleonList.add(new com.nucleus.Model.Neutron(pos,vel));
+                Vector pos = new Vector(0,0);
+                Vector vel = new Vector(0,0);
+                nucleonList.add(new Neutron(pos,vel));
             }
             for (int y = 0; y < levelData.noOfProtons; y++) {
-                com.nucleus.Model.Vector pos = new com.nucleus.Model.Vector(0,0);
-                com.nucleus.Model.Vector vel = new com.nucleus.Model.Vector(0,0);
-                nucleonList.add(new com.nucleus.Model.Proton(pos,vel));
+                Vector pos = new Vector(0,0);
+                Vector vel = new Vector(0,0);
+                nucleonList.add(new Proton(pos,vel));
             }
             Collections.shuffle(nucleonList);
 
-            com.nucleus.Model.INucleonGun nucleonGun = new com.nucleus.Model.NucleonGun(width, height, nucleonList);
-            com.nucleus.Model.IMolecule molecule = new com.nucleus.Model.Molecule(levelData.gluonPoints);
+            INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList);
+            IMolecule molecule = new Molecule(levelData.gluonPoints);
 
-            return new com.nucleus.Model.Level(width, height, nucleonGun, molecule);
+            return new Level(width, height, nucleonGun, molecule, levelData.gluonPoints);
         }
         return null;
 

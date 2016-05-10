@@ -6,14 +6,14 @@ import java.util.Random;
 /**
  * Created by erik on 19/04/16.
  */
-public class NucleonGun implements com.nucleus.Model.INucleonGun {
+public class NucleonGun implements INucleonGun {
 
-    private ArrayList<com.nucleus.Model.INucleon> nucleonList = new ArrayList<com.nucleus.Model.INucleon>();
+    private ArrayList<INucleon> nucleonList = new ArrayList<com.nucleus.Model.INucleon>();
     private int arrayIndex;
     private int width;
     private int height;
 
-    public NucleonGun(int width, int height, ArrayList<com.nucleus.Model.INucleon> nucleons){
+    public NucleonGun(int width, int height, ArrayList<INucleon> nucleons){
         nucleonList = nucleons;
         this.height = height;
         this.width = width;
@@ -26,8 +26,8 @@ public class NucleonGun implements com.nucleus.Model.INucleonGun {
 
     @Override
     //TODO: some sort of normalization of the velocity vector for easier manipulation according to difficultyMultiplier
-    public com.nucleus.Model.INucleon shoot() {
-        com.nucleus.Model.INucleon a = nucleonList.get(arrayIndex);
+    public INucleon shoot() {
+        INucleon a = nucleonList.get(arrayIndex);
         nucleonList.remove(arrayIndex);
         arrayIndex --;
 
@@ -59,8 +59,8 @@ public class NucleonGun implements com.nucleus.Model.INucleonGun {
                 break;
             }
 
-        Vector velocityVect = new Vector(width/2.0f,(float)height/2.0f).subtract(a.getPosition());
-        a.setVelocity(velocityVect.getX(), velocityVect.getY());
+        Vector velocityVect = new Vector(width/2.0f,height/2.0f).subtract(a.getPosition());
+        a.setVelocity(velocityVect.getX()/3, velocityVect.getY()/3);
         return a;
     }
 

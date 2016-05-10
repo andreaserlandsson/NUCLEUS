@@ -9,7 +9,7 @@ public class LevelParser {
 
 
     //private static int[] intList;   //obsolete?
-    public static com.nucleus.Utils.LevelData levelParse(int level) throws LevelNotExistingException {
+    public static LevelData levelParse(int level) throws LevelNotExistingException {
         return splitLevelString((readFromFile(level)));
     }
 
@@ -32,7 +32,7 @@ public class LevelParser {
     }
 
     //split a string where there is a new line
-    public static com.nucleus.Utils.LevelData splitLevelString (String str) {
+    public static LevelData splitLevelString (String str) {
         String temp = str.replaceAll(" ", "\n");
         String[] strings = temp.split("\n");
         int[] levelField = new int[strings.length];
@@ -40,8 +40,7 @@ public class LevelParser {
         {
             levelField[i] = Integer.parseInt(strings[i]);
         }
-        com.nucleus.Utils.LevelData levelData = new com.nucleus.Utils.LevelData(levelField);
-        return levelData;
+        return new LevelData(levelField);
     }
 
 }

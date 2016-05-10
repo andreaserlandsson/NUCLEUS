@@ -9,13 +9,15 @@ import com.nucleus.Screens.LevelChooseScreen;
 import com.nucleus.ThirdParty.NInputAdapter;
 import com.nucleus.Utils.LevelBuilder;
 
-public class MenuController {
+public class LevelMenuController {
 
     public void changeLevel(int levelNum){
 
-        ILevel level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 1);
+        Gdx.app.log("level1Button", "received");
+
+        ILevel level = LevelBuilder.buildLevel(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), levelNum);
         Gdx.input.setInputProcessor(new NInputAdapter(level));
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen());
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(level));
 
     }
 

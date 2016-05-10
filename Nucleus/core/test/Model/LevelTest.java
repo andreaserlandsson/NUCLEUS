@@ -17,6 +17,8 @@ import mocks.MockGluon;
 import mocks.MockNucleon;
 import mocks.MockNucleonGun;
 
+
+
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -35,14 +37,14 @@ public class LevelTest {
 
     @Test
     public void testGetNucleons() {
-        Vector gluonPos = new Vector(1,1);
+
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(gluonPos,1,1);
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
         INucleonGun gun = new NucleonGun(1,1,nucleons);
-        Level level = new Level(1, 1, gun, molecule);
+        Level level = new Level(1, 1, gun, molecule,gluons);
         assertTrue(level.getAirborneNucleons().size() == 0);
         level.addAirborneNucleon(new MockNucleon());
         assertTrue(level.getAirborneNucleons() != null);
@@ -50,22 +52,23 @@ public class LevelTest {
 
     @Test
     public void testGetNucleonsWhenEmpty(){
-        Vector gluonPos = new Vector(0,0);
+
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(gluonPos,1,1);
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
         INucleonGun gun = new NucleonGun(1,1,nucleons);
-        Level level = new Level(1, 1, gun, molecule);
+        Level level = new Level(1, 1, gun, molecule,gluons);
         assertTrue(level.getAirborneNucleons().size() == 0);
     }
 
     @Test
     public void testOutOfBounds(){
-        Vector gluonPos = new Vector(0,0);
+
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(gluonPos,1,1);
+
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -75,7 +78,7 @@ public class LevelTest {
         nucleons.add(nucleon);
         INucleonGun gun = new MockNucleonGun(nucleons);
 
-        Level level = new Level(10, 10, gun, molecule);
+        Level level = new Level(10, 10, gun, molecule,gluons);
         level.addAirborneNucleon(level.getNucleonGun().shoot());
         level.outOfBoundsCheck();
         assertTrue(level.getAirborneNucleons().size() == 0);
@@ -83,9 +86,10 @@ public class LevelTest {
 
     @Test
     public void testUpdate(){
-        Vector gluonPos = new Vector(1,1);
+
         IGluonPoint[] gluons = new MockGluon[1];
-        gluons[0] = new MockGluon(gluonPos,1,1);
+
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
         Molecule molecule = new Molecule(gluons);
 
         ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
@@ -95,7 +99,7 @@ public class LevelTest {
         nucleons.add(nucleon);
         INucleonGun gun = new MockNucleonGun(nucleons);
 
-        Level level = new Level(10, 10, gun, molecule);
+        Level level = new Level(10, 10, gun, molecule,gluons);
 
         level.update(1);
         assertTrue(level.getAirborneNucleons().get(0).getPosition().getX() == 2);

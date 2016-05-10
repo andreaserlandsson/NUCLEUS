@@ -8,10 +8,11 @@ public interface ILevel {
     int getHeight();
     INucleonGun getNucleonGun();
     List<INucleon> getAirborneNucleons();
-    public IMolecule getMolecule();
+     IMolecule getMolecule();
     void addAirborneNucleon(INucleon nucleon);
     void outOfBoundsCheck();
     void update(float delta);
+    IGluonPoint[] getGluons();
 
 
 }

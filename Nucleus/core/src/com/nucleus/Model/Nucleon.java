@@ -3,11 +3,11 @@ package com.nucleus.Model;
 /**
  * Created by erik on 19/04/16.
  */
-public class Nucleon implements com.nucleus.Model.INucleon {
+public class Nucleon implements INucleon {
 
     private Vector position;
     private Vector velocity;
-    private final int radius = 0;   //Dummy value. Sizes will be used for collision detection purposes
+    private final int radius = 10;   //Dummy value. Sizes will be used for collision detection purposes
                                     //and will be properly determined later.
 
     public Nucleon(){

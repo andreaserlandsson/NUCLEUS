@@ -9,17 +9,18 @@ import com.nucleus.Model.Vector;
  */
 public class MockMolecule implements IMolecule {
 
-    private int rotation = 0;
+    private float rotation = 0;
     private IGluonPoint[] gluons;
 
     public MockMolecule(IGluonPoint[] gluons){
         this.gluons = gluons;
     }
 
-    public void setRotation(int r){
+    public void setRotation(float r){
         rotation=r;
     }
 
+<<<<<<< HEAD
     @Override
     public int getNrOfGluonPoint() {
         return gluons.length;
@@ -35,6 +36,8 @@ public class MockMolecule implements IMolecule {
 
     }
 
+=======
+>>>>>>> develop
     public float getRotation(){
         return rotation;
     }
