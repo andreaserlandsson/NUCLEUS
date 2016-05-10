@@ -6,6 +6,5 @@ public interface IMolecule {
     float getRotation();
     boolean isFull();
     Vector rotate(Vector v1, Vector v2, double d);
-
-
+    IGluonPoint[] getGluons();
 }

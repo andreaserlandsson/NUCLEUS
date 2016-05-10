@@ -19,6 +19,7 @@ public class NucleonGun implements INucleonGun {
         this.width = width;
         arrayIndex = nucleonList.size() - 1;
     }
+
     //Temporary method
     public int getAmmoLeft(){
         return nucleonList.size();

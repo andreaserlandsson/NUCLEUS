@@ -100,7 +100,6 @@ public class Level implements ILevel {
                         if (nucleon.getClass().equals(Proton.class)) {
                             if (gluon.getProtonsNeeded() > 0){
                                 gluon.addProton();
-                                nucleon.setVelocity(0,0);
                                 collidingNucleon = nucleon;
                                 System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
                             }
@@ -112,7 +111,6 @@ public class Level implements ILevel {
                         else {
                             if (gluon.getNeutronsNeeded() > 0){
                                 gluon.addNeutron();
-                                nucleon.setVelocity(0,0);
                                 collidingNucleon = nucleon;
                                 System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
                             }
