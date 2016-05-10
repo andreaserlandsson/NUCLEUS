@@ -1,18 +1,11 @@
 package Model;
 
-import com.nucleus.Model.IMolecule;
-import com.nucleus.Model.IGluonPoint;
-
 import org.junit.Test;
 
 
 import mocks.MockGluon;
 
-import com.nucleus.Model.Molecule;
 import com.nucleus.Model.Vector;
-
-import mocks.MockGluonForMoleculeTest;
-import mocks.MockMolecule;
 
 
 import static  org.junit.Assert.assertFalse;
@@ -27,9 +20,9 @@ public class MoleculeTest {
     Vector v3 = new Vector(3,3);
 
 
-    com.nucleus.Model.IGluonPoint gluon1 = new MockGluonForMoleculeTest(v1,1,1);
-    com.nucleus.Model.IGluonPoint gluon2 = new MockGluonForMoleculeTest(v2,1,1);
-    com.nucleus.Model.IGluonPoint gluon3 = new MockGluonForMoleculeTest(v3,1,1);
+    com.nucleus.Model.IGluonPoint gluon1 = new MockGluon(v1,1,1);
+    com.nucleus.Model.IGluonPoint gluon2 = new MockGluon(v2,1,1);
+    com.nucleus.Model.IGluonPoint gluon3 = new MockGluon(v3,1,1);
 
 
 
@@ -37,11 +30,13 @@ public class MoleculeTest {
     com.nucleus.Model.IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
 
     //molecule with three different gluonpoints.
-   com.nucleus.Model.IMolecule molecule = new com.nucleus.Model.Molecule(gluons);
+    com.nucleus.Model.IMolecule molecule = new com.nucleus.Model.Molecule(gluons);
 
 
-    //TODO more tests since Molecule has new methods.
-
+    @Test
+    public void testOfMoleculeSetRotation(){
+        //TODO
+    }
 
 
     @Test
@@ -57,13 +52,11 @@ public class MoleculeTest {
     @Test
     public void testOfMoleculeIsFull(){
 
-
         //since mockgluons are hard coded to isFull() = true,
         //molecule will also be full
 
         //Got a molecule with 3 different points.
         //The molecule won't be full until all those are full..
-
 
         assertFalse(gluon1.isFull());
         assertFalse(gluon2.isFull());
@@ -95,8 +88,10 @@ public class MoleculeTest {
         //Now the gluonPoints 1, 2  and 3 are full.
         //And so should the molecule
         assertTrue(molecule.isFull());
+    }
 
-        
-
+    @Test
+    public void testOfMoleculeRotate(){
+        //TODO
     }
 }
