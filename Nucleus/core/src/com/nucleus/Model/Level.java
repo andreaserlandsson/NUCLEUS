@@ -81,62 +81,73 @@ public class Level implements ILevel {
 
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
-    private void winGame() {
-        System.out.println("YOU HAVE WON YAY!!");
+    private void checkWinGame() {
+
+        if (molecule.isFull()) {
+            System.out.println("you win");
+            //end the game, do some sort of pop-up?
+        }
     }
 
     private void loseGame(){
+
         System.out.println("You lost :(((");
+        //end the game, do some sort of pop-up?
     }
 
     public void update(float delta){
 
-        INucleon collidingNucleon = null;
-        runTime += delta;
+        checkWinGame();
 
-        for (IGluonPoint gluon : gluons) {
-            for (INucleon nucleon : airborneNucleons){
-                if (CollisionHandler.collision(gluon, nucleon)) {
+        if (gun.isEmpty() && airborneNucleons.isEmpty()) { // if the gun is empty and there is no airbourn nucleons (i.e. no nucleons on the screen) you lose
+
+            loseGame();
+
+        } else {
+
+            INucleon collidingNucleon = null;
+            runTime += delta;
+
+            for (IGluonPoint gluon : gluons) {
+                for (INucleon nucleon : airborneNucleons) {
+                    if (CollisionHandler.collision(gluon, nucleon)) {
                         if (nucleon.getClass().equals(Proton.class)) {
-                            if (gluon.getProtonsNeeded() > 0){
+                            if (gluon.getProtonsNeeded() > 0) {
                                 gluon.addProton();
-                                nucleon.setVelocity(0,0);
+                                nucleon.setVelocity(0, 0);
                                 collidingNucleon = nucleon;
-                                System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
+                                checkWinGame();
+                            } else {
+                                loseGame();
                             }
-                            else {
-                                System.out.println("NOT HUNGRY BAD BAD BAD");
-                            }
-                        }
-
-                        else {
-                            if (gluon.getNeutronsNeeded() > 0){
+                        } else {
+                            if (gluon.getNeutronsNeeded() > 0) {
                                 gluon.addNeutron();
-                                nucleon.setVelocity(0,0);
+                                nucleon.setVelocity(0, 0);
                                 collidingNucleon = nucleon;
-                                System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
-                            }
-                            else {
-                                System.out.println("NOT HUNGRY BAD BAD BAD");
+                                checkWinGame();
+                            } else {
+                                loseGame();
                             }
                         }
+                    }
                 }
             }
-        }
-        if (collidingNucleon != null){
-            removeNucleon(collidingNucleon);
-        }
+            if (collidingNucleon != null) {
+                removeNucleon(collidingNucleon);
+            }
 
 
-        if(runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
-            lastUpdateTime = runTime;
-            airborneNucleons.add(gun.shoot());
-        }
-        for(INucleon nucleon : airborneNucleons){
-            nucleon.update(delta);
-        }
+            if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
+                lastUpdateTime = runTime;
+                airborneNucleons.add(gun.shoot());
+            }
+            for (INucleon nucleon : airborneNucleons) {
+                nucleon.update(delta);
+            }
 
-        removeOutOfBoundsNucleons();
+            removeOutOfBoundsNucleons();
+        }
     }
 
 
