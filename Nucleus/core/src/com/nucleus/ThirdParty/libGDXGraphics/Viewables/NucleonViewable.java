@@ -1,4 +1,4 @@
-package com.nucleus.Viewable;
+package com.nucleus.ThirdParty.libGDXGraphics.Viewables;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -25,8 +25,8 @@ public class NucleonViewable implements IViewable {
         //Adding textures
         proton = new Texture("proton.png");
         neutron = new Texture("neutron.png");
-        protonLargeTrail = new Texture("tailProton1.png");
-        neutronLargeTrail = new Texture("tailNeutron1.png");
+        protonLargeTrail = new Texture("tailProton2.png");
+        neutronLargeTrail = new Texture("tailNeutron2.png");
 
         //Fitting rotated textures into textureregions
         protonLargeTrailRegion = new TextureRegion(protonLargeTrail, protonLargeTrail.getWidth(), protonLargeTrail.getHeight());

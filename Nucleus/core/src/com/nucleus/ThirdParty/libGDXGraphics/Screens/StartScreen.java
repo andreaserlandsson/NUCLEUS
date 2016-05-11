@@ -1,4 +1,4 @@
-package com.nucleus.Screens;
+package com.nucleus.ThirdParty.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -17,7 +17,7 @@ import com.nucleus.Controller.MenuListener;
 /**
  * Created by Quaxi on 04/05/16.
  */
-public class LevelChooseScreen implements Screen {
+public class StartScreen implements Screen {
 
     private SpriteBatch batch;
     protected Stage stage;
@@ -27,11 +27,12 @@ public class LevelChooseScreen implements Screen {
     private ClickListener listener;
 
 
-    public LevelChooseScreen()
+    public StartScreen()
     {
+        //views.add(new BackgroundView());
 
+        this.listener = new MenuListener();
         //Initialising graphics
-        listener = new MenuListener();
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("uiskin.json"));
         camera = new OrthographicCamera();
@@ -62,6 +63,7 @@ public class LevelChooseScreen implements Screen {
         camera.update();
     }
 
+
     @Override
     public void show(){
         Gdx.app.log("GameScreen", "showing");
@@ -73,24 +75,23 @@ public class LevelChooseScreen implements Screen {
         mainTable.padBottom(15f).padTop(30f);
 
         //Create buttons
-        TextButton level1Button = new TextButton("Level 1", skin);
-        TextButton level2Button = new TextButton("Level 2", skin);
-        TextButton level3Button = new TextButton("Level 3", skin);
+        TextButton playButton = new TextButton("Play", skin);
+        TextButton optionsButton = new TextButton("Options", skin);
+        TextButton exitButton = new TextButton("Exit", skin);
 
         stage.addListener(listener);
 
         //Add listeners to buttons
-        level1Button.addListener(listener);
-        level2Button.addListener(listener);
-        level3Button.addListener(listener);
+        playButton.addListener(listener);
+        optionsButton.addListener(listener);
+        exitButton.addListener(listener);
 
         //Add buttons to table
-        mainTable.add(level1Button);
+        mainTable.add(playButton);
         mainTable.row();
-        mainTable.add(level2Button);
+        mainTable.add(optionsButton);
         mainTable.row();
-        mainTable.add(level3Button);
-
+        mainTable.add(exitButton);
 
         //Add table to stage
         stage.addActor(mainTable);

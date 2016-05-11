@@ -1,4 +1,4 @@
-package com.nucleus.Screens;
+package com.nucleus.ThirdParty.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Viewable.BackgroundViewable;
-import com.nucleus.Viewable.IViewable;
-import com.nucleus.Viewable.MoleculeViewable;
-import com.nucleus.Viewable.NucleonViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
 
 import java.util.ArrayList;
 import java.util.List;

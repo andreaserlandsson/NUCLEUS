@@ -3,7 +3,7 @@ package com.nucleus.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.nucleus.ThirdParty.NucleusGame;
+import com.nucleus.ThirdParty.libGDXControllers.NucleusGameCreator;
 
 public class HtmlLauncher extends GwtApplication {
 
@@ -14,6 +14,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener createApplicationListener () {
-                return new NucleusGame();
+                return new NucleusGameCreator();
         }
 }
