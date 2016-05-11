@@ -18,14 +18,10 @@ public class NucleusGameCreator extends Game {
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
         adapter = new GameControllerAdapter(this);
 
-
-
-        createGame();
-
     }
 
-    public void createGame(){
-        setScreen(new StartScreen());
+    public void createGame(String[] buttons){
+        setScreen(new StartScreen(buttons));
     }
 
     @Override

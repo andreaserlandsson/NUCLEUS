@@ -25,12 +25,14 @@ public class StartScreen implements Screen {
     private OrthographicCamera camera;
     protected Skin skin;
     private ClickListener listener;
+    private String[] buttons;
 
 
-    public StartScreen()
+    public StartScreen(String[] buttons)
     {
         //views.add(new BackgroundView());
 
+        this.buttons = buttons;
         this.listener = new MenuListener();
         //Initialising graphics
         batch = new SpriteBatch();
@@ -74,10 +76,12 @@ public class StartScreen implements Screen {
         mainTable.top();
         mainTable.padBottom(15f).padTop(30f);
 
+
+
         //Create buttons
-        TextButton playButton = new TextButton("Play", skin);
-        TextButton optionsButton = new TextButton("Options", skin);
-        TextButton exitButton = new TextButton("Exit", skin);
+        TextButton playButton = new TextButton(buttons[0], skin);
+        TextButton optionsButton = new TextButton(buttons[1], skin);
+        TextButton exitButton = new TextButton(buttons[2], skin);
 
         stage.addListener(listener);
 

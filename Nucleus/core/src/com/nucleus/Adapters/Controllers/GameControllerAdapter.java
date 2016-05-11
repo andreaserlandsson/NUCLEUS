@@ -14,13 +14,10 @@ public class GameControllerAdapter {
     public GameControllerAdapter(NucleusGameCreator gamelibGDX) {
         this.gamelibGDX = gamelibGDX;
         nucleusGame = new NucleusGame(this);
-
-
     }
 
-    public void createGame(){
-        //game = new NucleusGameCreator();
-       // game.createGame();
+    public void createGame(String [] buttons){
+       gamelibGDX.createGame(buttons);
 
     }
 

@@ -23,8 +23,6 @@ public class GameController implements ControllerState {
         System.out.println("glu x ==:" + gluons[0].getPosition().getX());
         System.out.println("glu y ==:" + gluons[0].getPosition().getY());
 
-
-
         return;
     }
 

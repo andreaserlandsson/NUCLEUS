@@ -7,4 +7,5 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public interface IViewable {
     void render(SpriteBatch batch);
+
 }
