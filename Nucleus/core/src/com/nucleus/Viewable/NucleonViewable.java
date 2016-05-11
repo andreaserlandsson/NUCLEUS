@@ -62,9 +62,9 @@ public class NucleonViewable implements IViewable {
                 batch.draw(proton, x  - nucleon.getRadius(),y  - nucleon.getRadius());
                 batch.draw(protonLargeTrailRegion,
                         //TODO fix 2px offset
-                        x-2,
-                        y + nucleon.getRadius(),
-                        nucleon.getRadius(),
+                        x-1,
+                        y + nucleon.getRadius() - 1,
+                        (float) (nucleon.getRadius() + 0.5),
                         0,
                         protonLargeTrail.getWidth(),
                         protonLargeTrail.getHeight(),
@@ -79,9 +79,9 @@ public class NucleonViewable implements IViewable {
                 batch.draw(neutron, x - nucleon.getRadius(),  y - nucleon.getRadius());
                 batch.draw(neutronLargeTrailRegion,
                         //TODO fix 2px offset
-                        x,
-                        y + nucleon.getRadius(),
-                        nucleon.getRadius(),
+                        x-1,
+                        y + nucleon.getRadius() - 1,
+                        (float) (nucleon.getRadius() + 0.5),
                         0,
                         neutronLargeTrail.getWidth(),
                         neutronLargeTrail.getHeight(),
