@@ -22,18 +22,21 @@ public class NucleonViewable implements IViewable {
 
         this.nucleons = nucleons;
 
+        //Adding textures
+        proton = new Texture("proton.png");
+        neutron = new Texture("neutron.png");
         protonLargeTrail = new Texture("tailProton1.png");
-        protonLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        protonLargeTrailRegion = new TextureRegion(protonLargeTrail, protonLargeTrail.getWidth(), protonLargeTrail.getHeight());
-
         neutronLargeTrail = new Texture("tailNeutron1.png");
-        neutronLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        //Fitting rotated textures into textureregions
+        protonLargeTrailRegion = new TextureRegion(protonLargeTrail, protonLargeTrail.getWidth(), protonLargeTrail.getHeight());
         neutronLargeTrailRegion = new TextureRegion(neutronLargeTrail, neutronLargeTrail.getWidth(), neutronLargeTrail.getHeight());
 
-        proton = new Texture("proton.png");
-        proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-        neutron = new Texture("neutron.png");
+        //Adding filters
+        protonLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        neutronLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         neutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
@@ -76,7 +79,7 @@ public class NucleonViewable implements IViewable {
                 batch.draw(neutron, x - nucleon.getRadius(),  y - nucleon.getRadius());
                 batch.draw(neutronLargeTrailRegion,
                         //TODO fix 2px offset
-                        x-2,
+                        x,
                         y + nucleon.getRadius(),
                         nucleon.getRadius(),
                         0,
