@@ -1,6 +1,6 @@
 package com.nucleus.Controller;
 
-import com.nucleus.ThirdParty.MenuControllerAdapter;
+import com.nucleus.Adapters.Controllers.MenuControllerAdapter;
 
 /**
  * Created by Quaxi on 10/05/16.

@@ -9,9 +9,10 @@ import static org.junit.Assert.assertTrue;
 
 public class GluonPointRotationTest {
 
+
     //Variables that are used for all tests.
     IGluonPoint[] gluonPoints = new MockGluon[1];
-    Molecule m = new Molecule(gluonPoints);
+    Molecule m = new Molecule(0,0,gluonPoints);
     Vector centre = new Vector(0,0);
     Vector gluonPos = new Vector(0,0);
     //Tests for rotation of a gluonPoint. First, ordinary tests to see that the method works.

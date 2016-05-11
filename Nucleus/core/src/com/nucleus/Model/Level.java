@@ -12,10 +12,13 @@ public class Level implements ILevel {
     private float dummyUpdateVariable = 1;
 
     private enum GameState{
-        RUNNING, PAUSED
+        RUNNING,
+        PAUSED,
+        PAUSEDWIN,
+        PAUSEDLOSE
     }
 
-    private GameState currentState;
+    private GameState currentState = GameState.RUNNING;
 
     private INucleonGun gun;
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
@@ -37,6 +40,10 @@ public class Level implements ILevel {
 
     public int getHeight(){
         return height;
+    }
+
+    public GameState getCurrentGmaeState() {
+        return currentState;
     }
 
     public INucleonGun getNucleonGun(){
@@ -62,12 +69,10 @@ public class Level implements ILevel {
     }
 
     public boolean isOutOfBoundsCheck(INucleon nucleon){
-
         float x = nucleon.getPosition().getX();
         float y = nucleon.getPosition().getY();
         return x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
                 y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0;
-
     }
 
     //TODO: Check so this still works correctly with tests
@@ -81,61 +86,56 @@ public class Level implements ILevel {
         }
     }
 
-    private void removeNucleon(INucleon nuc){
-        airborneNucleons.remove(nuc);
+    private void removeNucleon(INucleon nucleon){
+        airborneNucleons.remove(nucleon);
     }
 
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
     private void checkWinGame() {
+        if (!gun.isEmpty() && !airborneNucleons.isEmpty()) { // if the gun is empty and there is no airbourn nucleons (i.e. no nucleons on the screen) you lose
 
-        if (molecule.isFull()) {
-            currentState = PAUSED;
-            System.out.println("you win");
-            //end the game, do some sort of pop-up?
+            if (molecule.isFull()) {
+                currentState = GameState.PAUSEDWIN;
+                System.out.println("you win");
+                //end the game, do some sort of pop-up?
+            }
+        } else {
+            loseGame();
         }
     }
 
     private void loseGame(){
-
+        currentState = GameState.PAUSEDLOSE;
         System.out.println("You lost :(((");
         //end the game, do some sort of pop-up?
     }
 
-    public void update(float delta){
+    public void collisionCheck(){
+        INucleon collidingNucleon = null;
 
-        checkWinGame();
+        for (IGluonPoint gluon : gluons) {
+            for (INucleon nucleon : airborneNucleons){
+                if (CollisionHandler.collision(gluon, nucleon)) {
 
-        if (gun.isEmpty() && airborneNucleons.isEmpty()) { // if the gun is empty and there is no airbourn nucleons (i.e. no nucleons on the screen) you lose
-
-            loseGame();
-
-        } else {
-
-            INucleon collidingNucleon = null;
-            runTime += delta;
-
-            for (IGluonPoint gluon : gluons) {
-                for (INucleon nucleon : airborneNucleons) {
-                    if (CollisionHandler.collision(gluon, nucleon)) {
-                        if (nucleon.getClass().equals(Proton.class)) {
-                            if (gluon.getProtonsNeeded() > 0) {
-                                gluon.addProton();
-                                nucleon.setVelocity(0, 0);
-                                collidingNucleon = nucleon;
-                                checkWinGame();
-                            } else {
-                                loseGame();
-                            }
+                    if (nucleon.getClass().equals(Proton.class)) {
+                        if (gluon.getProtonsNeeded() > 0){
+                            gluon.addProton();
+                            collidingNucleon = nucleon;
+                            checkWinGame();
                         } else {
-                            if (gluon.getNeutronsNeeded() > 0) {
-                                gluon.addNeutron();
-                                nucleon.setVelocity(0, 0);
-                                collidingNucleon = nucleon;
-                                checkWinGame();
-                            } else {
-                                loseGame();
-                            }
+                            loseGame();
+                        }
+                    }
+
+
+                    else {
+                        if (gluon.getNeutronsNeeded() > 0){
+                            gluon.addNeutron();
+                            collidingNucleon = nucleon;
+                            checkWinGame();
+                        } else {
+                            loseGame();
                         }
                     }
                 }
@@ -145,6 +145,18 @@ public class Level implements ILevel {
             }
 
 
+        }
+        if (collidingNucleon != null){
+            removeNucleon(collidingNucleon);
+        }
+    }
+
+
+    public void update(float delta){
+        checkWinGame();
+        if(currentState==GameState.RUNNING) {
+            runTime += delta;
+            collisionCheck();
             if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
                 lastUpdateTime = runTime;
                 airborneNucleons.add(gun.shoot());
@@ -152,10 +164,7 @@ public class Level implements ILevel {
             for (INucleon nucleon : airborneNucleons) {
                 nucleon.update(delta);
             }
-
             removeOutOfBoundsNucleons();
         }
     }
-
-
 }

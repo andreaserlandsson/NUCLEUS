@@ -1,4 +1,4 @@
-package com.nucleus.Viewable;
+package com.nucleus.ThirdParty.libGDXGraphics.Viewables;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -7,4 +7,5 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public interface IViewable {
     void render(SpriteBatch batch);
+
 }

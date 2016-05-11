@@ -13,6 +13,4 @@ public interface ILevel {
     void removeOutOfBoundsNucleons();
     void update(float delta);
     IGluonPoint[] getGluons();
-
-
 }

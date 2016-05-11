@@ -1,4 +1,4 @@
-package com.nucleus.Screens;
+package com.nucleus.ThirdParty.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -15,23 +15,22 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
 
 /**
- * Created by Quaxi on 04/05/16.
+ * Created by andreaserlandsson on 11/05/16.
  */
-public class LevelChooseScreen implements Screen {
 
+public class WinScreen implements Screen{
     private SpriteBatch batch;
     protected Stage stage;
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
     private ClickListener listener;
+    private String[] buttons;
 
-
-    public LevelChooseScreen()
-    {
-
+    public WinScreen(String[] buttons) {
+        this.buttons = buttons;
+        this.listener = new MenuListener();
         //Initialising graphics
-        listener = new MenuListener();
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("uiskin.json"));
         camera = new OrthographicCamera();
@@ -45,6 +44,41 @@ public class LevelChooseScreen implements Screen {
     }
 
     @Override
+    public void show() {
+        Gdx.app.log("WinScreen", "showing");
+
+        //Create Table
+        Table mainTable = new Table();
+        mainTable.setFillParent(true);
+        mainTable.top();
+        mainTable.padBottom(15f).padTop(30f);
+
+
+
+        //Create buttons
+        TextButton playButton = new TextButton(buttons[0], skin);
+        TextButton optionsButton = new TextButton(buttons[1], skin);
+        TextButton exitButton = new TextButton(buttons[2], skin);
+
+        stage.addListener(listener);
+
+        //Add listeners to buttons
+        playButton.addListener(listener);
+        optionsButton.addListener(listener);
+        exitButton.addListener(listener);
+
+        //Add buttons to table
+        mainTable.add(playButton);
+        mainTable.row();
+        mainTable.add(optionsButton);
+        mainTable.row();
+        mainTable.add(exitButton);
+
+        //Add table to stage
+        stage.addActor(mainTable);
+    }
+
+    @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -54,7 +88,7 @@ public class LevelChooseScreen implements Screen {
     }
 
     @Override
-    public void resize(int width, int height){
+    public void resize(int width, int height) {
         Gdx.app.log("GameScreen", "resizing");
 
         viewport.update(width, height);
@@ -63,58 +97,22 @@ public class LevelChooseScreen implements Screen {
     }
 
     @Override
-    public void show(){
-        Gdx.app.log("GameScreen", "showing");
-
-        //Create Table
-        Table mainTable = new Table();
-        mainTable.setFillParent(true);
-        mainTable.top();
-        mainTable.padBottom(15f).padTop(30f);
-
-        //Create buttons
-        TextButton level1Button = new TextButton("Level 1", skin);
-        TextButton level2Button = new TextButton("Level 2", skin);
-        TextButton level3Button = new TextButton("Level 3", skin);
-
-        stage.addListener(listener);
-
-        //Add listeners to buttons
-        level1Button.addListener(listener);
-        level2Button.addListener(listener);
-        level3Button.addListener(listener);
-
-        //Add buttons to table
-        mainTable.add(level1Button);
-        mainTable.row();
-        mainTable.add(level2Button);
-        mainTable.row();
-        mainTable.add(level3Button);
-
-
-        //Add table to stage
-        stage.addActor(mainTable);
-
+    public void pause() {
+        Gdx.app.log("WinScreen", "hide called");
     }
 
     @Override
-    public void hide(){
-        Gdx.app.log("GameScreen", "hide called");
+    public void resume() {
+        Gdx.app.log("WinScreen", "resume called");
     }
 
     @Override
-    public  void pause(){
-        Gdx.app.log("GameScreen", "pause called");
-    }
-
-    @Override
-    public void resume(){
-        Gdx.app.log("GameScreen", "resume called");
+    public void hide() {
+        Gdx.app.log("WinScreen", "hide called");
     }
 
     @Override
     public void dispose() {
-        skin.dispose();
+        Gdx.app.log("WinScreen", "dispose called");
     }
 }
-

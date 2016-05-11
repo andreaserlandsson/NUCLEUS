@@ -3,7 +3,7 @@ package com.nucleus.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.nucleus.ThirdParty.NucleusGame;
+import com.nucleus.ThirdParty.libGDXControllers.NucleusGameCreator;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -11,6 +11,6 @@ public class DesktopLauncher {
 		config.title = "NucleusGame";
 		config.width = 280;
 		config.height = 512;
-		new LwjglApplication(new NucleusGame(), config);
+		new LwjglApplication(new NucleusGameCreator(), config);
 	}
 }

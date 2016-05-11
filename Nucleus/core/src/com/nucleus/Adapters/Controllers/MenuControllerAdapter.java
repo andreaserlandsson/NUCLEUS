@@ -1,12 +1,12 @@
-package com.nucleus.ThirdParty;
+package com.nucleus.Adapters.Controllers;
 
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Screens.GameScreen;
-import com.nucleus.Screens.LevelChooseScreen;
-import com.nucleus.ThirdParty.NInputAdapter;
+import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
+import com.nucleus.ThirdParty.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.ThirdParty.libGDXGraphics.Screens.LevelChooseScreen;
 import com.nucleus.Utils.LevelBuilder;
 
 public class MenuControllerAdapter {

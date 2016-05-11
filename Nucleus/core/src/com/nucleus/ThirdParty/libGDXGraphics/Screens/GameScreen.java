@@ -1,4 +1,4 @@
-package com.nucleus.Screens;
+package com.nucleus.ThirdParty.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Viewable.BackgroundViewable;
-import com.nucleus.Viewable.IViewable;
-import com.nucleus.Viewable.MoleculeViewable;
-import com.nucleus.Viewable.NucleonViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
 
     public GameScreen(ILevel level){
         this.level = level;
-        this.cam = new OrthographicCamera(280, 560);
+        this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
@@ -39,7 +39,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        if (level.) {
+        if (true) {
 
         }
         level.update(delta);
