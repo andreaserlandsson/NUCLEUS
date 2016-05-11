@@ -6,8 +6,8 @@ public interface IGluonPoint {
     Vector getPosition();
     void setPosition(float x, float y);
     int getRadius();
-    boolean addProton();
+    void addProton();
     int getProtonsNeeded();
-    boolean addNeutron();
+    void addNeutron();
     int getNeutronsNeeded();
 }

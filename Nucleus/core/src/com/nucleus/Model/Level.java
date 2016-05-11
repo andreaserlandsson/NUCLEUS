@@ -11,6 +11,12 @@ public class Level implements ILevel {
     private float lastUpdateTime = 0;
     private float dummyUpdateVariable = 1;
 
+    private enum GameState{
+        RUNNING, PAUSED
+    }
+
+    private GameState currentState;
+
     private INucleonGun gun;
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
@@ -84,6 +90,7 @@ public class Level implements ILevel {
     private void checkWinGame() {
 
         if (molecule.isFull()) {
+            currentState = PAUSED;
             System.out.println("you win");
             //end the game, do some sort of pop-up?
         }
