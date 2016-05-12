@@ -16,10 +16,10 @@ public class MusicPlayer {
     public Music loadingLevel;
 
     private MusicPlayer(){
-        this.inGameMusic = Gdx.audio.newMusic(Gdx.files.internal("inGame.mp3"));
-        this.menuMusic = Gdx.audio.newMusic(Gdx.files.internal("menuSounds.wav"));
-        this.buttonClicked = Gdx.audio.newMusic(Gdx.files.internal("tempButton.mp3"));
-        this.loadingLevel = Gdx.audio.newMusic(Gdx.files.internal("LoadingSound.mp3"));
+        this.inGameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/inGame.mp3"));
+        this.menuMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menuSounds.wav"));
+        this.buttonClicked = Gdx.audio.newMusic(Gdx.files.internal("music/tempButton.mp3"));
+        this.loadingLevel = Gdx.audio.newMusic(Gdx.files.internal("music/LoadingSound.mp3"));
 
     }
 
