@@ -29,7 +29,7 @@ public class NucleonViewable implements IViewable {
         neutronLargeTrail = new Texture("graphics/tailNeutron2.png");
 
         //Adding filters
-        protonLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        protonLargeTrail.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.MipMapLinearNearest);
         neutronLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         neutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -88,7 +88,6 @@ public class NucleonViewable implements IViewable {
                         1.0f,
                         1.0f,
                         vectorToRadians(nucleon.getVelocity()));
-
             }
         }
         batch.end();
