@@ -30,7 +30,7 @@ public class NucleonViewable implements IViewable {
 
         //Adding filters
         protonLargeTrail.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.MipMapLinearNearest);
-        neutronLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        neutronLargeTrail.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.MipMapLinearNearest);
         proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         neutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
