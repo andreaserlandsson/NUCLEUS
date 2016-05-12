@@ -16,10 +16,10 @@ import java.util.Collections;
 public class LevelBuilder {
 
     // Builds level and from all data that is needed for that certain level.
-    public static Level buildLevel(int width, int height, int levelNr) {
+    public static Level buildLevel(int levelNr, int width, int height) {
         LevelData levelData = null;
         try {
-            levelData = LevelParser.levelParse(levelNr);
+            levelData = LevelParser.levelParse(levelNr, width, height);
         } catch (LevelNotExistingException e) {
            e.printStackTrace(); //level does not exist, catches exception.
                                 //Should possibly be higher u

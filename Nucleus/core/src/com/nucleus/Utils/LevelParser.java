@@ -9,8 +9,8 @@ public class LevelParser {
 
 
     //private static int[] intList;   //obsolete?
-    public static LevelData levelParse(int level) throws LevelNotExistingException {
-        return splitLevelString((readFromFile(level)));
+    public static LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {
+        return splitLevelString((readFromFile(level)), width, height);
     }
 
     // method to read from a file and return a single String.
@@ -32,7 +32,7 @@ public class LevelParser {
     }
 
     //split a string where there is a new line
-    public static LevelData splitLevelString (String str) {
+    public static LevelData splitLevelString (String str, int width, int height) {
         String temp = str.replaceAll(" ", "\n");
         String[] strings = temp.split("\n");
         int[] levelField = new int[strings.length];
@@ -40,7 +40,7 @@ public class LevelParser {
         {
             levelField[i] = Integer.parseInt(strings[i]);
         }
-        return new LevelData(levelField);
+        return new LevelData(levelField, width, height);
     }
 
 }

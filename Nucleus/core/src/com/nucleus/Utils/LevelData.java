@@ -26,7 +26,7 @@ public class LevelData {
     //Sets the variables for a level by parsing the int[] field from
     //LevelParser.
     //The first 6 positions of the array always are the same.
-    public LevelData(int [] levelSpecs) {
+    public LevelData(int [] levelSpecs, int width, int height) {
         this.levelNo = levelSpecs[levelNumberIndex];
         this.noOfGluonPoints = levelSpecs[gluonAmountIndex];
         this.moleculeFilename = levelSpecs[moleculeNameIndex];
@@ -42,7 +42,7 @@ public class LevelData {
 
         //for loop starts with 6, as we are on the sixth index in the array where the gluonpoints starts.
         for (int i = firstGluonIndex; i < levelSpecs.length; i = i+4) {
-            Vector position = new Vector(levelSpecs[i], levelSpecs[i+1]);
+            Vector position = new Vector(width/2 + levelSpecs[i], height/2 + levelSpecs[i+1]);
             int protonsNeeded = levelSpecs[i+2];
             int neutronsNeeded = levelSpecs[i+3];
 
