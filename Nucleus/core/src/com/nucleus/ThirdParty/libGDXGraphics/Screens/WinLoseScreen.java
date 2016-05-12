@@ -18,7 +18,7 @@ import com.nucleus.Controller.MenuListener;
  * Created by andreaserlandsson on 11/05/16.
  */
 
-public class WinScreen implements Screen{
+public class WinLoseScreen implements Screen{
     private SpriteBatch batch;
     protected Stage stage;
     private Viewport viewport;
@@ -26,9 +26,10 @@ public class WinScreen implements Screen{
     protected Skin skin;
     private ClickListener listener;
     private String[] buttons;
+    private boolean won;
 
-    public WinScreen(String[] buttons) {
-        this.buttons = buttons;
+    public WinLoseScreen(boolean won) {
+        this.won = won;
         this.listener = new MenuListener();
         //Initialising graphics
         batch = new SpriteBatch();
@@ -45,7 +46,7 @@ public class WinScreen implements Screen{
 
     @Override
     public void show() {
-        Gdx.app.log("WinScreen", "showing");
+        Gdx.app.log("WinLoseScreen", "showing");
 
         //Create Table
         Table mainTable = new Table();
@@ -56,23 +57,27 @@ public class WinScreen implements Screen{
 
 
         //Create buttons
-        TextButton playButton = new TextButton(buttons[0], skin);
-        TextButton optionsButton = new TextButton(buttons[1], skin);
-        TextButton exitButton = new TextButton(buttons[2], skin);
+        TextButton mainMenuButton = new TextButton("Main Menu", skin);
+        TextButton playAgainButton = new TextButton("Play Again", skin);
 
         stage.addListener(listener);
 
         //Add listeners to buttons
-        playButton.addListener(listener);
-        optionsButton.addListener(listener);
-        exitButton.addListener(listener);
+        mainMenuButton.addListener(listener);
+        playAgainButton.addListener(listener);
 
         //Add buttons to table
-        mainTable.add(playButton);
+        if (won) {
+            mainTable.add("YOU WON");
+        } else {
+            mainTable.add("YOU LOST");
+        }
         mainTable.row();
-        mainTable.add(optionsButton);
         mainTable.row();
-        mainTable.add(exitButton);
+        mainTable.add(mainMenuButton);
+        mainTable.row();
+        mainTable.add(playAgainButton);
+        //mainTable.row();
 
         //Add table to stage
         stage.addActor(mainTable);
@@ -89,7 +94,7 @@ public class WinScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
-        Gdx.app.log("GameScreen", "resizing");
+        Gdx.app.log("WinLoseScreen", "resizing");
 
         viewport.update(width, height);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
@@ -98,21 +103,21 @@ public class WinScreen implements Screen{
 
     @Override
     public void pause() {
-        Gdx.app.log("WinScreen", "hide called");
+        Gdx.app.log("WinLoseScreen", "hide called");
     }
 
     @Override
     public void resume() {
-        Gdx.app.log("WinScreen", "resume called");
+        Gdx.app.log("WinLoseScreen", "resume called");
     }
 
     @Override
     public void hide() {
-        Gdx.app.log("WinScreen", "hide called");
+        Gdx.app.log("WinLoseScreen", "hide called");
     }
 
     @Override
     public void dispose() {
-        Gdx.app.log("WinScreen", "dispose called");
+        Gdx.app.log("WinLoseScreen", "dispose called");
     }
 }

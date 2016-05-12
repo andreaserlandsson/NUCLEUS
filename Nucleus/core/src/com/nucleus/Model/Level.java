@@ -11,6 +11,9 @@ public class Level implements ILevel {
     private float lastUpdateTime = 0;
     private float dummyUpdateVariable = 1;
 
+    private boolean gameWon = false;
+    private boolean gameLost = false;
+
     private enum GameState{
         RUNNING,
         PAUSED,
@@ -42,8 +45,12 @@ public class Level implements ILevel {
         return height;
     }
 
-    public GameState getCurrentGmaeState() {
-        return currentState;
+    public boolean isGameWon() {
+        return gameWon;
+    }
+
+    public boolean isGameLost() {
+        return gameLost;
     }
 
     public INucleonGun getNucleonGun(){
@@ -93,19 +100,18 @@ public class Level implements ILevel {
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
     private void checkWinGame() {
-        if (!gun.isEmpty() && !airborneNucleons.isEmpty()) { // if the gun is empty and there is no airbourn nucleons (i.e. no nucleons on the screen) you lose
 
-            if (molecule.isFull()) {
+        if (molecule.isFull()) {
+                gameWon = true;
                 currentState = GameState.PAUSEDWIN;
                 System.out.println("you win");
                 //end the game, do some sort of pop-up?
-            }
-        } else {
-            loseGame();
         }
     }
 
     private void loseGame(){
+
+        gameLost = true;
         currentState = GameState.PAUSEDLOSE;
         System.out.println("You lost :(((");
         //end the game, do some sort of pop-up?
@@ -153,18 +159,22 @@ public class Level implements ILevel {
 
 
     public void update(float delta){
-        checkWinGame();
-        if(currentState==GameState.RUNNING) {
-            runTime += delta;
-            collisionCheck();
-            if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
-                lastUpdateTime = runTime;
-                airborneNucleons.add(gun.shoot());
+        if (gun.isEmpty()) {
+            loseGame();
+        } else {
+            checkWinGame();
+            if(currentState==GameState.RUNNING) {
+                runTime += delta;
+                collisionCheck();
+                if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
+                    lastUpdateTime = runTime;
+                    airborneNucleons.add(gun.shoot());
+                }
+                for (INucleon nucleon : airborneNucleons) {
+                    nucleon.update(delta);
+                }
+                removeOutOfBoundsNucleons();
             }
-            for (INucleon nucleon : airborneNucleons) {
-                nucleon.update(delta);
-            }
-            removeOutOfBoundsNucleons();
         }
     }
 }

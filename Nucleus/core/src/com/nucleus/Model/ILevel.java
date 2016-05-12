@@ -4,6 +4,9 @@ import java.util.List;
 
 public interface ILevel {
 
+    boolean isGameLost();
+    boolean isGameWon();
+
     int getWidth();
     int getHeight();
     INucleonGun getNucleonGun();

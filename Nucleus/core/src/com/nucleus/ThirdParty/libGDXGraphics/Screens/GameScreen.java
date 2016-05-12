@@ -21,6 +21,7 @@ public class GameScreen implements Screen {
     private ILevel level;
 
 
+
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
 
@@ -39,15 +40,25 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        if (true) {
 
-        }
-        level.update(delta);
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        if (level.isGameLost()) {
+            WinLoseScreen winLoseScreen = new WinLoseScreen(level.isGameLost());
+            winLoseScreen.render(1);
+            winLoseScreen.show();
+        } else if (level.isGameWon()) {
+            WinLoseScreen winLoseScreen = new WinLoseScreen(level.isGameWon());
+            winLoseScreen.render(1);
+            winLoseScreen.show();
+        } else {
 
-        for(IViewable view : views){
-            view.render(batch);
+
+            level.update(delta);
+            Gdx.gl.glClearColor(0, 0, 0, 1);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+            for (IViewable view : views) {
+                view.render(batch);
+            }
         }
     }
 

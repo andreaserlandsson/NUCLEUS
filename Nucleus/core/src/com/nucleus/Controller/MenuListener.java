@@ -47,7 +47,7 @@ public class MenuListener extends ClickListener {
 
         //win and lose screen
         if (event.getTarget().toString().equals("Label: Play Again")){
-            controller.
+            controller.startLevelChoose(1);
         }
 
         if (event.getTarget().toString().equals("Label: Main Menu")){
