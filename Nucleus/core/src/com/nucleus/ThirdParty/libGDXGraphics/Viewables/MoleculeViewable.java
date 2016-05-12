@@ -20,18 +20,7 @@ public class MoleculeViewable implements IViewable {
     public MoleculeViewable(int levelNumber, IMolecule molecule){
         this.molecule = molecule;
         this.gluonPoints = molecule.getGluons();
-
-        this.moleculeTexture = new Texture("levels/"+Integer.toString(levelNumber)+".png");
-        moleculeTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
-        this.halfProton = new Texture("graphics/protonHalf.png");
-        halfProton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfNeutron = new Texture("graphics/neutronHalf.png");
-        halfNeutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfProtonComplete = new Texture("graphics/protonHalfComplete.png");
-        halfProtonComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfNeutronComplete = new Texture("graphics/neutronHalfComplete.png");
-        halfNeutronComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        loadTextures(levelNumber);
     }
 
     private void drawGluons(SpriteBatch batch){
@@ -39,8 +28,8 @@ public class MoleculeViewable implements IViewable {
 
             if (gluonPoint.getNeutronsNeeded() > 0){
                 float sizeFactor = (float)gluonPoint.getCurrentNeutrons()/(float)gluonPoint.getMaxNeutrons();
-                float x = gluonPoint.getPosition().getX()-(halfNeutron.getWidth()/2+5)*sizeFactor;
-                float y = gluonPoint.getPosition().getY()-(halfNeutron.getHeight()/2-1)*sizeFactor;
+                float x = gluonPoint.getPosition().getX()-halfNeutron.getWidth()/2*sizeFactor+5*sizeFactor;
+                float y = gluonPoint.getPosition().getY()-halfNeutron.getHeight()/2*sizeFactor-1*sizeFactor;
                 batch.draw(halfNeutron, x, y, halfNeutron.getWidth()*sizeFactor,
                         halfNeutron.getHeight()*sizeFactor);
             }
@@ -51,8 +40,8 @@ public class MoleculeViewable implements IViewable {
             }
             if (gluonPoint.getProtonsNeeded() > 0){
                 float sizeFactor = (float)gluonPoint.getCurrentProtons()/(float)gluonPoint.getMaxProtons();
-                float x = gluonPoint.getPosition().getX()-halfProton.getWidth()/2-5;
-                float y = gluonPoint.getPosition().getY()-halfProton.getHeight()/2-1;
+                float x = gluonPoint.getPosition().getX()-halfProton.getWidth()/2*sizeFactor-5*sizeFactor;
+                float y = gluonPoint.getPosition().getY()-halfProton.getHeight()/2*sizeFactor-1*sizeFactor;
                 batch.draw(halfProton, x, y, halfProton.getWidth() * sizeFactor,
                         halfProton.getHeight() *sizeFactor);
 
@@ -82,5 +71,19 @@ public class MoleculeViewable implements IViewable {
         drawGluons(batch);
 
         batch.end();
+    }
+
+    private void loadTextures(int levelNumber){
+        this.moleculeTexture = new Texture("levels/"+Integer.toString(levelNumber)+".png");
+        moleculeTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
+        this.halfProton = new Texture("graphics/protonHalf.png");
+        halfProton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this.halfNeutron = new Texture("graphics/neutronHalf.png");
+        halfNeutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this.halfProtonComplete = new Texture("graphics/protonHalfComplete.png");
+        halfProtonComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this.halfNeutronComplete = new Texture("graphics/neutronHalfComplete.png");
+        halfNeutronComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 }
