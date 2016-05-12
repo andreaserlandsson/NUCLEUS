@@ -38,9 +38,11 @@ public class MoleculeViewable implements IViewable {
         for (IGluonPoint gluonPoint : gluonPoints) {
 
             if (gluonPoint.getNeutronsNeeded() > 0){
-                float x = gluonPoint.getPosition().getX()-halfNeutron.getWidth()/2+5;
-                float y = gluonPoint.getPosition().getY()-halfNeutron.getHeight()/2-1;
-                batch.draw(halfNeutron, x, y);
+                float sizeFactor = (float)gluonPoint.getCurrentNeutrons()/(float)gluonPoint.getMaxNeutrons();
+                float x = gluonPoint.getPosition().getX()-(halfNeutron.getWidth()/2+5)*sizeFactor;
+                float y = gluonPoint.getPosition().getY()-(halfNeutron.getHeight()/2-1)*sizeFactor;
+                batch.draw(halfNeutron, x, y, halfNeutron.getWidth()*sizeFactor,
+                        halfNeutron.getHeight()*sizeFactor);
             }
             else if (gluonPoint.getNeutronsNeeded()==0){
                 float x = gluonPoint.getPosition().getX()-halfNeutronComplete.getWidth()/2+5;
@@ -48,9 +50,11 @@ public class MoleculeViewable implements IViewable {
                 batch.draw(halfNeutronComplete, x, y);
             }
             if (gluonPoint.getProtonsNeeded() > 0){
+                float sizeFactor = (float)gluonPoint.getCurrentProtons()/(float)gluonPoint.getMaxProtons();
                 float x = gluonPoint.getPosition().getX()-halfProton.getWidth()/2-5;
                 float y = gluonPoint.getPosition().getY()-halfProton.getHeight()/2-1;
-                batch.draw(halfProton, x, y);
+                batch.draw(halfProton, x, y, halfProton.getWidth() * sizeFactor,
+                        halfProton.getHeight() *sizeFactor);
 
             }
             else if (gluonPoint.getProtonsNeeded()==0){
@@ -63,9 +67,6 @@ public class MoleculeViewable implements IViewable {
 
     public void render(SpriteBatch batch){
         batch.begin();
-
-        batch.draw(halfProtonComplete, 0, 0);
-        batch.draw(halfNeutronComplete, 0, 0);
 
         batch.draw(moleculeTextureRegion,
                 Gdx.graphics.getWidth() / 2 - moleculeTexture.getWidth() / 2,
