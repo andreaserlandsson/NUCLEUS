@@ -17,7 +17,7 @@ public class LevelParser {
     }
 
     // method to read from a file and return a single String.
-    public static String readFromFile(int level) throws LevelNotExistingException {
+    private static String readFromFile(int level) throws LevelNotExistingException {
         String levelString = "";
 
         FileHandle file = Gdx.files.internal("levels/level_" + Integer.toString(level) + ".txt");
@@ -40,7 +40,7 @@ public class LevelParser {
 
 
     //split a string where there is a new line
-    public static LevelData splitLevelString (String str, int width, int height) {
+    private static LevelData splitLevelString (String str, int width, int height) {
         String temp = str.replaceAll(" ", "\n");
         String[] strings = temp.split("\n");
         int[] levelField = new int[strings.length];

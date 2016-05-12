@@ -29,14 +29,17 @@ public class GameScreen implements Screen {
     private SpriteBatch batch;
 
     public GameScreen(int levelNumber, ILevel level){
+
         this.level = level;
         this.cam = new OrthographicCamera(1080, 1920);
         this.music = MusicPlayer.getInstance();
         music.changeMusic(music.menuMusic, music.loadingLevel,0.5f);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         views.add(new MoleculeViewable(levelNumber, level.getMolecule()));
+
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
 
@@ -73,8 +76,6 @@ public class GameScreen implements Screen {
         Gdx.app.log("GameScreen", "showing");
         music.resumeMusic(music.inGameMusic);
     }
-
-
 
     @Override
     public void hide(){

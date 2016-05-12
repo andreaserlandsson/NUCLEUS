@@ -13,7 +13,20 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.Model.ILevel;
+import com.nucleus.Model.INucleonGun;
+import com.nucleus.Model.Level;
+import com.nucleus.Model.NucleonGun;
 import com.nucleus.ThirdParty.libGDXControllers.MusicPlayer;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Utils.LevelBuilder;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Quaxi on 04/05/16.
@@ -27,16 +40,26 @@ public class StartScreen implements Screen {
     protected Skin skin;
     private ClickListener listener;
     private String[] buttons;
+    private Level level;
     private MusicPlayer music;
+
+    private List<IViewable> views = new ArrayList<IViewable>();
 
 
     public StartScreen(String[] buttons)
     {
-        //views.add(new BackgroundView());
+        level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        views.add(new BackgroundViewable());
+        views.add(new NucleonViewable(level.getAirborneNucleons()));
+
+
         this.buttons = buttons;
         this.listener = new MenuListener();
         this.music = MusicPlayer.getInstance();
         this.music.initSongs();
+
+
         //Initialising graphics
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
@@ -56,11 +79,20 @@ public class StartScreen implements Screen {
     @Override
     public void render(float delta) {
 
-        Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
+        level.update(delta);
+
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        for(IViewable view : views){
+            view.render(batch);
+        }
 
         stage.act();
         stage.draw();
+
+
+
     }
 
     @Override
