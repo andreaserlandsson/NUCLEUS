@@ -10,7 +10,7 @@ import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
-import com.nucleus.Utils.MusicPlayer;
+import com.nucleus.ThirdParty.libGDXControllers.MusicPlayer;
 
 import java.util.ArrayList;
 import java.util.List;

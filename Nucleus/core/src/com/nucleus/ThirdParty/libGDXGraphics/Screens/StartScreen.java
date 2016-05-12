@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
-import com.nucleus.Utils.MusicPlayer;
+import com.nucleus.ThirdParty.libGDXControllers.MusicPlayer;
 
 /**
  * Created by Quaxi on 04/05/16.
@@ -36,6 +36,7 @@ public class StartScreen implements Screen {
         this.buttons = buttons;
         this.listener = new MenuListener();
         this.music = MusicPlayer.getInstance();
+        this.music.initSongs();
         //Initialising graphics
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("uiskin.json"));

@@ -2,7 +2,7 @@ package com.nucleus.Controller;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.Utils.MusicPlayer;
+import com.nucleus.ThirdParty.libGDXControllers.MusicPlayer;
 
 /**
  * Created by Quaxi on 10/05/16.

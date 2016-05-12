@@ -1,4 +1,4 @@
-package com.nucleus.Utils;
+package com.nucleus.ThirdParty.libGDXControllers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -10,10 +10,7 @@ public class MusicPlayer {
 
     private static MusicPlayer instance = null;
 
-    public Music inGameMusic;
-    public Music menuMusic;
-    public Music buttonClicked;
-    public Music loadingLevel;
+    public Music inGameMusic,menuMusic,buttonClicked,loadingLevel;
 
     private MusicPlayer(){
         this.inGameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/inGame.mp3"));
@@ -23,12 +20,18 @@ public class MusicPlayer {
 
     }
 
+
     //if not initaialized, initalize. Else, return that instance that allready exists.
     public static MusicPlayer getInstance(){
         if (instance == null) {
             instance = new MusicPlayer();
         }
         return instance;
+    }
+
+    public void initSongs(){
+        playMusicLoop(inGameMusic,0f);
+        inGameMusic.pause();
     }
 
     //Start the music.
