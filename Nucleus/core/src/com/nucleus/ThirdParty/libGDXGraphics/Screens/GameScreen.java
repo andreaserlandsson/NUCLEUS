@@ -39,9 +39,18 @@ public class GameScreen implements Screen {
         views.add(new MoleculeViewable(levelNumber, level.getMolecule()));
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
-        music.changeMusic(music.loadingLevel, music.inGameMusic,0.6f);
 
+
+        //TODO: abstract this out
+        if (levelNumber == 1){
+            music.changeMusic(music.loadingLevel, music.inGameMusic,0.6f);
+        }
+        else if (levelNumber == 2){
+            music.changeMusic(music.loadingLevel, music.inGameMusic2, 0.6f);
+
+        }
     }
+
 
     @Override
     public void render(float delta) {
