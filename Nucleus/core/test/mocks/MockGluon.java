@@ -30,8 +30,16 @@ public class MockGluon implements IGluonPoint {
     }
 
     @Override
-    public com.nucleus.Model.Vector getPosition() {
+    public Vector getPosition() {
         return position;
+    }
+
+    public float getX(){
+        return position.getX();
+    }
+
+    public float getY(){
+        return position.getY();
     }
 
 
@@ -59,9 +67,24 @@ public class MockGluon implements IGluonPoint {
         return maxNeutrons - currentNeutrons;
     }
 
-
-
     public int getProtonsNeeded() {
         return maxProtons - currentNeutrons;
     }
+
+    public int getCurrentNeutrons() {
+        return currentNeutrons;
+    }
+
+    public int getCurrentProtons() {
+        return currentProtons;
+    }
+
+    public int getMaxNeutrons() {
+        return maxNeutrons;
+    }
+
+    public int getMaxProtons() {
+        return maxProtons;
+    }
+
 }
