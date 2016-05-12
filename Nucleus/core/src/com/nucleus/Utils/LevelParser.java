@@ -18,7 +18,7 @@ public class LevelParser {
         String levelString = "";
         try {
             Scanner sc;
-            File file = new File("level_" + Integer.toString(level) + ".txt");    //temporary as we have no way to get a file
+            File file = new File("levels/level_" + Integer.toString(level) + ".txt");    //temporary as we have no way to get a file
             sc = new Scanner(file);
             while (sc.hasNextLine()) {
                 String lineInput = sc.nextLine();

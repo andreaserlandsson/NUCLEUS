@@ -19,11 +19,11 @@ public class MoleculeViewable implements IViewable {
     //TODO: add support for loading different level textures
     public MoleculeViewable(int levelNumber, IMolecule molecule){
         this.molecule = molecule;
-        this.moleculeTexture = new Texture(Integer.toString(levelNumber)+".png");
+        this.moleculeTexture = new Texture("levels/"+Integer.toString(levelNumber)+".png");
         moleculeTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfProton = new Texture("protonHalf.png");
+        this.halfProton = new Texture("graphics/protonHalf.png");
         halfProton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfNeutron = new Texture("neutronHalf.png");
+        this.halfNeutron = new Texture("graphics/neutronHalf.png");
         halfNeutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
         this.gluonPoints = molecule.getGluons();

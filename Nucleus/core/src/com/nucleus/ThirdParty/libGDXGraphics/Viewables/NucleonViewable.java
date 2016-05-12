@@ -23,10 +23,10 @@ public class NucleonViewable implements IViewable {
         this.nucleons = nucleons;
 
         //Adding textures
-        proton = new Texture("proton.png");
-        neutron = new Texture("neutron.png");
-        protonLargeTrail = new Texture("tailProton2.png");
-        neutronLargeTrail = new Texture("tailNeutron2.png");
+        proton = new Texture("graphics/proton.png");
+        neutron = new Texture("graphics/neutron.png");
+        protonLargeTrail = new Texture("graphics/tailProton2.png");
+        neutronLargeTrail = new Texture("graphics/tailNeutron2.png");
 
         //Adding filters
         protonLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
