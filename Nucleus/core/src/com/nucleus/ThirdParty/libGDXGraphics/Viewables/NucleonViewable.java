@@ -28,16 +28,16 @@ public class NucleonViewable implements IViewable {
         protonLargeTrail = new Texture("tailProton2.png");
         neutronLargeTrail = new Texture("tailNeutron2.png");
 
-        //Fitting rotated textures into textureregions
-        protonLargeTrailRegion = new TextureRegion(protonLargeTrail, protonLargeTrail.getWidth(), protonLargeTrail.getHeight());
-        neutronLargeTrailRegion = new TextureRegion(neutronLargeTrail, neutronLargeTrail.getWidth(), neutronLargeTrail.getHeight());
-
-
         //Adding filters
         protonLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         neutronLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         neutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        //Fitting rotated textures into TextureRegions
+        protonLargeTrailRegion = new TextureRegion(protonLargeTrail, protonLargeTrail.getWidth(), protonLargeTrail.getHeight());
+        neutronLargeTrailRegion = new TextureRegion(neutronLargeTrail, neutronLargeTrail.getWidth(), neutronLargeTrail.getHeight());
+
     }
 
     private int vectorToRadians(Vector v){

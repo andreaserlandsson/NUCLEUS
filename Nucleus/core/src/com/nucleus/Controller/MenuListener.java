@@ -6,6 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 /**
  * Created by Quaxi on 10/05/16.
  */
+
+//TODO add listenerAdapter
 public class MenuListener extends ClickListener {
 
     private MenuController controller;
