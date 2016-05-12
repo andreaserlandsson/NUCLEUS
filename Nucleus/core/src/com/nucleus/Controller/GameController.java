@@ -1,5 +1,7 @@
 package com.nucleus.Controller;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Vector;
@@ -10,6 +12,7 @@ public class GameController implements ControllerState {
     Vector lastTouch = new Vector(0,0);
     float rotationMultiplier = 40; //A constant that is used to scale the rotation angle
     IGluonPoint[] gluons;
+    Sound sound;
 
     public GameController(ILevel level){
         this.level = level;
@@ -22,6 +25,7 @@ public class GameController implements ControllerState {
 
         System.out.println("glu x ==:" + gluons[0].getPosition().getX());
         System.out.println("glu y ==:" + gluons[0].getPosition().getY());
+
 
         return;
     }
