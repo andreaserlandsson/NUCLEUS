@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.ThirdParty.libGDXControllers.MusicPlayer;
 
 /**
  * Created by Quaxi on 04/05/16.
@@ -26,14 +27,16 @@ public class StartScreen implements Screen {
     protected Skin skin;
     private ClickListener listener;
     private String[] buttons;
+    private MusicPlayer music;
 
 
     public StartScreen(String[] buttons)
     {
         //views.add(new BackgroundView());
-
         this.buttons = buttons;
         this.listener = new MenuListener();
+        this.music = MusicPlayer.getInstance();
+        this.music.initSongs();
         //Initialising graphics
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
@@ -45,10 +48,14 @@ public class StartScreen implements Screen {
         stage = new Stage(viewport, batch);
 
         Gdx.input.setInputProcessor(stage);
+
+        //Initialize music
+        music.playMusicLoop(music.menuMusic,0.3f);
     }
 
     @Override
     public void render(float delta) {
+
         Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
