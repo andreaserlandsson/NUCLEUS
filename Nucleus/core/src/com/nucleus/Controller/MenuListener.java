@@ -34,11 +34,7 @@ public class MenuListener extends ClickListener {
         }
 
         if (event.getTarget().toString().equals("Label: Level 2")){
-            //DO STUFF
-        }
-
-        if (event.getTarget().toString().equals("Label: Level 2")){
-            controller.exit();
+            controller.changeLevel(2);
         }
 
     }
