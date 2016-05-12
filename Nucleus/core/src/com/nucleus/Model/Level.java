@@ -64,8 +64,9 @@ public class Level implements ILevel {
     public boolean isOutOfBoundsCheck(INucleon nucleon){
         float x = nucleon.getPosition().getX();
         float y = nucleon.getPosition().getY();
-        return x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
-                y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0;
+        float bufferSize = 50; //nucleons aren't considered out of bounds until their "trails" are completely off-screen
+        return x - nucleon.getRadius()>=width+bufferSize || x + nucleon.getRadius()<=0-bufferSize ||
+                y - nucleon.getRadius()>=height+bufferSize || y + nucleon.getRadius()<=0-bufferSize;
     }
 
     //TODO: Check so this still works correctly with tests
