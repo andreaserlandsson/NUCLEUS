@@ -91,8 +91,6 @@ public class StartScreen implements Screen {
         stage.act();
         stage.draw();
 
-
-
     }
 
     @Override
@@ -112,10 +110,8 @@ public class StartScreen implements Screen {
         //Create Table
         Table mainTable = new Table();
         mainTable.setFillParent(true);
-        mainTable.top();
-        mainTable.padBottom(15f).padTop(30f);
-
-
+        mainTable.center();
+        mainTable.padBottom(150f);
 
         //Create buttons
         TextButton playButton = new TextButton(buttons[0], skin);
@@ -130,11 +126,11 @@ public class StartScreen implements Screen {
         exitButton.addListener(listener);
 
         //Add buttons to table
-        mainTable.add(playButton);
+        mainTable.add(playButton).width(100).pad(10);
         mainTable.row();
-        mainTable.add(optionsButton);
+        mainTable.add(optionsButton).width(100).pad(10);
         mainTable.row();
-        mainTable.add(exitButton);
+        mainTable.add(exitButton).width(100).pad(10);
 
         //Add table to stage
         stage.addActor(mainTable);
