@@ -6,11 +6,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.NMusicPlayer;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
-import com.nucleus.ThirdParty.libGDXControllers.MusicPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,7 @@ import java.util.List;
  */
 public class GameScreen implements Screen {
     private ILevel level;
-    private MusicPlayer music;
-
+    private NMusicPlayer musicPlayer;
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
@@ -32,8 +31,8 @@ public class GameScreen implements Screen {
 
         this.level = level;
         this.cam = new OrthographicCamera(1080, 1920);
-        this.music = MusicPlayer.getInstance();
-        music.changeMusic(music.menuMusic, music.loadingLevel,0.5f);
+        this.musicPlayer = NMusicPlayer.getInstance();
+        this.musicPlayer.changeMusic(NMusicPlayer.loadingMusic, NMusicPlayer.menuMusic,0.5f);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         views.add(new BackgroundViewable());
@@ -42,16 +41,17 @@ public class GameScreen implements Screen {
 
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
+        musicPlayer.changeMusic(NMusicPlayer.levelTwoMusic,NMusicPlayer.loadingMusic,0.6f);
+
 
 
         //TODO: abstract this out
-        if (levelNumber == 1){
-            music.changeMusic(music.loadingLevel, music.inGameMusic,0.6f);
-        }
-        else if (levelNumber == 2){
-            music.changeMusic(music.loadingLevel, music.inGameMusic2, 0.6f);
-
-        }
+        //if (levelNumber == 1){
+          // musicPlayer.changeMusic(NMusicPlayer.levelChosen,NMusicPlayer.loading,0.6f);
+        //}
+        //else if (levelNumber == 2){
+          //  musicPlayer.changeMusic(NMusicPlayer.levelTwo,NMusicPlayer.loading,0.6f);
+        //}
     }
 
 
@@ -74,25 +74,25 @@ public class GameScreen implements Screen {
     @Override
     public void show(){
         Gdx.app.log("GameScreen", "showing");
-        music.resumeMusic(music.inGameMusic);
+        //musicPlayer.resume(NMusicPlayer.levelSong);
     }
 
     @Override
     public void hide(){
         Gdx.app.log("GameScreen", "hide called");
-        music.pauseMusic(music.inGameMusic);
+       // musicPlayer.pause(NMusicPlayer.levelSong);
     }
 
     @Override
     public  void pause(){
         Gdx.app.log("GameScreen", "pause called");
-        music.pauseMusic(music.inGameMusic);
+        //musicPlayer.pause(NMusicPlayer.levelSong);
     }
 
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
-        music.resumeMusic(music.inGameMusic);
+        //musicPlayer.resume(NMusicPlayer.levelSong);
     }
 
     @Override

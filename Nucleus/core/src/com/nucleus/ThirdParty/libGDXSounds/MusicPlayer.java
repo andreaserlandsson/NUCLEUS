@@ -1,6 +1,5 @@
-package com.nucleus.ThirdParty.libGDXControllers;
+package com.nucleus.ThirdParty.libGDXSounds;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 
 public class MusicPlayer {
@@ -10,17 +9,9 @@ public class MusicPlayer {
 
     private static MusicPlayer instance = null;
 
-    public Music inGameMusic, inGameMusic2, menuMusic,buttonClicked,loadingLevel;
-
     private MusicPlayer(){
-        this.inGameMusic = Gdx.audio.newMusic(Gdx.files.internal("music/inGame.mp3"));
-        this.inGameMusic2 = Gdx.audio.newMusic(Gdx.files.internal("music/inGame2.mp3"));
-        this.menuMusic = Gdx.audio.newMusic(Gdx.files.internal("music/menuSounds.wav"));
-        this.buttonClicked = Gdx.audio.newMusic(Gdx.files.internal("music/tempButton.mp3"));
-        this.loadingLevel = Gdx.audio.newMusic(Gdx.files.internal("music/LoadingSound.mp3"));
-
+    //singleton
     }
-
 
     //if not initaialized, initalize. Else, return that instance that allready exists.
     public static MusicPlayer getInstance(){
@@ -28,11 +19,6 @@ public class MusicPlayer {
             instance = new MusicPlayer();
         }
         return instance;
-    }
-
-    public void initSongs(){
-        playMusicLoop(inGameMusic,0f);
-        inGameMusic.pause();
     }
 
     //Start the music.
@@ -48,8 +34,8 @@ public class MusicPlayer {
     }
 
     public void changeMusic(Music m1, Music m2, Float volume) {
-        m1.stop();
-        playMusicLoop(m2,volume);
+        m2.stop();
+        playMusicLoop(m1,volume);
     }
 
     //Pause the party.
@@ -65,6 +51,5 @@ public class MusicPlayer {
     //Stop music.
     public void stopMusic(Music music) {
         music.stop(); //stop eller dispose?
-        music.dispose();
     }
 }
