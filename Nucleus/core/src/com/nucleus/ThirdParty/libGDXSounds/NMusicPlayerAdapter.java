@@ -9,12 +9,12 @@ import java.util.List;
 public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
     private static INMusicPlayerAdapter instance = null;
     MusicPlayer musicPlayer;
-    Music menu, inGame1,inGame2, buttonClicked, loadingLevel, music;
-    final String menuMusic = "menuSounds.wav";
-    final String levelMusic1 = "inGame.mp3";
-    final String levelMusic2 = "inGame.mp3";
-    final String buttonSound = "tempButton.mp3";
-    final String loadingSound = "LoadingSound.mp3";
+    Music menu, inGame1,inGame2, buttonClicked, loadingLevel;
+    final String menuMusic = "music/menuSounds.wav";
+    final String levelMusic1 = "music/inGame.mp3";
+    final String levelMusic2 = "music/inGame2.mp3";
+    final String buttonSound = "music/tempButton.mp3";
+    final String loadingSound = "music/LoadingSound.mp3";
     List<Music> musicList;
     List<String> musicIndex;
 
@@ -29,6 +29,9 @@ public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
         musicList = new ArrayList<Music>();
         musicIndex = new ArrayList<String>();
         loadSongs();
+        for (int i = 0; i < musicIndex.size(); i++){
+            System.out.println(musicIndex.get(i));
+        }
     }
 
     @Override
@@ -75,14 +78,15 @@ public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
     }
 
     private Music findSong(String song){
-        System.out.println(musicIndex.size());
-        System.out.println(musicList.size());
+        Music music = null;
+        //System.out.println(musicIndex.size());
+        //System.out.println(musicList.size());
         for (int i = 0; i < musicIndex.size(); i++){
-            System.out.println(musicIndex.get(i));
-            System.out.println(song);
+          //  System.out.println(musicIndex.get(i));
+            //System.out.println(song);
 
             if (musicIndex.get(i).equals(song)) {
-                    music = musicList.get(i);
+                    return musicList.get(i);
             }
         }
         return music;

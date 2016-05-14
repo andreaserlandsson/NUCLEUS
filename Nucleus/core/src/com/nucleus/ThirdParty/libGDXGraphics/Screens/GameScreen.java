@@ -41,7 +41,7 @@ public class GameScreen implements Screen {
 
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
-        musicPlayer.changeMusic(NMusicPlayer.levelTwoMusic,NMusicPlayer.loadingMusic,0.6f);
+        musicPlayer.changeMusic(NMusicPlayer.levelOneMusic,NMusicPlayer.loadingMusic,0.6f);
 
 
 
