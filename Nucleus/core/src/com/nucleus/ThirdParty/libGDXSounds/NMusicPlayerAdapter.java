@@ -1,28 +1,34 @@
 package com.nucleus.ThirdParty.libGDXSounds;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.nucleus.Model.MusicPlayerData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
-    //private static INMusicPlayerAdapter instance = null;
-    MusicPlayer musicPlayer;
-    Music menu, inGame1,inGame2, buttonClicked, loadingLevel;
-    final String menuMusic = "music/menuSounds.wav";
-    final String levelMusic1 = "music/inGame.mp3";
-    final String levelMusic2 = "music/inGame2.mp3";
-    final String buttonSound = "music/tempButton.mp3";
-    final String loadingSound = "music/LoadingSound.mp3";
-    List<Music> musicList;
-    List<String> musicIndex;
+    private static INMusicPlayerAdapter instance = null;
+    private MusicPlayer musicPlayer;
+    private static Map<String, String> music;
+    private static Map<String, Music> musicList;
+    private MusicPlayerData musicPlayerData;
 
-    public NMusicPlayerAdapter() {
+    private NMusicPlayerAdapter() {
         musicPlayer = MusicPlayer.getInstance();
-        musicList = new ArrayList<Music>();
-        musicIndex = new ArrayList<String>();
+        musicPlayerData = MusicPlayerData.getInstance();
+        music = musicPlayerData.getMusicMap();
+        musicList = new HashMap<String, Music>();
         loadSongs();
+    }
+
+    public static INMusicPlayerAdapter getInstance(){
+        if (instance == null) {
+            instance = new NMusicPlayerAdapter();
+        }
+        return instance;
     }
 
     @Override
@@ -56,28 +62,19 @@ public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
     }
 
     private void loadSongs() {
-        musicList.add(menu =  Gdx.audio.newMusic(Gdx.files.internal("music/menuSounds.wav")));
-        musicList.add(inGame1 = Gdx.audio.newMusic(Gdx.files.internal("music/inGame.mp3")));
-        musicList.add(inGame2 = Gdx.audio.newMusic(Gdx.files.internal("music/inGame2.mp3")));
-        musicList.add(buttonClicked = Gdx.audio.newMusic(Gdx.files.internal("music/tempButton.mp3")));
-        musicList.add(loadingLevel = Gdx.audio.newMusic(Gdx.files.internal("music/LoadingSound.mp3")));
-        musicIndex.add(menuMusic);
-        musicIndex.add(levelMusic1);
-        musicIndex.add(levelMusic2);
-        musicIndex.add(buttonSound);
-        musicIndex.add(loadingSound);
+        for (Map.Entry<String, String> entry : music.entrySet()){
+            musicList.put(entry.getKey(),Gdx.audio.newMusic(Gdx.files.internal(entry.getValue())));
+            System.out.println(musicList.get(entry.getKey()).hashCode());
+        }
     }
 
     private Music findSong(String song){
         Music music = null;
-        //System.out.println(musicIndex.size());
-        //System.out.println(musicList.size());
-        for (int i = 0; i < musicIndex.size(); i++){
-          //  System.out.println(musicIndex.get(i));
-            //System.out.println(song);
-
-            if (musicIndex.get(i).equals(song)) {
-                    return musicList.get(i);
+        for (Map.Entry e : musicList.entrySet()) {
+            if (e.getKey().equals(song)) {
+                System.out.println("hittade en låt!");
+                music = (Music)e.getValue();
+                return music;
             }
         }
         return music;

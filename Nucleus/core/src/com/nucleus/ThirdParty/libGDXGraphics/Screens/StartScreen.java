@@ -13,9 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.Controller.MusicController;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.INMusicPlayer;
-import com.nucleus.Model.NMusicPlayer;
+import com.nucleus.Model.MusicPlayerData;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
@@ -38,8 +38,8 @@ public class StartScreen implements Screen {
     private ClickListener listener;
     private String[] buttons;
     private ILevel level;
-    private INMusicPlayer musicPlayer;
-
+    private MusicController mc;
+    private static MusicPlayerData mpd;
     private List<IViewable> views = new ArrayList<IViewable>();
 
 
@@ -52,7 +52,8 @@ public class StartScreen implements Screen {
 
         this.buttons = buttons;
         this.listener = new MenuListener();
-        musicPlayer = NMusicPlayer.getInstance();
+        this.mpd = MusicPlayerData.getInstance();
+        this.mc = new MusicController();
         //Initialising graphics
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
@@ -64,9 +65,9 @@ public class StartScreen implements Screen {
         stage = new Stage(viewport, batch);
 
         Gdx.input.setInputProcessor(stage);
+       // mc.playLoop(MusicPlayerData.menuMusic, 1f);
 
         //Initialize music
-        musicPlayer.playLoop(NMusicPlayer.menuMusic,0.5f);
     }
 
     @Override
