@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.INMusicPlayer;
 import com.nucleus.Model.NMusicPlayer;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
@@ -37,7 +38,7 @@ public class StartScreen implements Screen {
     private ClickListener listener;
     private String[] buttons;
     private ILevel level;
-    private  NMusicPlayer musicPlayer;
+    private INMusicPlayer musicPlayer;
 
     private List<IViewable> views = new ArrayList<IViewable>();
 
@@ -51,9 +52,7 @@ public class StartScreen implements Screen {
 
         this.buttons = buttons;
         this.listener = new MenuListener();
-
         musicPlayer = NMusicPlayer.getInstance();
-
         //Initialising graphics
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));

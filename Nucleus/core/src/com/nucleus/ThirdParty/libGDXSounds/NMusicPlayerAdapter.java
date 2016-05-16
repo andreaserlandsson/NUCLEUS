@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
-    private static INMusicPlayerAdapter instance = null;
+    //private static INMusicPlayerAdapter instance = null;
     MusicPlayer musicPlayer;
     Music menu, inGame1,inGame2, buttonClicked, loadingLevel;
     final String menuMusic = "music/menuSounds.wav";
@@ -18,20 +18,11 @@ public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
     List<Music> musicList;
     List<String> musicIndex;
 
-    public static INMusicPlayerAdapter getInstance(){
-        if (instance == null){
-            instance = new NMusicPlayerAdapter();
-        }
-        return instance;
-    }
-    private NMusicPlayerAdapter() {
+    public NMusicPlayerAdapter() {
         musicPlayer = MusicPlayer.getInstance();
         musicList = new ArrayList<Music>();
         musicIndex = new ArrayList<String>();
         loadSongs();
-        for (int i = 0; i < musicIndex.size(); i++){
-            System.out.println(musicIndex.get(i));
-        }
     }
 
     @Override

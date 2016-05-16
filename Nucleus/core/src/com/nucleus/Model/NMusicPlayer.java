@@ -2,16 +2,13 @@ package com.nucleus.Model;
 
 import com.nucleus.ThirdParty.libGDXSounds.*;
 
-import java.util.Random;
 
-public class NMusicPlayer  {
+public class NMusicPlayer implements INMusicPlayer {
     public static final String levelOneMusic = "music/inGame.mp3";
     public static final String levelTwoMusic = "music/inGame2.mp3";
     public static final String menuMusic = "music/menuSounds.wav";
     public static final String buttonClickedSound = "music/tempButton.mp3";
     public static final String loadingMusic = "music/LoadingSound.mp3";
-    public static String levelSong;
-    private static final int amountOfSongs = 2;
     private static NMusicPlayer instance = null;
     private static INMusicPlayerAdapter musicPlayer;
 
@@ -21,8 +18,7 @@ public class NMusicPlayer  {
     public static NMusicPlayer getInstance(){
         if (instance == null){
             instance = new NMusicPlayer();
-            musicPlayer = NMusicPlayerAdapter.getInstance();
-            System.out.println(levelSong);
+            musicPlayer = new NMusicPlayerAdapter();
         }
         return instance;
     }

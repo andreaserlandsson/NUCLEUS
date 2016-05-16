@@ -13,7 +13,7 @@ public class MusicPlayer {
     //singleton
     }
 
-    //if not initaialized, initalize. Else, return that instance that allready exists.
+    //if not initaialized, initalize. Else, return that instance that already exists.
     public static MusicPlayer getInstance(){
         if (instance == null) {
             instance = new MusicPlayer();

@@ -1,8 +1,6 @@
 package com.nucleus.ThirdParty.libGDXSounds;
 
-/**
- * Created by paki on 5/14/16.
- */
+
 public interface INMusicPlayerAdapter {
     void playSongLoop(String song, float volume);
     void playSoundEffect(String song);

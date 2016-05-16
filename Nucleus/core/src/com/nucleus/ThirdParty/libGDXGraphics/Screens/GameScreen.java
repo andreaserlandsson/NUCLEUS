@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.INMusicPlayer;
 import com.nucleus.Model.NMusicPlayer;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class GameScreen implements Screen {
     private ILevel level;
-    private NMusicPlayer musicPlayer;
+    private INMusicPlayer musicPlayer;
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
@@ -31,7 +32,7 @@ public class GameScreen implements Screen {
 
         this.level = level;
         this.cam = new OrthographicCamera(1080, 1920);
-        this.musicPlayer = NMusicPlayer.getInstance();
+        musicPlayer = NMusicPlayer.getInstance();
         this.musicPlayer.changeMusic(NMusicPlayer.loadingMusic, NMusicPlayer.menuMusic,0.5f);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
