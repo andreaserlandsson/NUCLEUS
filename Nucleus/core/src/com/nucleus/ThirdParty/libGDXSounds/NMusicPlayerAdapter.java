@@ -12,14 +12,14 @@ import java.util.Map;
 public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
     private static INMusicPlayerAdapter instance = null;
     private MusicPlayer musicPlayer;
-    private static Map<String, String> music;
+    private static Map<String, String> musicFiles;
     private static Map<String, Music> musicList;
     private MusicPlayerData musicPlayerData;
 
     private NMusicPlayerAdapter() {
         musicPlayer = MusicPlayer.getInstance();
         musicPlayerData = MusicPlayerData.getInstance();
-        music = musicPlayerData.getMusicMap();
+        musicFiles = musicPlayerData.getMusicMap();
         musicList = new HashMap<String, Music>();
         loadSongs();
     }
@@ -62,7 +62,7 @@ public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
     }
 
     private void loadSongs() {
-        for (Map.Entry<String, String> entry : music.entrySet()){
+        for (Map.Entry<String, String> entry : musicFiles.entrySet()){
             musicList.put(entry.getKey(),Gdx.audio.newMusic(Gdx.files.internal(entry.getValue())));
             System.out.println(musicList.get(entry.getKey()).hashCode());
         }

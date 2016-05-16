@@ -22,7 +22,6 @@ public class MusicPlayerData {
         audio.put(loadingMusic, loadingMusic);
         audio.put(buttonClickedSound, buttonClickedSound);
         audio.put(menuMusic, menuMusic);
-        System.out.println(levelOneMusic.hashCode());
     }
 
     public static MusicPlayerData getInstance(){
