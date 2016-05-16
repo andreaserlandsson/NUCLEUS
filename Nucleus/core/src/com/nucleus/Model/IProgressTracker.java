@@ -5,5 +5,5 @@ package com.nucleus.Model;
  */
 public interface IProgressTracker {
     int readCompletedLevels();
-    void writeCompletedLeves(int lvlNumber);
+    void writeCompletedLevels(int lvlNumber);
 }

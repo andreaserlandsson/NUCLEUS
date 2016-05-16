@@ -11,16 +11,18 @@ public class ProgressTracker implements IProgressTracker{
     FileHandle file;
 
     public ProgressTracker(){
-        this.file = Gdx.files.local("assets/progress.txt");
+        this.file = Gdx.files.local("assets/levels/progress.txt");
     }
 
     public int readCompletedLevels(){
+        if(file.length()==0)
+            return 0;
         String completedLvl = file.readString();
         return Integer.parseInt(completedLvl);
     }
 
-    public void writeCompletedLeves(int levelNumber){
-        if(readCompletedLevels()>levelNumber)
+    public void writeCompletedLevels(int levelNumber){
+        if(readCompletedLevels()<levelNumber)
             file.writeString(Integer.toString(levelNumber),false);
     }
 }
