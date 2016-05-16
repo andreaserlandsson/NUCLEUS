@@ -20,6 +20,7 @@ public class ProgressTracker implements IProgressTracker{
     }
 
     public void writeCompletedLeves(int levelNumber){
-        
+        if(readCompletedLevels()>levelNumber)
+            file.writeString(Integer.toString(levelNumber),false);
     }
 }
