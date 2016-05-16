@@ -15,10 +15,11 @@ public class ProgressTracker implements IProgressTracker{
     }
 
     public int readCompletedLevels(){
-        return 0;
+        String completedLvl = file.readString();
+        return Integer.parseInt(completedLvl);
     }
 
     public void writeCompletedLeves(int levelNumber){
-
+        
     }
 }

@@ -9,7 +9,7 @@ public class Level implements ILevel {
 
     private float runTime = 0;
     private float lastUpdateTime = 0;
-    private float dummyUpdateVariable = 1;
+    private float updateTime = 1;
 
     private enum GameState{
         RUNNING, PAUSED
@@ -22,13 +22,16 @@ public class Level implements ILevel {
     private IMolecule molecule;
     private IGluonPoint[] gluons;
 
+    private IProgressTracker progressTracker;
 
-    public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
+
+    public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT){
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
         this.gluons = gluons;
+        this.progressTracker = pT;
     }
 
     public int getWidth(){
@@ -136,7 +139,7 @@ public class Level implements ILevel {
         if(currentState==GameState.RUNNING) {
             runTime += delta;
             collisionCheck();
-            if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
+            if (runTime - lastUpdateTime >= updateTime && !gun.isEmpty()) {
                 lastUpdateTime = runTime;
                 airborneNucleons.add(gun.shoot());
             }
