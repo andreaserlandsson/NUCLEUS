@@ -11,6 +11,7 @@ public class DesktopLauncher {
 		config.title = "NucleusGame";
 		config.width = 280;
 		config.height = 512;
+		config.samples = 4;
 		new LwjglApplication(new NucleusGameCreator(), config);
 	}
 }

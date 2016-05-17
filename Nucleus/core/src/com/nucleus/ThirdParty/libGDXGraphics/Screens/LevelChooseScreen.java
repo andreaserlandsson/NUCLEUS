@@ -13,6 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Quaxi on 04/05/16.
@@ -25,15 +30,19 @@ public class LevelChooseScreen implements Screen {
     private OrthographicCamera camera;
     protected Skin skin;
     private ClickListener listener;
+    private List<IViewable> views = new ArrayList<IViewable>();
+
 
 
     public LevelChooseScreen()
     {
 
         //Initialising graphics
+
+        views.add(new BackgroundViewable());
         listener = new MenuListener();
         batch = new SpriteBatch();
-        skin = new Skin(Gdx.files.internal("uiskin.json"));
+        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
         viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
         viewport.apply();
@@ -48,6 +57,10 @@ public class LevelChooseScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        for(IViewable view : views){
+            view.render(batch);
+        }
 
         stage.act();
         stage.draw();
