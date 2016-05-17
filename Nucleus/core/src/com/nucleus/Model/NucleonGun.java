@@ -28,7 +28,7 @@ public class NucleonGun implements INucleonGun {
         return nucleonList.size();
     }
 
-    public int getProtonInGun(){
+    public int getProtonsInGun(){
         int nbrOfProtons = 0;
         for(int i = 0; i < nucleonList.size(); i++){
             if(nucleonList.get(i).getClass().equals(Proton.class)){
@@ -38,7 +38,7 @@ public class NucleonGun implements INucleonGun {
         return nbrOfProtons;
     }
 
-    public int getNeutronInGun(){
+    public int getNeutronsInGun(){
         int nbrOfNeutrons = 0;
         for(int i = 0; i < nucleonList.size(); i++){
             if(nucleonList.get(i).getClass().equals(Neutron.class)){
