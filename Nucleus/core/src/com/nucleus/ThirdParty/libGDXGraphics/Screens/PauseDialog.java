@@ -18,5 +18,12 @@ import com.nucleus.Controller.MenuListener;
  * Created by andreaserlandsson on 17/05/16.
  */
 public class PauseDialog {
-
+    private SpriteBatch batch;
+    protected Stage stage;
+    private Viewport viewport;
+    private OrthographicCamera camera;
+    protected Skin skin;
+    private ClickListener listener;
+    private String[] buttons;
+    private boolean won;
 }
