@@ -22,6 +22,12 @@ import java.util.List;
 public class GameScreen implements Screen {
     private ILevel level;
 
+    private WinDialog winDialog;
+    private boolean dialogShow = false;
+
+    private WinLoseScreen loseScreen;
+    private WinLoseScreen winScreen;
+
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
 
@@ -41,17 +47,49 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
 
+
+        //this.winDialog = new WinDialog();
+        //winScreen.show();
+        //loseScreen.show();
+
     }
 
 
     @Override
     public void render(float delta) {
-        level.update(delta);
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        for(IViewable view : views){
-            view.render(batch);
+        if (level.isGameLost()) {
+            if (dialogShow == false) {
+                //winDialog.show();
+                this.loseScreen = new WinLoseScreen(false);
+                loseScreen.show();
+                dialogShow = true;
+            }
+
+            //winDialog.render(1);
+            loseScreen.render(1);
+
+        } else if (level.isGameWon()) {
+            if (dialogShow == false) {
+                //winDialog.show();
+                this.winScreen = new WinLoseScreen(true);
+                winScreen.show();
+                dialogShow = true;
+            }
+
+            //winDialog.render(1);
+            winScreen.render(1);
+
+        } else {
+
+
+            level.update(delta);
+            Gdx.gl.glClearColor(0, 0, 0, 1);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+            for (IViewable view : views) {
+                view.render(batch);
+            }
         }
     }
 
@@ -62,6 +100,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show(){
+
         Gdx.app.log("GameScreen", "showing");
     }
 
