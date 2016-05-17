@@ -54,6 +54,11 @@ public class WinLoseScreen implements Screen{
         mainTable.top();
         mainTable.padBottom(15f).padTop(30f);
 
+        /*if (won) {
+            mainTable.add("YOU WON");
+        } else {
+            mainTable.add("YOU LOST");
+        }*/
 
 
         //Create buttons
@@ -67,13 +72,6 @@ public class WinLoseScreen implements Screen{
         playAgainButton.addListener(listener);
 
         //Add buttons to table
-        if (won) {
-            mainTable.add("YOU WON");
-        } else {
-            mainTable.add("YOU LOST");
-        }
-        mainTable.row();
-        mainTable.row();
         mainTable.add(mainMenuButton);
         mainTable.row();
         mainTable.add(playAgainButton);

@@ -20,7 +20,8 @@ import java.util.List;
 public class GameScreen implements Screen {
     private ILevel level;
 
-
+    private WinLoseScreen loseScreen;
+    private WinLoseScreen winScreen;
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
@@ -36,19 +37,23 @@ public class GameScreen implements Screen {
         views.add(new MoleculeViewable(level.getMolecule()));
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
+        this.loseScreen = new WinLoseScreen(level.isGameLost());
+        this.winScreen = new WinLoseScreen(level.isGameWon());
+        winScreen.show();
+        loseScreen.show();
     }
 
     @Override
     public void render(float delta) {
 
         if (level.isGameLost()) {
-            WinLoseScreen winLoseScreen = new WinLoseScreen(level.isGameLost());
-            winLoseScreen.render(1);
-            winLoseScreen.show();
+
+            loseScreen.render(1);
+
         } else if (level.isGameWon()) {
-            WinLoseScreen winLoseScreen = new WinLoseScreen(level.isGameWon());
-            winLoseScreen.render(1);
-            winLoseScreen.show();
+
+            winScreen.render(1);
+
         } else {
 
 
