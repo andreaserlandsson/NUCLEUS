@@ -11,7 +11,7 @@ public class BackgroundViewable implements IViewable {
     private Texture bg;
 
     public BackgroundViewable(){
-        this.bg = new Texture("bg.png");
+        this.bg = new Texture("graphics/bg.png");
     }
     @Override
     public void render(SpriteBatch batch){

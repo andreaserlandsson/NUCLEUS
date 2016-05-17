@@ -23,21 +23,21 @@ public class NucleonViewable implements IViewable {
         this.nucleons = nucleons;
 
         //Adding textures
-        proton = new Texture("proton.png");
-        neutron = new Texture("neutron.png");
-        protonLargeTrail = new Texture("tailProton2.png");
-        neutronLargeTrail = new Texture("tailNeutron2.png");
+        proton = new Texture("graphics/proton.png");
+        neutron = new Texture("graphics/neutron.png");
+        protonLargeTrail = new Texture("graphics/tailProton2.png");
+        neutronLargeTrail = new Texture("graphics/tailNeutron2.png");
 
-        //Fitting rotated textures into textureregions
+        //Adding filters
+        protonLargeTrail.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.MipMapLinearNearest);
+        neutronLargeTrail.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.MipMapLinearNearest);
+        proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        neutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        //Fitting rotated textures into TextureRegions
         protonLargeTrailRegion = new TextureRegion(protonLargeTrail, protonLargeTrail.getWidth(), protonLargeTrail.getHeight());
         neutronLargeTrailRegion = new TextureRegion(neutronLargeTrail, neutronLargeTrail.getWidth(), neutronLargeTrail.getHeight());
 
-
-        //Adding filters
-        protonLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        neutronLargeTrail.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        proton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        neutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
     private int vectorToRadians(Vector v){
@@ -88,7 +88,6 @@ public class NucleonViewable implements IViewable {
                         1.0f,
                         1.0f,
                         vectorToRadians(nucleon.getVelocity()));
-
             }
         }
         batch.end();

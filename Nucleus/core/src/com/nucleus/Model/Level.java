@@ -28,7 +28,6 @@ public class Level implements ILevel {
     private IMolecule molecule;
     private IGluonPoint[] gluons;
 
-
     public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
         this.width = width;
         this.height = height;
@@ -78,8 +77,9 @@ public class Level implements ILevel {
     public boolean isOutOfBoundsCheck(INucleon nucleon){
         float x = nucleon.getPosition().getX();
         float y = nucleon.getPosition().getY();
-        return x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
-                y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0;
+        float bufferSize = 50; //nucleons aren't considered out of bounds until their "trails" are completely off-screen
+        return x - nucleon.getRadius()>=width+bufferSize || x + nucleon.getRadius()<=0-bufferSize ||
+                y - nucleon.getRadius()>=height+bufferSize || y + nucleon.getRadius()<=0-bufferSize;
     }
 
     //TODO: Check so this still works correctly with tests
@@ -159,22 +159,20 @@ public class Level implements ILevel {
 
 
     public void update(float delta){
-        if (gun.isEmpty()) {
-            loseGame();
-        } else {
-            checkWinGame();
-            if(currentState==GameState.RUNNING) {
-                runTime += delta;
-                collisionCheck();
-                if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
-                    lastUpdateTime = runTime;
-                    airborneNucleons.add(gun.shoot());
-                }
-                for (INucleon nucleon : airborneNucleons) {
-                    nucleon.update(delta);
-                }
-                removeOutOfBoundsNucleons();
+
+        checkWinGame();
+        if(currentState==GameState.RUNNING) {
+            runTime += delta;
+            collisionCheck();
+            if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
+                lastUpdateTime = runTime;
+                airborneNucleons.add(gun.shoot());
             }
+            for (INucleon nucleon : airborneNucleons) {
+                nucleon.update(delta);
+            }
+            removeOutOfBoundsNucleons();
         }
+
     }
 }

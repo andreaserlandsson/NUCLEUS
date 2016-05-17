@@ -1,5 +1,8 @@
 package com.nucleus.Utils;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
@@ -9,16 +12,19 @@ public class LevelParser {
 
 
     //private static int[] intList;   //obsolete?
-    public static LevelData levelParse(int level) throws LevelNotExistingException {
-        return splitLevelString((readFromFile(level)));
+    public static LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {
+        return splitLevelString((readFromFile(level)), width, height);
     }
 
     // method to read from a file and return a single String.
-    public static String readFromFile(int level) throws LevelNotExistingException {
+    private static String readFromFile(int level) throws LevelNotExistingException {
         String levelString = "";
-        try {
+
+        FileHandle file = Gdx.files.internal("levels/level_" + Integer.toString(level) + ".txt");
+        levelString = file.readString();
+        /*try {
             Scanner sc;
-            File file = new File("level_" + Integer.toString(level) + ".txt");    //temporary as we have no way to get a file
+            File file = libs();
             sc = new Scanner(file);
             while (sc.hasNextLine()) {
                 String lineInput = sc.nextLine();
@@ -27,12 +33,14 @@ public class LevelParser {
             sc.close();
         } catch (FileNotFoundException e) {
         throw new LevelNotExistingException("level does not exist");
-        }
+        } */
         return levelString;
     }
 
+
+
     //split a string where there is a new line
-    public static LevelData splitLevelString (String str) {
+    private static LevelData splitLevelString (String str, int width, int height) {
         String temp = str.replaceAll(" ", "\n");
         String[] strings = temp.split("\n");
         int[] levelField = new int[strings.length];
@@ -40,7 +48,7 @@ public class LevelParser {
         {
             levelField[i] = Integer.parseInt(strings[i]);
         }
-        return new LevelData(levelField);
+        return new LevelData(levelField, width, height);
     }
 
 }

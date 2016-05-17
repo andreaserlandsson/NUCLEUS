@@ -13,6 +13,17 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.Controller.MusicController;
+import com.nucleus.Model.ILevel;
+import com.nucleus.Model.MusicPlayerData;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Utils.LevelBuilder;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Quaxi on 04/05/16.
@@ -26,17 +37,26 @@ public class StartScreen implements Screen {
     protected Skin skin;
     private ClickListener listener;
     private String[] buttons;
+    private ILevel level;
+    private MusicController mc;
+    private static MusicPlayerData mpd;
+    private List<IViewable> views = new ArrayList<IViewable>();
 
 
     public StartScreen(String[] buttons)
     {
-        //views.add(new BackgroundView());
+        level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        views.add(new BackgroundViewable());
+        views.add(new NucleonViewable(level.getAirborneNucleons()));
 
         this.buttons = buttons;
         this.listener = new MenuListener();
+        this.mpd = MusicPlayerData.getInstance();
+        this.mc = new MusicController();
         //Initialising graphics
         batch = new SpriteBatch();
-        skin = new Skin(Gdx.files.internal("uiskin.json"));
+        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
         viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
         viewport.apply();
@@ -45,15 +65,26 @@ public class StartScreen implements Screen {
         stage = new Stage(viewport, batch);
 
         Gdx.input.setInputProcessor(stage);
+       // mc.playLoop(MusicPlayerData.menuMusic, 1f);
+
+        //Initialize music
     }
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
+
+        level.update(delta);
+
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        for(IViewable view : views){
+            view.render(batch);
+        }
 
         stage.act();
         stage.draw();
+
     }
 
     @Override
@@ -73,10 +104,8 @@ public class StartScreen implements Screen {
         //Create Table
         Table mainTable = new Table();
         mainTable.setFillParent(true);
-        mainTable.top();
-        mainTable.padBottom(15f).padTop(30f);
-
-
+        mainTable.center();
+        mainTable.padBottom(150f);
 
         //Create buttons
         TextButton playButton = new TextButton(buttons[0], skin);
@@ -91,11 +120,11 @@ public class StartScreen implements Screen {
         exitButton.addListener(listener);
 
         //Add buttons to table
-        mainTable.add(playButton);
+        mainTable.add(playButton).width(100).pad(10);
         mainTable.row();
-        mainTable.add(optionsButton);
+        mainTable.add(optionsButton).width(100).pad(10);
         mainTable.row();
-        mainTable.add(exitButton);
+        mainTable.add(exitButton).width(100).pad(10);
 
         //Add table to stage
         stage.addActor(mainTable);

@@ -6,12 +6,16 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 /**
  * Created by Quaxi on 10/05/16.
  */
+
+//TODO add listenerAdapter
 public class MenuListener extends ClickListener {
 
     private MenuController controller;
 
     public MenuListener() {
         this.controller = new MenuController();
+
+
     }
 
 
@@ -22,7 +26,6 @@ public class MenuListener extends ClickListener {
         }
 
         if (event.getTarget().toString().equals("Label: Options")){
-
         }
 
         if (event.getTarget().toString().equals("Label: Exit")){
@@ -34,15 +37,7 @@ public class MenuListener extends ClickListener {
         }
 
         if (event.getTarget().toString().equals("Label: Level 2")){
-            //DO STUFF
-        }
-
-        if (event.getTarget().toString().equals("Label: Level 2")){
-            controller.exit();
-        }
-
-        if (event.getTarget().toString().equals("Label: Main Menu")){
-            controller.startLevelChoose(1);
+            controller.changeLevel(2);
         }
 
         //win and lose screen
