@@ -20,6 +20,9 @@ import java.util.List;
 public class GameScreen implements Screen {
     private ILevel level;
 
+    private WinDialog winDialog;
+    private boolean dialogShow = false;
+
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
 
@@ -40,10 +43,11 @@ public class GameScreen implements Screen {
 
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
-        this.loseScreen = new WinLoseScreen(level.isGameLost());
-        this.winScreen = new WinLoseScreen(level.isGameWon());
-        winScreen.show();
-        loseScreen.show();
+
+
+        //this.winDialog = new WinDialog();
+        //winScreen.show();
+        //loseScreen.show();
 
     }
 
@@ -52,11 +56,25 @@ public class GameScreen implements Screen {
     public void render(float delta) {
 
         if (level.isGameLost()) {
+            if (dialogShow == false) {
+                //winDialog.show();
+                this.loseScreen = new WinLoseScreen(false);
+                loseScreen.show();
+                dialogShow = true;
+            }
 
+            //winDialog.render(1);
             loseScreen.render(1);
 
         } else if (level.isGameWon()) {
+            if (dialogShow == false) {
+                //winDialog.show();
+                this.winScreen = new WinLoseScreen(true);
+                winScreen.show();
+                dialogShow = true;
+            }
 
+            //winDialog.render(1);
             winScreen.render(1);
 
         } else {

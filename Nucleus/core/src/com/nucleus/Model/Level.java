@@ -48,9 +48,7 @@ public class Level implements ILevel {
         return gameWon;
     }
 
-    public boolean isGameLost() {
-        return gameLost;
-    }
+    public boolean isGameLost() { return  gameLost; }
 
     public INucleonGun getNucleonGun(){
         return gun;
