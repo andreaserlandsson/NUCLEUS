@@ -19,6 +19,7 @@ import mocks.MockNucleonGun;
 
 
 import static junit.framework.TestCase.assertFalse;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -120,7 +121,6 @@ public class LevelTest {
 
         Level level = new Level(100, 100, gun, molecule,gluons);
 
-        assertFalse(gun.isEmpty());
         level.update(1);
         assertTrue(gun.isEmpty());
 
@@ -128,7 +128,6 @@ public class LevelTest {
         assertTrue(level.getAirborneNucleons().get(0).getPosition().getX() == 2.0);
         assertTrue(level.getAirborneNucleons().get(0).getPosition().getY() == 2.0);
 
-        assertFalse(level.getAirborneNucleons().isEmpty());
 
         level.update(1);
 
@@ -142,5 +141,27 @@ public class LevelTest {
 
     }
 
+    @Test
+    public void testGluonCollisionCheck(){
+        IGluonPoint[] gluons = new MockGluon[1];
 
+        gluons[0] = new MockGluon(new Vector(1,1),1,1);
+        Molecule molecule = new Molecule(10,10,gluons);
+
+        ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
+        Vector nucleonPos = new Vector(1,1);
+        Vector nucleonVel = new Vector(1,1);
+        INucleon nucleon = new MockNucleon(nucleonPos,nucleonVel);
+        nucleons.add(nucleon);
+        INucleonGun gun = new MockNucleonGun(nucleons);
+
+        Level level = new Level(10, 10, gun, molecule,gluons);
+
+        level.update(1);
+        assertTrue(level.getGluons()[0].getProtonsNeeded() == 1);
+
+        level.update(1);
+        assertTrue(level.getGluons()[0].getProtonsNeeded() == 0);
+
+    }
 }

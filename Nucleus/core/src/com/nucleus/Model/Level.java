@@ -22,7 +22,6 @@ public class Level implements ILevel {
     private IMolecule molecule;
     private IGluonPoint[] gluons;
 
-
     public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
         this.width = width;
         this.height = height;

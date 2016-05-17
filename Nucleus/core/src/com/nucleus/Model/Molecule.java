@@ -14,6 +14,14 @@ public class Molecule implements IMolecule {
         centerT = new Vector(width/2, heigth/2);
     }
 
+    public IGluonPoint getGluonPoint(int i) {
+        return gluons[i];
+    }
+
+    public int getNrOfGluonPoint(){
+        return gluons.length;
+    }
+
     public void setRotation(float rot){
         rotation = rotation + rot;
         //temporärt
@@ -44,8 +52,8 @@ public class Molecule implements IMolecule {
         return new Vector(nPosX, nPosY).add(center);
     }
 
-    public IGluonPoint[] getGluons(){
+    @Override
+    public IGluonPoint[] getGluons() {
         return gluons;
     }
-
 }
