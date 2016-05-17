@@ -11,7 +11,6 @@ import com.nucleus.ThirdParty.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
-import com.nucleus.ThirdParty.libGDXControllers.MusicPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +20,6 @@ import java.util.List;
  */
 public class GameScreen implements Screen {
     private ILevel level;
-    private MusicPlayer music;
-
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
@@ -33,8 +30,6 @@ public class GameScreen implements Screen {
 
         this.level = level;
         this.cam = new OrthographicCamera(1080, 1920);
-        this.music = MusicPlayer.getInstance();
-        music.changeMusic(music.menuMusic, music.loadingLevel,0.5f);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         views.add(new BackgroundViewable());
@@ -45,15 +40,6 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
 
-
-        //TODO: abstract this out
-        if (levelNumber == 1){
-            music.changeMusic(music.loadingLevel, music.inGameMusic,0.6f);
-        }
-        else if (levelNumber == 2){
-            music.changeMusic(music.loadingLevel, music.inGameMusic2, 0.6f);
-
-        }
     }
 
 
@@ -76,25 +62,21 @@ public class GameScreen implements Screen {
     @Override
     public void show(){
         Gdx.app.log("GameScreen", "showing");
-        music.resumeMusic(music.inGameMusic);
     }
 
     @Override
     public void hide(){
         Gdx.app.log("GameScreen", "hide called");
-        music.pauseMusic(music.inGameMusic);
     }
 
     @Override
     public  void pause(){
         Gdx.app.log("GameScreen", "pause called");
-        music.pauseMusic(music.inGameMusic);
     }
 
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
-        music.resumeMusic(music.inGameMusic);
     }
 
     @Override
