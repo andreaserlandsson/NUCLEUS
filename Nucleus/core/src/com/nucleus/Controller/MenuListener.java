@@ -22,7 +22,7 @@ public class MenuListener extends ClickListener {
     public void clicked(InputEvent event, float x, float y) {
 
         if (event.getTarget().toString().equals("Label: Play")){
-            controller.startLevelChoose(1);
+            controller.startLevelChoose();
         }
 
         if (event.getTarget().toString().equals("Label: Options")){
@@ -42,7 +42,7 @@ public class MenuListener extends ClickListener {
 
         //win and lose screen
         if (event.getTarget().toString().equals("Label: Play Again")){
-            controller.startLevelChoose(1);
+            controller.startLevelChoose();
         }
 
         if (event.getTarget().toString().equals("Label: Main Menu")){

@@ -13,8 +13,8 @@ public class MenuController {
         adapter = new MenuControllerAdapter();
     }
 
-    public void startLevelChoose(int i) {
-        adapter.startLevelChoose(i);
+    public void startLevelChoose() {
+        adapter.startLevelChoose();
     }
 
     public void exit() {
@@ -28,4 +28,5 @@ public class MenuController {
     public void goToStartScreen(){
         adapter.goToStartLevel();
     }
+
 }

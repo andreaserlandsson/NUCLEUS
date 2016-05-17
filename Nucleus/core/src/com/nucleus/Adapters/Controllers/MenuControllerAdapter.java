@@ -24,7 +24,7 @@ public class MenuControllerAdapter {
 
     }
     
-    public void startLevelChoose(int levelNum){
+    public void startLevelChoose(){
 
         ILevel level = LevelBuilder.buildLevel(1, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.input.setInputProcessor(new NInputAdapter(level));
@@ -36,6 +36,7 @@ public class MenuControllerAdapter {
         Gdx.app.log("Main menu", "button pressed");
 
         StartScreenView ssv = new StartScreenView();
+        Gdx.input.setInputProcessor(new NInputAdapter());
         ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen(ssv.getStartScreen()));
     }
 
