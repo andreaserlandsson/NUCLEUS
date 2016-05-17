@@ -51,7 +51,7 @@ public class MenuListener extends ClickListener {
         }
 
         if (event.getTarget().toString().equals("Label: Main Menu")){
-            controller.startLevelChoose(1);
+            controller.goToStartScreen();
         }
 
     }

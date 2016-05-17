@@ -7,7 +7,9 @@ import com.nucleus.Model.ILevel;
 import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
 import com.nucleus.ThirdParty.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.ThirdParty.libGDXGraphics.Screens.LevelChooseScreen;
+import com.nucleus.ThirdParty.libGDXGraphics.Screens.StartScreen;
 import com.nucleus.Utils.LevelBuilder;
+import com.nucleus.Views.StartScreenView;
 
 public class MenuControllerAdapter {
 
@@ -27,6 +29,13 @@ public class MenuControllerAdapter {
         Gdx.input.setInputProcessor(new NInputAdapter(level));
         ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen());
 
+    }
+
+    public void goToStartLevel(){
+        Gdx.app.log("Main menu", "button pressed");
+
+        StartScreenView ssv = new StartScreenView();
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen(ssv.getStartScreen()));
     }
 
     private void options(){

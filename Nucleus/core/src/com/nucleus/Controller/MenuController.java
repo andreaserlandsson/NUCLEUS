@@ -24,4 +24,8 @@ public class MenuController {
     public void changeLevel(int i) {
         adapter.changeLevel(i);
     }
+
+    public void goToStartScreen(){
+        adapter.goToStartLevel();
+    }
 }
