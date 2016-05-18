@@ -35,23 +35,19 @@ public class PauseDialog extends ScreenAdapter {
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
         new Dialog("Game Paused", skin) {
-
             {
-                text("rly exit");
-                button("Continue palying", "con");
-                button("no", "glad you stay");
+                button("Continue Palying", "con");
+                button("Main Menu", "menu");
             }
 
             @Override
             protected void result(final Object object) {
-                new Dialog("", skin) {
+                if (object.toString() == "con") {
 
-                    {
-                        text(object.toString());
-                        button("OK");
-                    }
-
-                }.show(stage);
+                    hide();
+                } else {
+                    level.setGamePaused(true);
+                }
             }
 
         }.show(stage);

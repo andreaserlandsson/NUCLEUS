@@ -40,6 +40,12 @@ public class MenuControllerAdapter {
         ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen(ssv.getStartScreen()));
     }
 
+    public void showPauseDialog(){
+        Gdx.app.log("PauseDialog", "button pressed");
+
+        
+    }
+
     private void options(){
 
     }

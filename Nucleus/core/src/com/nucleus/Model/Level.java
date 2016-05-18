@@ -14,6 +14,8 @@ public class Level implements ILevel {
     private boolean gameWon = false;
     private boolean gameLost = false;
 
+    private boolean gamePaused = false;
+
     private enum GameState{
         RUNNING,
         PAUSED,
@@ -49,6 +51,15 @@ public class Level implements ILevel {
     }
 
     public boolean isGameLost() { return  gameLost; }
+
+    public boolean isGamePaused() { return gamePaused; }
+    public void setGamePaused(boolean b) {
+        if (b) {
+            currentState = GameState.PAUSED;
+        } else {
+            currentState = GameState.RUNNING;
+        }
+    }
 
     public INucleonGun getNucleonGun(){
         return gun;
@@ -152,6 +163,15 @@ public class Level implements ILevel {
         }
     }
 
+    public void pause(){
+        currentState = GameState.PAUSED;
+        gamePaused = true;
+    }
+
+    public void resume() {
+        currentState = GameState.RUNNING;
+        gamePaused = false;
+    }
 
     public void update(float delta){
 

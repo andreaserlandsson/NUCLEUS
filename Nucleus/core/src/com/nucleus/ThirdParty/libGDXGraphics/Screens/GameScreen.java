@@ -5,6 +5,14 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nucleus.Controller.MenuListener;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.INucleonGun;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
@@ -24,6 +32,13 @@ public class GameScreen implements Screen {
 
     private WinDialog winDialog;
     private boolean dialogShow = false;
+
+    private PauseDialog pauseDialog;
+    private boolean pauseDialogShowing = false;
+
+    protected Stage stage;
+    protected Skin skin;
+    private ClickListener listener;
 
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
@@ -47,6 +62,8 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
 
+        listener = new MenuListener();
+        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
         //this.winDialog = new WinDialog();
         //winScreen.show();
@@ -80,7 +97,15 @@ public class GameScreen implements Screen {
             //winDialog.render(1);
             winScreen.render(1);
 
+        } else if (level.isGamePaused()) {
+            if (pauseDialogShowing) {
+                this.pauseDialog = new PauseDialog();
+                pauseDialog.show();
+                pauseDialogShowing = false;
+            }
+            pauseDialog.render(1);
         } else {
+
 
 
             level.update(delta);
@@ -100,8 +125,30 @@ public class GameScreen implements Screen {
 
     @Override
     public void show(){
-
         Gdx.app.log("GameScreen", "showing");
+
+        /*
+        Table mainTabel = new Table();
+        mainTabel.setFillParent(true);
+        mainTabel.top().left();
+        mainTabel.padBottom(15f).padTop(30f); //what is this?
+
+        TextButton pauseButton = new TextButton("Pause", skin);
+
+        stage.addListener(listener);
+
+        pauseButton.addListener(listener);
+
+        mainTabel.add(pauseButton);
+
+        stage.addActor(pauseButton);
+        */
+        Gdx.input.setInputProcessor(stage = new Stage());
+        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
+
+        if (level.isGamePaused()) {
+
+        }
     }
 
     @Override
@@ -111,6 +158,8 @@ public class GameScreen implements Screen {
 
     @Override
     public  void pause(){
+
+
         Gdx.app.log("GameScreen", "pause called");
     }
 
