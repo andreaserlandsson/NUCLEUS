@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level implements ILevel {
+    private int levelNumber;
     private int width;
     private int height;
 
@@ -31,13 +32,15 @@ public class Level implements ILevel {
     private IProgressTracker progressTracker;
 
 
-    public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT){
+        this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
         this.gluons = gluons;
         this.progressTracker = pT;
+        //System.out.println(pT);
     }
 
     public int getWidth(){
@@ -104,6 +107,7 @@ public class Level implements ILevel {
     private void checkWinGame() {
 
         if (molecule.isFull()) {
+                progressTracker.writeCompletedLevels(levelNumber);
                 gameWon = true;
                 currentState = GameState.PAUSEDWIN;
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
@@ -132,8 +136,6 @@ public class Level implements ILevel {
                             loseGame();
                         }
                     }
-
-
                     else {
                         if (gluon.getNeutronsNeeded() > 0){
                             gluon.addNeutron();
@@ -148,8 +150,6 @@ public class Level implements ILevel {
             if (collidingNucleon != null) {
                 removeNucleon(collidingNucleon);
             }
-
-
         }
         if (collidingNucleon != null){
             removeNucleon(collidingNucleon);

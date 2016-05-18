@@ -36,6 +36,7 @@ public class LevelData {
         this.noOfProtons = levelSpecs[protonAmountIndex];
         this.noOfNeutrons = levelSpecs[neutronAmountIndex];
         this.difficultyMultiplier = levelSpecs[difficultyMultiplierIndex];
+        this.progressTracker = progressTracker;
 
         //Fills a list with gluonPoints with their corresponding values for
         // Cordinates and neuclons needed.

@@ -89,7 +89,7 @@ public class StartScreen implements Screen {
 
     @Override
     public void resize(int width, int height){
-        Gdx.app.log("GameScreen", "resizing");
+        Gdx.app.log("StartScreen", "resizing");
 
         viewport.update(width, height);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
@@ -99,7 +99,7 @@ public class StartScreen implements Screen {
 
     @Override
     public void show(){
-        Gdx.app.log("GameScreen", "showing");
+        Gdx.app.log("StartScreen", "showing");
 
         //Create Table
         Table mainTable = new Table();
@@ -133,17 +133,17 @@ public class StartScreen implements Screen {
 
     @Override
     public void hide(){
-        Gdx.app.log("GameScreen", "hide called");
+        Gdx.app.log("StartScreen", "hide called");
     }
 
     @Override
     public  void pause(){
-        Gdx.app.log("GameScreen", "pause called");
+        Gdx.app.log("StartScreen", "pause called");
     }
 
     @Override
     public void resume(){
-        Gdx.app.log("GameScreen", "resume called");
+        Gdx.app.log("StartScreen", "resume called");
     }
 
     @Override

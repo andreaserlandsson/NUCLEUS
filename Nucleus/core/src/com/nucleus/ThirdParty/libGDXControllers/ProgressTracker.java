@@ -8,9 +8,10 @@ import com.nucleus.Model.IProgressTracker;
  * Created by erik on 16/05/16.
  */
 public class ProgressTracker implements IProgressTracker{
-    Preferences prefs = Gdx.app.getPreferences("prefs");
+    private Preferences prefs;
 
     public ProgressTracker(){
+        prefs = Gdx.app.getPreferences("prefs");
     }
 
     public int readCompletedLevels(){
@@ -19,7 +20,8 @@ public class ProgressTracker implements IProgressTracker{
     }
 
     public void writeCompletedLevels(int levelNumber){
-        if(readCompletedLevels()<levelNumber)
+        if(readCompletedLevels()<levelNumber) {
             prefs.putInteger("progress", levelNumber);
+        }
     }
 }
