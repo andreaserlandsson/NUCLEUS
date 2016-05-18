@@ -11,8 +11,14 @@ public class Level implements ILevel {
     private float lastUpdateTime = 0;
     private float updateTime = 1;
 
+    private boolean gameWon = false;
+    private boolean gameLost = false;
+
     private enum GameState{
-        RUNNING, PAUSED
+        RUNNING,
+        PAUSED,
+        PAUSEDWIN,
+        PAUSEDLOSE
     }
 
     private GameState currentState = GameState.RUNNING;
@@ -21,7 +27,7 @@ public class Level implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
     private IGluonPoint[] gluons;
-
+    
     private IProgressTracker progressTracker;
 
 
@@ -41,6 +47,12 @@ public class Level implements ILevel {
     public int getHeight(){
         return height;
     }
+
+    public boolean isGameWon() {
+        return gameWon;
+    }
+
+    public boolean isGameLost() { return  gameLost; }
 
     public INucleonGun getNucleonGun(){
         return gun;
@@ -89,12 +101,19 @@ public class Level implements ILevel {
 
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
-    private void winGame() {
-        System.out.println("YOU HAVE WON YAY!!");
+    private void checkWinGame() {
+
+        if (molecule.isFull()) {
+                gameWon = true;
+                currentState = GameState.PAUSEDWIN;
+        } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
+            loseGame();
+        }
     }
 
-    private void loseGame() {
-        System.out.println("You lost :(((");
+    private void loseGame(){
+        gameLost = true;
+        currentState = GameState.PAUSEDLOSE;
     }
 
     public void collisionCheck(){
@@ -108,10 +127,9 @@ public class Level implements ILevel {
                         if (gluon.getProtonsNeeded() > 0){
                             gluon.addProton();
                             collidingNucleon = nucleon;
-                            System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
-                        }
-                        else {
-                            System.out.println("NOT HUNGRY");
+                            checkWinGame();
+                        } else {
+                            loseGame();
                         }
                     }
 
@@ -120,14 +138,18 @@ public class Level implements ILevel {
                         if (gluon.getNeutronsNeeded() > 0){
                             gluon.addNeutron();
                             collidingNucleon = nucleon;
-                            System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
-                        }
-                        else {
-                            System.out.println("NOT HUNGRY");
+                            checkWinGame();
+                        } else {
+                            loseGame();
                         }
                     }
                 }
             }
+            if (collidingNucleon != null) {
+                removeNucleon(collidingNucleon);
+            }
+
+
         }
         if (collidingNucleon != null){
             removeNucleon(collidingNucleon);
@@ -136,6 +158,8 @@ public class Level implements ILevel {
 
 
     public void update(float delta){
+
+        checkWinGame();
         if(currentState==GameState.RUNNING) {
             runTime += delta;
             collisionCheck();
@@ -148,5 +172,6 @@ public class Level implements ILevel {
             }
             removeOutOfBoundsNucleons();
         }
+
     }
 }

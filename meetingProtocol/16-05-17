@@ -1,0 +1,43 @@
+MeetingAgenda
+
+  Date: 160517
+
+  Facilitator: Miranda Bånnsgård
+
+  Participants: Herman Carlström, Miranda Bånnsgård, Andreas Erlandsson, Erik Jansson and Hannes Lagerroth.
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+	- Time is an issue.. 
+	- STAN is showing circle dependencies
+	- How to handle the Music, architecture?
+	- GameController gives troubles to implement win/lose. 
+	- Pause is also needed so all the UC are finished! 
+
+2. Reports (15 min) from previous meeting
+ 
+ 	- MusicPlayer is done
+	- Wrong dimensions for Android, but works on Desktop, so never mind.
+	- Win/lose almost done
+	- There are some more tests to be done now
+	- GameScreen soon done, just text missing..
+	  
+3. Discussion items (35 min) 
+	
+	- If something new, this must be done before this week is over.
+	- Must solve circle dependencies that STAN has presented
+	- All must get their amount of CODE! 
+	- Fix look of buttons in ChooseLevel, but low prio
+	- Pause will be fixed with win/lose stuff
+ 	- Next week we will do all the non-coding stuff, RAD, and so on.
+
+4. Outcomes and assignments (5 min) 
+  
+	- Work, work.
+	- Everyone knows what they should do
+
+5. Wrap up
+
+	- Time for next meeting: 160519 10:00
+ 	- Place for next meeting: Linsen

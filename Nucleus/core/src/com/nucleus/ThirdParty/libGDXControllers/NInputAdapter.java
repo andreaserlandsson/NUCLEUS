@@ -2,12 +2,13 @@ package com.nucleus.ThirdParty.libGDXControllers;
 
 import com.nucleus.Controller.ControllerState;
 import com.nucleus.Controller.GameController;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
 
 public class NInputAdapter extends NInputProcessor {
 
     ControllerState controlGame;
-    ControllerState controlMenu;
+    MenuController controlMenu;
     ControllerState controlPauseMenu;
 
     ControllerState currentState;
@@ -18,6 +19,11 @@ public class NInputAdapter extends NInputProcessor {
         this.level = level;
         controlGame = new GameController(level);
         currentState = controlGame;
+    }
+
+    public NInputAdapter(){
+        controlMenu = new MenuController();
+
     }
 
     @Override

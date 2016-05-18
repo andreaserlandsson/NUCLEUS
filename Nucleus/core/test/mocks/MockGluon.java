@@ -27,6 +27,7 @@ public class MockGluon implements IGluonPoint {
 
     public boolean isFull() { //this method is needed for the Molecule.isFull()-test
         return getNeutronsNeeded() == 0 && getProtonsNeeded() == 0;
+
     }
 
     @Override
@@ -52,8 +53,6 @@ public class MockGluon implements IGluonPoint {
         return radius;
     }
 
-
-
     public void addProton() { // if this returns false the game is lost
         currentProtons++;
     }
@@ -69,6 +68,7 @@ public class MockGluon implements IGluonPoint {
 
     public int getProtonsNeeded() {
         return maxProtons - currentNeutrons;
+
     }
 
     public int getCurrentNeutrons() {

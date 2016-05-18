@@ -13,14 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.Controller.MusicController;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.INucleonGun;
-import com.nucleus.Model.Level;
-import com.nucleus.Model.NucleonGun;
-import com.nucleus.ThirdParty.libGDXControllers.MusicPlayer;
+import com.nucleus.Model.MusicPlayerData;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
-import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Utils.LevelBuilder;
 
@@ -40,9 +37,9 @@ public class StartScreen implements Screen {
     protected Skin skin;
     private ClickListener listener;
     private String[] buttons;
-    private Level level;
-    private MusicPlayer music;
-
+    private ILevel level;
+    private MusicController mc;
+    private static MusicPlayerData mpd;
     private List<IViewable> views = new ArrayList<IViewable>();
 
 
@@ -53,13 +50,10 @@ public class StartScreen implements Screen {
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
 
-
         this.buttons = buttons;
         this.listener = new MenuListener();
-        this.music = MusicPlayer.getInstance();
-        this.music.initSongs();
-
-
+        this.mpd = MusicPlayerData.getInstance();
+        this.mc = new MusicController();
         //Initialising graphics
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
@@ -71,9 +65,9 @@ public class StartScreen implements Screen {
         stage = new Stage(viewport, batch);
 
         Gdx.input.setInputProcessor(stage);
+       // mc.playLoop(MusicPlayerData.menuMusic, 1f);
 
         //Initialize music
-        music.playMusicLoop(music.menuMusic,0.3f);
     }
 
     @Override

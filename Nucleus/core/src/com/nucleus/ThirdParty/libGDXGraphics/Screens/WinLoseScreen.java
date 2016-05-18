@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -20,25 +22,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Quaxi on 04/05/16.
+ * Created by andreaserlandsson on 11/05/16.
  */
-public class LevelChooseScreen implements Screen {
 
+public class WinLoseScreen implements Screen{
     private SpriteBatch batch;
     protected Stage stage;
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
     private ClickListener listener;
+    private String[] buttons;
+    private boolean won;
     private List<IViewable> views = new ArrayList<IViewable>();
+    private BitmapFont font = new BitmapFont();
 
-
-
-    public LevelChooseScreen()
-    {
-
-        //Initialising graphics
-
+    public WinLoseScreen(boolean won) {
+        this.won = won;
         views.add(new BackgroundViewable());
         listener = new MenuListener();
         batch = new SpriteBatch();
@@ -51,6 +51,49 @@ public class LevelChooseScreen implements Screen {
         stage = new Stage(viewport, batch);
 
         Gdx.input.setInputProcessor(stage);
+    }
+
+    @Override
+    public void show() {
+        Gdx.app.log("WinLoseScreen", "showing");
+
+        //Create Table
+        Table mainTable = new Table();
+        mainTable.setFillParent(true);
+        mainTable.top();
+        mainTable.padBottom(15f).padTop(30f);
+
+
+
+
+        //Create buttons
+        TextButton mainMenuButton = new TextButton("Main Menu", skin);
+        TextButton playAgainButton = new TextButton("Play Again", skin);
+
+        stage.addListener(listener);
+
+        //Add listeners to buttons
+        mainMenuButton.addListener(listener);
+        playAgainButton.addListener(listener);
+
+        //Add buttons and text to table
+        if (won) {
+            Label winText = new Label("YOU WON", skin);
+            mainTable.add(winText);
+        } else {
+            Label loseText = new Label("YOU LOST", skin);
+            mainTable.add(loseText);
+        }
+
+        mainTable.row();
+        mainTable.add(mainMenuButton);
+        mainTable.row();
+        mainTable.add(playAgainButton);
+        //mainTable.row();
+
+        //Add table to stage
+
+        stage.addActor(mainTable);
     }
 
     @Override
@@ -67,8 +110,8 @@ public class LevelChooseScreen implements Screen {
     }
 
     @Override
-    public void resize(int width, int height){
-        Gdx.app.log("GameScreen", "resizing");
+    public void resize(int width, int height) {
+        Gdx.app.log("WinLoseScreen", "resizing");
 
         viewport.update(width, height);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
@@ -76,58 +119,22 @@ public class LevelChooseScreen implements Screen {
     }
 
     @Override
-    public void show(){
-        Gdx.app.log("GameScreen", "showing");
-
-        //Create Table
-        Table mainTable = new Table();
-        mainTable.setFillParent(true);
-        mainTable.top();
-        mainTable.padBottom(15f).padTop(30f);
-
-        //Create buttons
-        TextButton level1Button = new TextButton("Level 1", skin);
-        TextButton level2Button = new TextButton("Level 2", skin);
-        TextButton level3Button = new TextButton("Level 3", skin);
-
-        stage.addListener(listener);
-
-        //Add listeners to buttons
-        level1Button.addListener(listener);
-        level2Button.addListener(listener);
-        level3Button.addListener(listener);
-
-        //Add buttons to table
-        mainTable.add(level1Button).width(100).pad(10);
-        mainTable.row();
-        mainTable.add(level2Button).width(100).pad(10);
-        mainTable.row();
-        mainTable.add(level3Button).width(100).pad(10);
-
-
-        //Add table to stage
-        stage.addActor(mainTable);
-
+    public void pause() {
+        Gdx.app.log("WinLoseScreen", "hide called");
     }
 
     @Override
-    public void hide(){
-        Gdx.app.log("GameScreen", "hide called");
+    public void resume() {
+        Gdx.app.log("WinLoseScreen", "resume called");
     }
 
     @Override
-    public  void pause(){
-        Gdx.app.log("GameScreen", "pause called");
-    }
-
-    @Override
-    public void resume(){
-        Gdx.app.log("GameScreen", "resume called");
+    public void hide() {
+        Gdx.app.log("WinLoseScreen", "hide called");
     }
 
     @Override
     public void dispose() {
-        skin.dispose();
+        Gdx.app.log("WinLoseScreen", "dispose called");
     }
 }
-
