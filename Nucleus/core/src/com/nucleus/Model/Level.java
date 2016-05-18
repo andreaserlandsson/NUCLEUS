@@ -102,17 +102,14 @@ public class Level implements ILevel {
         if (molecule.isFull()) {
                 gameWon = true;
                 currentState = GameState.PAUSEDWIN;
-                System.out.println("you win");
-                //end the game, do some sort of pop-up?
+        } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
+            loseGame();
         }
     }
 
     private void loseGame(){
-
         gameLost = true;
         currentState = GameState.PAUSEDLOSE;
-        System.out.println("You lost :(((");
-        //end the game, do some sort of pop-up?
     }
 
     public void collisionCheck(){
