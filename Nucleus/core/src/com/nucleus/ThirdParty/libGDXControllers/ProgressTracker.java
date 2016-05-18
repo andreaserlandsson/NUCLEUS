@@ -14,7 +14,7 @@ public class ProgressTracker implements IProgressTracker{
         prefs = Gdx.app.getPreferences("prefs");
     }
 
-    public int readCompletedLevels(){
+    private int readCompletedLevels(){
         int lvlProgress = prefs.getInteger("progress", 0);
         return lvlProgress;
     }
@@ -23,5 +23,11 @@ public class ProgressTracker implements IProgressTracker{
         if(readCompletedLevels()<levelNumber) {
             prefs.putInteger("progress", levelNumber);
         }
+    }
+
+    public boolean checkLevelPermission(int levelNumber){
+        if(levelNumber<=readCompletedLevels()-1)
+            return true;
+        return false;
     }
 }
