@@ -21,6 +21,9 @@ public class CountdownViewable implements IViewable {
     public CountdownViewable(INucleonGun gun){
         this.protonInGun = new Texture("graphics/proton.png");
         this.neutronInGun = new Texture("graphics/neutron.png");
+        protonInGun.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        neutronInGun.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
         this.gun = gun;
     }
 
@@ -36,9 +39,11 @@ public class CountdownViewable implements IViewable {
         batch.draw(protonInGun,10,10,30,30);
         batch.draw(neutronInGun,10,40,30,30);
 
-        //font.setColor(255, 40, 50, 1);
+
+        font.setColor(247/255f, 157/255f, 150/255f, 1f);
         font.draw(batch, Integer.toString(gun.getProtonsInGun()),45,18);
-        //font.setColor(18, 210, 150, 50);
+
+        font.setColor(158/255f,210/255f , 150/255f, 1f);
         font.draw(batch, Integer.toString(gun.getNeutronsInGun()),45,48);
 
         batch.end();
