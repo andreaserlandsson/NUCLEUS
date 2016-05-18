@@ -98,11 +98,11 @@ public class LevelChooseScreen implements Screen {
         level3Button.addListener(listener);
 
         //Add buttons to table
-        mainTable.add(level1Button);
+        mainTable.add(level1Button).width(100).pad(10);
         mainTable.row();
-        mainTable.add(level2Button);
+        mainTable.add(level2Button).width(100).pad(10);
         mainTable.row();
-        mainTable.add(level3Button);
+        mainTable.add(level3Button).width(100).pad(10);
 
 
         //Add table to stage
