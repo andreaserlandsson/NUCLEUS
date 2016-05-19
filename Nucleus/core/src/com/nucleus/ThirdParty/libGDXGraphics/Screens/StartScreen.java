@@ -43,8 +43,7 @@ public class StartScreen implements Screen {
     private List<IViewable> views = new ArrayList<IViewable>();
 
 
-    public StartScreen(String[] buttons)
-    {
+    public StartScreen(String[] buttons) {
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         views.add(new BackgroundViewable());
