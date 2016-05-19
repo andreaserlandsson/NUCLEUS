@@ -102,7 +102,7 @@ public class Level implements ILevel {
         if (molecule.isFull()) {
                 gameWon = true;
                 currentState = GameState.PAUSEDWIN;
-                System.out.println("you win");
+               // System.out.println("you win");
                 //end the game, do some sort of pop-up?
         }
     }

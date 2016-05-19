@@ -7,11 +7,9 @@ import com.nucleus.ThirdParty.libGDXSounds.NMusicPlayerAdapter;
 
 public class MusicController {
     INMusicPlayerAdapter musicPlayer;
-    MusicPlayerData musicPlayerData;
 
     public MusicController(){
         this.musicPlayer = NMusicPlayerAdapter.getInstance();
-        this.musicPlayerData = MusicPlayerData.getInstance();
     }
 
     public void playLoop(String song, float volume) {
