@@ -28,5 +28,8 @@ public class MenuController {
     public void goToStartScreen(){
         adapter.goToStartLevel();
     }
+    public void showPauseDialog() {
+        adapter.showPauseDialog();
+    }
 
 }

@@ -50,7 +50,7 @@ public class MenuListener extends ClickListener {
         }
 
         if (event.getTarget().toString().equals("Label: Pause")) {
-            controller.;
+            controller.showPauseDialog();
         }
     }
 }

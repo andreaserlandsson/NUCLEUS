@@ -109,7 +109,6 @@ public class Level implements ILevel {
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
     private void checkWinGame() {
-
         if (molecule.isFull()) {
                 gameWon = true;
                 currentState = GameState.PAUSEDWIN;

@@ -43,7 +43,6 @@ public class MenuControllerAdapter {
     public void showPauseDialog(){
         Gdx.app.log("PauseDialog", "button pressed");
 
-        
     }
 
     private void options(){

@@ -43,10 +43,8 @@ public class PauseDialog extends ScreenAdapter {
             @Override
             protected void result(final Object object) {
                 if (object.toString() == "con") {
-
                     hide();
                 } else {
-                    level.setGamePaused(true);
                 }
             }
 
