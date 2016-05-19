@@ -1,6 +1,8 @@
 package com.nucleus.Model;
 
-public class GluonPoint implements IGluonPoint {
+import com.nucleus.Collisions.ICollidable;
+
+public class GluonPoint implements IGluonPoint, ICollidable {
 
     private Vector position;
     private int currentProtons;
@@ -8,7 +10,7 @@ public class GluonPoint implements IGluonPoint {
     private int maxProtons;
     private int maxNeutrons;
 
-    private final int radius = 10; // dummy value will be calibrated later
+    private final int RADIUS = 10; // dummy value will be calibrated later
 
     public GluonPoint(Vector positions, int maxProtons, int maxNeutrons){
         this.position = positions;
@@ -39,7 +41,7 @@ public class GluonPoint implements IGluonPoint {
     }
 
     public int getRadius(){
-        return radius;
+        return RADIUS;
     }
 
     public void addNeutron() { // if this returns false the game is lost

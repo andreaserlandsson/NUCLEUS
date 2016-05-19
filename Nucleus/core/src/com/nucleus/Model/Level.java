@@ -1,5 +1,7 @@
 package com.nucleus.Model;
 
+import com.nucleus.Collisions.ICollidable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,7 +127,7 @@ public class Level implements ILevel {
 
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
-                if (CollisionHandler.collision(gluon, nucleon)) {
+                if (com.nucleus.Collisions.CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
 
                     if (nucleon.getClass().equals(Proton.class)) {
                         if (gluon.getProtonsNeeded() > 0){
