@@ -34,8 +34,8 @@ public class GluonPoint implements IGluonPoint {
         return position.getY();
     }
 
-    public void setPosition(float x, float y){
-        position.setCoordinates(x, y);
+    public void setPosition(Vector vect){
+        position.setCoordinates(vect.getX(), vect.getY());
     }
 
     public int getRadius(){
