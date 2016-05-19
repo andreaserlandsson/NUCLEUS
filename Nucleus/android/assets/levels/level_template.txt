@@ -1,0 +1,10 @@
+Level Number
+Number of Gluon Points
+MoleculeFileName (an integer)
+Number of protons available as NucleonGun ammo
+Number of neutrons available as NucleonGun ammo
+A difficulty multiplier (an integer)
+GluonPoint x-position    GluonPoint y-position    Protons needed    Neutrons needed
+GluonPoint x-position    GluonPoint y-position    Protons needed    Neutrons needed
+GluonPoint x-position    GluonPoint y-position    Protons needed    Neutrons needed
+…
