@@ -6,15 +6,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.INucleonGun;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
@@ -30,18 +28,16 @@ import java.util.List;
 public class GameScreen implements Screen {
     private ILevel level;
 
-    private boolean dialogShow = false;
-
-
-    protected Stage stage;
-    protected Skin skin;
+    private boolean winLoseScreenShow = false;
+    private boolean pauseDialogShow = true;
 
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
 
+    private PauseDialog pauseDialog;
+
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
-
     private SpriteBatch batch;
 
     public GameScreen(int levelNumber, ILevel level){
@@ -58,7 +54,6 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
 
-        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
     }
 
 
@@ -66,27 +61,35 @@ public class GameScreen implements Screen {
     public void render(float delta) {
 
         if (level.isGameLost()) {
-            if (dialogShow == false) {
+            if (winLoseScreenShow == false) {
                 //winDialog.show();
                 this.loseScreen = new WinLoseScreen(false);
                 loseScreen.show();
-                dialogShow = true;
+                winLoseScreenShow = true;
             }
 
             //winDialog.render(1);
             loseScreen.render(1);
 
         } else if (level.isGameWon()) {
-            if (dialogShow == false) {
+            if (winLoseScreenShow == false) {
                 //winDialog.show();
                 this.winScreen = new WinLoseScreen(true);
                 winScreen.show();
-                dialogShow = true;
+                winLoseScreenShow = true;
             }
 
             //winDialog.render(1);
             winScreen.render(1);
 
+        }else if (level.isGamePaused()) {
+            if (pauseDialogShow) {
+                //winDialog.show();
+                pause();
+                pauseDialogShow = false;
+            }
+            //winDialog.render(1);
+            pauseDialog.render(1);
         } else {
 
             level.update(delta);
@@ -107,12 +110,6 @@ public class GameScreen implements Screen {
     @Override
     public void show(){
         Gdx.app.log("GameScreen", "showing");
-        Gdx.input.setInputProcessor(stage = new Stage());
-        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
-
-        //Window pauseWindow = new Window("PAUSE", skin);
-        //stage.addActor(table);
-        //stage.addActor(pauseWindow);
 
     }
 
@@ -125,16 +122,25 @@ public class GameScreen implements Screen {
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
         level.pause();
+
+        this.pauseDialog = new PauseDialog(new Stage(), batch, level);
+        pauseDialog.show();
+
     }
 
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
+        pauseDialogShow = false;
         level.resume();
+
     }
 
     @Override
     public void dispose() {
         // Leave blank
     }
+
+
+
 }

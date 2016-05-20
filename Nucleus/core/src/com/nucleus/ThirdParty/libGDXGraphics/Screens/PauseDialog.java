@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.Model.ILevel;
 
 /**
  * Created by andreaserlandsson on 17/05/16.
@@ -26,16 +27,18 @@ public class PauseDialog extends ScreenAdapter {
     private OrthographicCamera camera;
     protected Skin skin;
     private ClickListener listener;
+    private ILevel level;
 
-    public PauseDialog(Stage stage2, SpriteBatch batch){
+    public PauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
         this.batch = batch;
         this.stage2 = stage2;
+        this.level = level;
 
     }
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(stage2 = new Stage());
+        Gdx.input.setInputProcessor(stage2);
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
 
@@ -48,42 +51,17 @@ public class PauseDialog extends ScreenAdapter {
             @Override
             protected void result(final Object object) {
                 if (object.toString() == "con") {
-                    //hide();
-                    System.out.println("play again");
+                    level.resume();
+                    dispose();
+                    System.out.println("continue");
                 } else {
+
                     System.out.println("main menu");
                 }
             }
 
         }.show(stage2);
     }
-
-    //	public static class ExitDialog extends Dialog {
-    //
-    //		public ExitDialog(String title, Skin skin, String windowStyleName) {
-    //			super(title, skin, windowStyleName);
-    //		}
-    //
-    //		public ExitDialog(String title, Skin skin) {
-    //			super(title, skin);
-    //		}
-    //
-    //		public ExitDialog(String title, WindowStyle windowStyle) {
-    //			super(title, windowStyle);
-    //		}
-    //
-    //		{
-    //			text("Do you really want to leave?");
-    //			button("Yes", "See you next time!");
-    //			button("No", "Enjoy your stay :)");
-    //		}
-    //
-    //		@Override
-    //		protected void result(Object object) {
-    //			System.out.println(object);
-    //		}
-    //
-    //	}
 
     @Override
     public void resize(int width, int height) {

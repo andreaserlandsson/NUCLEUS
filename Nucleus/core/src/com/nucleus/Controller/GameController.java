@@ -2,6 +2,11 @@ package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.nucleus.Adapters.Controllers.GameControllerAdapter;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Vector;
@@ -11,7 +16,6 @@ public class GameController implements ControllerState {
     ILevel level;
     Vector lastTouch = new Vector(0,0);
     float rotationMultiplier = 40; //A constant that is used to scale the rotation angle
-
 
     public GameController(ILevel level){
         this.level = level;
@@ -41,4 +45,6 @@ public class GameController implements ControllerState {
             rotationAngle = -rotationAngle;
         return rotationMultiplier * rotationAngle;
     }
+
+
 }

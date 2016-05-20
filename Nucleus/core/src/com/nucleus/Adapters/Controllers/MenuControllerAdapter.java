@@ -3,11 +3,14 @@ package com.nucleus.Adapters.Controllers;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.nucleus.Model.ILevel;
 
 import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
 import com.nucleus.ThirdParty.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.ThirdParty.libGDXGraphics.Screens.LevelChooseScreen;
+import com.nucleus.ThirdParty.libGDXGraphics.Screens.PauseDialog;
 import com.nucleus.ThirdParty.libGDXGraphics.Screens.StartScreen;
 import com.nucleus.Utils.LevelBuilder;
 import com.nucleus.Views.StartScreenView;
@@ -40,8 +43,10 @@ public class MenuControllerAdapter {
         ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen(ssv.getStartScreen()));
     }
 
-    public void showPauseDialog(){
+    public void showPauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
         Gdx.app.log("PauseDialog", "button pressed");
+        Gdx.input.setInputProcessor(new NInputAdapter());
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new PauseDialog(stage2, batch, level));
 
     }
 
