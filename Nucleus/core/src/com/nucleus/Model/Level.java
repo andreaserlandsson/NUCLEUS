@@ -53,13 +53,7 @@ public class Level implements ILevel {
     public boolean isGameLost() { return  gameLost; }
 
     public boolean isGamePaused() { return gamePaused; }
-    public void setGamePaused(boolean b) {
-        if (b) {
-            currentState = GameState.PAUSED;
-        } else {
-            currentState = GameState.RUNNING;
-        }
-    }
+
 
     public INucleonGun getNucleonGun(){
         return gun;
@@ -167,15 +161,14 @@ public class Level implements ILevel {
         gamePaused = true;
     }
 
-    public void resume() {
+    public void resume(){
         currentState = GameState.RUNNING;
         gamePaused = false;
     }
 
     public void update(float delta){
-
-        checkWinGame();
         if(currentState==GameState.RUNNING) {
+            checkWinGame();
             runTime += delta;
             collisionCheck();
             if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {

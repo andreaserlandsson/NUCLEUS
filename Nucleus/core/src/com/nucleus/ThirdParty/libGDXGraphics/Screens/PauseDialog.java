@@ -21,18 +21,23 @@ import com.nucleus.Controller.MenuListener;
  */
 public class PauseDialog extends ScreenAdapter {
     private SpriteBatch batch;
-    protected Stage stage;
+    private Stage stage2;
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
     private ClickListener listener;
-    private String[] buttons;
-    private boolean won;
+
+    public PauseDialog(Stage stage2, SpriteBatch batch){
+        this.batch = batch;
+        this.stage2 = stage2;
+
+    }
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(stage = new Stage());
+        Gdx.input.setInputProcessor(stage2 = new Stage());
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
+
 
         new Dialog("Game Paused", skin) {
             {
@@ -43,12 +48,14 @@ public class PauseDialog extends ScreenAdapter {
             @Override
             protected void result(final Object object) {
                 if (object.toString() == "con") {
-                    hide();
+                    //hide();
+                    System.out.println("play again");
                 } else {
+                    System.out.println("main menu");
                 }
             }
 
-        }.show(stage);
+        }.show(stage2);
     }
 
     //	public static class ExitDialog extends Dialog {
@@ -86,8 +93,8 @@ public class PauseDialog extends ScreenAdapter {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        stage.act(delta);
-        stage.draw();
+        stage2.act(delta);
+        stage2.draw();
     }
 
     @Override
@@ -97,7 +104,7 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void dispose() {
-        stage.dispose();
+        stage2.dispose();
         skin.dispose();
     }
 

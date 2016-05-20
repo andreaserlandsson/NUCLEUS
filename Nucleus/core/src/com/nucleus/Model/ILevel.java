@@ -19,5 +19,6 @@ public interface ILevel {
     void update(float delta);
     IGluonPoint[] getGluons();
 
-    void setGamePaused(boolean b);
+    void pause();
+    void resume();
 }
