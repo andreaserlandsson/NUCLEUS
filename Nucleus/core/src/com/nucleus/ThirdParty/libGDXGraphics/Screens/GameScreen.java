@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -35,10 +36,11 @@ public class GameScreen implements Screen {
     private WinLoseScreen winScreen;
 
     private PauseDialog pauseDialog;
+    private boolean clock = true;
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
-    private SpriteBatch batch;
+    private static SpriteBatch batch;
 
     public GameScreen(int levelNumber, ILevel level){
 
@@ -84,14 +86,27 @@ public class GameScreen implements Screen {
 
         }else if (level.isGamePaused()) {
             if (pauseDialogShow) {
-                //winDialog.show();
-                pause();
+                pauseDialog.show();
                 pauseDialogShow = false;
             }
-            //winDialog.render(1);
-            pauseDialog.render(1);
+            if (clock) {
+                pauseDialog.render(delta);
+                clock = false;
+            } else if (!clock) {
+                Gdx.gl.glClearColor(0, 0, 0, 1);
+                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+                for (IViewable view : views) {
+                    view.render(batch);
+                }
+                clock = true;
+            }
+
+
         } else {
 
+            if( (Gdx.input.getX() > level.getWidth() - 10)  && Gdx.input.getY() < 10){
+                pause();
+            }
             level.update(delta);
             Gdx.gl.glClearColor(0, 0, 0, 1);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -132,7 +147,7 @@ public class GameScreen implements Screen {
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
         pauseDialogShow = false;
-        level.resume();
+        level.resume(); //is this needed?
 
     }
 
@@ -141,6 +156,9 @@ public class GameScreen implements Screen {
         // Leave blank
     }
 
+    public static SpriteBatch getBatch(){
+        return batch;
+    }
 
 
 }

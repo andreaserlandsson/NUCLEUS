@@ -1,5 +1,11 @@
 package com.nucleus.Model;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.nucleus.ThirdParty.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.ThirdParty.libGDXGraphics.Screens.PauseDialog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +21,9 @@ public class Level implements ILevel {
     private boolean gameLost = false;
 
     private boolean gamePaused = false;
+    private  boolean pauseDialogShow = true;
+    private PauseDialog pauseDialog;
+    private SpriteBatch batch = GameScreen.getBatch();
 
     private enum GameState{
         RUNNING,
@@ -159,6 +168,11 @@ public class Level implements ILevel {
     public void pause(){
         currentState = GameState.PAUSED;
         gamePaused = true;
+        Gdx.app.log("GameScreen", "pause called");
+
+        /*this.pauseDialog = new PauseDialog(new Stage(), batch, this);
+        pauseDialog.show();*/
+
     }
 
     public void resume(){
@@ -179,7 +193,10 @@ public class Level implements ILevel {
                 nucleon.update(delta);
             }
             removeOutOfBoundsNucleons();
-        }
+        } /*else if (currentState == GameState.PAUSED) {
+
+            pauseDialog.render(1);
+        }*/
 
     }
 }

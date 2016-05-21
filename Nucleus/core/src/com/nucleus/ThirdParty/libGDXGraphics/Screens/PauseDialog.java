@@ -42,7 +42,7 @@ public class PauseDialog extends ScreenAdapter {
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
 
-        new Dialog("Game Paused", skin) {
+        new Dialog("PAUSED", skin) {
             {
                 button("Continue Palying", "con");
                 button("Main Menu", "menu");
