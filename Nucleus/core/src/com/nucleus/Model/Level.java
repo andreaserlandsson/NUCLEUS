@@ -1,6 +1,11 @@
 package com.nucleus.Model;
 
 import com.nucleus.Collisions.ICollidable;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.nucleus.ThirdParty.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.ThirdParty.libGDXGraphics.Screens.PauseDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +21,11 @@ public class Level implements ILevel {
 
     private boolean gameWon = false;
     private boolean gameLost = false;
+
+    private boolean gamePaused = false;
+    private  boolean pauseDialogShow = true;
+    private PauseDialog pauseDialog;
+    private SpriteBatch batch = GameScreen.getBatch();
 
     private enum GameState{
         RUNNING,
@@ -58,6 +68,9 @@ public class Level implements ILevel {
     }
 
     public boolean isGameLost() { return  gameLost; }
+
+    public boolean isGamePaused() { return gamePaused; }
+
 
     public INucleonGun getNucleonGun(){
         return gun;
@@ -107,7 +120,6 @@ public class Level implements ILevel {
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
     private void checkWinGame() {
-
         if (molecule.isFull()) {
                 progressTracker.writeCompletedLevels(levelNumber);
                 gameWon = true;
@@ -158,11 +170,24 @@ public class Level implements ILevel {
         }
     }
 
+    public void pause(){
+        currentState = GameState.PAUSED;
+        gamePaused = true;
+        Gdx.app.log("GameScreen", "pause called");
+
+        /*this.pauseDialog = new PauseDialog(new Stage(), batch, this);
+        pauseDialog.show();*/
+
+    }
+
+    public void resume(){
+        currentState = GameState.RUNNING;
+        gamePaused = false;
+    }
 
     public void update(float delta){
-
-        checkWinGame();
         if(currentState==GameState.RUNNING) {
+            checkWinGame();
             runTime += delta;
             collisionCheck();
             if (runTime - lastUpdateTime >= updateTime && !gun.isEmpty()) {

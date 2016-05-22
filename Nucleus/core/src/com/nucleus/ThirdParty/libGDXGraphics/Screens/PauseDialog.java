@@ -2,28 +2,100 @@ package com.nucleus.ThirdParty.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.Model.ILevel;
 
 /**
  * Created by andreaserlandsson on 17/05/16.
  */
-public class PauseDialog {
+public class PauseDialog extends ScreenAdapter {
     private SpriteBatch batch;
-    protected Stage stage;
+    private Stage stage2;
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private ClickListener listener;
-    private String[] buttons;
-    private boolean won;
+    private MenuController controller;
+    private ILevel level;
+
+    private boolean goToMainMenu = false;
+
+    public PauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
+        this.batch = batch;
+        this.stage2 = stage2;
+        this.level = level;
+
+    }
+
+    @Override
+    public void show() {
+
+        goToMainMenu = false;
+
+        Gdx.input.setInputProcessor(stage2);
+        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
+
+
+        new Dialog("PAUSED", skin) {
+            {
+                button("Continue Palying", "con");
+                button("Main Menu", "menu");
+                setMovable(false);
+            }
+
+            @Override
+            protected void result(final Object object) {
+                if (object.toString() == "con") {
+                    level.resume();
+                    dispose();
+                    System.out.println("continue");
+                } else {
+                    System.out.println("main menu");
+                    goToMainMenu = true;
+
+                }
+            }
+
+        }.show(stage2);
+    }
+
+    public boolean getGoToMainMenu(){
+        return goToMainMenu;
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        //stage.setViewport(width, height);
+    }
+
+    @Override
+    public void render(float delta) {
+        stage2.act(delta);
+        stage2.draw();
+    }
+
+    @Override
+    public void hide() {
+        dispose();
+    }
+
+    @Override
+    public void dispose() {
+        stage2.dispose();
+        skin.dispose();
+    }
+
+
 }

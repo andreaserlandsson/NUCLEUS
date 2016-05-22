@@ -1,6 +1,9 @@
 package com.nucleus.Controller;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.nucleus.Adapters.Controllers.MenuControllerAdapter;
+import com.nucleus.Model.ILevel;
 
 /**
  * Created by Quaxi on 10/05/16.
@@ -28,5 +31,6 @@ public class MenuController {
     public void goToStartScreen(){
         adapter.goToStartLevel();
     }
+    public void showPauseDialog(Stage stage2, SpriteBatch batch, ILevel level){adapter.showPauseDialog(stage2,batch,level);}
 
 }

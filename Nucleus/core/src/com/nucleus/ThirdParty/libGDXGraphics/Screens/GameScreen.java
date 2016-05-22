@@ -4,9 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.INucleonGun;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
@@ -22,16 +29,17 @@ import java.util.List;
 public class GameScreen implements Screen {
     private ILevel level;
 
-    private WinDialog winDialog;
-    private boolean dialogShow = false;
+    private boolean winLoseScreenShow = false;
+    private boolean pauseDialogShow = true;
 
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
 
+    private PauseDialog pauseDialog;
+
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
-
-    private SpriteBatch batch;
+    private static SpriteBatch batch;
 
     public GameScreen(int levelNumber, ILevel level){
 
@@ -47,11 +55,6 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
 
-
-        //this.winDialog = new WinDialog();
-        //winScreen.show();
-        //loseScreen.show();
-
     }
 
 
@@ -59,30 +62,46 @@ public class GameScreen implements Screen {
     public void render(float delta) {
 
         if (level.isGameLost()) {
-            if (dialogShow == false) {
+            if (winLoseScreenShow == false) {
                 //winDialog.show();
                 this.loseScreen = new WinLoseScreen(false);
                 loseScreen.show();
-                dialogShow = true;
+                winLoseScreenShow = true;
             }
 
             //winDialog.render(1);
             loseScreen.render(1);
 
         } else if (level.isGameWon()) {
-            if (dialogShow == false) {
+            if (winLoseScreenShow == false) {
                 //winDialog.show();
                 this.winScreen = new WinLoseScreen(true);
                 winScreen.show();
-                dialogShow = true;
+                winLoseScreenShow = true;
             }
 
             //winDialog.render(1);
             winScreen.render(1);
 
+        }else if (level.isGamePaused()) {
+            if (pauseDialogShow) {
+                pauseDialog.show();
+                pauseDialogShow = false;
+            }
+
+            if (pauseDialog.getGoToMainMenu()) {
+                MenuController controler = new MenuController();
+                controler.goToStartScreen();
+            }
+
+            pauseDialog.render(delta);
+
         } else {
 
-
+            //check if you "touch" the pause "button" and if so call on the pause method
+            if( (Gdx.input.getX() > level.getWidth() - 10)  && Gdx.input.getY() < 10){
+                pause();
+            }
             level.update(delta);
             Gdx.gl.glClearColor(0, 0, 0, 1);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -100,8 +119,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void show(){
-
         Gdx.app.log("GameScreen", "showing");
+
     }
 
     @Override
@@ -110,17 +129,30 @@ public class GameScreen implements Screen {
     }
 
     @Override
-    public  void pause(){
+    public void pause(){
         Gdx.app.log("GameScreen", "pause called");
+        level.pause();
+
+        this.pauseDialog = new PauseDialog(new Stage(), batch, level);
+        pauseDialog.show();
+
     }
 
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
+        pauseDialogShow = false;
+
     }
 
     @Override
     public void dispose() {
         // Leave blank
     }
+
+    public static SpriteBatch getBatch(){
+        return batch;
+    }
+
+
 }
