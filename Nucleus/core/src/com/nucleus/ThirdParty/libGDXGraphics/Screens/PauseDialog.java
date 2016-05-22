@@ -30,6 +30,8 @@ public class PauseDialog extends ScreenAdapter {
     private MenuController controller;
     private ILevel level;
 
+    private boolean goToMainMenu = false;
+
     public PauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
         this.batch = batch;
         this.stage2 = stage2;
@@ -39,6 +41,9 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void show() {
+
+        goToMainMenu = false;
+
         Gdx.input.setInputProcessor(stage2);
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
@@ -58,7 +63,8 @@ public class PauseDialog extends ScreenAdapter {
                     System.out.println("continue");
                 } else {
                     System.out.println("main menu");
-                    goToMainMenu();
+                    //goToMainMenu();
+                    goToMainMenu = true;
 
                 }
             }
@@ -66,6 +72,9 @@ public class PauseDialog extends ScreenAdapter {
         }.show(stage2);
     }
 
+    public boolean getGoToMainMenu(){
+        return goToMainMenu;
+    }
     @Override
     public void resize(int width, int height) {
         //stage.setViewport(width, height);

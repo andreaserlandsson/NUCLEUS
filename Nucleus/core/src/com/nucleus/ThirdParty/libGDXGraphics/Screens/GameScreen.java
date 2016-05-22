@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.GameController;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.CountdownViewable;
@@ -88,6 +89,12 @@ public class GameScreen implements Screen {
                 pauseDialog.show();
                 pauseDialogShow = false;
             }
+
+            if (pauseDialog.getGoToMainMenu()) {
+                MenuController controler = new MenuController();
+                controler.goToStartScreen();
+            }
+
             pauseDialog.render(delta);
 
         } else {
