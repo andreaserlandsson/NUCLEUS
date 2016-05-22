@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -96,6 +97,10 @@ public class LevelChooseScreen implements Screen {
         level1Button.addListener(listener);
         level2Button.addListener(listener);
         level3Button.addListener(listener);
+
+        Label levelText = new Label("Choose Level", skin);
+        mainTable.add(levelText);
+        mainTable.row();
 
         //Add buttons to table
         mainTable.add(level1Button).width(100).pad(10);

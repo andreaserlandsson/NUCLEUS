@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -117,6 +118,10 @@ public class StartScreen implements Screen {
         playButton.addListener(listener);
         optionsButton.addListener(listener);
         exitButton.addListener(listener);
+
+        Label nucleusText = new Label("NUCLEUS", skin);
+        mainTable.add(nucleusText);
+        mainTable.row();
 
         //Add buttons to table
         mainTable.add(playButton).width(100).pad(10);

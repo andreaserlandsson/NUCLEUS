@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
+import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
@@ -95,6 +96,7 @@ public class GameScreen implements Screen {
                 pause();
             }
 
+
             level.update(delta);
 
             Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -137,6 +139,7 @@ public class GameScreen implements Screen {
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
+        Gdx.input.setInputProcessor(new NInputAdapter(level));
 
     }
 

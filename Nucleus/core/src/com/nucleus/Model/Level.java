@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.nucleus.Collisions.ICollidable;
 import com.badlogic.gdx.Gdx;
+import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
 import com.nucleus.ThirdParty.libGDXGraphics.Screens.PauseDialog;
 
 import java.util.ArrayList;
@@ -180,6 +181,7 @@ public class Level implements ILevel {
     public void resume(){
         currentState = GameState.RUNNING;
         gamePaused = false;
+        Gdx.input.setInputProcessor(new NInputAdapter(this));
     }
 
     public void update(float delta){
