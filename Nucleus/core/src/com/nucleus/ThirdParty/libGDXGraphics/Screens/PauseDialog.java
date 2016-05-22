@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Controller.MenuListener;
 import com.nucleus.Model.ILevel;
 
@@ -26,7 +27,7 @@ public class PauseDialog extends ScreenAdapter {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private ClickListener listener;
+    private MenuController controller;
     private ILevel level;
 
     public PauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
@@ -46,6 +47,7 @@ public class PauseDialog extends ScreenAdapter {
             {
                 button("Continue Palying", "con");
                 button("Main Menu", "menu");
+                setMovable(false);
             }
 
             @Override
@@ -55,8 +57,9 @@ public class PauseDialog extends ScreenAdapter {
                     dispose();
                     System.out.println("continue");
                 } else {
-
                     System.out.println("main menu");
+                    goToMainMenu();
+
                 }
             }
 
@@ -70,7 +73,6 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage2.act(delta);
         stage2.draw();
     }
@@ -84,6 +86,10 @@ public class PauseDialog extends ScreenAdapter {
     public void dispose() {
         stage2.dispose();
         skin.dispose();
+    }
+
+    public void goToMainMenu(){
+        controller.goToStartScreen();
     }
 
 

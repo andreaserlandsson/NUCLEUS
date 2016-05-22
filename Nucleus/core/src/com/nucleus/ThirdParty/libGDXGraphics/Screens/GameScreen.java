@@ -36,7 +36,6 @@ public class GameScreen implements Screen {
     private WinLoseScreen winScreen;
 
     private PauseDialog pauseDialog;
-    private boolean clock = true;
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
@@ -89,18 +88,7 @@ public class GameScreen implements Screen {
                 pauseDialog.show();
                 pauseDialogShow = false;
             }
-            if (clock) {
-                pauseDialog.render(delta);
-                clock = false;
-            } else if (!clock) {
-                Gdx.gl.glClearColor(0, 0, 0, 1);
-                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-                for (IViewable view : views) {
-                    view.render(batch);
-                }
-                clock = true;
-            }
-
+            pauseDialog.render(delta);
 
         } else {
 
@@ -147,7 +135,6 @@ public class GameScreen implements Screen {
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
         pauseDialogShow = false;
-        level.resume(); //is this needed?
 
     }
 
