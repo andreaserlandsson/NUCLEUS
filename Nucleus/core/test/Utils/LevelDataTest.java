@@ -11,6 +11,7 @@ public class LevelDataTest {
 
     //Test to get all correct values from leveldata.
     //THIS SHOULD NOT BE DONE; WE SHOULD NOT USE GETTERS??
+    /*
     @Test
     public void levelDataIndexTest(){
         int[] mockLevel = new int[] {0,2,3,4,5,6,7,8,9,10,11,12,13,14};
@@ -70,5 +71,6 @@ public class LevelDataTest {
         }
 
     }
+    */
 
 }
