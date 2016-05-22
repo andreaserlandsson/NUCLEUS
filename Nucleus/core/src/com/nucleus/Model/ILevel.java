@@ -1,5 +1,7 @@
 package com.nucleus.Model;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import java.util.List;
 
 public interface ILevel {
@@ -8,6 +10,7 @@ public interface ILevel {
     boolean isGameWon();
 
     boolean isGamePaused();
+    void setGamePaused(boolean gamePaused);
 
     int getWidth();
     int getHeight();
@@ -19,6 +22,6 @@ public interface ILevel {
     void update(float delta);
     IGluonPoint[] getGluons();
 
-    void pause();
+    void pause(SpriteBatch batch);
     void resume();
 }

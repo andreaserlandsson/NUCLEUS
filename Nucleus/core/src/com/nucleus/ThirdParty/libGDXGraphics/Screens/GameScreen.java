@@ -30,7 +30,6 @@ public class GameScreen implements Screen {
     private ILevel level;
 
     private boolean winLoseScreenShow = false;
-    private boolean pauseDialogShow = true;
 
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
@@ -58,6 +57,8 @@ public class GameScreen implements Screen {
     }
 
 
+
+
     @Override
     public void render(float delta) {
 
@@ -83,26 +84,19 @@ public class GameScreen implements Screen {
             //winDialog.render(1);
             winScreen.render(1);
 
-        }else if (level.isGamePaused()) {
-            if (pauseDialogShow) {
-                pauseDialog.show();
-                pauseDialogShow = false;
-            }
-
-            if (pauseDialog.getGoToMainMenu()) {
-                MenuController controler = new MenuController();
-                controler.goToStartScreen();
-            }
-
-            pauseDialog.render(delta);
+        } else if (level.isGamePaused()) {
+            //pauseDialog.render(delta);
+            level.update(delta);
 
         } else {
 
             //check if you "touch" the pause "button" and if so call on the pause method
-            if( (Gdx.input.getX() > level.getWidth() - 10)  && Gdx.input.getY() < 10){
+            if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
                 pause();
             }
+
             level.update(delta);
+
             Gdx.gl.glClearColor(0, 0, 0, 1);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -110,6 +104,7 @@ public class GameScreen implements Screen {
                 view.render(batch);
             }
         }
+
     }
 
     @Override
@@ -131,17 +126,17 @@ public class GameScreen implements Screen {
     @Override
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
-        level.pause();
 
-        this.pauseDialog = new PauseDialog(new Stage(), batch, level);
-        pauseDialog.show();
+        level.pause(batch);
+
+        /*this.pauseDialog = new PauseDialog(batch, level);
+        pauseDialog.show(); */
 
     }
 
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
-        pauseDialogShow = false;
 
     }
 
@@ -149,10 +144,5 @@ public class GameScreen implements Screen {
     public void dispose() {
         // Leave blank
     }
-
-    public static SpriteBatch getBatch(){
-        return batch;
-    }
-
 
 }

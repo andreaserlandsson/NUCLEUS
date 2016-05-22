@@ -46,7 +46,7 @@ public class MenuControllerAdapter {
     public void showPauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
         Gdx.app.log("PauseDialog", "button pressed");
         Gdx.input.setInputProcessor(new NInputAdapter());
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new PauseDialog(stage2, batch, level));
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new PauseDialog( batch, level));
 
     }
 

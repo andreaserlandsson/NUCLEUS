@@ -27,14 +27,13 @@ public class PauseDialog extends ScreenAdapter {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private MenuController controller;
     private ILevel level;
 
     private boolean goToMainMenu = false;
 
-    public PauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
+    public PauseDialog( SpriteBatch batch, ILevel level){
         this.batch = batch;
-        this.stage2 = stage2;
+        stage2 = new Stage();
         this.level = level;
 
     }
@@ -58,21 +57,21 @@ public class PauseDialog extends ScreenAdapter {
             @Override
             protected void result(final Object object) {
                 if (object.toString() == "con") {
-                    level.resume();
                     dispose();
+
+                    level.resume();
                     System.out.println("continue");
+
                 } else {
+
                     System.out.println("main menu");
-                    goToMainMenu = true;
+                    MenuController controller = new MenuController();
+                    controller.goToStartScreen();
 
                 }
             }
 
         }.show(stage2);
-    }
-
-    public boolean getGoToMainMenu(){
-        return goToMainMenu;
     }
 
     @Override

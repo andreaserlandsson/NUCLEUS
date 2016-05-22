@@ -1,10 +1,9 @@
 package com.nucleus.Model;
 
-import com.nucleus.Collisions.ICollidable;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.nucleus.ThirdParty.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.Collisions.ICollidable;
+import com.badlogic.gdx.Gdx;
 import com.nucleus.ThirdParty.libGDXGraphics.Screens.PauseDialog;
 
 import java.util.ArrayList;
@@ -23,9 +22,6 @@ public class Level implements ILevel {
     private boolean gameLost = false;
 
     private boolean gamePaused = false;
-    private  boolean pauseDialogShow = true;
-    private PauseDialog pauseDialog;
-    private SpriteBatch batch = GameScreen.getBatch();
 
     private enum GameState{
         RUNNING,
@@ -70,6 +66,8 @@ public class Level implements ILevel {
     public boolean isGameLost() { return  gameLost; }
 
     public boolean isGamePaused() { return gamePaused; }
+
+    public void setGamePaused(boolean gamePaused) { this.gamePaused = gamePaused; }
 
 
     public INucleonGun getNucleonGun(){
@@ -169,14 +167,13 @@ public class Level implements ILevel {
             removeNucleon(collidingNucleon);
         }
     }
-
-    public void pause(){
+    private PauseDialog pauseDialog;
+    public void pause(SpriteBatch batch){
         currentState = GameState.PAUSED;
         gamePaused = true;
         Gdx.app.log("GameScreen", "pause called");
-
-        /*this.pauseDialog = new PauseDialog(new Stage(), batch, this);
-        pauseDialog.show();*/
+        pauseDialog = new PauseDialog( batch, this);
+        pauseDialog.show();
 
     }
 
@@ -198,7 +195,9 @@ public class Level implements ILevel {
                 nucleon.update(delta);
             }
             removeOutOfBoundsNucleons();
-        }
 
+        } else if (currentState == GameState.PAUSED) {
+            pauseDialog.render(delta);
+        }
     }
 }
