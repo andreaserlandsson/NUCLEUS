@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Controller.MenuListener;
 
 /**
- * Created by andreaserlandsson on 17/05/16.
+ * Created by andreaserlandsson on 17/05/16. This class is yet not in use but if there is time it will be used instead of the WinLoseScreen class.
  */
 public class WinDialog extends ScreenAdapter {
     protected Stage stage;
