@@ -58,7 +58,7 @@ public class PauseDialog extends ScreenAdapter {
             @Override
             protected void result(final Object object) {
                 if (object.toString() == "con") {
-                    level.resume(){
+                    level.resume();
                     dispose();
                     System.out.println("continue");
                 } else {
