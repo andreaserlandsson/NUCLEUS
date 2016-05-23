@@ -84,19 +84,49 @@ public class Assets {
         }
     }
 
-    public static void playMusic(String song, float volume) {
+    public static Music playMusic(String song) {
         String songFile = audio.get(song);
-        //System.out.println(songFile);
         if (songFile != null) {
             Music music = audioAssets.get(song,Music.class);
-            //Music music = audioAssets.get(songFile, Music.class);
-            System.out.println("kom ja hit?");
             if (music != null) {
-                music.setVolume(volume);
-                music.play();
+                return music;
             }
         }
+        return null;
     }
+
+    public static Music stopMusic(String song) {
+        String songFile = audio.get(song);
+
+        if (songFile != null) {
+            Music music = audioAssets.get(song,Music.class);
+            return music;
+        }
+    return null;
+    }
+
+    public static Music playSound(String sound) {
+        String soundFile = audio.get(sound);
+        if (sound != null) {
+            Music soundEffect = audioAssets.get(sound,Music.class);
+            return soundEffect;
+        }
+        return null;
+    }
+
+    public static Music pauseMusic(String song) {
+        String songFile = audio.get(song);
+        if(songFile != null){
+            Music music = audioAssets.get(song,Music.class);
+            return music;
+        }
+        return null;
+    }
+
+    public static Music resumeMusic (String song) {
+        
+    }
+
 
     public static void finishLoading(){
         while(!(audioAssets.update()));

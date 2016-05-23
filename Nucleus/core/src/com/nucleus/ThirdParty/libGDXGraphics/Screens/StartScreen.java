@@ -23,6 +23,7 @@ import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Utils.LevelBuilder;
 import com.nucleus.Views.Assets;
+import com.nucleus.Views.NMusicPlayer;
 
 
 import java.util.ArrayList;
@@ -44,17 +45,15 @@ public class StartScreen implements Screen {
     private static MusicPlayerData mpd;
     private List<IViewable> views = new ArrayList<IViewable>();
     private Assets assets;
-
+    private NMusicPlayer musicPlayer;
 
     public StartScreen(String[] buttons) {
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        //temporary to see that loading music works
-        Assets.loadMusicFiles();
-        //Assets.loadMusic();
-        //Assets.finishLoading();
-        //Assets.getMusic("music/menuSounds.wav");
+        musicPlayer = new NMusicPlayer();
+        musicPlayer.loadMusic();
 
-        Assets.playMusic("music/menuSounds.wav",1);
+        musicPlayer.playMusic("music/menuSounds.wav",1);
+        musicPlayer.playSound("music/tempButton.mp3");
 
         //temporary to see that loading texture works
         Assets.loadTextureFiles();
