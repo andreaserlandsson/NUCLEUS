@@ -44,8 +44,8 @@ public class MockGluon implements IGluonPoint {
     }
 
 
-    public void setPosition(float x, float y){
-        position.setCoordinates(x, y);
+    public void setPosition(Vector vect){
+        position.setCoordinates(vect.getX(), vect.getY());
     }
 
 

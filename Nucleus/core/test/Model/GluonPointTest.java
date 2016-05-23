@@ -60,7 +60,7 @@ public class GluonPointTest {
         IGluonPoint gluonPoint = new GluonPoint(position, 0, 0);
         assertTrue(gluonPoint.getPosition().getX() == 3);
         assertTrue(gluonPoint.getPosition().getY() == 3);
-        gluonPoint.setPosition(4,4);
+        gluonPoint.setPosition(new Vector(4,4));
         assertFalse(gluonPoint.getPosition().getX() == 3);
         assertFalse(gluonPoint.getPosition().getY() == 3);
         assertTrue(gluonPoint.getPosition().getX() == 4);
