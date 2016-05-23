@@ -1,14 +1,12 @@
 package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
 import com.nucleus.NucleusGame;
-import com.nucleus.Utils.LevelBuilder;
+import com.nucleus.Utils.LevelUtils.LevelBuilder;
 
 /**
  * Created by Quaxi on 10/05/16.
@@ -28,10 +26,9 @@ public class GameController extends ClickListener {
     }
 
     private void startLevel(int levelNum){
-        Gdx.input.setInputProcessor(controller);
         ILevel level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler((Level) level));
-
         game.goToLevel(levelNum, (Level) level);
 
 

@@ -1,9 +1,8 @@
 package com.nucleus.Model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.Collisions.ICollidable;
-import com.badlogic.gdx.Gdx;
-import com.nucleus.Views.libGDXGraphics.Screens.PauseDialog;
 
 import java.util.ArrayList;
 import java.util.List;

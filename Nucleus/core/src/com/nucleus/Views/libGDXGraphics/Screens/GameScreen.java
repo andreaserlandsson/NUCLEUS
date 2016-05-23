@@ -6,23 +6,22 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Controller.NInputHandler;
-import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+
 
 /**
  * Created by erik on 25/04/16.
  */
-public class GameScreen implements Screen {
-    private ILevel level;
+public class GameScreen extends Observable implements Screen {
 
+    private ILevel level;
     private boolean winLoseScreenShow = false;
 
     private WinLoseScreen loseScreen;
@@ -39,6 +38,7 @@ public class GameScreen implements Screen {
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
+        //Adding views
         views.add(new BackgroundViewable());
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
@@ -125,7 +125,6 @@ public class GameScreen implements Screen {
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
-        Gdx.input.setInputProcessor(new NInputHandler((Level) level));
 
     }
 

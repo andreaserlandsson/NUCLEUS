@@ -69,7 +69,6 @@ public class LevelChooseScreen implements Screen {
     @Override
     public void resize(int width, int height){
         Gdx.app.log("GameScreen", "resizing");
-
         viewport.update(width, height);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         camera.update();

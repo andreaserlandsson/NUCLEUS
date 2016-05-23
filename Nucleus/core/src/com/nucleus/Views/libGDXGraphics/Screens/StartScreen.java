@@ -16,11 +16,10 @@ import com.nucleus.Controller.GameController;
 import com.nucleus.Controller.MusicController;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.MusicPlayerData;
+import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
-import com.nucleus.Utils.LevelBuilder;
-
 
 import java.util.ArrayList;
 import java.util.List;
