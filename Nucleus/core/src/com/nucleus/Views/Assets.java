@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import java.util.HashMap;
@@ -27,7 +28,7 @@ public class Assets {
 
         }
         loadMusic();
-        finishLoading();
+        finishLoading(audioAssets);
 
         System.out.println(audioAssets.getLoadedAssets());
     }
@@ -37,10 +38,13 @@ public class Assets {
         texturePath = Gdx.files.internal("graphics/");
 
         for (FileHandle entry : texturePath.list()) {
-            texture.put(entry.path(), entry.name());
+            texture.put(entry.name(), entry.path());
             System.out.println("Path ====== "+entry.path());
             System.out.println("namn ==== " +entry.name());
         }
+        loadTexture();
+        finishLoading(textureAssets);
+        System.out.println(textureAssets.getLoadedAssets());
     }
 
     public static void loadMusic () {
@@ -57,9 +61,7 @@ public class Assets {
     public static void loadTexture() {
         if (texture != null) {
             for (Map.Entry entry : texture.entrySet()) {
-                textureAssets.load((String) entry.getValue(), Skin.class);
-                //audioAssets.finishLoading();
-
+                textureAssets.load((String) entry.getValue(), Texture.class);
                 //System.out.println("key ====== " +entry.getKey());
                 //System.out.println("namn på grafisk skit == " + entry.getValue());
             }
@@ -126,8 +128,8 @@ public class Assets {
     }
 
 
-    public static void finishLoading(){
-        while(!(audioAssets.update()));
+    public static void finishLoading(AssetManager assetManager){
+        while(!(assetManager.update()));
     }
 
 }

@@ -51,13 +51,12 @@ public class StartScreen implements Screen {
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         musicPlayer = new NMusicPlayer();
         musicPlayer.loadMusic();
+        Assets.loadTextureFiles();
 
         musicPlayer.playMusic("menuSounds.wav",1);
         //musicPlayer.playSound("music/tempButton.mp3");
 
         //temporary to see that loading texture works
-        Assets.loadTextureFiles();
-        Assets.loadTexture();
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
 
