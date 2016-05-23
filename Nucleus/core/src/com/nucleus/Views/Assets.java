@@ -1,6 +1,5 @@
 package com.nucleus.Views;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
@@ -12,12 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Assets {
-    public static AssetManager audioAssets = new AssetManager();
-    public static AssetManager textureAssets = new AssetManager();
+    private static AssetManager audioAssets = new AssetManager();
+    private static AssetManager textureAssets = new AssetManager();
+    private static AssetManager skinAssets = new AssetManager();
 
     private static Map<String, String> audio = new HashMap<String, String>();
     private static Map<String, String> texture = new HashMap<String, String>();
-
+    private static Map<String, String> skins = new HashMap<String, String>();
 
 
     public static void loadMusicFiles() {
@@ -45,6 +45,18 @@ public class Assets {
         System.out.println(textureAssets.getLoadedAssets());
     }
 
+    /*public static void loadSkinFiles() {
+        FileHandle skinPath;
+        skinPath = Gdx.files.internal("menu/skins/");
+
+        for (FileHandle entry : skinPath.list()) {
+            skins.put(entry.name(),entry.path());
+        }
+        loadSkins();
+        finishLoading(skinAssets);
+    } */
+
+
     public static void loadMusic () {
         if (audio != null) {
             for (Map.Entry entry : audio.entrySet()) {
@@ -65,64 +77,23 @@ public class Assets {
             }
         }
     }
-
-    //obsolete?? ? ? ? ? ? ? ? ? ?
-    public static void getMusic (String str) {
-        if (audio != null) {
-            for (Map.Entry entry : audio.entrySet()) {
-                if (entry.getKey().equals(str)) {
-                    audioAssets.load((String) entry.getValue(), Music.class);
-                }
+    /*
+    public static void loadSkins() {
+        if (skins != null) {
+            for (Map.Entry entry : skins.entrySet()) {
+                skinAssets.load((String) entry.getValue(), Skin.class);
             }
         }
-    }
+    } */
 
-    public static Music playMusic(String song) {
-        String songFile = audio.get(song);
-        System.out.println(songFile + " " + song);
-        if (songFile != null) {
-            Music music = audioAssets.get(songFile,Music.class);
-            if (music != null) {
-                return music;
-            }
-        }
-        return null;
-    }
-
-    public static Music stopMusic(String song) {
+    public static Music getSong(String song) {
+        Music music = null;
         String songFile = audio.get(song);
         if (songFile != null) {
-            Music music = audioAssets.get(songFile,Music.class);
+            music = audioAssets.get(songFile, Music.class);
             return music;
         }
-    return null;
-    }
-
-    public static Music playSound(String sound) {
-        String soundFile = audio.get(sound);
-        if (soundFile != null) {
-            Music soundEffect = audioAssets.get(soundFile,Music.class);
-            return soundEffect;
-        }
-        return null;
-    }
-
-    public static Music pauseMusic(String song) {
-        String songFile = audio.get(song);
-        if(songFile != null){
-            Music music = audioAssets.get(songFile,Music.class);
-            return music;
-        }
-        return null;
-    }
-
-    public static Music resumeMusic (String song) {
-        String songFile = audio.get(song);
-        if (songFile != null) {
-            Music music = audioAssets.get(songFile, Music.class);
-            return music;
-        }
-        return null;
+        return music;
     }
 
     public static Texture getTexture(String picture) {
@@ -134,6 +105,17 @@ public class Assets {
         }
         return pic;
     }
+
+    public static Skin getSkin(String s) {
+        Skin skinFile = null;
+        String skinPath = skins.get(s);
+        if (skinPath != null) {
+            skinFile = skinAssets.get(skinPath, Skin.class);
+            return skinFile;
+        }
+    return skinFile;
+    }
+
     public static void finishLoading(AssetManager assetManager){
         while(!(assetManager.update()));
     }

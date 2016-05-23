@@ -2,9 +2,6 @@ package com.nucleus.Views;
 
 import com.badlogic.gdx.audio.Music;
 
-/**
- * Created by paki on 5/23/16.
- */
 public class NMusicPlayer {
     private static Music currentlyPlaying;
 
@@ -13,7 +10,7 @@ public class NMusicPlayer {
     }
 
     public void playMusic(String str, float volume) {
-        Music music = Assets.playMusic(str);
+        Music music = Assets.getSong(str);
         if (music != null) {
             music.setVolume(volume);
             music.play();
@@ -23,7 +20,7 @@ public class NMusicPlayer {
     }
 
     public void stopMusic(String str) {
-        Music music = Assets.stopMusic(str);
+        Music music = Assets.getSong(str);
         if (music != null) {
             music.stop();
             currentlyPlaying = null;
@@ -31,14 +28,14 @@ public class NMusicPlayer {
     }
 
     public void playSound(String str) {
-        Music music = Assets.playSound(str);
+        Music music = Assets.getSong(str);
         if (music != null) {
             music.play();
         }
     }
 
     public void switchSong(String newSong, float volume) {
-        Music music = Assets.playMusic(newSong);
+        Music music = Assets.getSong(newSong);
         if (music != null) {
             if (currentlyPlaying != null) {
                 currentlyPlaying.stop();
@@ -49,14 +46,14 @@ public class NMusicPlayer {
     }
 
     public void pauseMusic(String song) {
-        Music music = Assets.pauseMusic(song);
+        Music music = Assets.getSong(song);
         if (music != null) {
             music.pause();
         }
     }
 
     public void resumeMusic(String song) {
-        Music music = Assets.resumeMusic(song);
+        Music music = Assets.getSong(song);
         if (music != null){
             music.pause();
         }
