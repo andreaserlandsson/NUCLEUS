@@ -10,10 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.MenuListener;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 
@@ -30,7 +29,7 @@ public class LevelChooseScreen implements Screen {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private ClickListener listener;
+    private MenuController listener;
     private List<IViewable> views = new ArrayList<IViewable>();
 
 
@@ -41,7 +40,7 @@ public class LevelChooseScreen implements Screen {
         //Initialising graphics
 
         views.add(new BackgroundViewable());
-        listener = new MenuListener();
+        listener = new MenuController();
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();

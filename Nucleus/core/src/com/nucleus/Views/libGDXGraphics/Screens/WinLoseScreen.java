@@ -4,17 +4,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.MenuListener;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 
@@ -31,16 +29,14 @@ public class WinLoseScreen implements Screen {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private ClickListener listener;
-    private String[] buttons;
+    private MenuController listener;
     private boolean won;
     private List<IViewable> views = new ArrayList<IViewable>();
-    private BitmapFont font = new BitmapFont();
 
     public WinLoseScreen(boolean won) {
         this.won = won;
         views.add(new BackgroundViewable());
-        listener = new MenuListener();
+        listener = new MenuController();
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
@@ -63,16 +59,13 @@ public class WinLoseScreen implements Screen {
         mainTable.top();
         mainTable.padBottom(15f).padTop(30f);
 
-
-
-
         //Create buttons
         TextButton mainMenuButton = new TextButton("Main Menu", skin);
         TextButton playAgainButton = new TextButton("Play Again", skin);
 
-        stage.addListener(listener);
 
         //Add listeners to buttons
+        stage.addListener(listener);
         mainMenuButton.addListener(listener);
         playAgainButton.addListener(listener);
 

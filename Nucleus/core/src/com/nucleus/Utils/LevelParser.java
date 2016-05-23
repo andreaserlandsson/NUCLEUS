@@ -2,7 +2,6 @@ package com.nucleus.Utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.nucleus.Controller.libGDXControllers.ProgressTracker;
 
 // A class for reading and parsing .txt files that will be levels.
 public class LevelParser {

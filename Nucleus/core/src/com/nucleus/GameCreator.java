@@ -1,16 +1,15 @@
-package com.nucleus.Controller;
+package com.nucleus;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.nucleus.Controller.libGDXControllers.*;
 
 /**
  * Created by Quaxi on 11/05/16.
  */
-public class GameController {
+public class GameCreator {
 
 
-    public GameController(){
+    public GameCreator(){
         create();
         setScreen("start");
     }
@@ -21,7 +20,7 @@ public class GameController {
         config.width = 280;
         config.height = 512;
         config.samples = 4;
-        new LwjglApplication(new NucleusGame(), config);
+        new LwjglApplication(new com.nucleus.NucleusGame(), config);
     }
 
     private void setScreen(String screen){

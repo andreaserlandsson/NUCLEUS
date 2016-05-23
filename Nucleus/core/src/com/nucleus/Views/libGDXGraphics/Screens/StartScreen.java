@@ -10,10 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.MenuListener;
+import com.nucleus.Controller.MenuController;
 import com.nucleus.Controller.MusicController;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.MusicPlayerData;
@@ -36,7 +35,7 @@ public class StartScreen implements Screen {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private ClickListener listener;
+    private MenuController listener;
     private String[] buttons;
     private ILevel level;
     private MusicController mc;
@@ -45,16 +44,20 @@ public class StartScreen implements Screen {
 
 
     public StartScreen() {
+
+        // Creating level
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        views.add(new BackgroundViewable());
-        views.add(new NucleonViewable(level.getAirborneNucleons()));
+        // Adding Listener
+        this.listener = new MenuController();
 
-        this.buttons = buttons;
-        this.listener = new MenuListener();
+        // Music
         this.mpd = MusicPlayerData.getInstance();
         this.mc = new MusicController();
+
         //Initialising graphics
+        views.add(new BackgroundViewable());
+        views.add(new NucleonViewable(level.getAirborneNucleons()));
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
@@ -64,10 +67,8 @@ public class StartScreen implements Screen {
         camera.update();
         stage = new Stage(viewport, batch);
 
+        //Setting inputHandler
         Gdx.input.setInputProcessor(stage);
-       // mc.playLoop(MusicPlayerData.menuMusic, 1f);
-
-        //Initialize music
     }
 
     @Override
@@ -112,12 +113,12 @@ public class StartScreen implements Screen {
         TextButton optionsButton = new TextButton("Options", skin);
         TextButton exitButton = new TextButton("Exit", skin);
 
-        stage.addListener(listener);
 
         //Add listeners to buttons
         playButton.addListener(listener);
         optionsButton.addListener(listener);
         exitButton.addListener(listener);
+        stage.addListener(listener);
 
         Label nucleusText = new Label("NUCLEUS", skin);
         mainTable.add(nucleusText);

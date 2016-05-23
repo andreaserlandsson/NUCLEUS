@@ -1,4 +1,4 @@
-package com.nucleus.Controller.libGDXControllers;
+package com.nucleus.Utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
