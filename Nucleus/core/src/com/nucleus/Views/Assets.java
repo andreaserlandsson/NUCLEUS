@@ -48,8 +48,8 @@ public class Assets {
         if (audio != null) {
             for (Map.Entry entry : audio.entrySet()) {
                 audioAssets.load((String) entry.getValue(), Music.class);
-                System.out.println("key ====== " +entry.getKey());
-                System.out.println("namn på låt == " + entry.getValue());
+               // System.out.println("key ====== " +entry.getKey());
+               // System.out.println("namn på låt == " + entry.getValue());
 
             }
         }
@@ -59,10 +59,8 @@ public class Assets {
         if (texture != null) {
             for (Map.Entry entry : texture.entrySet()) {
                 textureAssets.load((String) entry.getValue(), Texture.class);
-                System.out.println(entry.getValue()+ " IS CLASS OF " + entry.getClass());
-
-                //System.out.println("key ====== " +entry.getKey());
-                //System.out.println("namn på grafisk skit == " + entry.getValue());
+                System.out.println("key ====== " +entry.getKey());
+                System.out.println("namn på grafisk skit == " + entry.getValue());
             }
         }
     }

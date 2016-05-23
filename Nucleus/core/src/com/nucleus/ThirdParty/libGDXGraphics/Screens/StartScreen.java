@@ -2,7 +2,6 @@ package com.nucleus.ThirdParty.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,9 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
-import com.nucleus.Controller.MusicController;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.MusicPlayerData;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
@@ -41,8 +38,6 @@ public class StartScreen implements Screen {
     private ClickListener listener;
     private String[] buttons;
     private ILevel level;
-    private MusicController mc;
-    private static MusicPlayerData mpd;
     private List<IViewable> views = new ArrayList<IViewable>();
     private Assets assets;
     private NMusicPlayer musicPlayer;
@@ -62,8 +57,6 @@ public class StartScreen implements Screen {
 
         this.buttons = buttons;
         this.listener = new MenuListener();
-        this.mpd = MusicPlayerData.getInstance();
-        this.mc = new MusicController();
         //Initialising graphics
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));

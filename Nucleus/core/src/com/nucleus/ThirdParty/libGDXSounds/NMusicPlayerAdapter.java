@@ -1,7 +1,6 @@
 package com.nucleus.ThirdParty.libGDXSounds;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.nucleus.Model.MusicPlayerData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,12 +13,9 @@ public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
     private MusicPlayer musicPlayer;
     private static Map<String, String> musicFiles;
     private static Map<String, Music> musicList;
-    private MusicPlayerData musicPlayerData;
 
     private NMusicPlayerAdapter() {
         musicPlayer = MusicPlayer.getInstance();
-        musicPlayerData = MusicPlayerData.getInstance();
-        musicFiles = musicPlayerData.getMusicMap();
         musicList = new HashMap<String, Music>();
         loadSongs();
     }
