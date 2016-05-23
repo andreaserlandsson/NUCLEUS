@@ -26,15 +26,14 @@ public class GameScreen implements Screen {
 
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
-
     private PauseDialog pauseDialog;
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
     private static SpriteBatch batch;
+    private boolean isPaused;
 
     public GameScreen(int levelNumber, ILevel level){
-
         this.level = level;
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -48,8 +47,6 @@ public class GameScreen implements Screen {
         batch.setProjectionMatrix(cam.combined);
 
     }
-
-
 
 
     @Override
@@ -78,7 +75,7 @@ public class GameScreen implements Screen {
             winScreen.render(1);
 
         } else if (level.isGamePaused()) {
-            //pauseDialog.render(delta);
+            pauseDialog.render(delta);
             level.update(delta);
 
         } else {
@@ -87,7 +84,6 @@ public class GameScreen implements Screen {
             if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
                 pause();
             }
-
 
             level.update(delta);
 
@@ -120,11 +116,9 @@ public class GameScreen implements Screen {
     @Override
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
-
         level.pause(batch);
-
-        /*this.pauseDialog = new PauseDialog(batch, level);
-        pauseDialog.show(); */
+        pauseDialog = new PauseDialog(batch);
+        pauseDialog.show();
 
     }
 

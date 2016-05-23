@@ -24,22 +24,17 @@ public class PauseDialog extends ScreenAdapter {
 
     private boolean goToMainMenu = false;
 
-    public PauseDialog( SpriteBatch batch, ILevel level){
+    public PauseDialog( SpriteBatch batch){
         this.batch = batch;
         stage2 = new Stage();
         this.level = level;
-
     }
 
     @Override
     public void show() {
-
         goToMainMenu = false;
-
         Gdx.input.setInputProcessor(stage2);
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
-
-
         new Dialog("PAUSED", skin) {
             {
                 button("Continue Playing", "con");
@@ -49,9 +44,8 @@ public class PauseDialog extends ScreenAdapter {
 
             @Override
             protected void result(final Object object) {
-                if (object.toString() == "con") {
+                if (object.toString().equals("con")) {
                     dispose();
-
                     level.resume();
                     System.out.println("continue");
 

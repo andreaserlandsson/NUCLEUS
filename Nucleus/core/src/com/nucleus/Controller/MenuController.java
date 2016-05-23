@@ -20,11 +20,11 @@ public class MenuController extends ClickListener {
     }
 
     public void startLevelChooser() {
-        game.startLevelChooser();
+        game.goToLevelChooser();
     }
 
     private void startLevel(int level){
-        game.startLevel(level);
+        game.goToLevel(level);
     }
 
     public void exit() {
@@ -32,45 +32,48 @@ public class MenuController extends ClickListener {
     }
 
     public void changeLevel(int i) {
-        game.startLevel(i);
+        game.goToLevel(i);
     }
 
     public void goToStartScreen(){
         game.goToStartLevel();
     }
 
-    public void showPauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
-        game.showPauseDialog(stage2,batch,level);
+    public void showPauseDialog(SpriteBatch batch){
+        game.showPauseDialog(batch);
     }
 
     public void clicked(InputEvent event, float x, float y) {
 
-        if (event.getTarget().toString().equals("Label: Play")) {
+        String label = event.getTarget().toString();
+
+        if (label.equals("Label: Play")) {
             startLevelChooser();
         }
 
-        else if (event.getTarget().toString().equals("Label: Options")) {
+        else if (label.equals("Label: Options")) {
             System.out.println("HÄR SKA DET VARA OPTIONS!!");
         }
 
-        else if (event.getTarget().toString().equals("Label: Exit")) {
+        else if (label.equals("Label: Exit")) {
             exit();
         }
 
-        else if (event.getTarget().toString().equals("Label: Level 1")) {
+        else if (label.equals("Label: Level 1")) {
             startLevel(1);
         }
 
-        else if (event.getTarget().toString().equals("Label: Level 2")) {
+        else if (label.equals("Label: Level 2")) {
             startLevel(2);
         }
 
-        //win and lose screen
-        else if (event.getTarget().toString().equals("Label: Play Again")) {
+        else if (label.equals("Label: Play Again")) {
+            game.goToStartLevel();
+        }
+
+        else if (label.equals("Label: Main Menu")) {
             game.goToStartScreen();
         }
 
-        else if (event.getTarget().toString().equals("Label: Main Menu")) {
-        }
     }
 }

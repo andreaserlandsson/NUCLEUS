@@ -3,13 +3,13 @@ package com.nucleus.Model;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.Collisions.ICollidable;
 import com.badlogic.gdx.Gdx;
-import com.nucleus.Controller.libGDXControllers.NInputAdapter;
 import com.nucleus.Views.libGDXGraphics.Screens.PauseDialog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class Level implements ILevel {
+public class Level extends Observable implements ILevel {
     private int levelNumber;
     private int width;
     private int height;
@@ -20,8 +20,8 @@ public class Level implements ILevel {
 
     private boolean gameWon = false;
     private boolean gameLost = false;
-
     private boolean gamePaused = false;
+
 
     private enum GameState{
         RUNNING,
@@ -36,9 +36,7 @@ public class Level implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
     private IGluonPoint[] gluons;
-    
     private IProgressTracker progressTracker;
-
 
     public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT){
         this.levelNumber = levelNumber;
@@ -132,13 +130,11 @@ public class Level implements ILevel {
         currentState = GameState.PAUSEDLOSE;
     }
 
-    public void collisionCheck(){
+    public void checkAllNucleonsStatus(){
         INucleon collidingNucleon = null;
-
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
                 if (com.nucleus.Model.Collisions.CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
-
                     if (nucleon.getClass().equals(Proton.class)) {
                         if (gluon.getProtonsNeeded() > 0){
                             gluon.addProton();
@@ -167,27 +163,26 @@ public class Level implements ILevel {
             removeNucleon(collidingNucleon);
         }
     }
-    private PauseDialog pauseDialog;
+
     public void pause(SpriteBatch batch){
         currentState = GameState.PAUSED;
         gamePaused = true;
         Gdx.app.log("GameScreen", "pause called");
-        pauseDialog = new PauseDialog( batch, this);
-        pauseDialog.show();
 
     }
 
     public void resume(){
         currentState = GameState.RUNNING;
         gamePaused = false;
-        Gdx.input.setInputProcessor(new NInputAdapter(this));
+        setChanged();
+        notifyObservers("resume");
     }
 
     public void update(float delta){
         if(currentState==GameState.RUNNING) {
             checkWinGame();
             runTime += delta;
-            collisionCheck();
+            checkAllNucleonsStatus();
             if (runTime - lastUpdateTime >= updateTime && !gun.isEmpty()) {
                 lastUpdateTime = runTime;
                 airborneNucleons.add(gun.shoot());
@@ -198,7 +193,7 @@ public class Level implements ILevel {
             removeOutOfBoundsNucleons();
 
         } else if (currentState == GameState.PAUSED) {
-            pauseDialog.render(delta);
+          //  pauseDialog.render(delta);
         }
     }
 }

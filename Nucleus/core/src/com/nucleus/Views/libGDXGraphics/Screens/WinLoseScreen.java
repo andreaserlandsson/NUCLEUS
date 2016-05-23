@@ -30,11 +30,12 @@ public class WinLoseScreen implements Screen {
     private OrthographicCamera camera;
     protected Skin skin;
     private MenuController listener;
-    private boolean won;
+    private boolean hasWon;
     private List<IViewable> views = new ArrayList<IViewable>();
 
     public WinLoseScreen(boolean won) {
-        this.won = won;
+
+        this.hasWon = won;
         views.add(new BackgroundViewable());
         listener = new MenuController();
         batch = new SpriteBatch();
@@ -46,6 +47,7 @@ public class WinLoseScreen implements Screen {
         camera.update();
         stage = new Stage(viewport, batch);
 
+        //Input
         Gdx.input.setInputProcessor(stage);
     }
 
@@ -70,7 +72,7 @@ public class WinLoseScreen implements Screen {
         playAgainButton.addListener(listener);
 
         //Add buttons and text to table
-        if (won) {
+        if (hasWon) {
             Label winText = new Label("YOU WON", skin);
             mainTable.add(winText);
         } else {
@@ -105,7 +107,6 @@ public class WinLoseScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         Gdx.app.log("WinLoseScreen", "resizing");
-
         viewport.update(width, height);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         camera.update();

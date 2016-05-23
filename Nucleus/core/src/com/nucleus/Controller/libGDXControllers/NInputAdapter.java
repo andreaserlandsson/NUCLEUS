@@ -4,6 +4,7 @@ import com.nucleus.Controller.ControllerState;
 import com.nucleus.Controller.PlayController;
 import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.Level;
 
 public class NInputAdapter extends NInputProcessor {
 
@@ -17,7 +18,7 @@ public class NInputAdapter extends NInputProcessor {
 
     public NInputAdapter(ILevel level){
         this.level = level;
-        controlGame = new PlayController(level);
+        controlGame = new PlayController((Level) level);
         currentState = controlGame;
     }
 

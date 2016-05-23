@@ -27,10 +27,12 @@ public class NucleusGame extends Game {
     }
 
     public void goToStartScreen(){
-        setScreen(new StartScreen());
+        Gdx.app.log("levelButton", "received");
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen());
+
     }
 
-    public void startLevel(int levelNum){
+    public void goToLevel(int levelNum){
 
         Gdx.app.log("levelButton", "received");
         ILevel level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -39,8 +41,7 @@ public class NucleusGame extends Game {
 
     }
 
-    public void startLevelChooser(){
-
+    public void goToLevelChooser(){
         ILevel level = LevelBuilder.buildLevel(1, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Gdx.input.setInputProcessor(new NInputAdapter(level));
         ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen());
@@ -53,10 +54,10 @@ public class NucleusGame extends Game {
         ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen());
     }
 
-    public void showPauseDialog(Stage stage2, SpriteBatch batch, ILevel level){
+    public void showPauseDialog(SpriteBatch batch){
         Gdx.app.log("PauseDialog", "button pressed");
         Gdx.input.setInputProcessor(new NInputAdapter());
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new PauseDialog( batch, level));
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new PauseDialog(batch));
 
     }
 
@@ -67,8 +68,6 @@ public class NucleusGame extends Game {
     public void exit(){
         Gdx.app.exit();
     }
-
-
 
     @Override
     public void dispose(){
