@@ -31,7 +31,6 @@ import java.util.List;
  * Created by Quaxi on 04/05/16.
  */
 public class StartScreen implements Screen {
-    private Assets assets;
     private SpriteBatch batch;
     protected Stage stage;
     private Viewport viewport;
@@ -43,14 +42,18 @@ public class StartScreen implements Screen {
     private MusicController mc;
     private static MusicPlayerData mpd;
     private List<IViewable> views = new ArrayList<IViewable>();
+    private Assets assets;
 
 
-    public StartScreen(String[] buttons)
-    {
+    public StartScreen(String[] buttons) {
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         //temporary to see that loading music works
         Assets.loadMusicFiles();
-        Assets.loadMusic();
+        //Assets.loadMusic();
+        //Assets.finishLoading();
+        //Assets.getMusic("music/menuSounds.wav");
+
+        Assets.playMusic("music/menuSounds.wav",1);
 
         //temporary to see that loading texture works
         Assets.loadTextureFiles();
@@ -97,7 +100,7 @@ public class StartScreen implements Screen {
 
     @Override
     public void resize(int width, int height){
-        Gdx.app.log("GameScreen", "resizing");
+        Gdx.app.log("StartScreen", "resizing");
 
         viewport.update(width, height);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
@@ -107,7 +110,7 @@ public class StartScreen implements Screen {
 
     @Override
     public void show(){
-        Gdx.app.log("GameScreen", "showing");
+        Gdx.app.log("StartScreen", "showing");
 
         //Create Table
         Table mainTable = new Table();
@@ -141,17 +144,17 @@ public class StartScreen implements Screen {
 
     @Override
     public void hide(){
-        Gdx.app.log("GameScreen", "hide called");
+        Gdx.app.log("StartScreen", "hide called");
     }
 
     @Override
     public  void pause(){
-        Gdx.app.log("GameScreen", "pause called");
+        Gdx.app.log("StartScreen", "pause called");
     }
 
     @Override
     public void resume(){
-        Gdx.app.log("GameScreen", "resume called");
+        Gdx.app.log("StartScreen", "resume called");
     }
 
     @Override

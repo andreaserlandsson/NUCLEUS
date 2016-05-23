@@ -1,6 +1,6 @@
 package Model;
 
-import com.nucleus.Model.CollisionHandler;
+import com.nucleus.Collisions.CollisionHandler;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.Vector;

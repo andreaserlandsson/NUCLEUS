@@ -2,10 +2,7 @@ package com.nucleus.Utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.io.File;
+import com.nucleus.ThirdParty.libGDXControllers.ProgressTracker;
 
 // A class for reading and parsing .txt files that will be levels.
 public class LevelParser {
@@ -48,7 +45,7 @@ public class LevelParser {
         {
             levelField[i] = Integer.parseInt(strings[i]);
         }
-        return new LevelData(levelField, width, height);
+        return new LevelData(levelField, width, height, new ProgressTracker());
     }
 
 }

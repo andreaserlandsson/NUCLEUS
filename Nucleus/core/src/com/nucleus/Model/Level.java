@@ -1,15 +1,18 @@
 package com.nucleus.Model;
 
+import com.nucleus.Collisions.ICollidable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Level implements ILevel {
+    private int levelNumber;
     private int width;
     private int height;
 
     private float runTime = 0;
     private float lastUpdateTime = 0;
-    private float dummyUpdateVariable = 1;
+    private float updateTime = 1;
 
     private boolean gameWon = false;
     private boolean gameLost = false;
@@ -27,13 +30,19 @@ public class Level implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
     private IGluonPoint[] gluons;
+    
+    private IProgressTracker progressTracker;
 
-    public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
+
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT){
+        this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
         this.gluons = gluons;
+        this.progressTracker = pT;
+        //System.out.println(pT);
     }
 
     public int getWidth(){
@@ -100,19 +109,18 @@ public class Level implements ILevel {
     private void checkWinGame() {
 
         if (molecule.isFull()) {
+                progressTracker.writeCompletedLevels(levelNumber);
                 gameWon = true;
                 currentState = GameState.PAUSEDWIN;
-               // System.out.println("you win");
-                //end the game, do some sort of pop-up?
+
+        } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
+            loseGame();
         }
     }
 
     private void loseGame(){
-
         gameLost = true;
         currentState = GameState.PAUSEDLOSE;
-        System.out.println("You lost :(((");
-        //end the game, do some sort of pop-up?
     }
 
     public void collisionCheck(){
@@ -120,7 +128,7 @@ public class Level implements ILevel {
 
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
-                if (CollisionHandler.collision(gluon, nucleon)) {
+                if (com.nucleus.Collisions.CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
 
                     if (nucleon.getClass().equals(Proton.class)) {
                         if (gluon.getProtonsNeeded() > 0){
@@ -131,8 +139,6 @@ public class Level implements ILevel {
                             loseGame();
                         }
                     }
-
-
                     else {
                         if (gluon.getNeutronsNeeded() > 0){
                             gluon.addNeutron();
@@ -147,8 +153,6 @@ public class Level implements ILevel {
             if (collidingNucleon != null) {
                 removeNucleon(collidingNucleon);
             }
-
-
         }
         if (collidingNucleon != null){
             removeNucleon(collidingNucleon);
@@ -162,7 +166,7 @@ public class Level implements ILevel {
         if(currentState==GameState.RUNNING) {
             runTime += delta;
             collisionCheck();
-            if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
+            if (runTime - lastUpdateTime >= updateTime && !gun.isEmpty()) {
                 lastUpdateTime = runTime;
                 airborneNucleons.add(gun.shoot());
             }

@@ -2,7 +2,9 @@ package Model;
 
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.INucleonGun;
+import com.nucleus.Model.Neutron;
 import com.nucleus.Model.NucleonGun;
+import com.nucleus.Model.Proton;
 import com.nucleus.Model.Vector;
 import org.junit.Test;
 import java.util.ArrayList;
@@ -122,5 +124,65 @@ public class NucleonGunTest {
         assertTrue(mockShotNucleon.getVelocity().getX() > 0 || mockShotNucleon.getVelocity().getX() <0);
         assertTrue(mockShotNucleon.getVelocity().getY() > 0 || mockShotNucleon.getVelocity().getY() < 0);
 
+    }
+
+    @Test
+    public void testGetAmmoLeft(){
+        Vector v1 = new Vector(1,1);
+        Vector v2 = new Vector(1,1);
+        Vector v3 = new Vector(2,3);
+        Vector v4 = new Vector(1,2);
+        INucleon mockNucleon1 = new MockNucleon(v1,v2);
+        INucleon mockNucleon2 = new MockNucleon(v3,v4);
+        ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
+        nucleonList.add(mockNucleon1);
+        nucleonList.add(mockNucleon2);
+        INucleonGun mockGun = new NucleonGun(width,heigth,nucleonList,1);
+        assertFalse(mockGun.getAmmoLeft() == 3);
+        assertTrue(mockGun.getAmmoLeft() == 2);
+        mockGun.shoot();
+        assertTrue(mockGun.getAmmoLeft() == 1);
+        mockGun.shoot();
+        assertTrue(mockGun.getAmmoLeft() == 0);
+    }
+
+    @Test
+    public void testGetProtonsInGun(){
+        Vector v1 = new Vector(2,1);
+        Vector v2 = new Vector(4,1);
+        Vector v3 = new Vector(3,5);
+        Vector v4 = new Vector(1,3);
+        INucleon mockNucleon1 = new Proton(v1,v2);
+        INucleon mockNucleon2 = new Proton(v3,v4);
+        ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
+        nucleonList.add(mockNucleon1);
+        nucleonList.add(mockNucleon2);
+        INucleonGun mockGun = new NucleonGun(width,heigth,nucleonList,1);
+        assertFalse(mockGun.getProtonsInGun() == 3);
+        assertTrue(mockGun.getProtonsInGun() == 2);
+        mockGun.shoot();
+        assertTrue(mockGun.getProtonsInGun() == 1);
+        mockGun.shoot();
+        assertTrue(mockGun.getProtonsInGun() == 0);
+    }
+
+    @Test
+    public void testGetNeutronsInGun(){
+        Vector v1 = new Vector(2,1);
+        Vector v2 = new Vector(4,1);
+        Vector v3 = new Vector(3,5);
+        Vector v4 = new Vector(1,3);
+        INucleon mockNucleon1 = new Neutron(v1,v2);
+        INucleon mockNucleon2 = new Neutron(v3,v4);
+        ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
+        nucleonList.add(mockNucleon1);
+        nucleonList.add(mockNucleon2);
+        INucleonGun mockGun = new NucleonGun(width,heigth,nucleonList,1);
+        assertFalse(mockGun.getNeutronsInGun() == 3);
+        assertTrue(mockGun.getNeutronsInGun() == 2);
+        mockGun.shoot();
+        assertTrue(mockGun.getNeutronsInGun() == 1);
+        mockGun.shoot();
+        assertTrue(mockGun.getNeutronsInGun() == 0);
     }
 }
