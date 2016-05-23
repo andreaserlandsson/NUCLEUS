@@ -74,6 +74,7 @@ public class StartScreen implements Screen {
         camera.update();
         stage = new Stage(viewport, batch);
 
+
         Gdx.input.setInputProcessor(stage);
        // mc.playLoop(MusicPlayerData.menuMusic, 1f);
 

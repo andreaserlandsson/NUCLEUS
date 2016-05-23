@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.Proton;
 import com.nucleus.Model.Vector;
+import com.nucleus.Views.Assets;
 
 import java.util.List;
 
@@ -23,10 +24,10 @@ public class NucleonViewable implements IViewable {
         this.nucleons = nucleons;
 
         //Adding textures
-        proton = new Texture("graphics/proton.png");
-        neutron = new Texture("graphics/neutron.png");
-        protonLargeTrail = new Texture("graphics/tailProton2.png");
-        neutronLargeTrail = new Texture("graphics/tailNeutron2.png");
+        proton = Assets.getTexture("proton.png");
+        neutron = Assets.getTexture("neutron.png");
+        protonLargeTrail = Assets.getTexture("tailProton2.png");
+        neutronLargeTrail = Assets.getTexture("tailNeutron2.png");
 
         //Adding filters
         protonLargeTrail.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.MipMapLinearNearest);

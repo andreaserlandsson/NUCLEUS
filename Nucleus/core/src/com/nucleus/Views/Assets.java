@@ -25,7 +25,6 @@ public class Assets {
         for (FileHandle entry : musicPath.list()) {
             audio.put(entry.name(), entry.path());
             System.out.println("path == " +entry.path() + "\n" + " name = " + entry.name());
-
         }
         loadMusic();
         finishLoading(audioAssets);
@@ -39,8 +38,6 @@ public class Assets {
 
         for (FileHandle entry : texturePath.list()) {
             texture.put(entry.name(), entry.path());
-            System.out.println("Path ====== "+entry.path());
-            System.out.println("namn ==== " +entry.name());
         }
         loadTexture();
         finishLoading(textureAssets);
@@ -62,6 +59,8 @@ public class Assets {
         if (texture != null) {
             for (Map.Entry entry : texture.entrySet()) {
                 textureAssets.load((String) entry.getValue(), Texture.class);
+                System.out.println(entry.getValue()+ " IS CLASS OF " + entry.getClass());
+
                 //System.out.println("key ====== " +entry.getKey());
                 //System.out.println("namn på grafisk skit == " + entry.getValue());
             }
@@ -127,7 +126,15 @@ public class Assets {
         return null;
     }
 
-
+    public static Texture getTexture(String picture) {
+        Texture pic = null;
+        String textPath = texture.get(picture);
+        if (textPath != null) {
+            pic = textureAssets.get(textPath, Texture.class);
+            return pic;
+        }
+        return pic;
+    }
     public static void finishLoading(AssetManager assetManager){
         while(!(assetManager.update()));
     }
