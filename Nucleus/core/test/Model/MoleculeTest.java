@@ -36,17 +36,20 @@ public class MoleculeTest {
 
 
     IMolecule molecule = new Molecule(0,0,gluons);
-/*
+
     @Test
     public void testOfMoleculeGetRotation(){
 
         IMolecule molecule1 = new Molecule(0,0,gluons);
 
         //initial rotation is set to 0
+
         assertTrue(molecule1.getRotation() == 0);
-        molecule1.setRotation(20);
+        molecule1.setRotation(new Vector(100,100), new Vector(65,23));
         assertFalse(molecule1.getRotation() == 0);
-        assertTrue(molecule1.getRotation()==20.0);
+
+        float rRotation = -8.26f;
+        assertTrue(molecule1.getRotation()-rRotation < 0.001);
     }
 
     @Test
@@ -90,9 +93,13 @@ public class MoleculeTest {
     public void testOfMoleculeSetRotation(){
 
         IMolecule molecule2 = new Molecule(0,0,gluons);
-        molecule2.setRotation(100);
+        Vector lastTouch = new Vector(5,50);
+        Vector newTouch = new Vector(105,100);
+
+        molecule2.setRotation(lastTouch,newTouch);
+        float result = -43.288f;
         assertFalse(molecule2.getRotation() == 10);
-        assertTrue(molecule2.getRotation() == 100);
+        assertTrue(molecule2.getRotation() -result < 0.001);
     }
 
 
@@ -100,22 +107,31 @@ public class MoleculeTest {
     public void testOfMoleculeRotate(){
         Vector center = new Vector(100,100);
         Vector position = new Vector(200,100);
-        Double angle = 90.0;
+
 
         //new position should be (100, 200) with rotation 90 degrees
-        Vector vector222 = molecule.rotate(center,position,angle);
+        molecule.setRotation(center,position);
 
-        assertFalse(vector222.getX() == 200.0);
-        assertFalse(vector222.getY() == 100.0);
-        assertTrue(vector222.getX() == 100.0);
-        assertTrue(vector222.getY() == 200.0);
+        assertFalse(gluon1.getPosition().getX() == 200.0);
+        assertFalse(gluon1.getPosition().getY() == 200.0);
+        assertFalse(gluon2.getPosition().getX() == 200.0);
+        assertFalse(gluon2.getPosition().getY() == 200.0);
+        assertFalse(gluon3.getPosition().getX() == 200.0);
+        assertFalse(gluon3.getPosition().getY() == 200.0);
 
-        //new position should be (100, 0) with rotation -90 degrees
-        Vector vector333 = molecule.rotate(center,position,-90);
-        assertTrue(vector333.getX() == 100.0);
-        assertTrue(vector333.getY() == 0.0);
-        assertFalse(vector333.getX() == 200.0);
-        assertFalse(vector333.getY() == 100.0);
+        System.out.println(gluon1.getPosition().getX());
+        System.out.println(gluon1.getPosition().getY());
+        System.out.println(gluon2.getPosition().getX());
+        System.out.println(gluon2.getPosition().getY());
+        System.out.println(gluon3.getPosition().getX());
+        System.out.println(gluon3.getPosition().getY());
+
+        assertTrue(gluon1.getPosition().getX() - 126.613f < 0.001);
+        assertTrue(gluon1.getPosition().getY() - 63.00f < 0.001);
+        assertTrue(gluon2.getPosition().getX() - 253.226f < 0.001);
+        assertTrue(gluon2.getPosition().getY() - 126f < 0.001);
+        assertTrue(gluon3.getPosition().getX() - 379.8400f < 0.001);
+        assertTrue(gluon3.getPosition().getY() - 189.001f < 0.001);
     }
-    */
+
 }
