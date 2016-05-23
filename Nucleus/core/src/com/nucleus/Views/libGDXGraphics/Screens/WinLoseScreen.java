@@ -25,7 +25,7 @@ import java.util.List;
  * Created by andreaserlandsson on 11/05/16.
  */
 
-public class WinLoseScreen implements Screen{
+public class WinLoseScreen implements Screen {
     private SpriteBatch batch;
     protected Stage stage;
     private Viewport viewport;

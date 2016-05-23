@@ -4,13 +4,13 @@ import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.nucleus.Controller.libGDXControllers.NucleusGameCreator;
+import com.nucleus.Controller.libGDXControllers.NucleusGame;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new NucleusGameCreator(), config);
+		initialize(new NucleusGame(), config);
 	}
 }

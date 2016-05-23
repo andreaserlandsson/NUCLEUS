@@ -44,7 +44,7 @@ public class StartScreen implements Screen {
     private List<IViewable> views = new ArrayList<IViewable>();
 
 
-    public StartScreen(String[] buttons) {
+    public StartScreen() {
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         views.add(new BackgroundViewable());
@@ -108,9 +108,9 @@ public class StartScreen implements Screen {
         mainTable.padBottom(150f);
 
         //Create buttons
-        TextButton playButton = new TextButton(buttons[0], skin);
-        TextButton optionsButton = new TextButton(buttons[1], skin);
-        TextButton exitButton = new TextButton(buttons[2], skin);
+        TextButton playButton = new TextButton("Play", skin);
+        TextButton optionsButton = new TextButton("Options", skin);
+        TextButton exitButton = new TextButton("Exit", skin);
 
         stage.addListener(listener);
 

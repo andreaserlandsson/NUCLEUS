@@ -40,7 +40,7 @@ public class MenuControllerAdapter {
 
         StartScreenView ssv = new StartScreenView();
         Gdx.input.setInputProcessor(new NInputAdapter());
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen(ssv.getStartScreen()));
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen());
     }
 
     public void showPauseDialog(Stage stage2, SpriteBatch batch, ILevel level){

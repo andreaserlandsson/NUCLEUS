@@ -6,9 +6,8 @@ import com.nucleus.Adapters.Controllers.GameControllerAdapter;
 import com.nucleus.Views.libGDXGraphics.Screens.StartScreen;
 
 
-public class NucleusGameCreator extends Game {
+public class NucleusGame extends Game {
 
-    GameControllerAdapter adapter;
 
     @Override
     public void create(){
@@ -16,12 +15,12 @@ public class NucleusGameCreator extends Game {
         Gdx.app.log("NucleusGame", "created");
         Gdx.app.log("Height", Integer.toString(Gdx.graphics.getHeight()));
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
-        adapter = new GameControllerAdapter(this);
+        setScreen(new StartScreen());
 
     }
 
-    public void createGame(String[] buttons){
-        setScreen(new StartScreen(buttons));
+    public void startScreen(){
+        setScreen(new StartScreen());
     }
 
     @Override

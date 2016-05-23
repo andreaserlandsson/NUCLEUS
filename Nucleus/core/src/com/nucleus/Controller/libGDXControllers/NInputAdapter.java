@@ -1,7 +1,7 @@
 package com.nucleus.Controller.libGDXControllers;
 
 import com.nucleus.Controller.ControllerState;
-import com.nucleus.Controller.GameController;
+import com.nucleus.Controller.PlayController;
 import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
 
@@ -17,7 +17,7 @@ public class NInputAdapter extends NInputProcessor {
 
     public NInputAdapter(ILevel level){
         this.level = level;
-        controlGame = new GameController(level);
+        controlGame = new PlayController(level);
         currentState = controlGame;
     }
 
