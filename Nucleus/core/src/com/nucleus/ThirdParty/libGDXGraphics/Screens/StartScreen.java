@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.NAssetsData;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
@@ -48,7 +49,7 @@ public class StartScreen implements Screen {
         musicPlayer.loadMusic();
         Assets.loadTextureFiles();
 
-        musicPlayer.playMusic("menuSounds.wav",1);
+        musicPlayer.playMusic(NAssetsData.MENUMUSIC,1);
         //musicPlayer.playSound("music/tempButton.mp3");
 
         //temporary to see that loading texture works

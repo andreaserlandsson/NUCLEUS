@@ -4,11 +4,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nucleus.Model.INucleon;
+import com.nucleus.Model.NAssetsData;
 import com.nucleus.Model.Proton;
 import com.nucleus.Model.Vector;
 import com.nucleus.Views.Assets;
 
 import java.util.List;
+
+import javax.print.attribute.standard.MediaSize;
 
 /**
  * Created by erik on 28/04/16.
@@ -24,10 +27,10 @@ public class NucleonViewable implements IViewable {
         this.nucleons = nucleons;
 
         //Adding textures
-        proton = Assets.getTexture("proton.png");
-        neutron = Assets.getTexture("neutron.png");
-        protonLargeTrail = Assets.getTexture("tailProton2.png");
-        neutronLargeTrail = Assets.getTexture("tailNeutron2.png");
+        proton = Assets.getTexture(NAssetsData.PROTON);//Assets.getTexture("proton.png");
+        neutron = Assets.getTexture(NAssetsData.NEUTRON);//Assets.getTexture("neutron.png");
+        protonLargeTrail = Assets.getTexture(NAssetsData.TAILPROTON2) ;//Assets.getTexture("tailProton2.png");
+        neutronLargeTrail = Assets.getTexture(NAssetsData.TAILNEUTRON2);//Assets.getTexture("tailNeutron2.png");
 
         //Adding filters
         protonLargeTrail.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.MipMapLinearNearest);

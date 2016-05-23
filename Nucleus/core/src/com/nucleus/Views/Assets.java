@@ -19,6 +19,7 @@ public class Assets {
     private static Map<String, String> texture = new HashMap<String, String>();
 
 
+
     public static void loadMusicFiles() {
         FileHandle musicPath;
         musicPath = Gdx.files.internal("music/");

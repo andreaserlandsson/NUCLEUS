@@ -78,16 +78,16 @@ public class MoleculeViewable implements IViewable {
     }
 
     private void loadTextures(int levelNumber){
-        this.moleculeTexture = new Texture("levels/"+Integer.toString(levelNumber)+".png");
+        this.moleculeTexture = Assets.getTexture(NAssetsData.getLevel(levelNumber));
         moleculeTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
         this.halfProton = Assets.getTexture(NAssetsData.PROTONHALF);
         halfProton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfNeutron = Assets.getTexture(NAssetsData.NEUTRONHALF) ;//new Texture("graphics/neutronHalf.png");
+        this.halfNeutron = Assets.getTexture(NAssetsData.NEUTRONHALF);
         halfNeutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfProtonComplete = Assets.getTexture(NAssetsData.PROTONHALFCOMPLETE);//)new Texture("graphics/protonHalfComplete.png");
+        this.halfProtonComplete = Assets.getTexture(NAssetsData.PROTONHALFCOMPLETE);
         halfProtonComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfNeutronComplete = Assets.getTexture(NAssetsData.NEUTRONHALFCOMPLETE);//new Texture("graphics/neutronHalfComplete.png");
+        this.halfNeutronComplete = Assets.getTexture(NAssetsData.NEUTRONHALFCOMPLETE);
         halfNeutronComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 }
