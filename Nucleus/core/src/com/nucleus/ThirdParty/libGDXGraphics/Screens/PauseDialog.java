@@ -49,7 +49,7 @@ public class PauseDialog extends ScreenAdapter {
 
         new Dialog("PAUSED", skin) {
             {
-                button("Continue Palying", "con");
+                button("Continue Playing", "con");
                 button("Main Menu", "menu");
                 setMovable(false);
             }
