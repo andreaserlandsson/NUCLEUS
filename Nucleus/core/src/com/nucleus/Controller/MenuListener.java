@@ -2,6 +2,7 @@ package com.nucleus.Controller;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.Model.ILevel;
 
 /**
  * Created by Quaxi on 10/05/16.
@@ -11,10 +12,16 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class MenuListener extends ClickListener {
 
     private MenuController controller;
+    private ILevel level;
 
     public MenuListener() {
         this.controller = new MenuController();
 
+
+    }
+    public MenuListener(ILevel level) {
+        this.controller = new MenuController();
+        this.level = level;
 
     }
 
@@ -42,7 +49,7 @@ public class MenuListener extends ClickListener {
 
         //win and lose screen
         if (event.getTarget().toString().equals("Label: Play Again")) {
-            controller.startLevelChoose();
+            controller.changeLevel(level.getLevelNumber());
         }
 
         if (event.getTarget().toString().equals("Label: Main Menu")) {

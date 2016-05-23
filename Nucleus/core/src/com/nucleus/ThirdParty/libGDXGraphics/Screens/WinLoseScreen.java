@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuListener;
+import com.nucleus.Model.ILevel;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 
@@ -37,10 +38,10 @@ public class WinLoseScreen implements Screen{
     private List<IViewable> views = new ArrayList<IViewable>();
     private BitmapFont font = new BitmapFont();
 
-    public WinLoseScreen(boolean won) {
+    public WinLoseScreen(boolean won, ILevel level) {
         this.won = won;
         views.add(new BackgroundViewable());
-        listener = new MenuListener();
+        listener = new MenuListener(level);
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
@@ -86,13 +87,12 @@ public class WinLoseScreen implements Screen{
         }
 
         mainTable.row();
-        mainTable.add(mainMenuButton);
-        mainTable.row();
         mainTable.add(playAgainButton);
-        //mainTable.row();
+
+        mainTable.row();
+        mainTable.add(mainMenuButton);
 
         //Add table to stage
-
         stage.addActor(mainTable);
     }
 
