@@ -24,6 +24,8 @@ public class Level implements ILevel {
 
     private boolean gamePaused = false;
 
+    private SpriteBatch batch;
+
     private enum GameState{
         RUNNING,
         PAUSED,
@@ -41,7 +43,7 @@ public class Level implements ILevel {
     private IProgressTracker progressTracker;
 
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT, SpriteBatch batch){
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
@@ -49,6 +51,7 @@ public class Level implements ILevel {
         this.molecule = molecule;
         this.gluons = gluons;
         this.progressTracker = pT;
+        this.batch = batch;
         //System.out.println(pT);
     }
 
@@ -169,7 +172,7 @@ public class Level implements ILevel {
         }
     }
     private PauseDialog pauseDialog;
-    public void pause(SpriteBatch batch){
+    public void pause(){
         currentState = GameState.PAUSED;
         gamePaused = true;
         Gdx.app.log("GameScreen", "pause called");

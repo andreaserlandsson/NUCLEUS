@@ -92,9 +92,9 @@ public class GameScreen implements Screen {
         } else {
 
             //check if you "touch" the pause "button" and if so call on the pause method
-            if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
+            /*if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
                 pause();
-            }
+            }*/
 
 
             level.update(delta);
@@ -129,7 +129,7 @@ public class GameScreen implements Screen {
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
 
-        level.pause(batch);
+        level.pause();
 
         /*this.pauseDialog = new PauseDialog(batch, level);
         pauseDialog.show(); */

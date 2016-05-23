@@ -22,7 +22,9 @@ public class GameController implements ControllerState {
     }
 
     public void touch(int screenX, int screenY, int pointer, int button){
-        return;
+        if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
+            level.pause();
+        }
     }
 
     public void drag(int screenX, int screenY, int pointer){

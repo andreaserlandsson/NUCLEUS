@@ -16,12 +16,12 @@ public interface ILevel {
     int getHeight();
     INucleonGun getNucleonGun();
     List<INucleon> getAirborneNucleons();
-     IMolecule getMolecule();
+    IMolecule getMolecule();
     void addAirborneNucleon(INucleon nucleon);
     void removeOutOfBoundsNucleons();
     void update(float delta);
     IGluonPoint[] getGluons();
 
-    void pause(SpriteBatch batch);
+    void pause();
     void resume();
 }
