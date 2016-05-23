@@ -32,11 +32,11 @@ public class NucleusGame extends Game {
 
     }
 
-    public void goToLevel(int levelNum){
+    public void goToLevel(int levelNum, Level level){
 
         Gdx.app.log("levelButton", "received");
-        ILevel level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        Gdx.input.setInputProcessor(new NInputHandler((Level) level));
+        // ILevel level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        // Gdx.input.setInputProcessor(new NInputHandler((Level) level));
         ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(levelNum, level));
 
     }

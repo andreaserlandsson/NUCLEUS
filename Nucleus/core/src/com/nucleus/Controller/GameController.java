@@ -27,9 +27,13 @@ public class GameController extends ClickListener {
         game.goToLevelChooser();
     }
 
-    private void startLevel(int level){
-        game.goToLevel(level);
-      //  Gdx.input.setInputProcessor(controller);
+    private void startLevel(int levelNum){
+        Gdx.input.setInputProcessor(controller);
+        ILevel level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        Gdx.input.setInputProcessor(new NInputHandler((Level) level));
+
+        game.goToLevel(levelNum, (Level) level);
+
 
     }
 
