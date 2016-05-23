@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.MenuController;
+import com.nucleus.Controller.GameController;
 import com.nucleus.Controller.MusicController;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.MusicPlayerData;
@@ -35,7 +35,7 @@ public class StartScreen implements Screen {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private MenuController listener;
+    private GameController listener;
     private String[] buttons;
     private ILevel level;
     private MusicController mc;
@@ -49,7 +49,7 @@ public class StartScreen implements Screen {
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         // Adding Listener
-        this.listener = new MenuController();
+        this.listener = new GameController();
 
         // Music
         this.mpd = MusicPlayerData.getInstance();

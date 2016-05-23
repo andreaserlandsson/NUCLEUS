@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.MenuController;
+import com.nucleus.Controller.GameController;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 
@@ -29,7 +29,7 @@ public class WinLoseScreen implements Screen {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private MenuController listener;
+    private GameController listener;
     private boolean hasWon;
     private List<IViewable> views = new ArrayList<IViewable>();
 
@@ -37,7 +37,7 @@ public class WinLoseScreen implements Screen {
 
         this.hasWon = won;
         views.add(new BackgroundViewable());
-        listener = new MenuController();
+        listener = new GameController();
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();

@@ -6,7 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Controller.libGDXControllers.NInputAdapter;
+import com.nucleus.Controller.NInputHandler;
+import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
@@ -117,15 +118,14 @@ public class GameScreen implements Screen {
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
         level.pause(batch);
-        pauseDialog = new PauseDialog(batch);
+        pauseDialog = new PauseDialog(batch, level);
         pauseDialog.show();
-
     }
 
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
-        Gdx.input.setInputProcessor(new NInputAdapter(level));
+        Gdx.input.setInputProcessor(new NInputHandler((Level) level));
 
     }
 

@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.Controller.MenuController;
+import com.nucleus.Controller.GameController;
 
 /**
  * Created by andreaserlandsson on 17/05/16. This class is yet not in use but if there is time it will be used instead of the WinLoseScreen class.
@@ -21,7 +21,7 @@ public class WinDialog extends ScreenAdapter {
 
 
     public WinDialog(){
-        this.listener = new MenuController();
+        this.listener = new GameController();
     }
 
     @Override

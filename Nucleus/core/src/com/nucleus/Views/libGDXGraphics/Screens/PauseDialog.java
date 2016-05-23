@@ -2,13 +2,11 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.MenuController;
+import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
 
 /**
@@ -17,17 +15,18 @@ import com.nucleus.Model.ILevel;
 public class PauseDialog extends ScreenAdapter {
     private SpriteBatch batch;
     private Stage stage2;
-    private Viewport viewport;
-    private OrthographicCamera camera;
     protected Skin skin;
     private ILevel level;
 
     private boolean goToMainMenu = false;
 
-    public PauseDialog( SpriteBatch batch){
+    public PauseDialog() {
+    }
+
+    public PauseDialog(SpriteBatch batch, ILevel level){
         this.batch = batch;
-        stage2 = new Stage();
         this.level = level;
+        stage2 = new Stage();
     }
 
     @Override
@@ -35,16 +34,17 @@ public class PauseDialog extends ScreenAdapter {
         goToMainMenu = false;
         Gdx.input.setInputProcessor(stage2);
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
+
         new Dialog("PAUSED", skin) {
             {
-                button("Continue Playing", "con");
+                button("Continue Playing", "continue");
                 button("Main Menu", "menu");
                 setMovable(false);
             }
 
             @Override
             protected void result(final Object object) {
-                if (object.toString().equals("con")) {
+                if (object.toString().equals("continue")) {
                     dispose();
                     level.resume();
                     System.out.println("continue");
@@ -52,7 +52,7 @@ public class PauseDialog extends ScreenAdapter {
                 } else {
 
                     System.out.println("main menu");
-                    MenuController controller = new MenuController();
+                    GameController controller = new GameController();
                     controller.goToStartScreen();
 
                 }

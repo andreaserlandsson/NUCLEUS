@@ -1,4 +1,4 @@
-package com.nucleus.Controller.libGDXControllers;
+package com.nucleus.Controller;
 
 import com.badlogic.gdx.InputProcessor;
 

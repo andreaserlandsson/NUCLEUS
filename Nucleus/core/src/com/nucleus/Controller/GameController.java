@@ -1,22 +1,26 @@
 package com.nucleus.Controller;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.Level;
 import com.nucleus.NucleusGame;
+import com.nucleus.Utils.LevelBuilder;
 
 /**
  * Created by Quaxi on 10/05/16.
  */
-public class MenuController extends ClickListener {
+public class GameController extends ClickListener {
 
     private NucleusGame game;
+    private NInputHandler controller;
 
-
-    public MenuController() {
+    public GameController() {
         game = new NucleusGame();
+        controller = new NInputHandler();
     }
 
     public void startLevelChooser() {
@@ -25,24 +29,28 @@ public class MenuController extends ClickListener {
 
     private void startLevel(int level){
         game.goToLevel(level);
+      //  Gdx.input.setInputProcessor(controller);
+
     }
 
     public void exit() {
         game.exit();
     }
 
-    public void changeLevel(int i) {
-        game.goToLevel(i);
-    }
-
     public void goToStartScreen(){
-        game.goToStartLevel();
+        game.goToStartScreen();
     }
 
-    public void showPauseDialog(SpriteBatch batch){
-        game.showPauseDialog(batch);
+    public void setInput(){
+
     }
 
+    /**
+     * Listens for inputs from buttons
+     * @param event the evet that happend
+     * @param x coordinate for the touch
+     * @param y coordinate for the touch
+     */
     public void clicked(InputEvent event, float x, float y) {
 
         String label = event.getTarget().toString();
@@ -68,7 +76,7 @@ public class MenuController extends ClickListener {
         }
 
         else if (label.equals("Label: Play Again")) {
-            game.goToStartLevel();
+            game.goToStartScreen();
         }
 
         else if (label.equals("Label: Main Menu")) {
