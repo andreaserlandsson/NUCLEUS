@@ -1,22 +1,14 @@
 package com.nucleus.ThirdParty.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuController;
-import com.nucleus.Controller.MenuListener;
 import com.nucleus.Model.ILevel;
+import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
 
 /**
  * Created by andreaserlandsson on 17/05/16.
@@ -24,12 +16,9 @@ import com.nucleus.Model.ILevel;
 public class PauseDialog extends ScreenAdapter {
     private SpriteBatch batch;
     private Stage stage2;
-    private Viewport viewport;
-    private OrthographicCamera camera;
     protected Skin skin;
     private ILevel level;
 
-    private boolean goToMainMenu = false;
 
     public PauseDialog( SpriteBatch batch, ILevel level){
         this.batch = batch;
@@ -41,32 +30,45 @@ public class PauseDialog extends ScreenAdapter {
     @Override
     public void show() {
 
-        goToMainMenu = false;
 
         Gdx.input.setInputProcessor(stage2);
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
 
         new Dialog("PAUSED", skin) {
-            {
-                button("Continue Palying", "con");
-                button("Main Menu", "menu");
+
+            { //these brackets works as a "universal-constructor" (or what ever it is called)
+
+                getButtonTable().row();
+                button("Continue Playing", "continue"); //this button calls on the result-method with the object "continue"
+                getButtonTable().row();
+                button("Main Menu", "menu");            //this button calls on the result-method with the object "menu"
+                getButtonTable().row();
+                button("Restart Level", "restart");        //this button calls on the result-method with the object "menu"
                 setMovable(false);
+
             }
 
             @Override
             protected void result(final Object object) {
-                if (object.toString() == "con") {
-                    dispose();
+                if (object.equals("continue")) {
 
-                    level.resume();
                     System.out.println("continue");
+                    dispose();
+                    level.resume();
+                    Gdx.input.setInputProcessor(new NInputAdapter(level)); //changes back to the game input processor
 
-                } else {
+                } else if (object.equals("menu")) {
 
                     System.out.println("main menu");
                     MenuController controller = new MenuController();
                     controller.goToStartScreen();
+
+                } else if (object.equals("restart")) {
+
+                    System.out.println("restart");
+                    MenuController controller = new MenuController();
+                    controller.changeLevel(level.getLevelNumber());
 
                 }
             }

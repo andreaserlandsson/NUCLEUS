@@ -10,8 +10,8 @@ public interface ILevel {
     boolean isGameWon();
 
     boolean isGamePaused();
-    void setGamePaused(boolean gamePaused);
 
+    int getLevelNumber();
     int getWidth();
     int getHeight();
     INucleonGun getNucleonGun();

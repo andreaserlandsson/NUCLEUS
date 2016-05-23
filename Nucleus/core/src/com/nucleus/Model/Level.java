@@ -1,11 +1,6 @@
 package com.nucleus.Model;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.nucleus.Collisions.ICollidable;
-import com.badlogic.gdx.Gdx;
-import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
-import com.nucleus.ThirdParty.libGDXGraphics.Screens.PauseDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +19,6 @@ public class Level implements ILevel {
 
     private boolean gamePaused = false;
 
-    private SpriteBatch batch;
 
     private enum GameState{
         RUNNING,
@@ -43,7 +37,7 @@ public class Level implements ILevel {
     private IProgressTracker progressTracker;
 
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT, SpriteBatch batch){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT) {
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
@@ -51,8 +45,11 @@ public class Level implements ILevel {
         this.molecule = molecule;
         this.gluons = gluons;
         this.progressTracker = pT;
-        this.batch = batch;
         //System.out.println(pT);
+    }
+
+    public int getLevelNumber() {
+        return levelNumber;
     }
 
     public int getWidth(){
@@ -63,16 +60,17 @@ public class Level implements ILevel {
         return height;
     }
 
-    public boolean isGameWon() {
+    public boolean isGameWon() { //this is used in GameScreen to check if the game is paused
         return gameWon;
     }
 
-    public boolean isGameLost() { return  gameLost; }
+    public boolean isGameLost() { //this is used in GameScreen to check if the game is paused
+        return  gameLost;
+    }
 
-    public boolean isGamePaused() { return gamePaused; }
-
-    public void setGamePaused(boolean gamePaused) { this.gamePaused = gamePaused; }
-
+    public boolean isGamePaused() {
+        return gamePaused;
+    }
 
     public INucleonGun getNucleonGun(){
         return gun;
@@ -171,20 +169,17 @@ public class Level implements ILevel {
             removeNucleon(collidingNucleon);
         }
     }
-    private PauseDialog pauseDialog;
+
     public void pause(){
         currentState = GameState.PAUSED;
-        gamePaused = true;
-        Gdx.app.log("GameScreen", "pause called");
-        pauseDialog = new PauseDialog( batch, this);
-        pauseDialog.show();
+        gamePaused = true; //this is used in GameScreen to check if the game is paused
 
     }
 
     public void resume(){
         currentState = GameState.RUNNING;
-        gamePaused = false;
-        Gdx.input.setInputProcessor(new NInputAdapter(this));
+        gamePaused = false; //this is used in GameScreen to check if the game is paused
+
     }
 
     public void update(float delta){
@@ -201,8 +196,6 @@ public class Level implements ILevel {
             }
             removeOutOfBoundsNucleons();
 
-        } else if (currentState == GameState.PAUSED) {
-            pauseDialog.render(delta);
         }
     }
 }

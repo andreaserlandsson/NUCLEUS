@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.Level;
 import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.CountdownViewable;
@@ -36,6 +37,7 @@ public class GameScreen implements Screen {
     private WinLoseScreen winScreen;
 
     private PauseDialog pauseDialog;
+    private boolean pauseDialogIsShowing = false;
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
@@ -66,7 +68,7 @@ public class GameScreen implements Screen {
         if (level.isGameLost()) {
             if (winLoseScreenShow == false) {
                 //winDialog.show();
-                this.loseScreen = new WinLoseScreen(false);
+                this.loseScreen = new WinLoseScreen(false, level);
                 loseScreen.show();
                 winLoseScreenShow = true;
             }
@@ -77,7 +79,7 @@ public class GameScreen implements Screen {
         } else if (level.isGameWon()) {
             if (winLoseScreenShow == false) {
                 //winDialog.show();
-                this.winScreen = new WinLoseScreen(true);
+                this.winScreen = new WinLoseScreen(true, level);
                 winScreen.show();
                 winLoseScreenShow = true;
             }
@@ -86,16 +88,14 @@ public class GameScreen implements Screen {
             winScreen.render(1);
 
         } else if (level.isGamePaused()) {
-            //pauseDialog.render(delta);
-            level.update(delta);
+            if (!pauseDialogIsShowing) {
+                pause();                    // we only want to call on this once when the game is paused and if the pause dialog is not upp but the game is paused
+                pauseDialogIsShowing = true;
+            }
+            pauseDialog.render(delta);
 
         } else {
-
-            //check if you "touch" the pause "button" and if so call on the pause method
-            /*if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
-                pause();
-            }*/
-
+            pauseDialogIsShowing = false;
 
             level.update(delta);
 
@@ -131,15 +131,14 @@ public class GameScreen implements Screen {
 
         level.pause();
 
-        /*this.pauseDialog = new PauseDialog(batch, level);
-        pauseDialog.show(); */
+        this.pauseDialog = new PauseDialog(batch, level);
+        pauseDialog.show();
 
     }
 
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
-        Gdx.input.setInputProcessor(new NInputAdapter(level));
 
     }
 

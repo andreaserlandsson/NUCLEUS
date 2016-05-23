@@ -22,7 +22,7 @@ public class GameController implements ControllerState {
     }
 
     public void touch(int screenX, int screenY, int pointer, int button){
-        if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
+        if ((screenX > level.getWidth() - 20) && screenY < 20) { // if you touch the upper right corner you pause the game
             level.pause();
         }
     }
