@@ -123,6 +123,7 @@ public class Level implements ILevel {
                 progressTracker.writeCompletedLevels(levelNumber);
                 gameWon = true;
                 currentState = GameState.PAUSEDWIN;
+
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
             loseGame();
         }

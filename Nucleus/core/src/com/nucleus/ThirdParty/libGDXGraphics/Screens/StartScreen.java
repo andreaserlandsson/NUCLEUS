@@ -2,6 +2,7 @@ package com.nucleus.ThirdParty.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,6 +22,7 @@ import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Utils.LevelBuilder;
+import com.nucleus.Views.Assets;
 
 
 import java.util.ArrayList;
@@ -30,7 +32,6 @@ import java.util.List;
  * Created by Quaxi on 04/05/16.
  */
 public class StartScreen implements Screen {
-
     private SpriteBatch batch;
     protected Stage stage;
     private Viewport viewport;
@@ -42,11 +43,22 @@ public class StartScreen implements Screen {
     private MusicController mc;
     private static MusicPlayerData mpd;
     private List<IViewable> views = new ArrayList<IViewable>();
+    private Assets assets;
 
 
     public StartScreen(String[] buttons) {
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //temporary to see that loading music works
+        Assets.loadMusicFiles();
+        //Assets.loadMusic();
+        //Assets.finishLoading();
+        //Assets.getMusic("music/menuSounds.wav");
 
+        Assets.playMusic("music/menuSounds.wav",1);
+
+        //temporary to see that loading texture works
+        Assets.loadTextureFiles();
+        Assets.loadTexture();
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
 

@@ -64,7 +64,6 @@ public class NMusicPlayerAdapter implements INMusicPlayerAdapter {
     private void loadSongs() {
         for (Map.Entry<String, String> entry : musicFiles.entrySet()){
             musicList.put(entry.getKey(),Gdx.audio.newMusic(Gdx.files.internal(entry.getValue())));
-            System.out.println(musicList.get(entry.getKey()).hashCode());
         }
     }
 
