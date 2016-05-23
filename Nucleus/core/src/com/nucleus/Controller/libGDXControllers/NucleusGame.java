@@ -2,7 +2,6 @@ package com.nucleus.Controller.libGDXControllers;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.nucleus.Adapters.Controllers.GameControllerAdapter;
 import com.nucleus.Views.libGDXGraphics.Screens.StartScreen;
 
 
