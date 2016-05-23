@@ -118,14 +118,7 @@ public class MoleculeTest {
         assertFalse(gluon2.getPosition().getY() == 200.0);
         assertFalse(gluon3.getPosition().getX() == 200.0);
         assertFalse(gluon3.getPosition().getY() == 200.0);
-
-        System.out.println(gluon1.getPosition().getX());
-        System.out.println(gluon1.getPosition().getY());
-        System.out.println(gluon2.getPosition().getX());
-        System.out.println(gluon2.getPosition().getY());
-        System.out.println(gluon3.getPosition().getX());
-        System.out.println(gluon3.getPosition().getY());
-
+        
         assertTrue(gluon1.getPosition().getX() - 126.613f < 0.001);
         assertTrue(gluon1.getPosition().getY() - 63.00f < 0.001);
         assertTrue(gluon2.getPosition().getX() - 253.226f < 0.001);
