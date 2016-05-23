@@ -1,4 +1,4 @@
-package com.nucleus.ThirdParty.libGDXSounds;
+package com.nucleus.Views.libGDXSounds;
 
 
 public interface INMusicPlayerAdapter {

@@ -1,4 +1,4 @@
-package com.nucleus.ThirdParty.libGDXControllers;
+package com.nucleus.Controller.libGDXControllers;
 
 import com.nucleus.Controller.ControllerState;
 import com.nucleus.Controller.GameController;

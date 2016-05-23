@@ -1,25 +1,17 @@
-package com.nucleus.ThirdParty.libGDXGraphics.Screens;
+package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.MenuController;
 import com.nucleus.Model.ILevel;
-import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
-import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
-import com.nucleus.ThirdParty.libGDXGraphics.Viewables.CountdownViewable;
-import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
-import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
-import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Controller.libGDXControllers.NInputAdapter;
+import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 
 import java.util.ArrayList;
 import java.util.List;

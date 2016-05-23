@@ -9,12 +9,10 @@ import com.nucleus.Views.StartScreenView;
 public class NucleusGame {
 
     private GameControllerAdapter adapter;
-    private StartScreenView ssview;
 
     public NucleusGame(GameControllerAdapter gameControllerAdapter){
-        ssview = new StartScreenView();
         adapter = gameControllerAdapter;
-        adapter.createGame(ssview.getStartScreen());
+        adapter.createGame(new String[] {"Play", "Options", "Exit"});
     }
 
 }

@@ -1,11 +1,9 @@
-package com.nucleus.ThirdParty.libGDXSounds;
+package com.nucleus.Views.libGDXSounds;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.nucleus.Model.MusicPlayerData;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 

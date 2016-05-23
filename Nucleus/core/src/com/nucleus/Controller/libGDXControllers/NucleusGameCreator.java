@@ -1,9 +1,9 @@
-package com.nucleus.ThirdParty.libGDXControllers;
+package com.nucleus.Controller.libGDXControllers;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.nucleus.Adapters.Controllers.GameControllerAdapter;
-import com.nucleus.ThirdParty.libGDXGraphics.Screens.StartScreen;
+import com.nucleus.Views.libGDXGraphics.Screens.StartScreen;
 
 
 public class NucleusGameCreator extends Game {

@@ -7,11 +7,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.nucleus.Model.ILevel;
 
-import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
-import com.nucleus.ThirdParty.libGDXGraphics.Screens.GameScreen;
-import com.nucleus.ThirdParty.libGDXGraphics.Screens.LevelChooseScreen;
-import com.nucleus.ThirdParty.libGDXGraphics.Screens.PauseDialog;
-import com.nucleus.ThirdParty.libGDXGraphics.Screens.StartScreen;
+import com.nucleus.Controller.libGDXControllers.NInputAdapter;
+import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
+import com.nucleus.Views.libGDXGraphics.Screens.PauseDialog;
+import com.nucleus.Views.libGDXGraphics.Screens.StartScreen;
 import com.nucleus.Utils.LevelBuilder;
 import com.nucleus.Views.StartScreenView;
 

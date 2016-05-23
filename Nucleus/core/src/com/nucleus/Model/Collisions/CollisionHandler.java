@@ -1,7 +1,4 @@
-package com.nucleus.Collisions;
-
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.INucleon;
+package com.nucleus.Model.Collisions;
 
 public class CollisionHandler {
 

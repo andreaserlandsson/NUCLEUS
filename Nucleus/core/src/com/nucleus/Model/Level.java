@@ -1,11 +1,10 @@
 package com.nucleus.Model;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.nucleus.Collisions.ICollidable;
+import com.nucleus.Model.Collisions.ICollidable;
 import com.badlogic.gdx.Gdx;
-import com.nucleus.ThirdParty.libGDXControllers.NInputAdapter;
-import com.nucleus.ThirdParty.libGDXGraphics.Screens.PauseDialog;
+import com.nucleus.Controller.libGDXControllers.NInputAdapter;
+import com.nucleus.Views.libGDXGraphics.Screens.PauseDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,7 +137,7 @@ public class Level implements ILevel {
 
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
-                if (com.nucleus.Collisions.CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
+                if (com.nucleus.Model.Collisions.CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
 
                     if (nucleon.getClass().equals(Proton.class)) {
                         if (gluon.getProtonsNeeded() > 0){

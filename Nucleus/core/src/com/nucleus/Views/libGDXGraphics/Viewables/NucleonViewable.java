@@ -1,4 +1,4 @@
-package com.nucleus.ThirdParty.libGDXGraphics.Viewables;
+package com.nucleus.Views.libGDXGraphics.Viewables;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

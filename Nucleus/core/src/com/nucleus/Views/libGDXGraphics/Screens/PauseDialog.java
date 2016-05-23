@@ -1,4 +1,4 @@
-package com.nucleus.ThirdParty.libGDXGraphics.Screens;
+package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
