@@ -52,8 +52,8 @@ public class StartScreen implements Screen {
         musicPlayer = new NMusicPlayer();
         musicPlayer.loadMusic();
 
-        musicPlayer.playMusic("music/menuSounds.wav",1);
-        musicPlayer.playSound("music/tempButton.mp3");
+        musicPlayer.playMusic("menuSounds.wav",1);
+        //musicPlayer.playSound("music/tempButton.mp3");
 
         //temporary to see that loading texture works
         Assets.loadTextureFiles();

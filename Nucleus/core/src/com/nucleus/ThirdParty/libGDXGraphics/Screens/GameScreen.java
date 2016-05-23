@@ -20,6 +20,7 @@ import com.nucleus.ThirdParty.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.ThirdParty.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Views.NMusicPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class GameScreen implements Screen {
     private ILevel level;
 
     private boolean winLoseScreenShow = false;
-
+    private NMusicPlayer mc;
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
 
@@ -42,11 +43,11 @@ public class GameScreen implements Screen {
     private static SpriteBatch batch;
 
     public GameScreen(int levelNumber, ILevel level){
-
+        mc = new NMusicPlayer();
         this.level = level;
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
+        mc.switchSong("inGame.mp3",1);
         views.add(new BackgroundViewable());
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));

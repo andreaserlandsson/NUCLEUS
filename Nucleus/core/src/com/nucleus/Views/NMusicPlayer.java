@@ -6,7 +6,7 @@ import com.badlogic.gdx.audio.Music;
  * Created by paki on 5/23/16.
  */
 public class NMusicPlayer {
-    private Music currentlyPlaying = null;
+    private static Music currentlyPlaying;
 
     public void loadMusic(){
         Assets.loadMusicFiles();
@@ -56,7 +56,10 @@ public class NMusicPlayer {
     }
 
     public void resumeMusic(String song) {
-
+        Music music = Assets.resumeMusic(song);
+        if (music != null){
+            music.pause();
+        }
     }
 
 
