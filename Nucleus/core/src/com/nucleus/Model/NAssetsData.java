@@ -22,6 +22,7 @@ public class NAssetsData {
     public static final String TAILPROTON1 = "tailProton1.png";
     public static final String TAILPROTON2 = "tailProton2.png";
     public static final String TAILPROTON3 = "tailProton3.png";
+    public static final String NSKIN = "uiskin.png";
     public static final String LEVEL = ".png";
 
     public static String getLevel (int levelnr) {

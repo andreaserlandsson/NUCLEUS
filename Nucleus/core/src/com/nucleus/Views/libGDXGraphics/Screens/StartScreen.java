@@ -52,6 +52,7 @@ public class StartScreen implements Screen {
         musicPlayer = new NMusicPlayer();
         musicPlayer.loadMusic();
         Assets.loadTextureFiles();
+        Assets.loadSkinFiles();
 
         musicPlayer.playMusic(NAssetsData.MENUMUSIC);
         //musicPlayer.playSound("music/tempButton.mp3");
@@ -69,7 +70,7 @@ public class StartScreen implements Screen {
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         batch = new SpriteBatch();
-        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
+        skin = (Skin)Assets.getSkin(NAssetsData.NSKIN);//new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
         viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
         viewport.apply();

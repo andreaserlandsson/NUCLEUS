@@ -5,7 +5,9 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Json;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,12 +27,12 @@ public class Assets {
         musicPath = Gdx.files.internal("music/");
         for (FileHandle entry : musicPath.list()) {
             audio.put(entry.name(), entry.path());
-            System.out.println("path == " +entry.path() + "\n" + " name = " + entry.name());
+            //System.out.println("path == " +entry.path() + "\n" + " name = " + entry.name());
         }
         loadMusic();
         finishLoading(audioAssets);
 
-        System.out.println(audioAssets.getLoadedAssets());
+        //System.out.println(audioAssets.getLoadedAssets());
     }
 
     public static void loadTextureFiles() {
@@ -42,10 +44,10 @@ public class Assets {
         }
         loadTexture();
         finishLoading(textureAssets);
-        System.out.println(textureAssets.getLoadedAssets());
+        //System.out.println(textureAssets.getLoadedAssets());
     }
 
-    /*public static void loadSkinFiles() {
+    public static void loadSkinFiles() {
         FileHandle skinPath;
         skinPath = Gdx.files.internal("menu/skins/");
 
@@ -54,7 +56,8 @@ public class Assets {
         }
         loadSkins();
         finishLoading(skinAssets);
-    } */
+        System.out.println(skinAssets.getLoadedAssets());
+    }
 
 
     public static void loadMusic () {
@@ -72,19 +75,17 @@ public class Assets {
         if (texture != null) {
             for (Map.Entry entry : texture.entrySet()) {
                 textureAssets.load((String) entry.getValue(), Texture.class);
-                System.out.println("key ====== " +entry.getKey());
-                System.out.println("namn på grafisk skit == " + entry.getValue());
             }
         }
     }
-    /*
+
     public static void loadSkins() {
         if (skins != null) {
             for (Map.Entry entry : skins.entrySet()) {
-                skinAssets.load((String) entry.getValue(), Skin.class);
+                skinAssets.load((String) entry.getValue(), Texture.class);
             }
         }
-    } */
+    }
 
     public static Music getSong(String song) {
         Music music = null;
@@ -106,11 +107,11 @@ public class Assets {
         return pic;
     }
 
-    public static Skin getSkin(String s) {
-        Skin skinFile = null;
+    public static Texture getSkin(String s) {
+        Texture skinFile = null;
         String skinPath = skins.get(s);
         if (skinPath != null) {
-            skinFile = skinAssets.get(skinPath, Skin.class);
+            skinFile = skinAssets.get(skinPath, Texture.class);
             return skinFile;
         }
     return skinFile;
