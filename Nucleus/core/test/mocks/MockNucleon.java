@@ -24,6 +24,16 @@ public class MockNucleon implements INucleon {
         position = position.add(velocity.multiply(delta));
     }
 
+    @Override
+    public float getX() {
+        return 0;
+    }
+
+    @Override
+    public float getY() {
+        return 0;
+    }
+
     public Vector getPosition(){
         return position;
     }

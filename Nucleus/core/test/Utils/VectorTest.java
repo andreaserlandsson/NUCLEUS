@@ -1,4 +1,4 @@
-package Model;
+package Utils;
 
 import org.junit.Test;
 import com.nucleus.Utils.Vector;
@@ -98,6 +98,20 @@ public class VectorTest {
         assertTrue(v12.getX() == 1.0);
         assertFalse(v12.getX() != 1.0);
         assertFalse(v12.getX() == 2.0);
+    }
+
+    @Test
+    public void testScalar() {
+
+        Vector v13 = new Vector(1,2);
+        Vector v14 = new Vector(2,3);
+
+        assertFalse(v13.scalar(v13) != 5);
+        assertTrue(v13.scalar(v13) == 5);
+
+        assertFalse(v13.scalar(v14) != 8);
+        assertTrue(v13.scalar(v14) == 8);
+
     }
 
 

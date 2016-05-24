@@ -37,7 +37,7 @@ public class MoleculeTest {
     IMolecule molecule = new Molecule(0,0,gluons);
 
     @Test
-    public void testOfMoleculeGetRotation(){
+    public void testGetRotation(){
 
         IMolecule molecule1 = new Molecule(0,0,gluons);
 
@@ -52,7 +52,7 @@ public class MoleculeTest {
     }
 
     @Test
-    public void testOfMoleculeIsFull(){
+    public void testIsFull(){
         //Got a molecule with 3 different gluonpoints.
         //The molecule won't be full until all those are full..
 
@@ -89,7 +89,7 @@ public class MoleculeTest {
     }
 
     @Test
-    public void testOfMoleculeSetRotation(){
+    public void testSetRotation(){
 
         IMolecule molecule2 = new Molecule(0,0,gluons);
         Vector lastTouch = new Vector(5,50);
@@ -101,9 +101,8 @@ public class MoleculeTest {
         assertTrue(molecule2.getRotation() -result < 0.001);
     }
 
-
     @Test
-    public void testOfMoleculeRotate(){
+    public void testSetRotation2(){
         Vector center = new Vector(100,100);
         Vector position = new Vector(200,100);
 
@@ -125,5 +124,20 @@ public class MoleculeTest {
         assertTrue(gluon3.getPosition().getX() - 379.8400f < 0.001);
         assertTrue(gluon3.getPosition().getY() - 189.001f < 0.001);
     }
+
+    @Test
+    public void testRotateGluon() {
+
+        molecule.rotateGluon(gluon1, v1, v2, 2.0);
+        
+
+    }
+
+    @Test
+    public void testCalculateRotationAngle() {
+
+    }
+
+
 
 }

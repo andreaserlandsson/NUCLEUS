@@ -14,6 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class LevelTest {
     int width = 0;
     int heigth = 0;
+
     @Test
     public void thisAlwaysPasses() {
         assertTrue(true);
