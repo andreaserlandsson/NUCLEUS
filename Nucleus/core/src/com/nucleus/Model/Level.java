@@ -112,7 +112,6 @@ public class Level extends Observable implements ILevel {
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
     private void checkWinGame() {
-        System.out.println(countObservers());
         if (molecule.isFull()) {
                 setChanged();
                 notifyObservers("won");
