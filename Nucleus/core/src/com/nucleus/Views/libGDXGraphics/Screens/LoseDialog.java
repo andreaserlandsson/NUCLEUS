@@ -4,22 +4,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.Model.ILevel;
 
-
 /**
- * Created by andreaserlandsson on 17/05/16.
+ * Created by andreaserlandsson on 24/05/16.
  */
+public class LoseDialog extends WinLoseDialog {
 
-public class WinDialog extends WinLoseDialog {
     private SpriteBatch batch;
     private ILevel level;
     private EventListener listener;
 
-    public WinDialog(SpriteBatch batch, ILevel level, EventListener listener) {
+    public LoseDialog(SpriteBatch batch, ILevel level, EventListener listener) {
         super(listener);
         this.listener = listener;
         this.batch = batch;
         this.level = level;
-        this.title = "You Won";
+        this.title = "You Lost";
 
     }
 

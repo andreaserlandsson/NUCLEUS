@@ -5,23 +5,20 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.NAssetsData;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Views.Assets;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
-import com.nucleus.Views.libGDXMusic.INMusicPlayer;
-import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +34,13 @@ public class StartScreen implements Screen {
     protected Skin skin;
     private ILevel level;
     private List<IViewable> views = new ArrayList<IViewable>();
-    private INMusicPlayer musicPlayer;
 
-    public StartScreen(ClickListener listener) {
+    public StartScreen(EventListener listener) {
 
         // Creating level
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        musicPlayer = NMusicPlayer.getInstance();
-        musicPlayer.loadMusic();
         Assets.loadTextureFiles();
 
-        musicPlayer.playMusic(NAssetsData.MENUMUSIC);
 
         //temporary to see that loading texture works
         views.add(new BackgroundViewable());

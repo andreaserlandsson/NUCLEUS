@@ -2,7 +2,6 @@ package com.nucleus.Utils.LevelUtils;
 
 import com.nucleus.Model.GluonPoint;
 import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Utils.IProgressTracker;
 import com.nucleus.Utils.Vector;
 
 public class LevelData {
@@ -22,21 +21,17 @@ public class LevelData {
     public final int difficultyMultiplierIndex = 5;
     public final int firstGluonIndex = 6;
 
-    public IProgressTracker progressTracker;
-
-
 
     //Sets the variables for a level by parsing the int[] field from
     //LevelParser.
     //The first 6 positions of the array always are the same.
-    public LevelData(int [] levelSpecs, int width, int height, IProgressTracker progressTracker) {
+    public LevelData(int [] levelSpecs, int width, int height) {
         this.levelNo = levelSpecs[levelNumberIndex];
         this.noOfGluonPoints = levelSpecs[gluonAmountIndex];
         this.moleculeFilename = levelSpecs[moleculeNameIndex];
         this.noOfProtons = levelSpecs[protonAmountIndex];
         this.noOfNeutrons = levelSpecs[neutronAmountIndex];
         this.difficultyMultiplier = levelSpecs[difficultyMultiplierIndex];
-        this.progressTracker = progressTracker;
 
         //Fills a list with gluonPoints with their corresponding values for
         // Cordinates and neuclons needed.

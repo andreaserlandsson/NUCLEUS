@@ -1,12 +1,6 @@
 package com.nucleus.Controller;
 
-import com.badlogic.gdx.Gdx;
-import com.nucleus.Model.ILevel;
-import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
-
-import java.util.Observable;
-import java.util.Observer;
 
 public class NInputHandler extends NInputProcessor {
 

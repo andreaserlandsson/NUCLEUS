@@ -1,7 +1,6 @@
 package com.nucleus.Model;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.Collisions.ICollidable;
 
 import java.util.ArrayList;
@@ -30,16 +29,14 @@ public class Level extends Observable implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
     private IGluonPoint[] gluons;
-    private com.nucleus.Utils.IProgressTracker progressTracker;
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, com.nucleus.Utils.IProgressTracker pT){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
         this.gluons = gluons;
-        this.progressTracker = pT;
     }
 
     public int getLevelNumber() {
@@ -59,7 +56,7 @@ public class Level extends Observable implements ILevel {
     }
 
     public boolean isGameLost() {
-        return  currentState==GameState.PAUSEDLOSE;
+        return currentState==GameState.PAUSEDLOSE;
     }
 
     public boolean isGamePaused() { return currentState==GameState.PAUSED; }
@@ -83,12 +80,6 @@ public class Level extends Observable implements ILevel {
     //Possible obsolete, required for bugtesting at the moment
     public IGluonPoint[] getGluons() {
         return gluons;
-    }
-
-    @Override
-    public void pause() {
-        currentState = GameState.PAUSED;
-        Gdx.app.log("GameScreen", "pause called");
     }
 
     /*Function should probably be removed*/
@@ -123,9 +114,9 @@ public class Level extends Observable implements ILevel {
 
     private void checkWinGame() {
         if (molecule.isFull()) {
-                progressTracker.writeCompletedLevels(levelNumber);
+                setChanged();
+                notifyObservers("won");
                 currentState = GameState.PAUSEDWIN;
-
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
             loseGame();
         }
@@ -133,6 +124,8 @@ public class Level extends Observable implements ILevel {
 
     private void loseGame(){
         currentState = GameState.PAUSEDLOSE;
+        setChanged();
+        notifyObservers("lost");
     }
 
     public void checkAllNucleonsStatus(){
@@ -169,16 +162,18 @@ public class Level extends Observable implements ILevel {
         }
     }
 
-    public void pause(SpriteBatch batch){
+    public void pause() {
         currentState = GameState.PAUSED;
+        setChanged();
+        notifyObservers("pause");
         Gdx.app.log("GameScreen", "pause called");
-
     }
 
     public void resume(){
         currentState = GameState.RUNNING;
         setChanged();
         notifyObservers("resume");
+        setChanged();
     }
 
     public void update(float delta){
@@ -194,7 +189,6 @@ public class Level extends Observable implements ILevel {
                 nucleon.update(delta);
             }
             removeOutOfBoundsNucleons();
-
         }
     }
 }

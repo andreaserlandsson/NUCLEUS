@@ -7,50 +7,45 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.NAssetsData;
-import com.nucleus.Utils.LevelUtils.LevelBuilder;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotateble;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
-import com.nucleus.Views.libGDXMusic.INMusicPlayer;
-import com.nucleus.Views.libGDXMusic.NMusicPlayer;
+import com.nucleus.Views.libGDXGraphics.Viewables.PauseViewable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 
 
 /**
  * Created by erik on 25/04/16.
  */
-public class GameScreen extends Observable implements Screen, PlayScreen {
+public class GameScreen implements PlayScreen, Observer {
 
-    private ILevel level;
+    private final int levelNumber;
+    private Level level;
     private boolean winLoseScreenShow = false;
-    private WinLoseScreen loseScreen;
-    private WinLoseScreen winScreen;
+    private WinLoseDialog endGameDialog;
     private PauseDialog pauseDialog;
     private EventListener listener;
+
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private List<IViewableRotateble> viewsRot = new ArrayList<IViewableRotateble>();
     private OrthographicCamera cam;
     private static SpriteBatch batch;
-    private boolean isPaused;
-    Vector lastTouch = new Vector(0,0);
+    private boolean pauseDialogIsShowing = false;
 
-    private INMusicPlayer musicPlayer;
+    public GameScreen(Level level, EventListener listener){
 
-    public GameScreen(int levelNumber, EventListener listener){
-        //starting level music
-        this.musicPlayer = NMusicPlayer.getInstance();
-        musicPlayer.switchSong(NAssetsData.getLevelSong(levelNumber));
-
-        this.level = LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        this.level = level;
         this.listener = listener;
+        this.levelNumber = level.getLevelNumber();
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
@@ -58,47 +53,30 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
         views.add(new BackgroundViewable());
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
+        views.add(new PauseViewable());
         viewsRot.add(new MoleculeViewable(levelNumber, level.getMolecule()));
 
         pauseDialog = new PauseDialog(batch, level, listener);
-
+        //Add observers
+        level.addObserver(this);
 
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
 
     }
 
-
     @Override
     public void render(float delta) {
 
-        if (level.isGameLost()) {
-            if (!winLoseScreenShow) {
-                //winDialog.show();
-                this.loseScreen = new WinLoseScreen(false, listener);
-                loseScreen.show();
-                winLoseScreenShow = true;
-            }
+        if (winLoseScreenShow) {
+            endGameDialog.render(delta);
 
-            //winDialog.render(1);
-            loseScreen.render(1);
-
-        } else if (level.isGameWon()) {
-            if (!winLoseScreenShow) {
-                //winDialog.show();
-                this.winScreen = new WinLoseScreen(true, listener);
-                winScreen.show();
-                winLoseScreenShow = true;
-            }
-
-            //winDialog.render(1);
-            winScreen.render(1);
-
-        } else if (level.isGamePaused()) {
+        } else if (pauseDialogIsShowing) {
             pauseDialog.render(delta);
-            level.update(delta);
 
         } else {
+
+            pauseDialogIsShowing = false;
 
             level.update(delta);
 
@@ -137,14 +115,16 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     @Override
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
-        level.pause();
         pauseDialog.show();
+        pauseDialogIsShowing = true;
+
     }
 
     @Override
     public void resume(){
-        level.resume();
         Gdx.app.log("GameScreen", "resume called");
+        pauseDialog.resume();
+        pauseDialogIsShowing = false;
 
     }
 
@@ -153,19 +133,6 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
         // Leave blank
     }
 
-    @Override
-    public void drag(int screenX, int screenY, int pointer) {
-
-        Vector newTouch = new Vector(screenX, screenY);
-        Vector delta = newTouch.subtract(this.lastTouch);
-        level.getMolecule().setRotation(lastTouch, newTouch);
-        this.lastTouch = newTouch;
-    }
-
-    @Override
-    public void touch(int screenX, int screenY, int pointer, int button) {
-
-    }
 
     @Override
     public int getWidth() {
@@ -175,5 +142,33 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     @Override
     public int getHeight() {
         return Gdx.graphics.getHeight();
+    }
+
+    @Override
+    public ILevel getLevel() {
+        return level;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg.toString().equals("pause")){
+            pause();
+        }
+        if (arg.toString().equals("resume")){
+            resume();
+        }
+        if (arg.toString().equals("won")){
+            Gdx.app.log("GameScreen", "Won");
+            winLoseScreenShow = true;
+            endGameDialog = new WinDialog(batch, level, listener);
+            endGameDialog.show();
+        }
+        if (arg.toString().equals("lost")){
+            Gdx.app.log("GameScreen", "Lost");
+            winLoseScreenShow = true;
+            endGameDialog = new LoseDialog(batch, level, listener);
+            endGameDialog.show();
+
+        }
     }
 }
