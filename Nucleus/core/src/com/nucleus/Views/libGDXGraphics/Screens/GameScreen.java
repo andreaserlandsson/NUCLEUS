@@ -25,7 +25,7 @@ import java.util.Observer;
 /**
  * Created by erik on 25/04/16.
  */
-public class GameScreen implements Screen, PlayScreen, Observer {
+public class GameScreen implements PlayScreen, Observer {
 
     private final int levelNumber;
     private Level level;
