@@ -1,8 +1,23 @@
 package Model;
 
+import com.nucleus.Model.IGluonPoint;
+import com.nucleus.Model.IMolecule;
+import com.nucleus.Model.INucleon;
+import com.nucleus.Model.INucleonGun;
+import com.nucleus.Model.Level;
+import com.nucleus.Utils.Vector;
+
+import junit.framework.Assert;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
+
+import java.util.ArrayList;
+
+import mocks.MockGluon;
+import mocks.MockMolecule;
+import mocks.MockNucleonGun;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertFalse;
@@ -12,8 +27,18 @@ import static org.junit.Assert.assertTrue;
  * Created by erik on 19/04/16.
  */
 public class LevelTest {
-    int width = 0;
-    int heigth = 0;
+    private int width = 0;
+    private int height = 0;
+    private int levelNumber = 0;
+    private Vector gluonPositions = new Vector(1,1);
+    private int pNeeded = 0;
+    private int nNeeded = 0;
+    private ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
+    private INucleonGun gun = new MockNucleonGun(nucleons);
+    private IGluonPoint[] gluons;
+    private IMolecule molecule = new MockMolecule(gluons);
+
+    Level level = new Level(levelNumber, width, height, gun, molecule, gluons);
 
     @Test
     public void thisAlwaysPasses() {
@@ -27,21 +52,30 @@ public class LevelTest {
 
     @Test
     public void testGetLevelNumber(){
-        
+
+        assertTrue(level.getLevelNumber() == 0);
+
     }
 
     @Test
     public void testGetWidth(){
 
+        assertTrue(level.getWidth() == 0);
     }
 
     @Test
     public void testGetHeight(){
 
+        assertTrue(level.getHeight() == 0);
+
     }
 
     @Test
     public void testIsGameWon(){
+        //System.out.println(level.isGameLost() + " - " + level.isGameWon());
+        //level.update(1);
+        //System.out.println(level.isGameLost() + " - " + level.isGameWon());
+        //assertTrue(level.isGameWon());
 
     }
 
@@ -57,12 +91,14 @@ public class LevelTest {
 
     @Test
     public void testSetGamePauesd(){
+        level.setGamePaused();
+        assertTrue(level.isGamePaused());
 
     }
 
     @Test
     public void testGetNucleonGun(){
-
+        assertTrue(level.getNucleonGun() == this.gun);
     }
 
     @Test
@@ -72,12 +108,12 @@ public class LevelTest {
 
     @Test
     public void testGetMolecule(){
-
+        assertTrue(level.getMolecule() == this.molecule);
     }
 
     @Test
     public void testGetGluons(){
-
+        assertTrue(level.getGluons() == this.gluons);
     }
 
     @Test
