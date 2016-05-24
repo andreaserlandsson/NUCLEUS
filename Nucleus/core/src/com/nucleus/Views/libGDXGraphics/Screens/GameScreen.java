@@ -26,7 +26,7 @@ import java.util.Observer;
 /**
  * Created by erik on 25/04/16.
  */
-public class GameScreen implements Screen, PlayScreen, Observer {
+public class GameScreen extends NucleusScreen implements Screen, PlayScreen, Observer {
 
     private final int levelNumber;
     private Level level;
@@ -39,8 +39,7 @@ public class GameScreen implements Screen, PlayScreen, Observer {
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private List<IViewableRotateble> viewsRot = new ArrayList<IViewableRotateble>();
-    private OrthographicCamera cam;
-    private static SpriteBatch batch;
+
     private boolean pauseDialogIsShowing = false;
 
     private INMusicPlayer musicPlayer;
@@ -50,8 +49,8 @@ public class GameScreen implements Screen, PlayScreen, Observer {
         this.level = level;
         this.listener = listener;
         this.levelNumber = level.getLevelNumber();
-        this.cam = new OrthographicCamera(1080, 1920);
-        cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        this.camera = new OrthographicCamera(1080, 1920);
+        camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         //Adding views
         views.add(new BackgroundViewable());
@@ -65,7 +64,7 @@ public class GameScreen implements Screen, PlayScreen, Observer {
         level.addObserver(this);
 
         batch = new SpriteBatch();
-        batch.setProjectionMatrix(cam.combined);
+        batch.setProjectionMatrix(camera.combined);
 
     }
 
