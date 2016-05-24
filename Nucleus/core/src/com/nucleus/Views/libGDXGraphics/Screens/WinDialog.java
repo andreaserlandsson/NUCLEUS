@@ -3,6 +3,7 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.NAssetsData;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
@@ -20,7 +21,7 @@ public class WinDialog extends WinLoseDialog {
     public WinDialog(SpriteBatch batch, ILevel level, EventListener listener) {
         super(listener);
         this.musicPlayer = NMusicPlayer.getInstance();
-        
+        musicPlayer.switchSong(NAssetsData.WINSOUND);
         this.listener = listener;
         this.batch = batch;
         this.level = level;

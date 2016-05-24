@@ -64,11 +64,14 @@ public class NMusicPlayer implements INMusicPlayer {
     public void switchSong(String newSong) {
         Music music = Assets.getSong(newSong);
         if (music != null) {
-            if (currentlyPlaying != null) {
-                currentlyPlaying.stop();
-            }
+
             music.setVolume(masterVolume);
             music.play();
+            if (currentlyPlaying != null) {
+                if (currentlyPlaying != music) {
+                    currentlyPlaying.stop();
+                }
+            }
             currentlyPlaying = music;
         }
     }
