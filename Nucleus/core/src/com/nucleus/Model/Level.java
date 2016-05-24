@@ -55,7 +55,7 @@ public class Level extends Observable implements ILevel {
     }
 
     public boolean isGameLost() {
-        return  currentState==GameState.PAUSEDLOSE;
+        return currentState==GameState.PAUSEDLOSE;
     }
 
     public boolean isGamePaused() { return currentState==GameState.PAUSED; }

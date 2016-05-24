@@ -1,7 +1,6 @@
 package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.NAssetsData;
@@ -89,16 +88,19 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Level 1")) {
-            if(ProgressTracker.checkLevelPermission(1))
+            if(com.nucleus.Progress.ProgressTracker.checkLevelPermission(1))
                 startLevel(1);
         }
 
         else if (label.equals("Label: Level 2")) {
-            if(ProgressTracker.checkLevelPermission(2))
+            if(com.nucleus.Progress.ProgressTracker.checkLevelPermission(2))
                 startLevel(2);
         }
 
         else if (label.equals("Label: Play Again")) {
+            System.out.println(screen);
+            System.out.println(screen.getLevel());
+            System.out.println(screen.getLevel().getLevelNumber());
             startLevel(screen.getLevel().getLevelNumber());
         }
 

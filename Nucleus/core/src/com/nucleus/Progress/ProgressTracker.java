@@ -1,4 +1,4 @@
-package com.nucleus.Controller;
+package com.nucleus.Progress;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
