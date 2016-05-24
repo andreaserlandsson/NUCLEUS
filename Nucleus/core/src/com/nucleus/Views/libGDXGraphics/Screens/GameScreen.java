@@ -56,7 +56,7 @@ public class GameScreen extends Observable implements Screen {
         if (level.isGameLost()) {
             if (winLoseScreenShow == false) {
                 //winDialog.show();
-                this.loseScreen = new WinLoseScreen(false);
+                this.loseScreen = new WinLoseScreen(false, level);
                 loseScreen.show();
                 winLoseScreenShow = true;
             }
@@ -67,7 +67,7 @@ public class GameScreen extends Observable implements Screen {
         } else if (level.isGameWon()) {
             if (winLoseScreenShow == false) {
                 //winDialog.show();
-                this.winScreen = new WinLoseScreen(true);
+                this.winScreen = new WinLoseScreen(true, level);
                 winScreen.show();
                 winLoseScreenShow = true;
             }

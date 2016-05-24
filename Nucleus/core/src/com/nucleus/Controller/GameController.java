@@ -32,6 +32,10 @@ public class GameController extends ClickListener {
         game.goToLevel(levelNum, (Level) level);
 
 
+    public void touch(int screenX, int screenY, int pointer, int button){
+        if ((screenX > level.getWidth() - 20) && screenY < 20) { // if you touch the upper right corner you pause the game
+            level.pause();
+        }
     }
 
     public void exit() {

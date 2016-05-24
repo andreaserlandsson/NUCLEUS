@@ -32,6 +32,7 @@ public class WinLoseScreen implements Screen {
     private GameController listener;
     private boolean hasWon;
     private List<IViewable> views = new ArrayList<IViewable>();
+    private BitmapFont font = new BitmapFont();
 
     public WinLoseScreen(boolean won) {
 
@@ -65,6 +66,7 @@ public class WinLoseScreen implements Screen {
         TextButton mainMenuButton = new TextButton("Main Menu", skin);
         TextButton playAgainButton = new TextButton("Play Again", skin);
 
+        stage.addListener(listener);
 
         //Add listeners to buttons
         stage.addListener(listener);
@@ -81,13 +83,11 @@ public class WinLoseScreen implements Screen {
         }
 
         mainTable.row();
-        mainTable.add(mainMenuButton);
-        mainTable.row();
         mainTable.add(playAgainButton);
-        //mainTable.row();
+        mainTable.row();
+        mainTable.add(mainMenuButton);
 
         //Add table to stage
-
         stage.addActor(mainTable);
     }
 

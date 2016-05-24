@@ -15,6 +15,8 @@ import com.nucleus.Model.ILevel;
 public class PauseDialog extends ScreenAdapter {
     private SpriteBatch batch;
     private Stage stage2;
+    private Viewport viewport;
+    private OrthographicCamera camera;
     protected Skin skin;
     private ILevel level;
 
@@ -40,20 +42,28 @@ public class PauseDialog extends ScreenAdapter {
                 button("Continue Playing", "continue");
                 button("Main Menu", "menu");
                 setMovable(false);
+
             }
 
             @Override
             protected void result(final Object object) {
                 if (object.toString().equals("continue")) {
+                    System.out.println("continue");
                     dispose();
                     level.resume();
                     System.out.println("continue");
 
-                } else {
+                } else if (object.equals("menu")) {
 
                     System.out.println("main menu");
                     GameController controller = new GameController();
                     controller.goToStartScreen();
+
+                } else if (object.equals("restart")) {
+
+                    System.out.println("restart");
+                    MenuController controller = new MenuController();
+                    controller.changeLevel(level.getLevelNumber());
 
                 }
             }

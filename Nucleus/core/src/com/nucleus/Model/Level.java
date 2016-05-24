@@ -3,6 +3,7 @@ package com.nucleus.Model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.Collisions.ICollidable;
+import com.nucleus.Collisions.ICollidable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,10 @@ public class Level extends Observable implements ILevel {
         //System.out.println(pT);
     }
 
+    public int getLevelNumber() {
+        return levelNumber;
+    }
+
     public int getWidth(){
         return width;
     }
@@ -56,16 +61,19 @@ public class Level extends Observable implements ILevel {
         return height;
     }
 
-    public boolean isGameWon() {
+    public boolean isGameWon() { //this is used in GameScreen to check if the game is paused
         return gameWon;
     }
 
-    public boolean isGameLost() { return  gameLost; }
+    public boolean isGameLost() { //this is used in GameScreen to check if the game is paused
+        return  gameLost;
+    }
 
     public boolean isGamePaused() { return gamePaused; }
 
-    public void setGamePaused(boolean gamePaused) { this.gamePaused = gamePaused; }
-
+    public void setGamePaused(boolean gamePaused) {
+        this.gamePaused = gamePaused;
+    }
 
     public INucleonGun getNucleonGun(){
         return gun;
@@ -191,8 +199,6 @@ public class Level extends Observable implements ILevel {
             }
             removeOutOfBoundsNucleons();
 
-        } else if (currentState == GameState.PAUSED) {
-          //  pauseDialog.render(delta);
         }
     }
 }
