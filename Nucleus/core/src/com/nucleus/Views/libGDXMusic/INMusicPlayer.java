@@ -6,11 +6,11 @@ package com.nucleus.Views.libGDXMusic;
 public interface INMusicPlayer {
     void loadMusic();
     void playMusic(String song);
-    void stopMusic(String song);
+    void stopMusic();
     void playSound(String sound);
     void switchSong(String newSong);
-    void pauseMusic(String song);
-    void resumeMusic(String song);
+    void pauseMusic();
+    void resumeMusic();
     void setMasterVolume(float volume);
     float getMasterVolume();
 }

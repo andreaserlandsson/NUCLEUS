@@ -16,8 +16,8 @@ import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotateble;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -41,8 +41,14 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     private OrthographicCamera cam;
     private static SpriteBatch batch;
     private boolean isPaused;
+    Vector lastTouch = new Vector(0,0);
+
+    private INMusicPlayer musicPlayer;
 
     public GameScreen(int levelNumber, EventListener listener){
+        //starting level music
+        this.musicPlayer = NMusicPlayer.getInstance();
+        musicPlayer.switchSong(NAssetsData.getLevelSong(levelNumber));
 
         this.level = LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.listener = listener;

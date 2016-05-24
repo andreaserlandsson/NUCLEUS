@@ -7,6 +7,7 @@ public class NMusicPlayer implements INMusicPlayer {
     private static Music currentlyPlaying;
     private static float masterVolume = 1;
     private static INMusicPlayer instance;
+    private static float soundEffectVolume = 0.6f;
 
     private NMusicPlayer(){
         // private constructor to fulfill singleton requirements.
@@ -32,10 +33,9 @@ public class NMusicPlayer implements INMusicPlayer {
         }
     }
 
-    public void stopMusic(String str) {
-        Music music = Assets.getSong(str);
-        if (music != null) {
-            music.stop();
+    public void stopMusic() {
+        if (currentlyPlaying != null) {
+            currentlyPlaying.stop();
             currentlyPlaying = null;
         }
     }
@@ -43,6 +43,11 @@ public class NMusicPlayer implements INMusicPlayer {
     public void playSound(String str) {
         Music music = Assets.getSong(str);
         if (music != null) {
+            if (soundEffectVolume<masterVolume) {
+                music.setVolume(soundEffectVolume);
+            } else {
+                music.setVolume(masterVolume);
+            }
             music.play();
         }
     }
@@ -53,22 +58,22 @@ public class NMusicPlayer implements INMusicPlayer {
             if (currentlyPlaying != null) {
                 currentlyPlaying.stop();
             }
-            music.play();
             music.setVolume(masterVolume);
+            music.play();
+            currentlyPlaying = music;
         }
     }
 
-    public void pauseMusic(String song) {
-        Music music = Assets.getSong(song);
-        if (music != null) {
-            music.pause();
+    public void pauseMusic() {
+        if (currentlyPlaying != null) {
+            currentlyPlaying.pause();
         }
     }
 
-    public void resumeMusic(String song) {
-        Music music = Assets.getSong(song);
-        if (music != null){
-            music.pause();
+    public void resumeMusic() {
+        if (currentlyPlaying != null){
+            currentlyPlaying.play();
+            currentlyPlaying.setVolume(masterVolume);
         }
     }
 
