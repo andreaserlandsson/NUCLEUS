@@ -8,14 +8,13 @@ import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
 import java.util.Observable;
 import java.util.Observer;
 
-public class NInputHandler extends NInputProcessor implements Observer {
+public class NInputHandler extends NInputProcessor {
 
     ControllerState controlGame;
     ControllerState currentState;
     private PlayScreen screen;
 
     public NInputHandler(PlayScreen screen){
-        //level.addObserver(this);
         this.screen = screen;
         controlGame = new PlayController(screen);
         currentState = controlGame;
@@ -35,13 +34,5 @@ public class NInputHandler extends NInputProcessor implements Observer {
 
     public void setState(ControllerState newState){
         currentState = newState;
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        if (arg.equals("resume")){
-            Gdx.app.log("Hejsan", "Stabben");
-            Gdx.input.setInputProcessor(new NInputHandler(screen));
-        }
     }
 }

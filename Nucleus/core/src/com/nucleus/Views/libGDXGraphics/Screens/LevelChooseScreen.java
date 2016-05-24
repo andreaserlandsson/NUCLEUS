@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -31,10 +32,12 @@ public class LevelChooseScreen implements Screen {
     private OrthographicCamera camera;
     protected Skin skin;
     private List<IViewable> views = new ArrayList<IViewable>();
+    private Button[] buttons;
 
 
 
-    public LevelChooseScreen(ClickListener listener)
+
+    public LevelChooseScreen(ClickListener listener, int numOfButtons)
     {
 
         //Initialising graphics
@@ -57,36 +60,28 @@ public class LevelChooseScreen implements Screen {
         //Create Table
         Table mainTable = new Table();
         mainTable.setFillParent(true);
-        mainTable.top();
-        mainTable.padBottom(15f).padTop(30f);
+        mainTable.center();
+        mainTable.padBottom(150f);
 
         //Create buttons
-        TextButton level1Button = new TextButton("Level 1", skin);
-        TextButton level2Button = new TextButton("Level 2", skin);
-        TextButton level3Button = new TextButton("Level 3", skin);
-
-        stage.addListener(listener);
-
-        //Add listeners to buttons
-        level1Button.addListener(listener);
-        level2Button.addListener(listener);
-        level3Button.addListener(listener);
+        buttons = new Button[numOfButtons];
 
         Label levelText = new Label("Choose Level", skin);
         mainTable.add(levelText);
         mainTable.row();
 
-        //Add buttons to table
-        mainTable.add(level1Button).width(100).pad(10);
-        mainTable.row();
-        mainTable.add(level2Button).width(100).pad(10);
-        mainTable.row();
-        mainTable.add(level3Button).width(100).pad(10);
+        //Initializing buttons
+        for (int i = 0; i < buttons.length; i++) {
+            buttons[i] = new TextButton("Level " + (i+1), skin);
+            buttons[i].addListener(listener);
+            mainTable.add(buttons[i]).width(100).pad(10);
+            mainTable.row();
+        }
 
+        stage.addListener(listener);
 
         //Add table to stage
         stage.addActor(mainTable);
-
 
     }
 

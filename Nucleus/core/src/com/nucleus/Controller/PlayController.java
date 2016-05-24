@@ -1,13 +1,13 @@
 package com.nucleus.Controller;
 
-import com.badlogic.gdx.Screen;
-import com.nucleus.Model.Level;
+import com.nucleus.Model.ILevel;
 import com.nucleus.Utils.Vector;
 import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
 
 public class PlayController implements ControllerState {
 
     private PlayScreen screen;
+    Vector lastTouch = new Vector(0,0);
 
     public PlayController(PlayScreen screen) {
         this.screen = screen;
@@ -15,16 +15,18 @@ public class PlayController implements ControllerState {
 
     public void touch(int screenX, int screenY, int pointer, int button){
 
-       /* if ((screenX > level.getWidth() - 20) && screenY < 20) { // if you touch the upper right corner you pause the game
-            level.pause();
-
-        }*/
-
-        return;
+        if ((screenX > screen.getWidth() - 50) && screenY < 68) { // if you touch the upper right corner you pause the game
+            screen.getLevel().pause();
+        }
+        
     }
 
     public void drag(int screenX, int screenY, int pointer){
-        screen.drag(screenX, screenY, pointer);
+        ILevel level = screen.getLevel();
+        Vector newTouch = new Vector(screenX, screenY);
+        newTouch.subtract(this.lastTouch);
+        level.getMolecule().setRotation(lastTouch, newTouch);
+        this.lastTouch = newTouch;
         return;
     }
 }

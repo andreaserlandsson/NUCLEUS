@@ -28,7 +28,7 @@ public class NucleusGame extends Game {
     }
 
     public void goToLevelChooser(ClickListener listener){
-        screen = new LevelChooseScreen(listener);
+        screen = new LevelChooseScreen(listener, 3);
         goToScreen(screen);
     }
 

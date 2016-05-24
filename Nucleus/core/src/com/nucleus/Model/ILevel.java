@@ -1,6 +1,7 @@
 package com.nucleus.Model;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public interface ILevel  {
     void removeOutOfBoundsNucleons();
     void update(float delta);
     IGluonPoint[] getGluons();
-
     void pause();
     void resume();
+
 }

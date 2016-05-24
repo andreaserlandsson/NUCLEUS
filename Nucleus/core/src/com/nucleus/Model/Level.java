@@ -1,9 +1,7 @@
 package com.nucleus.Model;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.Collisions.ICollidable;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -83,12 +81,6 @@ public class Level extends Observable implements ILevel {
         return gluons;
     }
 
-    @Override
-    public void pause() {
-        currentState = GameState.PAUSED;
-        Gdx.app.log("GameScreen", "pause called");
-    }
-
     /*Function should probably be removed*/
     public void addAirborneNucleon(INucleon nucleon){
         airborneNucleons.add(nucleon);
@@ -166,10 +158,11 @@ public class Level extends Observable implements ILevel {
         }
     }
 
-    public void pause(SpriteBatch batch){
+    public void pause() {
         currentState = GameState.PAUSED;
+        setChanged();
+        notifyObservers("pause");
         Gdx.app.log("GameScreen", "pause called");
-
     }
 
     public void resume(){

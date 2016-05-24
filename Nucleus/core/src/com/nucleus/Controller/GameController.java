@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.Model.NAssetsData;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
@@ -22,7 +23,7 @@ public class GameController extends ClickListener {
     public GameController() {
         game = new NucleusGame();
         controller = new NInputHandler(screen);
-        progressTracker = new ProgressTracker();
+        //progressTracker = new ProgressTracker();
         musicPlayer = NMusicPlayer.getInstance();
     }
 
@@ -35,12 +36,11 @@ public class GameController extends ClickListener {
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler(screen));
         game.goToScreen(screen);
-
     }
 
     private void resumeLevel(){
         Gdx.input.setInputProcessor(new NInputHandler(screen));
-        screen.resume();
+        screen.getLevel().resume();
     }
 
     public void goToStartScreen(EventListener listener){
@@ -82,27 +82,34 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Level 1")) {
-            if(progressTracker.checkLevelPermission(1))
+            //if(progressTracker.checkLevelPermission(1))
                 startLevel(1);
         }
 
         else if (label.equals("Label: Level 2")) {
-            if(progressTracker.checkLevelPermission(2))
+            //if(progressTracker.checkLevelPermission(2))
                 startLevel(2);
         }
 
         else if (label.equals("Label: Play Again")) {
-            goToLevelChooser();
+            startLevel(screen.getLevel().getLevelNumber());
+        }
+
+        else if (label.equals("Label: Restart Level")) {
+            startLevel(screen.getLevel().getLevelNumber());
+        }
+
+        else if (label.equals("Label: Continue")) {
+            resumeLevel();
         }
 
         else if (label.equals("Label: Main Menu")) {
             goToStartScreen(this);
         }
 
-        else if (label.equals("Label: Continue Playing")) {
-            Gdx.app.log("GameController Continue", "Received Input");
-            resumeLevel();
-        }
+
+        musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND    );
+        
 
 
     }
