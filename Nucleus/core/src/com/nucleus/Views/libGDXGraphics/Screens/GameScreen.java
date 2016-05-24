@@ -68,7 +68,7 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     public void render(float delta) {
 
         if (level.isGameLost()) {
-            if (winLoseScreenShow == false) {
+            if (winLoseScreenShow) {
                 //winDialog.show();
                 this.loseScreen = new WinLoseScreen(false, listener);
                 loseScreen.show();
@@ -79,7 +79,7 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
             loseScreen.render(1);
 
         } else if (level.isGameWon()) {
-            if (winLoseScreenShow == false) {
+            if (winLoseScreenShow) {
                 //winDialog.show();
                 this.winScreen = new WinLoseScreen(true, listener);
                 winScreen.show();
@@ -94,11 +94,6 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
             level.update(delta);
 
         } else {
-
-            //check if you "touch" the pause "button" and if so call on the pause method
-            if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
-                pause();
-            }
 
             level.update(delta);
 
@@ -164,5 +159,15 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     @Override
     public void touch(int screenX, int screenY, int pointer, int button) {
 
+    }
+
+    @Override
+    public int getWidth() {
+        return Gdx.graphics.getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        return Gdx.graphics.getHeight();
     }
 }
