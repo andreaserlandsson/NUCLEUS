@@ -125,6 +125,7 @@ public class Level extends Observable implements ILevel {
         if (molecule.isFull()) {
                 progressTracker.writeCompletedLevels(levelNumber);
                 currentState = GameState.PAUSEDWIN;
+
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
             loseGame();
         }

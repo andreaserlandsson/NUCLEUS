@@ -18,7 +18,6 @@ public class PauseDialog extends ScreenAdapter {
     private SpriteBatch batch;
     private Stage stage2;
     private Viewport viewport;
-    private OrthographicCamera camera;
     protected Skin skin;
     private ILevel level;
 

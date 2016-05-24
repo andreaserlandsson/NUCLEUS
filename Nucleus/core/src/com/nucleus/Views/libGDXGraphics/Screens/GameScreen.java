@@ -6,11 +6,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
-import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
-import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
+
+import com.nucleus.Views.NMusicPlayer;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -23,7 +26,7 @@ public class GameScreen extends Observable implements Screen {
 
     private ILevel level;
     private boolean winLoseScreenShow = false;
-
+    private NMusicPlayer mc;
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
     private PauseDialog pauseDialog;
@@ -34,6 +37,7 @@ public class GameScreen extends Observable implements Screen {
     private boolean isPaused;
 
     public GameScreen(int levelNumber, ILevel level){
+
         this.level = level;
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());

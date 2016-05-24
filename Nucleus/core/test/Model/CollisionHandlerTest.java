@@ -1,7 +1,8 @@
 package Model;
 
-import com.nucleus.Collisions.CollisionHandler;
-import com.nucleus.Collisions.ICollidable;
+
+import com.nucleus.Model.Collisions.CollisionHandler;
+import com.nucleus.Model.Collisions.ICollidable;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.Vector;
