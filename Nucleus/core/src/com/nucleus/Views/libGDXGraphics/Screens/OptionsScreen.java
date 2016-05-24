@@ -54,7 +54,7 @@ public class OptionsScreen implements Screen {
         mainTable.add(optionsText);
         mainTable.row();
 
-        TextButton toggleSoundBtn = new TextButton("Toggle Sound: ON", skin);
+        TextButton toggleSoundBtn = new TextButton("Toggle Sound", skin);
         toggleSoundBtn.addListener(listener);
         mainTable.add(toggleSoundBtn).width(150).pad(10);
         mainTable.row();

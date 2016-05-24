@@ -74,5 +74,10 @@ public class NMusicPlayer implements INMusicPlayer {
 
     public void setMasterVolume(float volume) {
         masterVolume = volume;
+        currentlyPlaying.setVolume(masterVolume);
+    }
+
+    public float getMasterVolume(){
+        return masterVolume;
     }
 }
