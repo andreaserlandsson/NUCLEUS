@@ -6,14 +6,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.Utils.LevelUtils.LevelBuilder;
+import com.nucleus.Utils.Vector;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
-import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
-
+import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.Observable;
 /**
  * Created by erik on 25/04/16.
  */
-public class GameScreen extends Observable implements Screen {
+public class GameScreen extends Observable implements Screen, PlayScreen {
 
     private ILevel level;
     private boolean winLoseScreenShow = false;
@@ -38,10 +38,11 @@ public class GameScreen extends Observable implements Screen {
     private OrthographicCamera cam;
     private static SpriteBatch batch;
     private boolean isPaused;
+    Vector lastTouch = new Vector(0,0);
 
-    public GameScreen(int levelNumber, ILevel level, EventListener listener){
+    public GameScreen(int levelNumber, EventListener listener){
 
-        this.level = level;
+        this.level = LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.listener = listener;
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -134,6 +135,7 @@ public class GameScreen extends Observable implements Screen {
 
     @Override
     public void resume(){
+        level.resume();
         Gdx.app.log("GameScreen", "resume called");
 
     }
@@ -143,4 +145,17 @@ public class GameScreen extends Observable implements Screen {
         // Leave blank
     }
 
+    @Override
+    public void drag(int screenX, int screenY, int pointer) {
+
+        Vector newTouch = new Vector(screenX, screenY);
+        Vector delta = newTouch.subtract(this.lastTouch);
+        level.getMolecule().setRotation(lastTouch, newTouch);
+        this.lastTouch = newTouch;
+    }
+
+    @Override
+    public void touch(int screenX, int screenY, int pointer, int button) {
+
+    }
 }

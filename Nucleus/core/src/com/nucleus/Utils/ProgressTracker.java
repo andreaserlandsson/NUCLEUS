@@ -2,7 +2,6 @@ package com.nucleus.Utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
-import com.nucleus.Model.IProgressTracker;
 
 /**
  * Created by erik on 16/05/16.

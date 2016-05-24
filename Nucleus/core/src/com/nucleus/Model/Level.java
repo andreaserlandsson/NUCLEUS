@@ -30,9 +30,9 @@ public class Level extends Observable implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
     private IGluonPoint[] gluons;
-    private IProgressTracker progressTracker;
+    private com.nucleus.Utils.IProgressTracker progressTracker;
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, com.nucleus.Utils.IProgressTracker pT){
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
