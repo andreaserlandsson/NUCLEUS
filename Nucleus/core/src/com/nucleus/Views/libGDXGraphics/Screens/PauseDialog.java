@@ -20,12 +20,13 @@ public class PauseDialog extends ScreenAdapter {
     private Stage stage;
     protected Skin skin;
     private ILevel level;
-    private GameController listener;
+    private EventListener listener;
 
     private boolean goToMainMenu = false;
 
     public PauseDialog(SpriteBatch batch, ILevel level, EventListener listener){
 
+        this.listener = listener;
         this.batch = batch;
         this.level = level;
         this.stage = new Stage();
@@ -37,9 +38,6 @@ public class PauseDialog extends ScreenAdapter {
     public void show() {
         goToMainMenu = false;
         Gdx.input.setInputProcessor(stage);
-        listener =  new GameController();
-
-        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
         //Create Table
         Table mainTable = new Table();

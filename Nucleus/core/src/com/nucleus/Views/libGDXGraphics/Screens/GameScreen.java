@@ -81,7 +81,7 @@ public class GameScreen implements Screen, PlayScreen, Observer {
 
         if (level.isGameLost()) {
             if (winLoseScreenShow == false) {
-                this.loseDialog = new LoseDialog(batch, level);
+                this.loseDialog = new LoseDialog(batch, level, listener);
                 loseDialog.show();
                 winLoseScreenShow = true;
             }
@@ -89,7 +89,7 @@ public class GameScreen implements Screen, PlayScreen, Observer {
 
         } else if (level.isGameWon()) {
             if (winLoseScreenShow == false) {
-                this.winDialog = new WinDialog(batch, level);
+                this.winDialog = new WinDialog(batch, level, listener);
                 winDialog.show();
                 winLoseScreenShow = true;
             }
@@ -153,7 +153,6 @@ public class GameScreen implements Screen, PlayScreen, Observer {
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
         pauseDialog.resume();
-        Gdx.input.setInputProcessor(new NInputHandler(this));
 
     }
 

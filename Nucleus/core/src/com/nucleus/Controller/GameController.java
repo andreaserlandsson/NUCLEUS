@@ -19,7 +19,6 @@ public class GameController extends ClickListener {
 
     private NucleusGame game;
     private NInputHandler controller;
-    private static ILevel level;
     private IProgressTracker progressTracker;
     private INMusicPlayer musicPlayer;
     private GameScreen screen;
@@ -40,11 +39,6 @@ public class GameController extends ClickListener {
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler(screen));
         game.goToScreen(screen);
-        level = screen.getLevel();
-    }
-
-    public void touch(int screenX, int screenY, int pointer, int button){
-
     }
 
     private void resumeLevel(){
@@ -101,15 +95,15 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Play Again")) {
-            startLevel(level.getLevelNumber());
+            startLevel(screen.getLevel().getLevelNumber());
         }
 
         else if (label.equals("Label: Restart Level")) {
-            startLevel(level.getLevelNumber());
+            startLevel(screen.getLevel().getLevelNumber());
         }
 
         else if (label.equals("Label: Continue")) {
-            level.resume();
+            resumeLevel();
         }
 
         else if (label.equals("Label: Main Menu")) {

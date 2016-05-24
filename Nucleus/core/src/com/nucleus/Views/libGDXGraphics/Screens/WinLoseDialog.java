@@ -2,6 +2,7 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -16,7 +17,7 @@ public class WinLoseDialog extends ScreenAdapter {
 
     private Stage stage;
     protected Skin skin;
-    private GameController listener;
+    private EventListener listener;
     protected String title = "test text";
 
     private boolean goToMainMenu = false;
