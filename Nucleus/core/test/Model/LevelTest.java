@@ -24,6 +24,111 @@ public class LevelTest {
     public void thisIsIgnored() {
     }
 
+    @Test
+    public void testGetLevelNumber(){
+        
+    }
+
+    @Test
+    public void testGetWidth(){
+
+    }
+
+    @Test
+    public void testGetHeight(){
+
+    }
+
+    @Test
+    public void testIsGameWon(){
+
+    }
+
+    @Test
+    public void testIsGameLost(){
+
+    }
+
+    @Test
+    public void testIsGamePaused(){
+
+    }
+
+    @Test
+    public void testSetGamePauesd(){
+
+    }
+
+    @Test
+    public void testGetNucleonGun(){
+
+    }
+
+    @Test
+    public void testGetAirBorneNucleons(){
+
+    }
+
+    @Test
+    public void testGetMolecule(){
+
+    }
+
+    @Test
+    public void testGetGluons(){
+
+    }
+
+    @Test
+    public void testAddAirBorneNucleon(){
+
+    }
+
+    @Test
+    public void testIsOutOfBoundsCheck(){
+
+    }
+
+    @Test
+    public void testRemoveOutOfBoundsNucleons(){
+
+    }
+
+    @Test
+    public void testRemoveNucleon(){
+
+    }
+
+    @Test
+    public void testCheckWinGame(){
+
+    }
+
+    @Test
+    public void testLoseGame(){
+
+    }
+
+    @Test
+    public void testCheckAllNucleonsStatus(){
+
+    }
+
+    @Test
+    public void testPause(){
+
+    }
+
+    @Test
+    public void testResume(){
+
+    }
+
+    @Test
+    public void testUpdate(){
+
+    }
+
     /*
     @Test
     public void testGetNucleons() {
