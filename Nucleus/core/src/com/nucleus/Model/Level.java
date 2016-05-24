@@ -1,9 +1,7 @@
 package com.nucleus.Model;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.Collisions.ICollidable;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -16,11 +14,6 @@ public class Level extends Observable implements ILevel {
     private float runTime = 0;
     private float lastUpdateTime = 0;
     private float updateTime = 1;
-
-    private boolean gameWon = false;
-    private boolean gameLost = false;
-    private boolean gamePaused = false;
-
 
     private enum GameState{
         RUNNING,
@@ -35,9 +28,9 @@ public class Level extends Observable implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
     private IGluonPoint[] gluons;
-    private IProgressTracker progressTracker;
+    private com.nucleus.Utils.IProgressTracker progressTracker;
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, IProgressTracker pT){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, com.nucleus.Utils.IProgressTracker pT){
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
@@ -59,18 +52,18 @@ public class Level extends Observable implements ILevel {
         return height;
     }
 
-    public boolean isGameWon() { //this is used in GameScreen to check if the game is paused
-        return gameWon;
+    public boolean isGameWon() {
+        return currentState==GameState.PAUSEDWIN;
     }
 
-    public boolean isGameLost() { //this is used in GameScreen to check if the game is paused
-        return  gameLost;
+    public boolean isGameLost() {
+        return  currentState==GameState.PAUSEDLOSE;
     }
 
-    public boolean isGamePaused() { return gamePaused; }
+    public boolean isGamePaused() { return currentState==GameState.PAUSED; }
 
-    public void setGamePaused(boolean gamePaused) {
-        this.gamePaused = gamePaused;
+    public void setGamePaused() {
+        currentState = GameState.PAUSED;
     }
 
     public INucleonGun getNucleonGun(){
@@ -89,7 +82,6 @@ public class Level extends Observable implements ILevel {
     public IGluonPoint[] getGluons() {
         return gluons;
     }
-
 
     /*Function should probably be removed*/
     public void addAirborneNucleon(INucleon nucleon){
@@ -124,7 +116,6 @@ public class Level extends Observable implements ILevel {
     private void checkWinGame() {
         if (molecule.isFull()) {
                 progressTracker.writeCompletedLevels(levelNumber);
-                gameWon = true;
                 currentState = GameState.PAUSEDWIN;
 
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
@@ -133,7 +124,6 @@ public class Level extends Observable implements ILevel {
     }
 
     private void loseGame(){
-        gameLost = true;
         currentState = GameState.PAUSEDLOSE;
     }
 
@@ -173,13 +163,13 @@ public class Level extends Observable implements ILevel {
 
     public void pause() {
         currentState = GameState.PAUSED;
-        gamePaused = true;
+        setChanged();
+        notifyObservers("pause");
         Gdx.app.log("GameScreen", "pause called");
     }
 
     public void resume(){
         currentState = GameState.RUNNING;
-        gamePaused = false;
         setChanged();
         notifyObservers("resume");
     }

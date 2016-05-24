@@ -2,8 +2,8 @@ package com.nucleus.Utils.LevelUtils;
 
 import com.nucleus.Model.GluonPoint;
 import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.IProgressTracker;
-import com.nucleus.Model.Vector;
+import com.nucleus.Utils.IProgressTracker;
+import com.nucleus.Utils.Vector;
 
 public class LevelData {
     public IGluonPoint[] gluonPoints;

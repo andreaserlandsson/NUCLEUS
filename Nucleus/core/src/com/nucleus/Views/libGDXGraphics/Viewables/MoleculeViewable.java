@@ -14,22 +14,20 @@ import javax.print.attribute.standard.MediaSize;
 /**
  * Created by erik on 28/04/16.
  */
-public class MoleculeViewable implements IViewable {
+public class MoleculeViewable implements IViewableRotateble {
     private Texture moleculeTexture, halfProton, halfNeutron, halfProtonComplete, halfNeutronComplete;
     private TextureRegion moleculeTextureRegion;
-    private IMolecule molecule;
     private IGluonPoint[] gluonPoints;
+    private final String rotationRequirement = "Molecule";
 
     //TODO: add support for loading different level textures
     public MoleculeViewable(int levelNumber, IMolecule molecule){
-        this.molecule = molecule;
-        this.gluonPoints = molecule.getGluons();
+        gluonPoints = molecule.getGluons();
         loadTextures(levelNumber);
     }
 
     private void drawGluons(SpriteBatch batch){
         for (IGluonPoint gluonPoint : gluonPoints) {
-
             if (gluonPoint.getNeutronsNeeded() > 0){
                 float sizeFactor = (float)gluonPoint.getCurrentNeutrons()/(float)gluonPoint.getMaxNeutrons();
                 float x = gluonPoint.getPosition().getX()-halfNeutron.getWidth()/2*sizeFactor+5*sizeFactor;
@@ -58,7 +56,7 @@ public class MoleculeViewable implements IViewable {
         }
     }
 
-    public void render(SpriteBatch batch){
+    public void render(SpriteBatch batch, float rotation){
         batch.begin();
 
         batch.draw(moleculeTextureRegion,
@@ -70,12 +68,18 @@ public class MoleculeViewable implements IViewable {
                 moleculeTexture.getHeight(),
                 1.0f,
                 1.0f,
-                molecule.getRotation());
+                rotation);
 
         drawGluons(batch);
 
         batch.end();
     }
+
+    @Override
+    public String getRotationRequirement() {
+        return rotationRequirement;
+    }
+
 
     private void loadTextures(int levelNumber){
         this.moleculeTexture = Assets.getTexture(NAssetsData.getLevel(levelNumber));

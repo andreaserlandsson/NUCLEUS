@@ -3,25 +3,21 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Gdx;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
+import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
 
 import java.util.Observable;
 import java.util.Observer;
 
-public class NInputHandler extends NInputProcessor implements Observer {
+public class NInputHandler extends NInputProcessor {
 
     ControllerState controlGame;
     ControllerState currentState;
-    ILevel level;
+    private PlayScreen screen;
 
-    public NInputHandler(Level level){
-        this.level =  level;
-        level.addObserver(this);
-        controlGame = new PlayController(level);
+    public NInputHandler(PlayScreen screen){
+        this.screen = screen;
+        controlGame = new PlayController(screen);
         currentState = controlGame;
-    }
-
-    public NInputHandler(){
-
     }
 
     @Override
@@ -38,13 +34,5 @@ public class NInputHandler extends NInputProcessor implements Observer {
 
     public void setState(ControllerState newState){
         currentState = newState;
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        if (arg.equals("resume")){
-            Gdx.app.log("Hejsan", "Stabben");
-            Gdx.input.setInputProcessor(new NInputHandler((Level) level));
-        }
     }
 }

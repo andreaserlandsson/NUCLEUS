@@ -3,8 +3,8 @@ package com.nucleus.Model;
 
 public interface IGluonPoint {
     boolean isFull();
-    Vector getPosition();
-    void setPosition(Vector vect);
+    com.nucleus.Utils.Vector getPosition();
+    void setPosition(com.nucleus.Utils.Vector vect);
     int getRadius();
     void addProton();
     int getProtonsNeeded();

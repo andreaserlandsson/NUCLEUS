@@ -2,15 +2,12 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.GameController;
-import com.nucleus.Model.ILevel;
 
 /**
  * Created by andreaserlandsson on 24/05/16.
@@ -23,10 +20,6 @@ public class WinLoseDialog extends ScreenAdapter {
     protected String title = "test text";
 
     private boolean goToMainMenu = false;
-
-    public void setTitle(String title){
-       // this.title = title;
-    }
 
     @Override
     public void show() {

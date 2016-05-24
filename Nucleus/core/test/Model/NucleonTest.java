@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 import com.nucleus.Model.Nucleon;
 import com.nucleus.Model.INucleon;
-import com.nucleus.Model.Vector;
+import com.nucleus.Utils.Vector;
 
 /**
  * Created by erik on 19/04/16.

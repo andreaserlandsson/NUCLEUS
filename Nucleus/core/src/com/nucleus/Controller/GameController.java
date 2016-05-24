@@ -1,13 +1,16 @@
 package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.IProgressTracker;
-import com.nucleus.Model.Level;
-import com.nucleus.Utils.LevelUtils.LevelBuilder;
+import com.nucleus.Model.NAssetsData;
+import com.nucleus.Utils.IProgressTracker;
 import com.nucleus.Utils.ProgressTracker;
+import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.Views.libGDXMusic.INMusicPlayer;
+import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
 /**
  * Created by Quaxi on 10/05/16.
@@ -16,43 +19,49 @@ public class GameController extends ClickListener {
 
     private NucleusGame game;
     private NInputHandler controller;
-    private static Level level;
+    private static ILevel level;
     private IProgressTracker progressTracker;
+    private INMusicPlayer musicPlayer;
+    private GameScreen screen;
 
     public GameController() {
         game = new NucleusGame();
-        controller = new NInputHandler();
+        controller = new NInputHandler(screen);
         progressTracker = new ProgressTracker();
+        musicPlayer = NMusicPlayer.getInstance();
     }
 
-    public void startLevelChooser() {
+    public void goToLevelChooser() {
         game.goToLevelChooser(this);
     }
 
     private void startLevel(int levelNum) {
-        this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
+        screen = new GameScreen(levelNum, this);
         Gdx.input.setInputProcessor(controller);
-        Gdx.input.setInputProcessor(new NInputHandler((Level) level));
-        game.goToLevel(levelNum, (Level) level);
-
+        Gdx.input.setInputProcessor(new NInputHandler(screen));
+        game.goToScreen(screen);
+        level = screen.getLevel();
     }
-
 
     public void touch(int screenX, int screenY, int pointer, int button){
 
     }
 
-    public void exit() {
-        game.exit();
+    private void resumeLevel(){
+        Gdx.input.setInputProcessor(new NInputHandler(screen));
+        screen.getLevel().resume();
     }
 
-    public void goToStartScreen(){
+    public void goToStartScreen(EventListener listener){
         game.goToStartScreen(this);
     }
 
     public void setInput(){
 
+    }
+
+    public void exit() {
+        game.exit();
     }
 
     /**
@@ -66,15 +75,15 @@ public class GameController extends ClickListener {
         String label = event.getTarget().toString();
 
         if (label.equals("Label: Play")) {
-            startLevelChooser();
+            goToLevelChooser();
         }
 
         else if (label.equals("Label: Options")) {
-            game.goToOptions();
+            game.goToOptions(this);
         }
 
         else if (label.equals("Label: Toggle Sound")){
-            Gdx.app.log(event.getTarget().toString(), "HEH");
+            musicPlayer.setMasterVolume(1-musicPlayer.getMasterVolume());
         }
 
         else if (label.equals("Label: Exit")) {
@@ -104,8 +113,13 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Main Menu")) {
-            game.goToStartScreen(this);
+            goToStartScreen(this);
         }
+
+
+        musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND    );
+        
+
 
     }
 }

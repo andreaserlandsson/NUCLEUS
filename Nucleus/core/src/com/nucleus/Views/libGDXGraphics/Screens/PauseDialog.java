@@ -2,15 +2,13 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
 
@@ -19,27 +17,26 @@ import com.nucleus.Model.ILevel;
  */
 public class PauseDialog extends ScreenAdapter {
     private SpriteBatch batch;
-    private Stage pauseStage;
-    private Viewport viewport;
+    private Stage stage;
     protected Skin skin;
     private ILevel level;
     private GameController listener;
 
     private boolean goToMainMenu = false;
 
-    public PauseDialog() {
-    }
+    public PauseDialog(SpriteBatch batch, ILevel level, EventListener listener){
 
-    public PauseDialog(SpriteBatch batch, ILevel level){
         this.batch = batch;
         this.level = level;
-        pauseStage = new Stage();
+        this.stage = new Stage();
+        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
+
     }
 
     @Override
     public void show() {
         goToMainMenu = false;
-        Gdx.input.setInputProcessor(pauseStage);
+        Gdx.input.setInputProcessor(stage);
         listener =  new GameController();
 
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
@@ -56,7 +53,7 @@ public class PauseDialog extends ScreenAdapter {
         TextButton level2Button = new TextButton("Restart Level", skin);
         TextButton level3Button = new TextButton("Main Menu", skin);
 
-        pauseStage.addListener(listener);
+        stage.addListener(listener);
 
         //Add listeners to buttons
         level1Button.addListener(listener);
@@ -76,45 +73,8 @@ public class PauseDialog extends ScreenAdapter {
 
 
         //Add table to stage
-        pauseStage.addActor(mainTable);
+        stage.addActor(mainTable);
 
-
-
-        /*new Dialog("PAUSED", skin) {
-            {*/
-
-               /* button("Continue Playing", "continue");
-                getButtonTable().row();
-                button("Restart Level", "restart");
-                getButtonTable().row();
-                button("Main Menu", "menu");
-                setMovable(false);*/
-
-            //}
-
-            /*
-            @Override
-            protected void result(final Object object) {
-                if (object.toString().equals("continue")) {
-                    System.out.println("continue");
-                    dispose();
-                    level.resume();
-                    System.out.println("continue");
-
-                } else if (object.equals("menu")) {
-
-                    System.out.println("main menu");
-                    GameController controller = new GameController();
-                    controller.goToStartScreen();
-
-                } else if (object.equals("restart")) {
-
-                    System.out.println("restart");
-
-                }
-            }*/
-
-        //}.show(stage2);
     }
 
     @Override
@@ -124,8 +84,8 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        pauseStage.act(delta);
-        pauseStage.draw();
+        stage.act(delta);
+        stage.draw();
     }
 
     @Override
@@ -135,7 +95,7 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void dispose() {
-        pauseStage.dispose();
+        stage.dispose();
         skin.dispose();
     }
 
