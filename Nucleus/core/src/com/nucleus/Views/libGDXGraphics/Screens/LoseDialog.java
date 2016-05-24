@@ -16,7 +16,7 @@ public class LoseDialog extends WinLoseDialog {
     private EventListener listener;
 
     public LoseDialog(SpriteBatch batch, ILevel level, EventListener listener) {
-
+        super(listener);
         this.listener = listener;
         this.batch = batch;
         this.level = level;
