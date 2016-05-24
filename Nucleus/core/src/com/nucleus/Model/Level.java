@@ -17,11 +17,6 @@ public class Level extends Observable implements ILevel {
     private float lastUpdateTime = 0;
     private float updateTime = 1;
 
-    private boolean gameWon = false;
-    private boolean gameLost = false;
-    private boolean gamePaused = false;
-
-
     private enum GameState{
         RUNNING,
         PAUSED,
@@ -59,18 +54,18 @@ public class Level extends Observable implements ILevel {
         return height;
     }
 
-    public boolean isGameWon() { //this is used in GameScreen to check if the game is paused
-        return gameWon;
+    public boolean isGameWon() {
+        return currentState==GameState.PAUSEDWIN;
     }
 
-    public boolean isGameLost() { //this is used in GameScreen to check if the game is paused
-        return  gameLost;
+    public boolean isGameLost() {
+        return  currentState==GameState.PAUSEDLOSE;
     }
 
-    public boolean isGamePaused() { return gamePaused; }
+    public boolean isGamePaused() { return currentState==GameState.PAUSED; }
 
-    public void setGamePaused(boolean gamePaused) {
-        this.gamePaused = gamePaused;
+    public void setGamePaused() {
+        currentState = GameState.PAUSED;
     }
 
     public INucleonGun getNucleonGun(){
@@ -93,7 +88,6 @@ public class Level extends Observable implements ILevel {
     @Override
     public void pause() {
         currentState = GameState.PAUSED;
-        gamePaused = true;
         Gdx.app.log("GameScreen", "pause called");
     }
 
@@ -130,7 +124,6 @@ public class Level extends Observable implements ILevel {
     private void checkWinGame() {
         if (molecule.isFull()) {
                 progressTracker.writeCompletedLevels(levelNumber);
-                gameWon = true;
                 currentState = GameState.PAUSEDWIN;
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
             loseGame();
@@ -138,7 +131,6 @@ public class Level extends Observable implements ILevel {
     }
 
     private void loseGame(){
-        gameLost = true;
         currentState = GameState.PAUSEDLOSE;
     }
 
@@ -178,14 +170,12 @@ public class Level extends Observable implements ILevel {
 
     public void pause(SpriteBatch batch){
         currentState = GameState.PAUSED;
-        gamePaused = true;
         Gdx.app.log("GameScreen", "pause called");
 
     }
 
     public void resume(){
         currentState = GameState.RUNNING;
-        gamePaused = false;
         setChanged();
         notifyObservers("resume");
     }
