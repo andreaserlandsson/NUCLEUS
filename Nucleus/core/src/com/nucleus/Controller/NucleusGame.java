@@ -16,6 +16,7 @@ public class NucleusGame extends Game {
         Gdx.app.log("Height", Integer.toString(Gdx.graphics.getHeight()));
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
         GameController controller = new GameController();
+        controller.setListener(new ButtonListener(controller));
         controller.goToStartScreen();
 
         INMusicPlayer musicPlayer;
@@ -32,8 +33,5 @@ public class NucleusGame extends Game {
     public void dispose(){
         super.dispose();
     }
-
-
-
 
 }
