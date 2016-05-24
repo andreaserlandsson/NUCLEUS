@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.Level;
 import com.nucleus.Model.NAssetsData;
+import com.nucleus.Utils.LevelUtils.LevelBuilder;
+import com.nucleus.Views.LevelPermissions;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.OptionsScreen;
@@ -131,7 +133,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Restart Level")) {
-            resumeLevel();
+            restartLevel();
         }
 
         else if (label.equals("Label: Continue")) {

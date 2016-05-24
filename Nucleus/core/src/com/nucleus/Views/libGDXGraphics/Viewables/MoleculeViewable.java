@@ -9,8 +9,6 @@ import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.NAssetsData;
 import com.nucleus.Views.Assets;
 
-import javax.print.attribute.standard.MediaSize;
-
 /**
  * Created by erik on 28/04/16.
  */

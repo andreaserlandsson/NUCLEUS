@@ -2,8 +2,6 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
 
 /**

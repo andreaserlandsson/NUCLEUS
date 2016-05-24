@@ -6,10 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.nucleus.Progress.ProgressTracker;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
-import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
@@ -49,7 +47,6 @@ public class GameScreen implements Screen, PlayScreen, Observer {
 
     public GameScreen(Level level, EventListener listener){
 
-        ProgressTracker progressTracker = new ProgressTracker((Observable)level);
         this.level = level;
         this.listener = listener;
         this.levelNumber = level.getLevelNumber();
