@@ -35,7 +35,7 @@ public class GameController extends ClickListener {
 
     private void startLevel(int levelNum) {
         Level level = (Level) LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        ProgressTracker progressTracker = new ProgressTracker(level); 
+        ProgressTracker progressTracker = new ProgressTracker(level);
         screen = new GameScreen(levelNum, level, this);
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler(screen));
