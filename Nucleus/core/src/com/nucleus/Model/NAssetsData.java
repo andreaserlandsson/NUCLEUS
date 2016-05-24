@@ -2,8 +2,10 @@ package com.nucleus.Model;
 
 
 public class NAssetsData {
+    //Class with strings for all paths for all audio and textures.
+    //Used to minimize code duplication for each class.
+
     public static final String LEVELMUSIC = "inGame";
-    public static final String LEVELTWOMUSIC = "inGame2.mp3";
     public static final String MENUMUSIC = "menuSounds.wav";
     public static final String BUTTONCLICKEDSOUND = "tempButton.mp3";
     public static final String LOADINGMUSIC = "LoadingSound.mp3";
@@ -27,12 +29,13 @@ public class NAssetsData {
 
     public static final String LEVEL = ".png";
 
+    //Method to return the correct texture for a level.
     public static String getLevel (int levelNr) {
         return Integer.toString(levelNr) + LEVEL;
     }
 
+    //Method to return the correct song for a level.
     public static String getLevelSong(int levelNr) {
-        System.out.println(LEVELMUSIC + Integer.toString(levelNr) + ".mp3");
         return LEVELMUSIC + Integer.toString(levelNr) + ".mp3";
     }
 
