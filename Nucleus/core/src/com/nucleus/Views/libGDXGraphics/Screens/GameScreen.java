@@ -32,12 +32,14 @@ import java.util.Observer;
  */
 public class GameScreen implements Screen, PlayScreen, Observer {
 
+    private final int levelNumber;
     private Level level;
     private boolean winLoseScreenShow = false;
     private WinDialog winDialog;
     private LoseDialog loseDialog;
     private PauseDialog pauseDialog;
     private EventListener listener;
+
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private List<IViewableRotateble> viewsRot = new ArrayList<IViewableRotateble>();
@@ -47,11 +49,12 @@ public class GameScreen implements Screen, PlayScreen, Observer {
 
     private INMusicPlayer musicPlayer;
 
-    public GameScreen(int levelNumber, EventListener listener){
+    public GameScreen(Level level, EventListener listener){
 
-        this.level = (Level) LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         ProgressTracker progressTracker = new ProgressTracker((Observable)level);
+        this.level = level;
         this.listener = listener;
+        this.levelNumber = level.getLevelNumber();
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 

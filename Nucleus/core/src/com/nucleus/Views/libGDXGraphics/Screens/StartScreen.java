@@ -36,14 +36,11 @@ public class StartScreen implements Screen {
     protected Skin skin;
     private ILevel level;
     private List<IViewable> views = new ArrayList<IViewable>();
-    private INMusicPlayer musicPlayer;
 
     public StartScreen(EventListener listener) {
 
         // Creating level
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        musicPlayer = NMusicPlayer.getInstance();
-        musicPlayer.loadMusic();
         Assets.loadTextureFiles();
 
 

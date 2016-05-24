@@ -26,8 +26,6 @@ public class WinLoseDialog extends ScreenAdapter {
     public void show() {
 
         stage = new Stage();
-        listener =  new GameController();
-
         goToMainMenu = false;
         Gdx.input.setInputProcessor(stage);
 
