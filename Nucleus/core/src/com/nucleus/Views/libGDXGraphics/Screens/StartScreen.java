@@ -17,13 +17,11 @@ import com.nucleus.Model.ILevel;
 import com.nucleus.Model.NAssetsData;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Views.Assets;
-
-import com.nucleus.Views.libGDXMusic.INMusicPlayer;
-import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
-
 
 import java.util.ArrayList;
 import java.util.List;

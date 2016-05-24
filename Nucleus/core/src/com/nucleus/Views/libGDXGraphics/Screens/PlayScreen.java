@@ -5,6 +5,9 @@ package com.nucleus.Views.libGDXGraphics.Screens;
  */
 public interface PlayScreen {
 
-    public void drag(int screenX, int screenY, int pointer);
-    public void touch(int screenX, int screenY, int pointer, int button);
+    void drag(int screenX, int screenY, int pointer);
+    void touch(int screenX, int screenY, int pointer, int button);
+    int getWidth();
+    int getHeight();
+    void pause();
 }
