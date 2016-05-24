@@ -45,7 +45,6 @@ public class Level extends Observable implements ILevel {
         this.molecule = molecule;
         this.gluons = gluons;
         this.progressTracker = pT;
-        //System.out.println(pT);
     }
 
     public int getLevelNumber() {

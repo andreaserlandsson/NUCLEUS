@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
+import com.nucleus.Views.libGDXGraphics.Screens.OptionsScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.PauseDialog;
 import com.nucleus.Views.libGDXGraphics.Screens.StartScreen;
 
@@ -38,6 +39,10 @@ public class NucleusGame extends Game {
     public void goToLevelChooser(){
         ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen());
 
+    }
+
+    public void goToOptions(){
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new OptionsScreen());
     }
 
     public void showPauseDialog(SpriteBatch batch){

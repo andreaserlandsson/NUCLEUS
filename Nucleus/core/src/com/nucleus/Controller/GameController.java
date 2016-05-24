@@ -3,10 +3,11 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.Model.ILevel;
+import com.nucleus.Model.IProgressTracker;
 import com.nucleus.Model.Level;
 import com.nucleus.NucleusGame;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
+import com.nucleus.Utils.ProgressTracker;
 
 /**
  * Created by Quaxi on 10/05/16.
@@ -16,10 +17,12 @@ public class GameController extends ClickListener {
     private NucleusGame game;
     private NInputHandler controller;
     private Level level;
+    private IProgressTracker progressTracker;
 
     public GameController() {
         game = new NucleusGame();
         controller = new NInputHandler();
+        progressTracker = new ProgressTracker();
     }
 
     public void startLevelChooser() {
@@ -69,7 +72,11 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Options")) {
-            System.out.println("HÄR SKA DET VARA OPTIONS!!");
+            game.goToOptions();
+        }
+
+        else if (label.equals("Label: Toggle Sound")){
+            Gdx.app.log(event.getTarget().toString(), "HEH");
         }
 
         else if (label.equals("Label: Exit")) {
@@ -77,11 +84,13 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Level 1")) {
-            startLevel(1);
+            if(progressTracker.checkLevelPermission(1))
+                startLevel(1);
         }
 
         else if (label.equals("Label: Level 2")) {
-            startLevel(2);
+            if(progressTracker.checkLevelPermission(2))
+                startLevel(2);
         }
 
         else if (label.equals("Label: Play Again")) {

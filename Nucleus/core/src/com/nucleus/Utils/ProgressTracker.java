@@ -8,7 +8,7 @@ import com.nucleus.Model.IProgressTracker;
  * Created by erik on 16/05/16.
  */
 public class ProgressTracker implements IProgressTracker{
-    private Preferences prefs;
+    private static Preferences prefs;
 
     public ProgressTracker(){
         prefs = Gdx.app.getPreferences("prefs");
@@ -26,7 +26,7 @@ public class ProgressTracker implements IProgressTracker{
     }
 
     public boolean checkLevelPermission(int levelNumber){
-        if(levelNumber<=readCompletedLevels()-1)
+        if(levelNumber<=readCompletedLevels()+1)
             return true;
         return false;
     }
