@@ -12,6 +12,7 @@ import com.nucleus.Utils.Vector;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotateble;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
@@ -35,6 +36,7 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     private EventListener listener;
 
     private List<IViewable> views = new ArrayList<IViewable>();
+    private List<IViewableRotateble> viewsRot = new ArrayList<IViewableRotateble>();
     private OrthographicCamera cam;
     private static SpriteBatch batch;
     private boolean isPaused;
@@ -51,7 +53,7 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
         views.add(new BackgroundViewable());
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
-        views.add(new MoleculeViewable(levelNumber, level.getMolecule()));
+        viewsRot.add(new MoleculeViewable(levelNumber, level.getMolecule()));
 
         pauseDialog = new PauseDialog(batch, level, listener);
 
@@ -105,6 +107,11 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
 
             for (IViewable view : views) {
                 view.render(batch);
+            }
+
+            for (IViewableRotateble viewRot : viewsRot) {
+                if (viewRot.getRotationRequirement().equals("Molecule"))
+                viewRot.render(batch, level.getMolecule().getRotation());
             }
         }
 

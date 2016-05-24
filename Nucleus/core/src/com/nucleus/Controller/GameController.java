@@ -28,7 +28,7 @@ public class GameController extends ClickListener {
         musicPlayer = NMusicPlayer.getInstance();
     }
 
-    public void startLevelChooser() {
+    public void goToLevelChooser() {
         game.goToLevelChooser(this);
     }
 
@@ -68,7 +68,7 @@ public class GameController extends ClickListener {
         String label = event.getTarget().toString();
 
         if (label.equals("Label: Play")) {
-            startLevelChooser();
+            goToLevelChooser();
         }
 
         else if (label.equals("Label: Options")) {
@@ -94,7 +94,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Play Again")) {
-            game.goToStartScreen(this);
+            goToLevelChooser();
         }
 
         else if (label.equals("Label: Main Menu")) {
