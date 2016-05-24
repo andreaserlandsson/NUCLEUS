@@ -26,7 +26,6 @@ public class GameController extends ClickListener {
     private INMusicPlayer musicPlayer;
     private Screen screen;
     private Level level;
-    private int levelNum;
 
     public GameController() {
         game = new NucleusGame();
@@ -46,7 +45,7 @@ public class GameController extends ClickListener {
 
         this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         ProgressTracker progressTracker = new ProgressTracker(level);
-        this.levelNum = levelNum;
+        //this.levelNum = levelNum;
         screen = new GameScreen(level, this);
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler((GameScreen) screen));
@@ -85,7 +84,7 @@ public class GameController extends ClickListener {
 
 
     private void restartLevel() {
-        startLevel(levelNum);
+        startLevel(level.getLevelNumber());
     }
 
     public void exit() {

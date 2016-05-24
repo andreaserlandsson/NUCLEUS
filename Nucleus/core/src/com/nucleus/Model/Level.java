@@ -124,6 +124,8 @@ public class Level extends Observable implements ILevel {
 
     private void loseGame(){
         currentState = GameState.PAUSEDLOSE;
+        setChanged();
+        notifyObservers("lost");
     }
 
     public void checkAllNucleonsStatus(){
@@ -169,6 +171,8 @@ public class Level extends Observable implements ILevel {
 
     public void resume(){
         currentState = GameState.RUNNING;
+        setChanged();
+        notifyObservers("resume");
         setChanged();
     }
 
