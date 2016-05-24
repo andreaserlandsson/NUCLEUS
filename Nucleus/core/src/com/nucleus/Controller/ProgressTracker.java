@@ -1,4 +1,4 @@
-package com.nucleus.Progress;
+package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
@@ -15,7 +15,6 @@ public class ProgressTracker implements Observer{
     private Observable level;
 
     public ProgressTracker(Observable level){
-        //prefs = Gdx.app.getPreferences("prefs");
         this.level = level;
         level.addObserver(this);
     }
@@ -29,13 +28,6 @@ public class ProgressTracker implements Observer{
         if(readCompletedLevels()<levelNumber) {
             prefs.putInteger("progress", levelNumber);
         }
-    }
-
-    public static boolean checkLevelPermission(int levelNumber){
-        int lvlProgress = prefs.getInteger("progress", 0);
-        if(levelNumber<=lvlProgress+1)
-            return true;
-        return false;
     }
 
     @Override

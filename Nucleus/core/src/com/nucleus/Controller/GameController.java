@@ -3,7 +3,10 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.Model.Level;
 import com.nucleus.Model.NAssetsData;
+import com.nucleus.Utils.LevelUtils.LevelBuilder;
+import com.nucleus.Views.LevelPermissions;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
@@ -31,7 +34,9 @@ public class GameController extends ClickListener {
     }
 
     private void startLevel(int levelNum) {
-        screen = new GameScreen(levelNum, this);
+        Level level = (Level) LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        ProgressTracker progressTracker = new ProgressTracker(level); 
+        screen = new GameScreen(levelNum, level, this);
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler(screen));
         game.goToScreen(screen);
@@ -88,12 +93,12 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Level 1")) {
-            if(com.nucleus.Progress.ProgressTracker.checkLevelPermission(1))
+            if(LevelPermissions.checkLevelPermission(1))
                 startLevel(1);
         }
 
         else if (label.equals("Label: Level 2")) {
-            if(com.nucleus.Progress.ProgressTracker.checkLevelPermission(2))
+            if(LevelPermissions.checkLevelPermission(2))
                 startLevel(2);
         }
 
