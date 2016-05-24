@@ -4,10 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.Model.IProgressTracker;
-import com.nucleus.Model.Level;
-import com.nucleus.Utils.LevelUtils.LevelBuilder;
+import com.nucleus.Utils.IProgressTracker;
 import com.nucleus.Utils.ProgressTracker;
+import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 
 /**
  * Created by Quaxi on 10/05/16.
@@ -16,12 +15,12 @@ public class GameController extends ClickListener {
 
     private NucleusGame game;
     private NInputHandler controller;
-    private Level level;
     private IProgressTracker progressTracker;
+    private GameScreen screen;
 
     public GameController() {
         game = new NucleusGame();
-        controller = new NInputHandler();
+        controller = new NInputHandler(screen);
         progressTracker = new ProgressTracker();
     }
 
@@ -30,15 +29,16 @@ public class GameController extends ClickListener {
     }
 
     private void startLevel(int levelNum) {
-        this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        screen = new GameScreen(levelNum, this);
         Gdx.input.setInputProcessor(controller);
-        Gdx.input.setInputProcessor(new NInputHandler(level));
-        game.goToLevel(levelNum, level, this);
+        Gdx.input.setInputProcessor(new NInputHandler(screen));
+        game.goToScreen(screen);
 
     }
 
     private void resumeLevel(){
-        level.resume();
+        Gdx.input.setInputProcessor(new NInputHandler(screen));
+        screen.resume();
     }
 
     public void goToStartScreen(EventListener listener){
@@ -98,6 +98,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Continue Playing")) {
+            Gdx.app.log("GameController Continue", "Recieved Input");
             resumeLevel();
         }
 

@@ -1,4 +1,4 @@
-package com.nucleus.Model;
+package com.nucleus.Utils;
 
 /**
  * Created by erik on 16/05/16.

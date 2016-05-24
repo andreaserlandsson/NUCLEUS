@@ -20,6 +20,7 @@ import com.nucleus.Views.Assets;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
 import java.util.ArrayList;
@@ -37,13 +38,13 @@ public class StartScreen implements Screen {
     private ILevel level;
     private List<IViewable> views = new ArrayList<IViewable>();
     private Assets assets;
-    private NMusicPlayer musicPlayer;
+    private INMusicPlayer musicPlayer;
 
     public StartScreen(ClickListener listener) {
 
         // Creating level
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        musicPlayer = new NMusicPlayer();
+        musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.loadMusic();
         Assets.loadTextureFiles();
 
