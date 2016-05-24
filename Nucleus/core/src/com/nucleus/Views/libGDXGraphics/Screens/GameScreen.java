@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.Level;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Utils.Vector;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
@@ -40,7 +41,6 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     private OrthographicCamera cam;
     private static SpriteBatch batch;
     private boolean isPaused;
-    Vector lastTouch = new Vector(0,0);
 
     public GameScreen(int levelNumber, EventListener listener){
 
@@ -148,19 +148,6 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
         // Leave blank
     }
 
-    @Override
-    public void drag(int screenX, int screenY, int pointer) {
-
-        Vector newTouch = new Vector(screenX, screenY);
-        Vector delta = newTouch.subtract(this.lastTouch);
-        level.getMolecule().setRotation(lastTouch, newTouch);
-        this.lastTouch = newTouch;
-    }
-
-    @Override
-    public void touch(int screenX, int screenY, int pointer, int button) {
-
-    }
 
     @Override
     public int getWidth() {
@@ -170,5 +157,10 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     @Override
     public int getHeight() {
         return Gdx.graphics.getHeight();
+    }
+
+    @Override
+    public ILevel getLevel() {
+        return level;
     }
 }
