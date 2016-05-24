@@ -28,7 +28,6 @@ public class MoleculeViewable implements IViewableRotateble {
 
     private void drawGluons(SpriteBatch batch){
         for (IGluonPoint gluonPoint : gluonPoints) {
-
             if (gluonPoint.getNeutronsNeeded() > 0){
                 float sizeFactor = (float)gluonPoint.getCurrentNeutrons()/(float)gluonPoint.getMaxNeutrons();
                 float x = gluonPoint.getPosition().getX()-halfNeutron.getWidth()/2*sizeFactor+5*sizeFactor;

@@ -73,7 +73,7 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     public void render(float delta) {
 
         if (level.isGameLost()) {
-            if (winLoseScreenShow) {
+            if (!winLoseScreenShow) {
                 //winDialog.show();
                 this.loseScreen = new WinLoseScreen(false, listener);
                 loseScreen.show();
@@ -84,7 +84,7 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
             loseScreen.render(1);
 
         } else if (level.isGameWon()) {
-            if (winLoseScreenShow) {
+            if (!winLoseScreenShow) {
                 //winDialog.show();
                 this.winScreen = new WinLoseScreen(true, listener);
                 winScreen.show();
@@ -114,8 +114,9 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
                 viewRot.render(batch, level.getMolecule().getRotation());
             }
         }
-
     }
+
+
 
     @Override
     public void resize(int width, int height){
