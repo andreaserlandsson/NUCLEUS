@@ -32,6 +32,8 @@ public class GameController extends ClickListener {
 
     public void goToLevelChooser() {
         game.goToLevelChooser(this);
+        musicPlayer = NMusicPlayer.getInstance();
+        musicPlayer.switchSong(NAssetsData.MENUMUSIC);
     }
 
     private void startLevel(int levelNum) {
@@ -39,6 +41,11 @@ public class GameController extends ClickListener {
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler(screen));
         game.goToScreen(screen);
+
+        //starting level music
+        musicPlayer = NMusicPlayer.getInstance();
+        musicPlayer.switchSong(NAssetsData.getLevelSong(levelNum));
+
     }
 
     private void resumeLevel(){
@@ -46,8 +53,10 @@ public class GameController extends ClickListener {
         screen.getLevel().resume();
     }
 
-    public void goToStartScreen(EventListener listener){
+    public void goToStartScreen(){
         game.goToStartScreen(this);
+        musicPlayer = NMusicPlayer.getInstance();
+        musicPlayer.switchSong(NAssetsData.MENUMUSIC);
     }
 
     public void setInput(){
@@ -107,7 +116,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Main Menu")) {
-            goToStartScreen(this);
+            goToStartScreen();
         }
 
 

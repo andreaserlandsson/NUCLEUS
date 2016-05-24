@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -40,15 +41,12 @@ public class StartScreen implements Screen {
     private List<IViewable> views = new ArrayList<IViewable>();
     private INMusicPlayer musicPlayer;
 
-    public StartScreen(ClickListener listener) {
+    public StartScreen(EventListener listener) {
 
         // Creating level
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        musicPlayer = NMusicPlayer.getInstance();
-        musicPlayer.loadMusic();
         Assets.loadTextureFiles();
 
-        musicPlayer.playMusic(NAssetsData.MENUMUSIC);
 
         //temporary to see that loading texture works
         views.add(new BackgroundViewable());

@@ -34,7 +34,6 @@ public class GameScreen implements Screen, PlayScreen, Observer {
 
     private Level level;
     private boolean winLoseScreenShow = false;
-    private NMusicPlayer mc;
     private WinDialog winDialog;
     private LoseDialog loseDialog;
     private PauseDialog pauseDialog;
@@ -49,9 +48,6 @@ public class GameScreen implements Screen, PlayScreen, Observer {
     private INMusicPlayer musicPlayer;
 
     public GameScreen(int levelNumber, EventListener listener){
-        //starting level music
-        this.musicPlayer = NMusicPlayer.getInstance();
-        musicPlayer.switchSong(NAssetsData.getLevelSong(levelNumber));
 
         this.level = (Level) LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.listener = listener;
