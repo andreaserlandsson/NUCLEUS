@@ -14,7 +14,7 @@ import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 
-import com.nucleus.Views.NMusicPlayer;
+import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
 import java.util.ArrayList;
 import java.util.List;

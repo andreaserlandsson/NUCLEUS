@@ -1,6 +1,7 @@
 package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.IProgressTracker;
@@ -40,7 +41,7 @@ public class GameController extends ClickListener {
         level.resume();
     }
 
-    public void goToStartScreen(){
+    public void goToStartScreen(EventListener listener){
         game.goToStartScreen(this);
     }
 
@@ -93,11 +94,11 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Main Menu")) {
-            game.goToStartScreen(this);
+            goToStartScreen(this);
         }
 
         else if (label.equals("Label: Continue Playing")) {
-            level.resume();
+            resumeLevel();
         }
 
 

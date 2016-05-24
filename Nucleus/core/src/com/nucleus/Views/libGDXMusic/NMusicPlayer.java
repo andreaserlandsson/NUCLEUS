@@ -1,6 +1,7 @@
-package com.nucleus.Views;
+package com.nucleus.Views.libGDXMusic;
 
 import com.badlogic.gdx.audio.Music;
+import com.nucleus.Views.Assets;
 
 public class NMusicPlayer {
     private static Music currentlyPlaying;
