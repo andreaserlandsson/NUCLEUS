@@ -76,9 +76,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Toggle Sound")){
-            Gdx.app.log(event.getTarget().toString(), "HEH");
             musicPlayer.setMasterVolume(1-musicPlayer.getMasterVolume());
-
         }
 
         else if (label.equals("Label: Exit")) {
