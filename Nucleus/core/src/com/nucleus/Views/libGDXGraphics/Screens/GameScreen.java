@@ -18,6 +18,7 @@ import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotateble;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.PauseViewable;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class GameScreen implements Screen, PlayScreen, Observer {
         views.add(new BackgroundViewable());
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
+        views.add(new PauseViewable());
         viewsRot.add(new MoleculeViewable(levelNumber, level.getMolecule()));
 
         pauseDialog = new PauseDialog(batch, level, listener);
