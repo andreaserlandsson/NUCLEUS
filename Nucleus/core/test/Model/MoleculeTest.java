@@ -127,17 +127,15 @@ public class MoleculeTest {
 
     @Test
     public void testRotateGluon() {
+        IGluonPoint gluon = new MockGluon(v1, 1, 1);
+        molecule.rotateGluon(gluon, v1, v2, 2.0);
 
-        molecule.rotateGluon(gluon1, v1, v2, 2.0);
-        
+        assertFalse(gluon.getPosition().getX() != 196.44913f);
+        assertFalse(gluon.getPosition().getY() != 203.42903f);
+
+        assertTrue(gluon.getPosition().getX() == 196.44913f);
+        assertTrue(gluon.getPosition().getY() == 203.42903f);
 
     }
-
-    @Test
-    public void testCalculateRotationAngle() {
-
-    }
-
-
 
 }
