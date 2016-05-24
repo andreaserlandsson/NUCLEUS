@@ -2,7 +2,6 @@ package com.nucleus.Utils.LevelUtils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.nucleus.Utils.*;
 
 // A class for reading and parsing .txt files that will be levels.
 public class LevelParser {
@@ -45,7 +44,7 @@ public class LevelParser {
         {
             levelField[i] = Integer.parseInt(strings[i]);
         }
-        return new LevelData(levelField, width, height, new ProgressTracker());
+        return new LevelData(levelField, width, height);
     }
 
 }

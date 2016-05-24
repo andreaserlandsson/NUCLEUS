@@ -1,12 +1,15 @@
-package com.nucleus.Utils;
+package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * Created by erik on 16/05/16.
  */
-public class ProgressTracker implements IProgressTracker{
+public class ProgressTracker implements IProgressTracker, Observer{
     private static Preferences prefs;
 
     public ProgressTracker(){
@@ -28,5 +31,14 @@ public class ProgressTracker implements IProgressTracker{
         if(levelNumber<=readCompletedLevels()+1)
             return true;
         return false;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg.equals("won")){
+            Gdx.app.log("Tjena", "Morsan");
+            Gdx.app.log("ASDASDASD","ASDASDÖKASJDÖASDJÖASLDKÖASLDKAÖSDKAÖSDLKAÖSLDKAÖSLDKAÖSDLK");
+            writeCompletedLevels(0);
+        }
     }
 }

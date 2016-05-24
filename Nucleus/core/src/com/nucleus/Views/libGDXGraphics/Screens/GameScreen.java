@@ -57,12 +57,10 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
 
         pauseDialog = new PauseDialog(batch, level, listener);
 
-
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
 
     }
-
 
     @Override
     public void render(float delta) {
