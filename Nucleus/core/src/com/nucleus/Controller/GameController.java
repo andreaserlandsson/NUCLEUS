@@ -3,6 +3,7 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.Model.ILevel;
 import com.nucleus.Model.IProgressTracker;
 import com.nucleus.Model.Level;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
@@ -15,7 +16,7 @@ public class GameController extends ClickListener {
 
     private NucleusGame game;
     private NInputHandler controller;
-    private Level level;
+    private static Level level;
     private IProgressTracker progressTracker;
 
     public GameController() {
@@ -39,9 +40,7 @@ public class GameController extends ClickListener {
 
 
     public void touch(int screenX, int screenY, int pointer, int button){
-        if ((screenX > level.getWidth() - 20) && screenY < 20) { // if you touch the upper right corner you pause the game
-            level.pause();
-        }
+
     }
 
     public void exit() {
@@ -93,7 +92,11 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Play Again")) {
-            game.goToStartScreen(this);
+            startLevel(level.getLevelNumber());
+        }
+
+        else if (label.equals("Label: Restart Level")) {
+            startLevel(level.getLevelNumber());
         }
 
         else if (label.equals("Label: Main Menu")) {

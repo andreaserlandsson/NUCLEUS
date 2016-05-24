@@ -43,6 +43,7 @@ public class StartScreen implements Screen {
     private List<IViewable> views = new ArrayList<IViewable>();
     private Assets assets;
     private NMusicPlayer musicPlayer;
+    private GameController listener;
 
     public StartScreen(ClickListener listener) {
 
@@ -62,7 +63,7 @@ public class StartScreen implements Screen {
         this.listener = new GameController();
 
 
-        this.buttons = buttons;
+        //this.buttons = buttons;
 
         //Initialising graphics
         views.add(new BackgroundViewable());

@@ -13,7 +13,9 @@ public class PlayController implements ControllerState {
     }
 
     public void touch(int screenX, int screenY, int pointer, int button){
-        return;
+        if ((screenX > level.getWidth() - 20) && screenY < 20) { // if you touch the upper right corner you pause the game
+            level.pause();
+        }
     }
 
     public void drag(int screenX, int screenY, int pointer){
