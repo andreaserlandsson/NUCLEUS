@@ -99,6 +99,10 @@ public class GameController extends ClickListener {
             startLevel(level.getLevelNumber());
         }
 
+        else if (label.equals("Label: Continue")) {
+            level.resume();
+        }
+
         else if (label.equals("Label: Main Menu")) {
             game.goToStartScreen(this);
         }

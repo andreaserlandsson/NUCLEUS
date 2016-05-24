@@ -28,8 +28,8 @@ public class GameScreen extends Observable implements Screen {
     private ILevel level;
     private boolean winLoseScreenShow = false;
     private NMusicPlayer mc;
-    private WinLoseScreen loseScreen;
-    private WinLoseScreen winScreen;
+    private WinDialog winDialog;
+    private LoseDialog loseDialog;
     private PauseDialog pauseDialog;
 
     private List<IViewable> views = new ArrayList<IViewable>();
@@ -60,41 +60,30 @@ public class GameScreen extends Observable implements Screen {
 
         if (level.isGameLost()) {
             if (winLoseScreenShow == false) {
-                //winDialog.show();
-                this.loseScreen = new WinLoseScreen(false);
-                loseScreen.show();
+                this.loseDialog = new LoseDialog(batch, level);
+                loseDialog.show();
                 winLoseScreenShow = true;
             }
-
-            //winDialog.render(1);
-            loseScreen.render(1);
+            loseDialog.render(delta);
 
         } else if (level.isGameWon()) {
             if (winLoseScreenShow == false) {
-                //winDialog.show();
-                this.winScreen = new WinLoseScreen(true);
-                winScreen.show();
+                this.winDialog = new WinDialog(batch, level);
+                winDialog.show();
                 winLoseScreenShow = true;
             }
-
-            //winDialog.render(1);
-            winScreen.render(1);
+            winDialog.render(delta);
 
         } else if (level.isGamePaused()) {
             if (!pauseDialogIsShowing) {
                 pause();
-
-
             }
             pauseDialog.render(delta);
             level.update(delta);
 
         } else {
+
             pauseDialogIsShowing = false;
-            //check if you "touch" the pause "button" and if so call on the pause method
-            /*if ((Gdx.input.getX() > level.getWidth() - 10) && Gdx.input.getY() < 10) {
-                pause();
-            }*/
 
             level.update(delta);
 

@@ -19,7 +19,7 @@ import com.nucleus.Model.ILevel;
  */
 public class PauseDialog extends ScreenAdapter {
     private SpriteBatch batch;
-    private Stage stage2;
+    private Stage pauseStage;
     private Viewport viewport;
     protected Skin skin;
     private ILevel level;
@@ -33,19 +33,56 @@ public class PauseDialog extends ScreenAdapter {
     public PauseDialog(SpriteBatch batch, ILevel level){
         this.batch = batch;
         this.level = level;
-        stage2 = new Stage();
+        pauseStage = new Stage();
     }
 
     @Override
     public void show() {
         goToMainMenu = false;
-        Gdx.input.setInputProcessor(stage2);
+        Gdx.input.setInputProcessor(pauseStage);
         listener =  new GameController();
 
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
-        new Dialog("PAUSED", skin) {
-            {
+        //Create Table
+        Table mainTable = new Table();
+
+        mainTable.setFillParent(true);
+        mainTable.center();
+        mainTable.padBottom(150f);
+
+        //Create buttons
+        TextButton level1Button = new TextButton("Continue", skin);
+        TextButton level2Button = new TextButton("Restart Level", skin);
+        TextButton level3Button = new TextButton("Main Menu", skin);
+
+        pauseStage.addListener(listener);
+
+        //Add listeners to buttons
+        level1Button.addListener(listener);
+        level2Button.addListener(listener);
+        level3Button.addListener(listener);
+
+        Label levelText = new Label("Game Paused", skin);
+        mainTable.add(levelText);
+        mainTable.row();
+
+        //Add buttons to table
+        mainTable.add(level1Button).width(100).pad(10);
+        mainTable.row();
+        mainTable.add(level2Button).width(100).pad(10);
+        mainTable.row();
+        mainTable.add(level3Button).width(100).pad(10);
+
+
+        //Add table to stage
+        pauseStage.addActor(mainTable);
+
+
+
+        /*new Dialog("PAUSED", skin) {
+            {*/
+
                /* button("Continue Playing", "continue");
                 getButtonTable().row();
                 button("Restart Level", "restart");
@@ -53,38 +90,7 @@ public class PauseDialog extends ScreenAdapter {
                 button("Main Menu", "menu");
                 setMovable(false);*/
 
-                //Create Table
-                Table mainTable = new Table();
-
-                mainTable.setFillParent(true);
-                mainTable.top();
-                mainTable.padBottom(15f).padTop(30f);
-
-                //Create buttons
-                TextButton level1Button = new TextButton("Continue", skin);
-                TextButton level2Button = new TextButton("Restart Level", skin);
-                TextButton level3Button = new TextButton("Main Menu", skin);
-
-                stage2.addListener(listener);
-
-                //Add listeners to buttons
-                level1Button.addListener(listener);
-                level2Button.addListener(listener);
-                level3Button.addListener(listener);
-
-                //Add buttons to table
-                mainTable.add(level1Button).width(100).pad(10);
-                mainTable.row();
-                mainTable.add(level2Button).width(100).pad(10);
-                mainTable.row();
-                mainTable.add(level3Button).width(100).pad(10);
-
-
-                //Add table to stage
-                stage2.addActor(mainTable);
-                this.add(mainTable);
-
-            }
+            //}
 
             /*
             @Override
@@ -108,7 +114,7 @@ public class PauseDialog extends ScreenAdapter {
                 }
             }*/
 
-        }.show(stage2);
+        //}.show(stage2);
     }
 
     @Override
@@ -118,8 +124,8 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        stage2.act(delta);
-        stage2.draw();
+        pauseStage.act(delta);
+        pauseStage.draw();
     }
 
     @Override
@@ -129,7 +135,7 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void dispose() {
-        stage2.dispose();
+        pauseStage.dispose();
         skin.dispose();
     }
 

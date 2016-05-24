@@ -90,12 +90,6 @@ public class Level extends Observable implements ILevel {
         return gluons;
     }
 
-    @Override
-    public void pause() {
-        currentState = GameState.PAUSED;
-        gamePaused = true;
-        Gdx.app.log("GameScreen", "pause called");
-    }
 
     /*Function should probably be removed*/
     public void addAirborneNucleon(INucleon nucleon){
@@ -177,11 +171,10 @@ public class Level extends Observable implements ILevel {
         }
     }
 
-    public void pause(SpriteBatch batch){
+    public void pause() {
         currentState = GameState.PAUSED;
         gamePaused = true;
         Gdx.app.log("GameScreen", "pause called");
-
     }
 
     public void resume(){
