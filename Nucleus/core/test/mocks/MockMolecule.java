@@ -2,7 +2,7 @@ package mocks;
 
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.IMolecule;
-import com.nucleus.Model.Vector;
+import com.nucleus.Utils.Vector;
 
 /**
  * Created by erik on 22/04/16.
@@ -16,8 +16,8 @@ public class MockMolecule implements IMolecule {
         this.gluons = gluons;
     }
 
-    public void setRotation(float r){
-        rotation=r;
+    public void setRotation(Vector lastTouch, Vector newTouch){
+        rotation=1;
     }
 
     public float getRotation(){
@@ -28,8 +28,8 @@ public class MockMolecule implements IMolecule {
         return false;
     }
 
-    public Vector rotate(Vector v1, Vector v2, double d) {
-        return null;
+    public void rotateGluon(IGluonPoint gluon, Vector v1, Vector v2, double d) {
+        return;
     }
 
     @Override

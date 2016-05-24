@@ -1,0 +1,45 @@
+MeetingAgenda
+
+  Date:160519 
+
+  Facilitator:Erik Jansson I
+
+  Participants: Herman Carlström, Hannes Lagerroth, Miranda Bånnsgård, Andreas Erlandsson, Erik Jansson
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+  - State design patterns
+  - Tests must be implemented for all model methods.
+  - CollisionHandler shall be its own subsystem. Should take Gluon and Nucleon but two Collidables
+  - Textures must be optimized for load times (AssetManager)
+  - Internal file list handler for music files
+
+2. Reports (15 min) from previous meeting
+
+  - Win and lose conditions are finished. 
+  - UI has been expanded with the statistics for available NucleonGun ammo.
+  - Game now has music. This has been partially implemented but not connected.
+  - Android is now completely functional.
+  - Graphics and visual effects have been improved.
+  - The game now keeps track of player progress.
+  - Circle dependencies have been solved.
+
+3. Discussion items (35 min) 
+
+  - Adapters may contribute to modularity of application.
+  - Implement AssetManager
+  - Music Player not controller
+
+4. Outcomes and assignments (5 min) 
+
+  - Miranda: Fix CollisionHandler. Make inte subsystem.
+  - Andreas: Finish Pause use case, tests!
+  - Herman: FInishing touches on Android. Change musicplayer to view. Then, AssetManager.
+  - Erik: Erik fixes GameController so it doesnt contain logic. Fix an optionMenu.
+  - Hannes: Fix States for Controllers.
+
+5. Wrap up
+
+  - Booyah! Slutspurten!
+  - Next meeting: 16-05-23 at lunch.

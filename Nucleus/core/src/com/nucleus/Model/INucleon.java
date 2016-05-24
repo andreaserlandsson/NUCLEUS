@@ -5,8 +5,8 @@ package com.nucleus.Model;
  */
 public interface INucleon {
 
-    Vector getPosition();
-    Vector getVelocity();
+    com.nucleus.Utils.Vector getPosition();
+    com.nucleus.Utils.Vector getVelocity();
 
     void update(float delta);
 

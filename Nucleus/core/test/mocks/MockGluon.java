@@ -1,7 +1,7 @@
 package mocks;
 
 import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.Vector;
+import com.nucleus.Utils.Vector;
 
 /**
  * Created by erik on 22/04/16.
@@ -27,24 +27,31 @@ public class MockGluon implements IGluonPoint {
 
     public boolean isFull() { //this method is needed for the Molecule.isFull()-test
         return getNeutronsNeeded() == 0 && getProtonsNeeded() == 0;
+
     }
 
     @Override
-    public com.nucleus.Model.Vector getPosition() {
+    public Vector getPosition() {
         return position;
     }
 
+    public float getX(){
+        return position.getX();
+    }
 
-    public void setPosition(float x, float y){
-        position.setCoordinates(x, y);
+    public float getY(){
+        return position.getY();
+    }
+
+
+    public void setPosition(Vector vect){
+        position.setCoordinates(vect.getX(), vect.getY());
     }
 
 
     public int getRadius(){
         return radius;
     }
-
-
 
     public void addProton() { // if this returns false the game is lost
         currentProtons++;
@@ -59,9 +66,25 @@ public class MockGluon implements IGluonPoint {
         return maxNeutrons - currentNeutrons;
     }
 
-
-
     public int getProtonsNeeded() {
         return maxProtons - currentNeutrons;
+
     }
+
+    public int getCurrentNeutrons() {
+        return currentNeutrons;
+    }
+
+    public int getCurrentProtons() {
+        return currentProtons;
+    }
+
+    public int getMaxNeutrons() {
+        return maxNeutrons;
+    }
+
+    public int getMaxProtons() {
+        return maxProtons;
+    }
+
 }

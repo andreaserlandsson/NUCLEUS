@@ -28,6 +28,26 @@ public class NucleonGun implements INucleonGun {
         return nucleonList.size();
     }
 
+    public int getProtonsInGun(){
+        int nbrOfProtons = 0;
+        for(int i = 0; i < nucleonList.size(); i++){
+            if(nucleonList.get(i).getClass().equals(Proton.class)){
+                nbrOfProtons++;
+            }
+        }
+        return nbrOfProtons;
+    }
+
+    public int getNeutronsInGun(){
+        int nbrOfNeutrons = 0;
+        for(int i = 0; i < nucleonList.size(); i++){
+            if(nucleonList.get(i).getClass().equals(Neutron.class)){
+                nbrOfNeutrons++;
+            }
+        }
+        return nbrOfNeutrons;
+    }
+
     @Override
     //TODO: some sort of normalization of the velocity vector for easier manipulation according to difficultyMultiplier
     public INucleon shoot() {
@@ -63,7 +83,7 @@ public class NucleonGun implements INucleonGun {
                 break;
             }
 
-        Vector velocityVect = new Vector(width/2.0f,height/2.0f).subtract(a.getPosition());
+        com.nucleus.Utils.Vector velocityVect = new com.nucleus.Utils.Vector(width/2.0f,height/2.0f).subtract(a.getPosition());
         a.setVelocity(difficultyMultiplier*velocityVect.getX()/3, difficultyMultiplier*velocityVect.getY()/3);
         return a;
     }

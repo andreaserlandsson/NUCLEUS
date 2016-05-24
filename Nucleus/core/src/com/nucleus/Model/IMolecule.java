@@ -2,9 +2,9 @@ package com.nucleus.Model;
 
 public interface IMolecule {
 
-    void setRotation(float r);
+    void setRotation(com.nucleus.Utils.Vector v1, com.nucleus.Utils.Vector v2);
     float getRotation();
     boolean isFull();
-    Vector rotate(Vector v1, Vector v2, double d);
+    void rotateGluon(IGluonPoint gluon, com.nucleus.Utils.Vector v1, com.nucleus.Utils.Vector v2, double d);
     IGluonPoint[] getGluons();
 }

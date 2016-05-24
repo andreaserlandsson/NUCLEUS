@@ -2,6 +2,8 @@ package mocks;
 
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.INucleonGun;
+import com.nucleus.Model.Neutron;
+import com.nucleus.Model.Proton;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,32 @@ public class MockNucleonGun implements INucleonGun {
         if (nucleons.size()==0)
             return true;
         return false;
+    }
+
+    @Override
+    public int getProtonsInGun() {
+        int nbrOfProtons = 0;
+        for(int i = 0; i < nucleons.size(); i++){
+            if(nucleons.get(i).getClass().equals(Proton.class)){
+                nbrOfProtons++;
+            }
+        }
+        return nbrOfProtons;
+    }
+
+    @Override
+    public int getNeutronsInGun() {
+        int nbrOfNeutrons = 0;
+        for(int i = 0; i < nucleons.size(); i++){
+            if(nucleons.get(i).getClass().equals(Neutron.class)){
+                nbrOfNeutrons++;
+            }
+        }
+        return nbrOfNeutrons;
+    }
+
+    public int getAmmoLeft(){
+        return nucleons.size();
     }
 
 }

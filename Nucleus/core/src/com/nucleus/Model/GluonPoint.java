@@ -1,16 +1,18 @@
 package com.nucleus.Model;
 
-public class GluonPoint implements IGluonPoint {
+import com.nucleus.Model.Collisions.ICollidable;
 
-    private Vector position;
+public class GluonPoint implements IGluonPoint, ICollidable {
+
+    private com.nucleus.Utils.Vector position;
     private int currentProtons;
     private int currentNeutrons;
     private int maxProtons;
     private int maxNeutrons;
 
-    private final int radius = 10; // dummy value will be calibrated later
+    private final int RADIUS = 10; // dummy value will be calibrated later
 
-    public GluonPoint(Vector positions, int maxProtons, int maxNeutrons){
+    public GluonPoint(com.nucleus.Utils.Vector positions, int maxProtons, int maxNeutrons){
         this.position = positions;
         this.maxProtons = maxProtons;
         this.maxNeutrons = maxNeutrons;
@@ -22,7 +24,7 @@ public class GluonPoint implements IGluonPoint {
         return getProtonsNeeded() == 0 && getNeutronsNeeded() == 0;
     }
 
-    public Vector getPosition(){
+    public com.nucleus.Utils.Vector getPosition(){
         return position;
     }
 
@@ -34,12 +36,12 @@ public class GluonPoint implements IGluonPoint {
         return position.getY();
     }
 
-    public void setPosition(float x, float y){
-        position.setCoordinates(x, y);
+    public void setPosition(com.nucleus.Utils.Vector vect){
+        position.setCoordinates(vect.getX(), vect.getY());
     }
 
     public int getRadius(){
-        return radius;
+        return RADIUS;
     }
 
     public void addNeutron() { // if this returns false the game is lost
@@ -57,4 +59,12 @@ public class GluonPoint implements IGluonPoint {
     public int getProtonsNeeded() {
         return maxProtons - currentProtons;
     }
+
+    public int getCurrentNeutrons() { return currentNeutrons; }
+
+    public int getCurrentProtons() { return currentProtons; }
+
+    public int getMaxNeutrons() { return maxNeutrons; }
+
+    public int getMaxProtons() { return maxProtons; }
 }

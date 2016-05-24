@@ -1,49 +1,115 @@
 package com.nucleus.Controller;
 
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.ILevel;
-import com.nucleus.Model.Vector;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.Model.NAssetsData;
+import com.nucleus.Utils.IProgressTracker;
+import com.nucleus.Utils.ProgressTracker;
+import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.Views.libGDXMusic.INMusicPlayer;
+import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
-public class GameController implements ControllerState {
+/**
+ * Created by Quaxi on 10/05/16.
+ */
+public class GameController extends ClickListener {
 
-    ILevel level;
-    Vector lastTouch = new Vector(0,0);
-    float rotationMultiplier = 40; //A constant that is used to scale the rotation angle
-    IGluonPoint[] gluons;
+    private NucleusGame game;
+    private NInputHandler controller;
+    private IProgressTracker progressTracker;
+    private INMusicPlayer musicPlayer;
+    private GameScreen screen;
 
-    public GameController(ILevel level){
-        this.level = level;
-        gluons = level.getGluons();
+    public GameController() {
+        game = new NucleusGame();
+        controller = new NInputHandler(screen);
+        progressTracker = new ProgressTracker();
+        musicPlayer = NMusicPlayer.getInstance();
     }
 
-    public void touch(int screenX, int screenY, int pointer, int button){
-        System.out.println("X IS : " + screenX);
-        System.out.println("Y IS : " + screenY);
-
-        System.out.println("glu x ==:" + gluons[0].getPosition().getX());
-        System.out.println("glu y ==:" + gluons[0].getPosition().getY());
-
-        return;
+    public void goToLevelChooser() {
+        game.goToLevelChooser(this);
     }
 
-    public void drag(int screenX, int screenY, int pointer){
-        Vector newTouch = new Vector(screenX, screenY);
-        Vector delta = newTouch.subtract(this.lastTouch);
-        float rotationAngle = findRotationAngle(delta);
-        this.lastTouch = newTouch;
-        level.getMolecule().setRotation(rotationAngle);
-        return;
+    private void startLevel(int levelNum) {
+        screen = new GameScreen(levelNum, this);
+        Gdx.input.setInputProcessor(controller);
+        Gdx.input.setInputProcessor(new NInputHandler(screen));
+        game.goToScreen(screen);
+
     }
 
-    public float findRotationAngle(Vector delta){
-        Vector r = lastTouch.subtract(new Vector(level.getWidth()/2.0f, level.getHeight()/2.0f));
-        Vector rOrthogonal = new Vector(r.getY(), -r.getX());
-        Vector rOrthoUnit = rOrthogonal.multiply((1/rOrthogonal.abs()));
-        float effectiveRotationLength = delta.scalar(rOrthoUnit);
-        Vector rotationVector = rOrthoUnit.multiply(effectiveRotationLength);
-        float rotationAngle = (float) Math.atan(rotationVector.abs()/r.abs());
-        if (effectiveRotationLength>0)
-            rotationAngle = -rotationAngle;
-        return rotationMultiplier * rotationAngle;
+    private void resumeLevel(){
+        Gdx.input.setInputProcessor(new NInputHandler(screen));
+        screen.getLevel().resume();
+    }
+
+    public void goToStartScreen(EventListener listener){
+        game.goToStartScreen(this);
+    }
+
+    public void setInput(){
+
+    }
+
+    public void exit() {
+        game.exit();
+    }
+
+    /**
+     * Listens for inputs from buttons
+     * @param event the evet that happend
+     * @param x coordinate for the touch
+     * @param y coordinate for the touch
+     */
+    public void clicked(InputEvent event, float x, float y) {
+
+        String label = event.getTarget().toString();
+
+        if (label.equals("Label: Play")) {
+            goToLevelChooser();
+        }
+
+        else if (label.equals("Label: Options")) {
+            game.goToOptions(this);
+        }
+
+        else if (label.equals("Label: Toggle Sound")){
+            musicPlayer.setMasterVolume(1-musicPlayer.getMasterVolume());
+        }
+
+        else if (label.equals("Label: Exit")) {
+            exit();
+        }
+
+        else if (label.equals("Label: Level 1")) {
+            if(progressTracker.checkLevelPermission(1))
+                startLevel(1);
+        }
+
+        else if (label.equals("Label: Level 2")) {
+            if(progressTracker.checkLevelPermission(2))
+                startLevel(2);
+        }
+
+        else if (label.equals("Label: Play Again")) {
+            goToLevelChooser();
+        }
+
+        else if (label.equals("Label: Main Menu")) {
+            goToStartScreen(this);
+        }
+
+        else if (label.equals("Label: Continue Playing")) {
+            Gdx.app.log("GameController Continue", "Received Input");
+            resumeLevel();
+        }
+
+        musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND    );
+        
+
+
     }
 }

@@ -1,18 +1,27 @@
 package com.nucleus.Model;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nucleus.Model.Collisions.ICollidable;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class Level implements ILevel {
+public class Level extends Observable implements ILevel {
+    private int levelNumber;
     private int width;
     private int height;
 
     private float runTime = 0;
     private float lastUpdateTime = 0;
-    private float dummyUpdateVariable = 1;
+    private float updateTime = 1;
 
     private enum GameState{
-        RUNNING, PAUSED
+        RUNNING,
+        PAUSED,
+        PAUSEDWIN,
+        PAUSEDLOSE
     }
 
     private GameState currentState = GameState.RUNNING;
@@ -21,14 +30,20 @@ public class Level implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
     private IGluonPoint[] gluons;
+    private com.nucleus.Utils.IProgressTracker progressTracker;
 
-
-    public Level(int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, com.nucleus.Utils.IProgressTracker pT){
+        this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
         this.gluons = gluons;
+        this.progressTracker = pT;
+    }
+
+    public int getLevelNumber() {
+        return levelNumber;
     }
 
     public int getWidth(){
@@ -37,6 +52,20 @@ public class Level implements ILevel {
 
     public int getHeight(){
         return height;
+    }
+
+    public boolean isGameWon() {
+        return currentState==GameState.PAUSEDWIN;
+    }
+
+    public boolean isGameLost() {
+        return  currentState==GameState.PAUSEDLOSE;
+    }
+
+    public boolean isGamePaused() { return currentState==GameState.PAUSED; }
+
+    public void setGamePaused() {
+        currentState = GameState.PAUSED;
     }
 
     public INucleonGun getNucleonGun(){
@@ -56,6 +85,14 @@ public class Level implements ILevel {
         return gluons;
     }
 
+    @Override
+    public void pause() {
+        currentState = GameState.PAUSED;
+        setChanged();
+        notifyObservers("pause");
+        Gdx.app.log("GameScreen", "pause called");
+    }
+
     /*Function should probably be removed*/
     public void addAirborneNucleon(INucleon nucleon){
         airborneNucleons.add(nucleon);
@@ -64,8 +101,9 @@ public class Level implements ILevel {
     public boolean isOutOfBoundsCheck(INucleon nucleon){
         float x = nucleon.getPosition().getX();
         float y = nucleon.getPosition().getY();
-        return x - nucleon.getRadius()>=width || x + nucleon.getRadius()<=0 ||
-                y - nucleon.getRadius()>=height || y + nucleon.getRadius()<=0;
+        float bufferSize = 50; //nucleons aren't considered out of bounds until their "trails" are completely off-screen
+        return x - nucleon.getRadius()>=width+bufferSize || x + nucleon.getRadius()<=0-bufferSize ||
+                y - nucleon.getRadius()>=height+bufferSize || y + nucleon.getRadius()<=0-bufferSize;
     }
 
     //TODO: Check so this still works correctly with tests
@@ -85,44 +123,47 @@ public class Level implements ILevel {
 
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
-    private void winGame() {
-        System.out.println("YOU HAVE WON YAY!!");
+    private void checkWinGame() {
+        if (molecule.isFull()) {
+                progressTracker.writeCompletedLevels(levelNumber);
+                currentState = GameState.PAUSEDWIN;
+
+        } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
+            loseGame();
+        }
     }
 
-    private void loseGame() {
-        System.out.println("You lost :(((");
+    private void loseGame(){
+        currentState = GameState.PAUSEDLOSE;
     }
 
-    public void collisionCheck(){
+    public void checkAllNucleonsStatus(){
         INucleon collidingNucleon = null;
-
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
-                if (CollisionHandler.collision(gluon, nucleon)) {
-
+                if (com.nucleus.Model.Collisions.CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
                     if (nucleon.getClass().equals(Proton.class)) {
                         if (gluon.getProtonsNeeded() > 0){
                             gluon.addProton();
                             collidingNucleon = nucleon;
-                            System.out.println("\nAte proton! " + gluon.getProtonsNeeded() + " Protons left");
-                        }
-                        else {
-                            System.out.println("NOT HUNGRY");
+                            checkWinGame();
+                        } else {
+                            loseGame();
                         }
                     }
-
-
                     else {
                         if (gluon.getNeutronsNeeded() > 0){
                             gluon.addNeutron();
                             collidingNucleon = nucleon;
-                            System.out.println("\nAte proton! " + gluon.getNeutronsNeeded() + " Neutrons left" );
-                        }
-                        else {
-                            System.out.println("NOT HUNGRY");
+                            checkWinGame();
+                        } else {
+                            loseGame();
                         }
                     }
                 }
+            }
+            if (collidingNucleon != null) {
+                removeNucleon(collidingNucleon);
             }
         }
         if (collidingNucleon != null){
@@ -130,12 +171,24 @@ public class Level implements ILevel {
         }
     }
 
+    public void pause(SpriteBatch batch){
+        currentState = GameState.PAUSED;
+        Gdx.app.log("GameScreen", "pause called");
+
+    }
+
+    public void resume(){
+        currentState = GameState.RUNNING;
+        setChanged();
+        notifyObservers("resume");
+    }
 
     public void update(float delta){
         if(currentState==GameState.RUNNING) {
+            checkWinGame();
             runTime += delta;
-            collisionCheck();
-            if (runTime - lastUpdateTime >= dummyUpdateVariable && !gun.isEmpty()) {
+            checkAllNucleonsStatus();
+            if (runTime - lastUpdateTime >= updateTime && !gun.isEmpty()) {
                 lastUpdateTime = runTime;
                 airborneNucleons.add(gun.shoot());
             }
@@ -143,6 +196,7 @@ public class Level implements ILevel {
                 nucleon.update(delta);
             }
             removeOutOfBoundsNucleons();
+
         }
     }
 }

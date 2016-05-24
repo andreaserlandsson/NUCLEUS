@@ -1,20 +1,22 @@
 package com.nucleus.Model;
 
+import com.nucleus.Model.Collisions.ICollidable;
+
 /**
  * Created by erik on 19/04/16.
  */
-public class Nucleon implements INucleon {
+public class Nucleon implements INucleon, ICollidable {
 
-    private Vector position;
-    private Vector velocity;
-    private final int radius = 10;   //Dummy value. Sizes will be used for collision detection purposes
+    private com.nucleus.Utils.Vector position;
+    private com.nucleus.Utils.Vector velocity;
+    private final int RADIUS = 10;   //Dummy value. Sizes will be used for collision detection purposes
                                     //and will be properly determined later.
 
     public Nucleon(){
 
     }
 
-    public Nucleon(Vector position, Vector vector){
+    public Nucleon(com.nucleus.Utils.Vector position, com.nucleus.Utils.Vector vector){
         this.position = position;
         this.velocity = vector;
     }
@@ -23,11 +25,19 @@ public class Nucleon implements INucleon {
         position = position.add(velocity.multiply(delta));
     }
 
-    public Vector getPosition(){
+    public float getX(){
+        return position.getX();
+    }
+
+    public float getY(){
+        return position.getY();
+    }
+
+    public com.nucleus.Utils.Vector getPosition(){
         return position;
     }
 
-    public Vector getVelocity(){
+    public com.nucleus.Utils.Vector getVelocity(){
         return velocity;
     }
 
@@ -40,6 +50,6 @@ public class Nucleon implements INucleon {
     }
 
     public int getRadius(){
-        return radius;
+        return RADIUS;
     }
 }

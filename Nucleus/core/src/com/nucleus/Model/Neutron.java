@@ -9,7 +9,7 @@ public class Neutron extends Nucleon {
         super();
     }
 
-    public Neutron(Vector position, Vector vector){
+    public Neutron(com.nucleus.Utils.Vector position, com.nucleus.Utils.Vector vector){
         super(position, vector);
     }
 
