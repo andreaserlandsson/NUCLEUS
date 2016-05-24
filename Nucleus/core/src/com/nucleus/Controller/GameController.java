@@ -61,7 +61,11 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Options")) {
-            System.out.println("HÄR SKA DET VARA OPTIONS!!");
+            game.goToOptions();
+        }
+
+        else if (label.equals("Label: Toggle Sound")){
+            Gdx.app.log(event.getTarget().toString(), "HEH");
         }
 
         else if (label.equals("Label: Exit")) {
