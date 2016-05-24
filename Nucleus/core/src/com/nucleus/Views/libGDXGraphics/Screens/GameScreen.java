@@ -56,7 +56,7 @@ public class GameScreen extends Observable implements Screen {
         if (level.isGameLost()) {
             if (winLoseScreenShow == false) {
                 //winDialog.show();
-                this.loseScreen = new WinLoseScreen(false, level);
+                this.loseScreen = new WinLoseScreen(false);
                 loseScreen.show();
                 winLoseScreenShow = true;
             }
@@ -67,7 +67,7 @@ public class GameScreen extends Observable implements Screen {
         } else if (level.isGameWon()) {
             if (winLoseScreenShow == false) {
                 //winDialog.show();
-                this.winScreen = new WinLoseScreen(true, level);
+                this.winScreen = new WinLoseScreen(true);
                 winScreen.show();
                 winLoseScreenShow = true;
             }
@@ -117,7 +117,7 @@ public class GameScreen extends Observable implements Screen {
     @Override
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
-        level.pause(batch);
+        level.pause();
         pauseDialog = new PauseDialog(batch, level);
         pauseDialog.show();
     }

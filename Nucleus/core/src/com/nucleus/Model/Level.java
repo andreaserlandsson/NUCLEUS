@@ -3,7 +3,6 @@ package com.nucleus.Model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.Collisions.ICollidable;
-import com.nucleus.Collisions.ICollidable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +89,13 @@ public class Level extends Observable implements ILevel {
     //Possible obsolete, required for bugtesting at the moment
     public IGluonPoint[] getGluons() {
         return gluons;
+    }
+
+    @Override
+    public void pause() {
+        currentState = GameState.PAUSED;
+        gamePaused = true;
+        Gdx.app.log("GameScreen", "pause called");
     }
 
     /*Function should probably be removed*/

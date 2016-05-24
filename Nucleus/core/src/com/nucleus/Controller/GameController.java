@@ -15,6 +15,7 @@ public class GameController extends ClickListener {
 
     private NucleusGame game;
     private NInputHandler controller;
+    private Level level;
 
     public GameController() {
         game = new NucleusGame();
@@ -25,11 +26,14 @@ public class GameController extends ClickListener {
         game.goToLevelChooser();
     }
 
-    private void startLevel(int levelNum){
-        ILevel level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    private void startLevel(int levelNum) {
+        this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler((Level) level));
         game.goToLevel(levelNum, (Level) level);
+
+    }
 
 
     public void touch(int screenX, int screenY, int pointer, int button){
