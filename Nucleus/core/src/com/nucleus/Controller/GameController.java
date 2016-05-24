@@ -101,6 +101,7 @@ public class GameController extends ClickListener {
             Gdx.app.log("GameController Continue", "Recieved Input");
             resumeLevel();
         }
+        
 
 
     }

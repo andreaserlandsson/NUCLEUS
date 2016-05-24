@@ -39,7 +39,6 @@ public class StartScreen implements Screen {
     protected Skin skin;
     private ILevel level;
     private List<IViewable> views = new ArrayList<IViewable>();
-    private Assets assets;
     private INMusicPlayer musicPlayer;
 
     public StartScreen(ClickListener listener) {
@@ -51,7 +50,6 @@ public class StartScreen implements Screen {
         Assets.loadTextureFiles();
 
         musicPlayer.playMusic(NAssetsData.MENUMUSIC);
-        //musicPlayer.playSound("music/tempButton.mp3");
 
         //temporary to see that loading texture works
         views.add(new BackgroundViewable());

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.NAssetsData;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Utils.Vector;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
@@ -16,6 +17,7 @@ import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 
+import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
 import java.util.ArrayList;
@@ -30,7 +32,6 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
 
     private ILevel level;
     private boolean winLoseScreenShow = false;
-    private NMusicPlayer mc;
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
     private PauseDialog pauseDialog;
@@ -42,8 +43,11 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     private boolean isPaused;
     Vector lastTouch = new Vector(0,0);
 
-    public GameScreen(int levelNumber, EventListener listener){
+    private INMusicPlayer musicPlayer;
 
+    public GameScreen(int levelNumber, EventListener listener){
+        this.musicPlayer = NMusicPlayer.getInstance();
+        musicPlayer.switchSong(NAssetsData.LEVELONEMUSIC);
         this.level = LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.listener = listener;
         this.cam = new OrthographicCamera(1080, 1920);
