@@ -47,7 +47,7 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     public GameScreen(int levelNumber, EventListener listener){
         //starting level music
         this.musicPlayer = NMusicPlayer.getInstance();
-        musicPlayer.switchSong(NAssetsData.LEVELONEMUSIC);
+        musicPlayer.switchSong(NAssetsData.getLevelSong(levelNumber));
 
         this.level = LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.listener = listener;

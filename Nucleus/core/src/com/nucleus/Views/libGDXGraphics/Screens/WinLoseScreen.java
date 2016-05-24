@@ -15,8 +15,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.GameController;
+import com.nucleus.Model.NAssetsData;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.Views.libGDXMusic.INMusicPlayer;
+import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 import com.sun.prism.Texture;
 
 import java.util.ArrayList;
@@ -38,8 +41,10 @@ public class WinLoseScreen implements Screen {
     private List<IViewable> views = new ArrayList<IViewable>();
     private BitmapFont font = new BitmapFont();
 
-    public WinLoseScreen(boolean won, EventListener listener) {
+    private INMusicPlayer musicPlayer;
 
+    public WinLoseScreen(boolean won, EventListener listener) {
+        musicPlayer = NMusicPlayer.getInstance();
         this.hasWon = won;
         views.add(new BackgroundViewable());
         this.listener = listener;
@@ -80,9 +85,11 @@ public class WinLoseScreen implements Screen {
         if (hasWon) {
             Label winText = new Label("YOU WON", skin);
             mainTable.add(winText);
+            musicPlayer.switchSong(NAssetsData.WINSOUND);
         } else {
             Label loseText = new Label("YOU LOST", skin);
             mainTable.add(loseText);
+            musicPlayer.switchSong(NAssetsData.LOSESOUND);
         }
 
         mainTable.row();

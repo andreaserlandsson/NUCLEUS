@@ -6,7 +6,7 @@ package com.nucleus.Views.libGDXMusic;
 public interface INMusicPlayer {
     void loadMusic();
     void playMusic(String song);
-    void stopMusic(String song);
+    void stopMusic();
     void playSound(String sound);
     void switchSong(String newSong);
     void pauseMusic();

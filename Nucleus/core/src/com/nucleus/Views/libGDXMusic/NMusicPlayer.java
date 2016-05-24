@@ -33,10 +33,9 @@ public class NMusicPlayer implements INMusicPlayer {
         }
     }
 
-    public void stopMusic(String str) {
-        Music music = Assets.getSong(str);
-        if (music != null) {
-            music.stop();
+    public void stopMusic() {
+        if (currentlyPlaying != null) {
+            currentlyPlaying.stop();
             currentlyPlaying = null;
         }
     }
@@ -61,6 +60,7 @@ public class NMusicPlayer implements INMusicPlayer {
             }
             music.setVolume(masterVolume);
             music.play();
+            currentlyPlaying = music;
         }
     }
 
