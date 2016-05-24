@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
+import com.nucleus.Model.NAssetsData;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Utils.Vector;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
