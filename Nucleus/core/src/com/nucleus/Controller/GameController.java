@@ -80,12 +80,12 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Level 1")) {
-            //if(progressTracker.checkLevelPermission(1))
+            if(ProgressTracker.checkLevelPermission(1))
                 startLevel(1);
         }
 
         else if (label.equals("Label: Level 2")) {
-            //if(progressTracker.checkLevelPermission(2))
+            if(ProgressTracker.checkLevelPermission(2))
                 startLevel(2);
         }
 
@@ -107,8 +107,6 @@ public class GameController extends ClickListener {
 
 
         musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND    );
-        
-
 
     }
 }

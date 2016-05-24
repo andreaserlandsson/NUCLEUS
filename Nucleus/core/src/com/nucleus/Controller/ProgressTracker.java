@@ -11,11 +11,11 @@ import java.util.Observer;
  * Created by erik on 16/05/16.
  */
 public class ProgressTracker implements Observer{
-    private static Preferences prefs;
+    private static Preferences prefs = Gdx.app.getPreferences("prefs");
     private Observable level;
 
     public ProgressTracker(Observable level){
-        prefs = Gdx.app.getPreferences("prefs");
+        //prefs = Gdx.app.getPreferences("prefs");
         this.level = level;
         level.addObserver(this);
     }
@@ -31,8 +31,9 @@ public class ProgressTracker implements Observer{
         }
     }
 
-    public boolean checkLevelPermission(int levelNumber){
-        if(levelNumber<=readCompletedLevels()+1)
+    public static boolean checkLevelPermission(int levelNumber){
+        int lvlProgress = prefs.getInteger("progress", 0);
+        if(levelNumber<=lvlProgress+1)
             return true;
         return false;
     }
