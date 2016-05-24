@@ -43,7 +43,7 @@ public class GameController extends ClickListener {
 
     private void resumeLevel(){
         Gdx.input.setInputProcessor(new NInputHandler(screen));
-        screen.resume();
+        screen.getLevel().resume();
     }
 
     public void goToStartScreen(EventListener listener){

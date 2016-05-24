@@ -88,6 +88,8 @@ public class Level extends Observable implements ILevel {
     @Override
     public void pause() {
         currentState = GameState.PAUSED;
+        setChanged();
+        notifyObservers("pause");
         Gdx.app.log("GameScreen", "pause called");
     }
 

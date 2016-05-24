@@ -43,38 +43,6 @@ public class PauseDialog extends ScreenAdapter {
         dialog.setMovable(false);
         dialog.addListener(listener);
 
-        /*
-        new Dialog("PAUSED", skin) {
-
-            {
-                button("Continue Playing", "continue");
-                button("Main Menu", "menu");
-                setMovable(false);
-
-            }
-
-            @Override
-            protected void result(final Object object) {
-                if (object.toString().equals("continue")) {
-                    System.out.println("continue");
-                    dispose();
-                    System.out.println("continue");
-
-                } else if (object.equals("menu")) {
-
-                    System.out.println("main menu");
-                    GameController controller = new GameController();
-                    controller.goToStartScreen();
-
-                } else if (object.equals("restart")) {
-
-                    System.out.println("restart");
-
-                }
-            }
-
-        }.show(stage2);*/
-
     }
 
     @Override

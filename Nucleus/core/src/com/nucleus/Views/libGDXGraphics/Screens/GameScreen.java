@@ -22,14 +22,15 @@ import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 
 
 /**
  * Created by erik on 25/04/16.
  */
-public class GameScreen extends Observable implements Screen, PlayScreen {
+public class GameScreen implements Screen, PlayScreen, Observer {
 
-    private ILevel level;
+    private Level level;
     private boolean winLoseScreenShow = false;
     private NMusicPlayer mc;
     private WinLoseScreen loseScreen;
@@ -42,7 +43,6 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     private OrthographicCamera cam;
     private static SpriteBatch batch;
     private boolean isPaused;
-    Vector lastTouch = new Vector(0,0);
 
     private INMusicPlayer musicPlayer;
 
@@ -51,7 +51,7 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
         this.musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.switchSong(NAssetsData.getLevelSong(levelNumber));
 
-        this.level = LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        this.level = (Level) LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.listener = listener;
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -64,6 +64,8 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
 
         pauseDialog = new PauseDialog(batch, level, listener);
 
+        //Add observers
+        level.addObserver(this);
 
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
@@ -139,14 +141,13 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     @Override
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
-        level.pause();
         pauseDialog.show();
     }
 
     @Override
     public void resume(){
-        level.resume();
         Gdx.app.log("GameScreen", "resume called");
+        pauseDialog.resume();
 
     }
 
@@ -169,5 +170,15 @@ public class GameScreen extends Observable implements Screen, PlayScreen {
     @Override
     public ILevel getLevel() {
         return level;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg.toString().equals("pause")){
+            pause();
+        }
+        if (arg.toString().equals("resume")){
+            resume();
+        }
     }
 }
