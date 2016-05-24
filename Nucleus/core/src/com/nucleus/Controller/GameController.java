@@ -30,22 +30,14 @@ public class GameController extends ClickListener {
 
     private void startLevel(int levelNum) {
         this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
         Gdx.input.setInputProcessor(controller);
-        Gdx.input.setInputProcessor(new NInputHandler((Level) level));
-        game.goToLevel(levelNum, (Level) level);
+        Gdx.input.setInputProcessor(new NInputHandler(level));
+        game.goToLevel(levelNum, level, this);
 
     }
 
-
-    public void touch(int screenX, int screenY, int pointer, int button){
-        if ((screenX > level.getWidth() - 20) && screenY < 20) { // if you touch the upper right corner you pause the game
-            level.pause();
-        }
-    }
-
-    public void exit() {
-        game.exit();
+    private void resumeLevel(){
+        level.resume();
     }
 
     public void goToStartScreen(){
@@ -54,6 +46,10 @@ public class GameController extends ClickListener {
 
     public void setInput(){
 
+    }
+
+    public void exit() {
+        game.exit();
     }
 
     /**
@@ -99,6 +95,11 @@ public class GameController extends ClickListener {
         else if (label.equals("Label: Main Menu")) {
             game.goToStartScreen(this);
         }
+
+        else if (label.equals("Label: Continue Playing")) {
+            level.resume();
+        }
+
 
     }
 }

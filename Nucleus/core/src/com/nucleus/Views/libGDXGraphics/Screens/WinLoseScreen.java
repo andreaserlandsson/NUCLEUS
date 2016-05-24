@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.GameController;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
+import com.sun.prism.Texture;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,17 +31,18 @@ public class WinLoseScreen implements Screen {
     protected Stage stage;
     private Viewport viewport;
     private OrthographicCamera camera;
+    private Table mainTable;
     protected Skin skin;
-    private GameController listener;
     private boolean hasWon;
+    private EventListener listener;
     private List<IViewable> views = new ArrayList<IViewable>();
     private BitmapFont font = new BitmapFont();
 
-    public WinLoseScreen(boolean won) {
+    public WinLoseScreen(boolean won, EventListener listener) {
 
         this.hasWon = won;
         views.add(new BackgroundViewable());
-        listener = new GameController();
+        this.listener = listener;
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
@@ -58,7 +61,7 @@ public class WinLoseScreen implements Screen {
         Gdx.app.log("WinLoseScreen", "showing");
 
         //Create Table
-        Table mainTable = new Table();
+        mainTable = new Table();
         mainTable.setFillParent(true);
         mainTable.top();
         mainTable.padBottom(15f).padTop(30f);
@@ -67,9 +70,8 @@ public class WinLoseScreen implements Screen {
         TextButton mainMenuButton = new TextButton("Main Menu", skin);
         TextButton playAgainButton = new TextButton("Play Again", skin);
 
-        stage.addListener(listener);
-
         //Add listeners to buttons
+        stage.addListener(listener);
         stage.addListener(listener);
         mainMenuButton.addListener(listener);
         playAgainButton.addListener(listener);
@@ -90,6 +92,9 @@ public class WinLoseScreen implements Screen {
 
         //Add table to stage
         stage.addActor(mainTable);
+
+
+
     }
 
     @Override

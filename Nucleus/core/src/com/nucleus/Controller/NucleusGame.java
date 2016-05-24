@@ -3,6 +3,7 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
@@ -30,10 +31,10 @@ public class NucleusGame extends Game {
 
     }
 
-    public void goToLevel(int levelNum, Level level){
+    public void goToLevel(int levelNum, Level level, EventListener listener){
 
         Gdx.app.log("levelButton", "received");
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(levelNum, level));
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(levelNum, level, listener));
 
     }
 
