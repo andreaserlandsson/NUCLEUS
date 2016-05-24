@@ -6,8 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.nucleus.Controller.NInputHandler;
-import com.nucleus.Controller.NInputProcessor;
+import com.nucleus.Controller.ProgressTracker;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
 import com.nucleus.Model.NAssetsData;
@@ -21,6 +20,7 @@ import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.PauseViewable;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -50,6 +50,7 @@ public class GameScreen implements Screen, PlayScreen, Observer {
     public GameScreen(int levelNumber, EventListener listener){
 
         this.level = (Level) LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        ProgressTracker progressTracker = new ProgressTracker((Observable)level);
         this.listener = listener;
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -62,7 +63,6 @@ public class GameScreen implements Screen, PlayScreen, Observer {
         viewsRot.add(new MoleculeViewable(levelNumber, level.getMolecule()));
 
         pauseDialog = new PauseDialog(batch, level, listener);
-
         //Add observers
         level.addObserver(this);
 
@@ -70,7 +70,6 @@ public class GameScreen implements Screen, PlayScreen, Observer {
         batch.setProjectionMatrix(cam.combined);
 
     }
-
 
     @Override
     public void render(float delta) {

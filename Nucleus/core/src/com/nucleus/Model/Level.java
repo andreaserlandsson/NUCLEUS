@@ -28,16 +28,14 @@ public class Level extends Observable implements ILevel {
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
     private IGluonPoint[] gluons;
-    private com.nucleus.Utils.IProgressTracker progressTracker;
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, com.nucleus.Utils.IProgressTracker pT){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
         this.gluons = gluons;
-        this.progressTracker = pT;
     }
 
     public int getLevelNumber() {
@@ -115,9 +113,9 @@ public class Level extends Observable implements ILevel {
 
     private void checkWinGame() {
         if (molecule.isFull()) {
-                progressTracker.writeCompletedLevels(levelNumber);
+                setChanged();
+                notifyObservers("won");
                 currentState = GameState.PAUSEDWIN;
-
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
             loseGame();
         }
@@ -171,7 +169,6 @@ public class Level extends Observable implements ILevel {
     public void resume(){
         currentState = GameState.RUNNING;
         setChanged();
-        notifyObservers("resume");
     }
 
     public void update(float delta){
@@ -187,7 +184,6 @@ public class Level extends Observable implements ILevel {
                 nucleon.update(delta);
             }
             removeOutOfBoundsNucleons();
-
         }
     }
 }

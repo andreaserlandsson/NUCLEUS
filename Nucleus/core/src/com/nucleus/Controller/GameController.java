@@ -4,10 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.Model.ILevel;
 import com.nucleus.Model.NAssetsData;
-import com.nucleus.Utils.IProgressTracker;
-import com.nucleus.Utils.ProgressTracker;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
@@ -19,14 +16,12 @@ public class GameController extends ClickListener {
 
     private NucleusGame game;
     private NInputHandler controller;
-    private IProgressTracker progressTracker;
     private INMusicPlayer musicPlayer;
     private GameScreen screen;
 
     public GameController() {
         game = new NucleusGame();
         controller = new NInputHandler(screen);
-        progressTracker = new ProgressTracker();
         musicPlayer = NMusicPlayer.getInstance();
     }
 
@@ -94,12 +89,12 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Level 1")) {
-            if(progressTracker.checkLevelPermission(1))
+            if(ProgressTracker.checkLevelPermission(1))
                 startLevel(1);
         }
 
         else if (label.equals("Label: Level 2")) {
-            if(progressTracker.checkLevelPermission(2))
+            if(ProgressTracker.checkLevelPermission(2))
                 startLevel(2);
         }
 
@@ -121,8 +116,6 @@ public class GameController extends ClickListener {
 
 
         musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND    );
-        
-
 
     }
 }
