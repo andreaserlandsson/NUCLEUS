@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.Level;
 import com.nucleus.Model.NAssetsData;
-import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.OptionsScreen;
@@ -44,6 +43,7 @@ public class GameController extends ClickListener {
     private void startLevel(int levelNum) {
 
         this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        ProgressTracker progressTracker = new ProgressTracker(level);
         this.levelNum = levelNum;
         screen = new GameScreen(level, this);
         Gdx.input.setInputProcessor(controller);
@@ -117,12 +117,12 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Level 1")) {
-            if(ProgressTracker.checkLevelPermission(1))
+            if(LevelPermissions.checkLevelPermission(1))
                 startLevel(1);
         }
 
         else if (label.equals("Label: Level 2")) {
-            if(ProgressTracker.checkLevelPermission(2))
+            if(LevelPermissions.checkLevelPermission(2))
                 startLevel(2);
         }
 
