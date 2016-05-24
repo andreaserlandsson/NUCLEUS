@@ -1,6 +1,7 @@
 package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.IProgressTracker;
@@ -30,30 +31,26 @@ public class GameController extends ClickListener {
 
     private void startLevel(int levelNum) {
         this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
         Gdx.input.setInputProcessor(controller);
-        Gdx.input.setInputProcessor(new NInputHandler((Level) level));
-        game.goToLevel(levelNum, (Level) level);
+        Gdx.input.setInputProcessor(new NInputHandler(level));
+        game.goToLevel(levelNum, level, this);
 
     }
 
-
-    public void touch(int screenX, int screenY, int pointer, int button){
-        if ((screenX > level.getWidth() - 20) && screenY < 20) { // if you touch the upper right corner you pause the game
-            level.pause();
-        }
+    private void resumeLevel(){
+        level.resume();
     }
 
-    public void exit() {
-        game.exit();
-    }
-
-    public void goToStartScreen(){
+    public void goToStartScreen(EventListener listener){
         game.goToStartScreen(this);
     }
 
     public void setInput(){
 
+    }
+
+    public void exit() {
+        game.exit();
     }
 
     /**
@@ -97,8 +94,13 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Main Menu")) {
-            game.goToStartScreen(this);
+            goToStartScreen(this);
         }
+
+        else if (label.equals("Label: Continue Playing")) {
+            resumeLevel();
+        }
+
 
     }
 }

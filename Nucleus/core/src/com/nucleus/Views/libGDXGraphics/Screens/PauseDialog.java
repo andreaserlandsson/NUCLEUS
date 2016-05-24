@@ -1,12 +1,15 @@
 package com.nucleus.Views.libGDXGraphics.Screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
@@ -20,25 +23,27 @@ public class PauseDialog extends ScreenAdapter {
     private Viewport viewport;
     protected Skin skin;
     private ILevel level;
+    private Dialog dialog;
 
     private boolean goToMainMenu = false;
 
     public PauseDialog() {
     }
 
-    public PauseDialog(SpriteBatch batch, ILevel level){
+    public PauseDialog(SpriteBatch batch, ILevel level, EventListener listener){
         this.batch = batch;
         this.level = level;
         stage2 = new Stage();
 
-    }
-
-    @Override
-    public void show() {
-        goToMainMenu = false;
-        Gdx.input.setInputProcessor(stage2);
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
+        dialog = new Dialog("PAUSED", skin);
+        dialog.button("Continue Playing", "continue");
+        dialog.button("Main Menu", "menu");
+        dialog.setMovable(false);
+        dialog.addListener(listener);
+
+        /*
         new Dialog("PAUSED", skin) {
 
             {
@@ -53,7 +58,6 @@ public class PauseDialog extends ScreenAdapter {
                 if (object.toString().equals("continue")) {
                     System.out.println("continue");
                     dispose();
-                    level.resume();
                     System.out.println("continue");
 
                 } else if (object.equals("menu")) {
@@ -69,7 +73,16 @@ public class PauseDialog extends ScreenAdapter {
                 }
             }
 
-        }.show(stage2);
+        }.show(stage2);*/
+
+    }
+
+    @Override
+    public void show() {
+        goToMainMenu = false;
+        Gdx.input.setInputProcessor(stage2);
+        dialog.show(stage2);
+
     }
 
     @Override

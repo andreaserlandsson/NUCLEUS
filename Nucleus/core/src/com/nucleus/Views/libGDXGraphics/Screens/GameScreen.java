@@ -5,6 +5,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
@@ -12,7 +14,7 @@ import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 
-import com.nucleus.Views.NMusicPlayer;
+import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +32,17 @@ public class GameScreen extends Observable implements Screen {
     private WinLoseScreen loseScreen;
     private WinLoseScreen winScreen;
     private PauseDialog pauseDialog;
+    private EventListener listener;
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private OrthographicCamera cam;
     private static SpriteBatch batch;
     private boolean isPaused;
 
-    public GameScreen(int levelNumber, ILevel level){
+    public GameScreen(int levelNumber, ILevel level, EventListener listener){
 
         this.level = level;
+        this.listener = listener;
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
@@ -47,6 +51,9 @@ public class GameScreen extends Observable implements Screen {
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         views.add(new MoleculeViewable(levelNumber, level.getMolecule()));
+
+        pauseDialog = new PauseDialog(batch, level, listener);
+
 
         batch = new SpriteBatch();
         batch.setProjectionMatrix(cam.combined);
@@ -60,7 +67,7 @@ public class GameScreen extends Observable implements Screen {
         if (level.isGameLost()) {
             if (winLoseScreenShow == false) {
                 //winDialog.show();
-                this.loseScreen = new WinLoseScreen(false);
+                this.loseScreen = new WinLoseScreen(false, listener);
                 loseScreen.show();
                 winLoseScreenShow = true;
             }
@@ -71,7 +78,7 @@ public class GameScreen extends Observable implements Screen {
         } else if (level.isGameWon()) {
             if (winLoseScreenShow == false) {
                 //winDialog.show();
-                this.winScreen = new WinLoseScreen(true);
+                this.winScreen = new WinLoseScreen(true, listener);
                 winScreen.show();
                 winLoseScreenShow = true;
             }
@@ -122,7 +129,6 @@ public class GameScreen extends Observable implements Screen {
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
         level.pause();
-        pauseDialog = new PauseDialog(batch, level);
         pauseDialog.show();
     }
 

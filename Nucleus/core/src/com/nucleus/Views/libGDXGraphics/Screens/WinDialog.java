@@ -3,6 +3,7 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -17,17 +18,18 @@ import com.nucleus.Controller.GameController;
 public class WinDialog extends ScreenAdapter {
     protected Stage stage;
     protected Skin skin;
-    private ClickListener listener;
+    private EventListener listener;
 
 
-    public WinDialog(){
-        this.listener = new GameController();
+    public WinDialog(EventListener listener){
+        this.listener = listener;
     }
 
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage = new Stage());
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
+
 
         new Dialog("You won!", skin) {
 
