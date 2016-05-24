@@ -1,4 +1,4 @@
-package com.nucleus.ThirdParty.libGDXGraphics.Screens;
+package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -9,8 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.ThirdParty.libGDXGraphics.Viewables.BackgroundViewable;
-import com.nucleus.ThirdParty.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class OptionsScreen implements Screen {
     @Override
     public void show(){
         Gdx.app.log("OptionsScreen", "showing");
-        TextButton level1Button = new TextButton("Level 1", skin);
+        TextButton toggleSoundBtn = new TextButton("Toggle Sound", skin);
     }
 
     @Override
