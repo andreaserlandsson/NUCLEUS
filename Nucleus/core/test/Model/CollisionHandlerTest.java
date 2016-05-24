@@ -1,6 +1,7 @@
 package Model;
 
 import com.nucleus.Collisions.CollisionHandler;
+import com.nucleus.Collisions.ICollidable;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.Vector;
@@ -25,13 +26,13 @@ public class CollisionHandlerTest {
         Vector nucleonVel = new Vector(1,1);
         IGluonPoint gluon = new MockGluon(gluonPos,1,1);//should not collide, not even close
         INucleon nucleon = new MockNucleon(nucleonPos, nucleonVel);
-        assertFalse(CollisionHandler.collision(gluon,nucleon));
+        assertFalse(CollisionHandler.collision((ICollidable) gluon,(ICollidable) nucleon));
 
         IGluonPoint gluon2 = new MockGluon(gluonPos,1,1);//on the same position, should collide
         nucleonPos.setCoordinates(1,1);
         INucleon nucleon2 = new MockNucleon(nucleonPos,nucleonVel);
 
-        assertTrue(CollisionHandler.collision(gluon2,nucleon2));
+        assertTrue(CollisionHandler.collision((ICollidable) gluon2,(ICollidable) nucleon2));
         gluonPos.setCoordinates(3,3);
         IGluonPoint gluon3 = new MockGluon(gluonPos,1,1);
         //radius on MockGluon is 2
@@ -40,7 +41,7 @@ public class CollisionHandlerTest {
         //radius on Mocknucleon is 2
 
         //Distance between 3,3 and 6,6 is less than 4 --> collison
-        assertTrue(CollisionHandler.collision(gluon3,nucleon3)); //collision = true
+        assertTrue(CollisionHandler.collision((ICollidable) gluon3,(ICollidable) nucleon3)); //collision = true
     }
     
 }

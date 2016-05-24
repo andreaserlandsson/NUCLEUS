@@ -1,50 +1,96 @@
 package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Event;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.nucleus.Adapters.Controllers.GameControllerAdapter;
-import com.nucleus.Model.IGluonPoint;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.Vector;
+import com.nucleus.Model.Level;
+import com.nucleus.NucleusGame;
+import com.nucleus.Utils.LevelUtils.LevelBuilder;
 
-public class GameController implements ControllerState {
+/**
+ * Created by Quaxi on 10/05/16.
+ */
+public class GameController extends ClickListener {
 
-    ILevel level;
-    Vector lastTouch = new Vector(0,0);
-    float rotationMultiplier = 40; //A constant that is used to scale the rotation angle
+    private NucleusGame game;
+    private NInputHandler controller;
+    private Level level;
 
-    public GameController(ILevel level){
-        this.level = level;
+    public GameController() {
+        game = new NucleusGame();
+        controller = new NInputHandler();
     }
+
+    public void startLevelChooser() {
+        game.goToLevelChooser();
+    }
+
+    private void startLevel(int levelNum) {
+        this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        Gdx.input.setInputProcessor(controller);
+        Gdx.input.setInputProcessor(new NInputHandler((Level) level));
+        game.goToLevel(levelNum, (Level) level);
+
+    }
+
 
     public void touch(int screenX, int screenY, int pointer, int button){
-        return;
+        if ((screenX > level.getWidth() - 20) && screenY < 20) { // if you touch the upper right corner you pause the game
+            level.pause();
+        }
     }
 
-    public void drag(int screenX, int screenY, int pointer){
-        Vector newTouch = new Vector(screenX, screenY);
-        Vector delta = newTouch.subtract(this.lastTouch);
-        float rotationAngle = findRotationAngle(delta);
-        this.lastTouch = newTouch;
-        level.getMolecule().setRotation(rotationAngle);
-        return;
+    public void exit() {
+        game.exit();
     }
 
-    public float findRotationAngle(Vector delta){
-        Vector r = lastTouch.subtract(new Vector(level.getWidth()/2.0f, level.getHeight()/2.0f));
-        Vector rOrthogonal = new Vector(r.getY(), -r.getX());
-        Vector rOrthoUnit = rOrthogonal.multiply((1/rOrthogonal.abs()));
-        float effectiveRotationLength = delta.scalar(rOrthoUnit);
-        Vector rotationVector = rOrthoUnit.multiply(effectiveRotationLength);
-        float rotationAngle = (float) Math.atan(rotationVector.abs()/r.abs());
-        if (effectiveRotationLength>0)
-            rotationAngle = -rotationAngle;
-        return rotationMultiplier * rotationAngle;
+    public void goToStartScreen(){
+        game.goToStartScreen();
     }
 
+    public void setInput(){
 
+    }
+
+    /**
+     * Listens for inputs from buttons
+     * @param event the evet that happend
+     * @param x coordinate for the touch
+     * @param y coordinate for the touch
+     */
+    public void clicked(InputEvent event, float x, float y) {
+
+        String label = event.getTarget().toString();
+
+        if (label.equals("Label: Play")) {
+            startLevelChooser();
+        }
+
+        else if (label.equals("Label: Options")) {
+            System.out.println("HÄR SKA DET VARA OPTIONS!!");
+        }
+
+        else if (label.equals("Label: Exit")) {
+            exit();
+        }
+
+        else if (label.equals("Label: Level 1")) {
+            startLevel(1);
+        }
+
+        else if (label.equals("Label: Level 2")) {
+            startLevel(2);
+        }
+
+        else if (label.equals("Label: Play Again")) {
+            game.goToStartScreen();
+        }
+
+        else if (label.equals("Label: Main Menu")) {
+            game.goToStartScreen();
+        }
+
+    }
 }

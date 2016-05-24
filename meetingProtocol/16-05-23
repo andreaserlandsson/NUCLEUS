@@ -1,0 +1,40 @@
+MeetingAgenda
+
+  Date:160523 
+
+  Facilitator:Andréas ErlandssonI
+
+  Participants: Herman Carlström, Hannes Lagerroth, Miranda Bånnsgård, Andreas Erlandsson, Erik Jansson
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+	- graphic assets how to fix
+	- levelTest has some issues
+	- pause function should be refactored
+  	- State design patterns
+  	- Textures must be optimized for load times (AssetManager)
+
+2. Reports (15 min) from previous meeting
+
+	- Pause is up and running. 
+	- GameController does not contain logic
+	- asset manager for  music is done
+  	- collisionHandler has been refactored
+
+3. Discussion items (35 min) 
+
+	- how to implement asset manager for graphics 
+
+4. Outcomes and assignments (5 min) 
+
+	- Andreas: Finish alöl the tests
+  	- Herman: AsserManager for graphics
+  	- Erik: Options
+  	- Hannes: Fix States for Controllers.
+	
+	- Miranda and everyone else when they are done: finich RAD and SSD  
+
+5. Wrap up
+
+	- Next meeting: 16-05-26 kl.10:00 at Linsen
