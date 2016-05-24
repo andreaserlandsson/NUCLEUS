@@ -39,9 +39,6 @@ public class GameController {
     public void goToLevelChooser() {
         screen = new LevelChooseScreen(listener, 3);
         goToScreen(screen);
-
-        musicPlayer = NMusicPlayer.getInstance();
-        musicPlayer.switchSong(NAssetsData.MENUMUSIC);
     }
 
     public void startLevel(int levelNum) {
