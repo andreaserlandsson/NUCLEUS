@@ -4,15 +4,16 @@ import com.badlogic.gdx.audio.Music;
 
 public class NMusicPlayer {
     private static Music currentlyPlaying;
+    private static float masterVolume = 1;
 
     public void loadMusic(){
         Assets.loadMusicFiles();
     }
 
-    public void playMusic(String str, float volume) {
+    public void playMusic(String str) {
         Music music = Assets.getSong(str);
         if (music != null) {
-            music.setVolume(volume);
+            music.setVolume(masterVolume);
             music.play();
             music.setLooping(true);
             currentlyPlaying = music;
@@ -34,14 +35,14 @@ public class NMusicPlayer {
         }
     }
 
-    public void switchSong(String newSong, float volume) {
+    public void switchSong(String newSong) {
         Music music = Assets.getSong(newSong);
         if (music != null) {
             if (currentlyPlaying != null) {
                 currentlyPlaying.stop();
             }
             music.play();
-            music.setVolume(volume);
+            music.setVolume(masterVolume);
         }
     }
 
@@ -57,6 +58,10 @@ public class NMusicPlayer {
         if (music != null){
             music.pause();
         }
+    }
+
+    public void setMasterVolume(float volume) {
+        masterVolume = volume;
     }
 
 
