@@ -4,7 +4,7 @@ import com.nucleus.Model.Collisions.ICollidable;
 
 public class GluonPoint implements IGluonPoint, ICollidable {
 
-    private Vector position;
+    private com.nucleus.Utils.Vector position;
     private int currentProtons;
     private int currentNeutrons;
     private int maxProtons;
@@ -12,7 +12,7 @@ public class GluonPoint implements IGluonPoint, ICollidable {
 
     private final int RADIUS = 10; // dummy value will be calibrated later
 
-    public GluonPoint(Vector positions, int maxProtons, int maxNeutrons){
+    public GluonPoint(com.nucleus.Utils.Vector positions, int maxProtons, int maxNeutrons){
         this.position = positions;
         this.maxProtons = maxProtons;
         this.maxNeutrons = maxNeutrons;
@@ -24,7 +24,7 @@ public class GluonPoint implements IGluonPoint, ICollidable {
         return getProtonsNeeded() == 0 && getNeutronsNeeded() == 0;
     }
 
-    public Vector getPosition(){
+    public com.nucleus.Utils.Vector getPosition(){
         return position;
     }
 
@@ -36,7 +36,7 @@ public class GluonPoint implements IGluonPoint, ICollidable {
         return position.getY();
     }
 
-    public void setPosition(Vector vect){
+    public void setPosition(com.nucleus.Utils.Vector vect){
         position.setCoordinates(vect.getX(), vect.getY());
     }
 

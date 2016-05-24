@@ -9,7 +9,7 @@ public class Proton extends Nucleon {
         super();
     }
 
-    public Proton(Vector position, Vector vector){
+    public Proton(com.nucleus.Utils.Vector position, com.nucleus.Utils.Vector vector){
         super(position, vector);
     }
 }

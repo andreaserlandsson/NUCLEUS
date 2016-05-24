@@ -71,7 +71,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Options")) {
-            game.goToOptions();
+            game.goToOptions(this);
         }
 
         else if (label.equals("Label: Toggle Sound")){

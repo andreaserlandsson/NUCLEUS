@@ -30,12 +30,10 @@ public class OptionsScreen implements Screen {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private ClickListener listener;
     private List<IViewable> views = new ArrayList<IViewable>();
 
-    public OptionsScreen(){
+    public OptionsScreen(ClickListener listener){
         views.add(new BackgroundViewable());
-        listener = new GameController();
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
@@ -45,24 +43,6 @@ public class OptionsScreen implements Screen {
         camera.update();
         stage = new Stage(viewport, batch);
 
-    }
-
-    @Override
-    public void render(float delta){
-        Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        for(IViewable view : views){
-            view.render(batch);
-        }
-
-        stage.act();
-        stage.draw();
-    }
-
-    @Override
-    public void show(){
-        Gdx.app.log("OptionsScreen", "showing");
 
         Table mainTable = new Table();
         mainTable.setFillParent(true);
@@ -83,6 +63,26 @@ public class OptionsScreen implements Screen {
         stage.addActor(mainTable);
 
         Gdx.input.setInputProcessor(stage);
+
+    }
+
+
+    @Override
+    public void render(float delta){
+        Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        for(IViewable view : views){
+            view.render(batch);
+        }
+
+        stage.act();
+        stage.draw();
+    }
+
+    @Override
+    public void show(){
+        Gdx.app.log("OptionsScreen", "showing");
     }
 
     @Override

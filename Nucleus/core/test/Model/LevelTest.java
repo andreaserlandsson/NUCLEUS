@@ -1,21 +1,7 @@
 package Model;
 
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.INucleon;
-import com.nucleus.Model.INucleonGun;
-import com.nucleus.Model.Level;
-import com.nucleus.Model.Molecule;
-import com.nucleus.Model.NucleonGun;
-import com.nucleus.Model.Vector;
-
 import org.junit.Ignore;
 import org.junit.Test;
-
-import java.util.ArrayList;
-
-import mocks.MockGluon;
-import mocks.MockNucleon;
-import mocks.MockNucleonGun;
 
 
 import static junit.framework.TestCase.assertFalse;

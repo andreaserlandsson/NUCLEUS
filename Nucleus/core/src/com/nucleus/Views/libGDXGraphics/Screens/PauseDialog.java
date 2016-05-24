@@ -30,6 +30,7 @@ public class PauseDialog extends ScreenAdapter {
         this.batch = batch;
         this.level = level;
         stage2 = new Stage();
+
     }
 
     @Override
@@ -39,6 +40,7 @@ public class PauseDialog extends ScreenAdapter {
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
         new Dialog("PAUSED", skin) {
+
             {
                 button("Continue Playing", "continue");
                 button("Main Menu", "menu");

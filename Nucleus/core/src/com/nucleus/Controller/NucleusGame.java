@@ -42,8 +42,8 @@ public class NucleusGame extends Game {
 
     }
 
-    public void goToOptions(){
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new OptionsScreen());
+    public void goToOptions(ClickListener listener){
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new OptionsScreen(listener));
     }
 
     public void showPauseDialog(SpriteBatch batch){

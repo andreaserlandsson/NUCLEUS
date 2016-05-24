@@ -1,7 +1,7 @@
 package com.nucleus.Controller;
 
 import com.nucleus.Model.Level;
-import com.nucleus.Model.Vector;
+import com.nucleus.Utils.Vector;
 
 public class PlayController implements ControllerState {
 

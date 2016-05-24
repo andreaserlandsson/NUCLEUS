@@ -58,11 +58,6 @@ public class StartScreen implements Screen {
         //temporary to see that loading texture works
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
-        // Adding Listener
-        this.listener = new GameController();
-
-
-        this.buttons = buttons;
 
         //Initialising graphics
         views.add(new BackgroundViewable());

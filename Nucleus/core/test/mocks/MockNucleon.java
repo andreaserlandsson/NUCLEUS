@@ -1,7 +1,7 @@
 package mocks;
 
 import com.nucleus.Model.INucleon;
-import com.nucleus.Model.Vector;
+import com.nucleus.Utils.Vector;
 
 
 public class MockNucleon implements INucleon {

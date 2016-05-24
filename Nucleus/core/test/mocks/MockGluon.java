@@ -1,7 +1,7 @@
 package mocks;
 
 import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.Vector;
+import com.nucleus.Utils.Vector;
 
 /**
  * Created by erik on 22/04/16.

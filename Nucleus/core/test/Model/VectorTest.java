@@ -1,7 +1,7 @@
 package Model;
 
 import org.junit.Test;
-import com.nucleus.Model.Vector;
+import com.nucleus.Utils.Vector;
 import static org.junit.Assert.*;
 /**
  * Created by mirandabannsgard on 16-05-05.
