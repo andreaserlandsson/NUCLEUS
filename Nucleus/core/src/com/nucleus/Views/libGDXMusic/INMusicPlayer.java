@@ -12,4 +12,5 @@ public interface INMusicPlayer {
     void pauseMusic(String song);
     void resumeMusic(String song);
     void setMasterVolume(float volume);
+    float getMasterVolume();
 }

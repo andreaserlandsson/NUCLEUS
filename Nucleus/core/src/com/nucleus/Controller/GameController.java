@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Utils.IProgressTracker;
 import com.nucleus.Utils.ProgressTracker;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.Views.libGDXMusic.INMusicPlayer;
+import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
 /**
  * Created by Quaxi on 10/05/16.
@@ -16,12 +18,14 @@ public class GameController extends ClickListener {
     private NucleusGame game;
     private NInputHandler controller;
     private IProgressTracker progressTracker;
+    private INMusicPlayer musicPlayer;
     private GameScreen screen;
 
     public GameController() {
         game = new NucleusGame();
         controller = new NInputHandler(screen);
         progressTracker = new ProgressTracker();
+        musicPlayer = NMusicPlayer.getInstance();
     }
 
     public void goToLevelChooser() {
@@ -72,7 +76,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Toggle Sound")){
-            Gdx.app.log(event.getTarget().toString(), "HEH");
+            musicPlayer.setMasterVolume(1-musicPlayer.getMasterVolume());
         }
 
         else if (label.equals("Label: Exit")) {
@@ -98,7 +102,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Continue Playing")) {
-            Gdx.app.log("GameController Continue", "Recieved Input");
+            Gdx.app.log("GameController Continue", "Received Input");
             resumeLevel();
         }
 
