@@ -2,10 +2,21 @@ package com.nucleus.Views;
 
 import com.badlogic.gdx.audio.Music;
 
-public class NMusicPlayer {
+public class NMusicPlayer implements INMusicPlayer {
     private static Music currentlyPlaying;
     private static float masterVolume = 1;
+    private static INMusicPlayer instance;
 
+    private NMusicPlayer(){
+        // private constructor to fulfill singleton requirements.
+    }
+
+    public static INMusicPlayer getInstance() {
+        if (instance == null) {
+            instance = new NMusicPlayer();
+        }
+        return instance;
+    }
     public void loadMusic(){
         Assets.loadMusicFiles();
     }
@@ -63,8 +74,4 @@ public class NMusicPlayer {
     public void setMasterVolume(float volume) {
         masterVolume = volume;
     }
-
-
-
-
 }

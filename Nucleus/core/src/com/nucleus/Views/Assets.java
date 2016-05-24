@@ -2,10 +2,10 @@ package com.nucleus.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.SkinLoader;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Json;
 
@@ -15,11 +15,9 @@ import java.util.Map;
 public class Assets {
     private static AssetManager audioAssets = new AssetManager();
     private static AssetManager textureAssets = new AssetManager();
-    private static AssetManager skinAssets = new AssetManager();
 
     private static Map<String, String> audio = new HashMap<String, String>();
     private static Map<String, String> texture = new HashMap<String, String>();
-    private static Map<String, String> skins = new HashMap<String, String>();
 
 
     public static void loadMusicFiles() {
@@ -27,12 +25,9 @@ public class Assets {
         musicPath = Gdx.files.internal("music/");
         for (FileHandle entry : musicPath.list()) {
             audio.put(entry.name(), entry.path());
-            //System.out.println("path == " +entry.path() + "\n" + " name = " + entry.name());
         }
         loadMusic();
         finishLoading(audioAssets);
-
-        //System.out.println(audioAssets.getLoadedAssets());
     }
 
     public static void loadTextureFiles() {
@@ -44,29 +39,12 @@ public class Assets {
         }
         loadTexture();
         finishLoading(textureAssets);
-        //System.out.println(textureAssets.getLoadedAssets());
     }
-
-    public static void loadSkinFiles() {
-        FileHandle skinPath;
-        skinPath = Gdx.files.internal("menu/skins/");
-
-        for (FileHandle entry : skinPath.list()) {
-            skins.put(entry.name(),entry.path());
-        }
-        loadSkins();
-        finishLoading(skinAssets);
-        System.out.println(skinAssets.getLoadedAssets());
-    }
-
 
     public static void loadMusic () {
         if (audio != null) {
             for (Map.Entry entry : audio.entrySet()) {
                 audioAssets.load((String) entry.getValue(), Music.class);
-               // System.out.println("key ====== " +entry.getKey());
-               // System.out.println("namn på låt == " + entry.getValue());
-
             }
         }
     }
@@ -75,14 +53,6 @@ public class Assets {
         if (texture != null) {
             for (Map.Entry entry : texture.entrySet()) {
                 textureAssets.load((String) entry.getValue(), Texture.class);
-            }
-        }
-    }
-
-    public static void loadSkins() {
-        if (skins != null) {
-            for (Map.Entry entry : skins.entrySet()) {
-                skinAssets.load((String) entry.getValue(), Texture.class);
             }
         }
     }
@@ -105,16 +75,6 @@ public class Assets {
             return pic;
         }
         return pic;
-    }
-
-    public static Texture getSkin(String s) {
-        Texture skinFile = null;
-        String skinPath = skins.get(s);
-        if (skinPath != null) {
-            skinFile = skinAssets.get(skinPath, Texture.class);
-            return skinFile;
-        }
-    return skinFile;
     }
 
     public static void finishLoading(AssetManager assetManager){

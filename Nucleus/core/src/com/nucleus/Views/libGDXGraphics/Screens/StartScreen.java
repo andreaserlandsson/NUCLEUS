@@ -17,6 +17,7 @@ import com.nucleus.Model.ILevel;
 import com.nucleus.Model.NAssetsData;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Views.Assets;
+import com.nucleus.Views.INMusicPlayer;
 import com.nucleus.Views.NMusicPlayer;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
@@ -43,16 +44,15 @@ public class StartScreen implements Screen {
     private ILevel level;
     private List<IViewable> views = new ArrayList<IViewable>();
     private Assets assets;
-    private NMusicPlayer musicPlayer;
+    private INMusicPlayer musicPlayer;
 
     public StartScreen() {
 
         // Creating level
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        musicPlayer = new NMusicPlayer();
+        musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.loadMusic();
         Assets.loadTextureFiles();
-        Assets.loadSkinFiles();
 
         musicPlayer.playMusic(NAssetsData.MENUMUSIC);
         //musicPlayer.playSound("music/tempButton.mp3");
@@ -70,7 +70,7 @@ public class StartScreen implements Screen {
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         batch = new SpriteBatch();
-        skin = (Skin)Assets.getSkin(NAssetsData.NSKIN);//new Skin(Gdx.files.internal("menu/uiskin.json"));
+        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
         viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
         viewport.apply();
