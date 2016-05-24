@@ -1,10 +1,17 @@
 package com.nucleus.Controller;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.Model.Level;
 import com.nucleus.Model.NAssetsData;
+import com.nucleus.Utils.LevelUtils.LevelBuilder;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
+import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
+import com.nucleus.Views.libGDXGraphics.Screens.OptionsScreen;
+import com.nucleus.Views.libGDXGraphics.Screens.StartScreen;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
@@ -16,25 +23,32 @@ public class GameController extends ClickListener {
     private NucleusGame game;
     private NInputHandler controller;
     private INMusicPlayer musicPlayer;
-    private GameScreen screen;
+    private Screen screen;
+    private Level level;
+    private int levelNum;
 
     public GameController() {
         game = new NucleusGame();
-        controller = new NInputHandler(screen);
+        controller = new NInputHandler((GameScreen) screen);
         musicPlayer = NMusicPlayer.getInstance();
     }
 
     public void goToLevelChooser() {
-        game.goToLevelChooser(this);
+        screen = new LevelChooseScreen(this, 3);
+        goToScreen(screen);
+
         musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.switchSong(NAssetsData.MENUMUSIC);
     }
 
     private void startLevel(int levelNum) {
-        screen = new GameScreen(levelNum, this);
+
+        this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        this.levelNum = levelNum;
+        screen = new GameScreen(level, this);
         Gdx.input.setInputProcessor(controller);
-        Gdx.input.setInputProcessor(new NInputHandler(screen));
-        game.goToScreen(screen);
+        Gdx.input.setInputProcessor(new NInputHandler((GameScreen) screen));
+        goToScreen(screen);
 
         //starting level music
         musicPlayer = NMusicPlayer.getInstance();
@@ -43,18 +57,33 @@ public class GameController extends ClickListener {
     }
 
     private void resumeLevel(){
-        Gdx.input.setInputProcessor(new NInputHandler(screen));
-        screen.getLevel().resume();
+        Gdx.input.setInputProcessor(new NInputHandler((GameScreen) screen));
+        level.resume();
+
     }
 
     public void goToStartScreen(){
-        game.goToStartScreen(this);
+
+        screen = new StartScreen(this);
         musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.switchSong(NAssetsData.MENUMUSIC);
+        goToScreen(screen);
+
     }
 
-    public void setInput(){
+    private void goToOptions() {
+        screen = new OptionsScreen(this);
+        goToScreen(screen);
+    }
 
+    private void goToScreen(Screen screen){
+        Gdx.app.log("goToScreen", "accessed");
+        ((Game)Gdx.app.getApplicationListener()).setScreen(screen);
+    }
+
+
+    private void restartLevel() {
+        startLevel(levelNum);
     }
 
     public void exit() {
@@ -76,7 +105,7 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Options")) {
-            game.goToOptions(this);
+            goToOptions();
         }
 
         else if (label.equals("Label: Toggle Sound")){
@@ -88,24 +117,21 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Level 1")) {
-            if(com.nucleus.Progress.ProgressTracker.checkLevelPermission(1))
+            if(ProgressTracker.checkLevelPermission(1))
                 startLevel(1);
         }
 
         else if (label.equals("Label: Level 2")) {
-            if(com.nucleus.Progress.ProgressTracker.checkLevelPermission(2))
+            if(ProgressTracker.checkLevelPermission(2))
                 startLevel(2);
         }
 
         else if (label.equals("Label: Play Again")) {
-            System.out.println(screen);
-            System.out.println(screen.getLevel());
-            System.out.println(screen.getLevel().getLevelNumber());
-            startLevel(screen.getLevel().getLevelNumber());
+            restartLevel();
         }
 
         else if (label.equals("Label: Restart Level")) {
-            startLevel(screen.getLevel().getLevelNumber());
+            resumeLevel();
         }
 
         else if (label.equals("Label: Continue")) {
@@ -117,7 +143,7 @@ public class GameController extends ClickListener {
         }
 
 
-        musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND    );
+        musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND);
 
     }
 }

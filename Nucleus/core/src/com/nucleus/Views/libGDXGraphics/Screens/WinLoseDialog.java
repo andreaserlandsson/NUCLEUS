@@ -22,12 +22,14 @@ public class WinLoseDialog extends ScreenAdapter {
 
     private boolean goToMainMenu = false;
 
+    public WinLoseDialog(EventListener listener) {
+        this.listener = listener;
+    }
+
     @Override
     public void show() {
 
         stage = new Stage();
-        listener =  new GameController();
-
         goToMainMenu = false;
         Gdx.input.setInputProcessor(stage);
 

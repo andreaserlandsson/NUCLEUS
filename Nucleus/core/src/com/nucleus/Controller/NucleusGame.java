@@ -20,34 +20,13 @@ public class NucleusGame extends Game {
         Gdx.app.log("NucleusGame", "created");
         Gdx.app.log("Height", Integer.toString(Gdx.graphics.getHeight()));
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
-        ClickListener listener = new GameController();
-        goToStartScreen(listener);
+        GameController controller = new GameController();
+        controller.goToStartScreen();
 
         INMusicPlayer musicPlayer;
         musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.loadMusic();
         musicPlayer.playMusic(NAssetsData.MENUMUSIC);
-    }
-
-    public void goToStartScreen(ClickListener listener){
-        screen = new StartScreen(listener);
-        Gdx.app.log("levelButton", "received");
-        goToScreen(screen);
-    }
-
-    public void goToLevelChooser(ClickListener listener){
-        screen = new LevelChooseScreen(listener, 3);
-        goToScreen(screen);
-    }
-
-    public void goToOptions(ClickListener listener){
-        screen = new OptionsScreen(listener);
-        goToScreen(screen);
-    }
-
-    public void goToScreen(Screen screen){
-        Gdx.app.log("goToScreen", "accessed");
-        ((Game)Gdx.app.getApplicationListener()).setScreen(screen);
     }
 
     public void exit(){
