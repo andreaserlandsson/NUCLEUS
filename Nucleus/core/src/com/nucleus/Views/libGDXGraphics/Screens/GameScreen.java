@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.nucleus.Controller.ProgressTracker;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
 import com.nucleus.Model.NAssetsData;
@@ -53,6 +54,7 @@ public class GameScreen implements Screen, PlayScreen, Observer {
         musicPlayer.switchSong(NAssetsData.getLevelSong(levelNumber));
 
         this.level = (Level) LevelBuilder.buildLevel(levelNumber, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        ProgressTracker progressTracker = new ProgressTracker((Observable)level);
         this.listener = listener;
         this.cam = new OrthographicCamera(1080, 1920);
         cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());

@@ -16,14 +16,12 @@ public class GameController extends ClickListener {
 
     private NucleusGame game;
     private NInputHandler controller;
-    private IProgressTracker progressTracker;
     private INMusicPlayer musicPlayer;
     private GameScreen screen;
 
     public GameController() {
         game = new NucleusGame();
         controller = new NInputHandler(screen);
-        //progressTracker = new ProgressTracker();
         musicPlayer = NMusicPlayer.getInstance();
     }
 

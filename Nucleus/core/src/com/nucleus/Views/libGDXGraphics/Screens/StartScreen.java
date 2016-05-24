@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.NAssetsData;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
@@ -44,6 +43,7 @@ public class StartScreen implements Screen {
 
         // Creating level
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
         musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.loadMusic();
         Assets.loadTextureFiles();
