@@ -13,13 +13,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.Controller.MusicController;
+import com.nucleus.Controller.GameController;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.MusicPlayerData;
+import com.nucleus.Model.NAssetsData;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
-import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.Views.Assets;
+import com.nucleus.Views.NMusicPlayer;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
+
+
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,26 +34,35 @@ import java.util.List;
  * Created by Quaxi on 04/05/16.
  */
 public class StartScreen implements Screen {
-
     private SpriteBatch batch;
     protected Stage stage;
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
     private ILevel level;
-    private MusicController mc;
-    private static MusicPlayerData mpd;
     private List<IViewable> views = new ArrayList<IViewable>();
-
+    private Assets assets;
+    private NMusicPlayer musicPlayer;
 
     public StartScreen(ClickListener listener) {
 
         // Creating level
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        musicPlayer = new NMusicPlayer();
+        musicPlayer.loadMusic();
+        Assets.loadTextureFiles();
 
-        // Music
-        this.mpd = MusicPlayerData.getInstance();
-        this.mc = new MusicController();
+        musicPlayer.playMusic(NAssetsData.MENUMUSIC);
+        //musicPlayer.playSound("music/tempButton.mp3");
+
+        //temporary to see that loading texture works
+        views.add(new BackgroundViewable());
+        views.add(new NucleonViewable(level.getAirborneNucleons()));
+        // Adding Listener
+        this.listener = new GameController();
+
+
+        this.buttons = buttons;
 
         //Initialising graphics
         views.add(new BackgroundViewable());

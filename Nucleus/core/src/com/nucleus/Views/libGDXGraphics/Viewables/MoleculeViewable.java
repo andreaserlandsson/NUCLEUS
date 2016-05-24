@@ -6,6 +6,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.IMolecule;
+import com.nucleus.Model.NAssetsData;
+import com.nucleus.Views.Assets;
+
+import javax.print.attribute.standard.MediaSize;
 
 /**
  * Created by erik on 28/04/16.
@@ -74,16 +78,16 @@ public class MoleculeViewable implements IViewable {
     }
 
     private void loadTextures(int levelNumber){
-        this.moleculeTexture = new Texture("levels/"+Integer.toString(levelNumber)+".png");
+        this.moleculeTexture = Assets.getTexture(NAssetsData.getLevel(levelNumber));
         moleculeTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
-        this.halfProton = new Texture("graphics/protonHalf.png");
+        this.halfProton = Assets.getTexture(NAssetsData.PROTONHALF);
         halfProton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfNeutron = new Texture("graphics/neutronHalf.png");
+        this.halfNeutron = Assets.getTexture(NAssetsData.NEUTRONHALF);
         halfNeutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfProtonComplete = new Texture("graphics/protonHalfComplete.png");
+        this.halfProtonComplete = Assets.getTexture(NAssetsData.PROTONHALFCOMPLETE);
         halfProtonComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.halfNeutronComplete = new Texture("graphics/neutronHalfComplete.png");
+        this.halfNeutronComplete = Assets.getTexture(NAssetsData.NEUTRONHALFCOMPLETE);
         halfNeutronComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 }

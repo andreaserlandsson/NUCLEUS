@@ -3,6 +3,8 @@ package com.nucleus.Views.libGDXGraphics.Viewables;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nucleus.Model.NAssetsData;
+import com.nucleus.Views.Assets;
 
 /**
  * Created by erik on 28/04/16.
@@ -11,7 +13,7 @@ public class BackgroundViewable implements IViewable {
     private Texture bg;
 
     public BackgroundViewable(){
-        this.bg = new Texture("graphics/bg.png");
+        this.bg = Assets.getTexture(NAssetsData.BACKGROUND);
     }
     @Override
     public void render(SpriteBatch batch){

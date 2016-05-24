@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.INucleonGun;
+import com.nucleus.Model.NAssetsData;
+import com.nucleus.Views.Assets;
 
 /**
  * Created by mirandabannsgard on 16-05-17.
@@ -17,8 +19,8 @@ public class CountdownViewable implements IViewable {
 
 
     public CountdownViewable(INucleonGun gun){
-        this.protonInGun = new Texture("graphics/proton.png");
-        this.neutronInGun = new Texture("graphics/neutron.png");
+        this.protonInGun = Assets.getTexture(NAssetsData.PROTON);//new Texture("graphics/proton.png");
+        this.neutronInGun = Assets.getTexture(NAssetsData.NEUTRON);//new Texture("graphics/neutron.png");
         protonInGun.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         neutronInGun.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
