@@ -190,7 +190,6 @@ public class Level extends Observable implements ILevel {
                 nucleon.update(delta);
             }
             removeOutOfBoundsNucleons();
-
         }
     }
 }
