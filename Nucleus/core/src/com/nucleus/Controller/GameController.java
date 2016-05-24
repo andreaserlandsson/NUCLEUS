@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.Model.ILevel;
 import com.nucleus.Model.NAssetsData;
 import com.nucleus.Utils.IProgressTracker;
 import com.nucleus.Utils.ProgressTracker;
@@ -18,6 +19,7 @@ public class GameController extends ClickListener {
 
     private NucleusGame game;
     private NInputHandler controller;
+    private static ILevel level;
     private IProgressTracker progressTracker;
     private INMusicPlayer musicPlayer;
     private GameScreen screen;
@@ -38,6 +40,10 @@ public class GameController extends ClickListener {
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new NInputHandler(screen));
         game.goToScreen(screen);
+        level = screen.getLevel();
+    }
+
+    public void touch(int screenX, int screenY, int pointer, int button){
 
     }
 
@@ -95,17 +101,21 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Play Again")) {
-            goToLevelChooser();
+            startLevel(level.getLevelNumber());
+        }
+
+        else if (label.equals("Label: Restart Level")) {
+            startLevel(level.getLevelNumber());
+        }
+
+        else if (label.equals("Label: Continue")) {
+            level.resume();
         }
 
         else if (label.equals("Label: Main Menu")) {
             goToStartScreen(this);
         }
 
-        else if (label.equals("Label: Continue Playing")) {
-            Gdx.app.log("GameController Continue", "Received Input");
-            resumeLevel();
-        }
 
         musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND    );
         

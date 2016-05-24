@@ -60,8 +60,8 @@ public class LevelChooseScreen implements Screen {
         //Create Table
         Table mainTable = new Table();
         mainTable.setFillParent(true);
-        mainTable.top();
-        mainTable.padBottom(15f).padTop(30f);
+        mainTable.center();
+        mainTable.padBottom(150f);
 
         //Create buttons
         buttons = new Button[numOfButtons];
