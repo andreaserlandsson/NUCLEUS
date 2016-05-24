@@ -1,4 +1,4 @@
-package com.nucleus;
+package com.nucleus.Controller;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -20,7 +20,7 @@ public class GameCreator {
         config.width = 280;
         config.height = 512;
         config.samples = 4;
-        new LwjglApplication(new com.nucleus.NucleusGame(), config);
+        new LwjglApplication(new NucleusGame(), config);
     }
 
     private void setScreen(String screen){

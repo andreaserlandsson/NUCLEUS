@@ -1,7 +1,7 @@
 package com.nucleus.desktop;
 
 
-import com.nucleus.GameCreator;
+import com.nucleus.Controller.GameCreator;
 
 public class DesktopLauncher {
 

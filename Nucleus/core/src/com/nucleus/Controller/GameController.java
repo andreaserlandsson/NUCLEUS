@@ -3,9 +3,7 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
-import com.nucleus.NucleusGame;
 import com.nucleus.Utils.LevelUtils.LevelBuilder;
 
 /**
@@ -23,7 +21,7 @@ public class GameController extends ClickListener {
     }
 
     public void startLevelChooser() {
-        game.goToLevelChooser();
+        game.goToLevelChooser(this);
     }
 
     private void startLevel(int levelNum) {
@@ -47,7 +45,7 @@ public class GameController extends ClickListener {
     }
 
     public void goToStartScreen(){
-        game.goToStartScreen();
+        game.goToStartScreen(this);
     }
 
     public void setInput(){
@@ -85,11 +83,11 @@ public class GameController extends ClickListener {
         }
 
         else if (label.equals("Label: Play Again")) {
-            game.goToStartScreen();
+            game.goToStartScreen(this);
         }
 
         else if (label.equals("Label: Main Menu")) {
-            game.goToStartScreen();
+            game.goToStartScreen(this);
         }
 
     }

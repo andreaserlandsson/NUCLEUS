@@ -1,8 +1,9 @@
-package com.nucleus;
+package com.nucleus.Controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
@@ -13,18 +14,18 @@ import com.nucleus.Views.libGDXGraphics.Screens.StartScreen;
 public class NucleusGame extends Game {
 
 
-    @Override
     public void create(){
 
         Gdx.app.log("NucleusGame", "created");
         Gdx.app.log("Height", Integer.toString(Gdx.graphics.getHeight()));
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
-        goToStartScreen();
+        ClickListener listener = new GameController();
+        goToStartScreen(listener);
     }
 
-    public void goToStartScreen(){
+    public void goToStartScreen(ClickListener listener){
         Gdx.app.log("levelButton", "received");
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen());
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen(listener));
 
     }
 
@@ -35,8 +36,8 @@ public class NucleusGame extends Game {
 
     }
 
-    public void goToLevelChooser(){
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen());
+    public void goToLevelChooser(ClickListener listener){
+        ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen(listener));
 
     }
 

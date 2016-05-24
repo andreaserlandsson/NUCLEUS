@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Controller.GameController;
@@ -29,18 +30,15 @@ public class LevelChooseScreen implements Screen {
     private Viewport viewport;
     private OrthographicCamera camera;
     protected Skin skin;
-    private GameController listener;
     private List<IViewable> views = new ArrayList<IViewable>();
 
 
 
-    public LevelChooseScreen()
+    public LevelChooseScreen(ClickListener listener)
     {
 
         //Initialising graphics
-
         views.add(new BackgroundViewable());
-        listener = new GameController();
         batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
         camera = new OrthographicCamera();
@@ -50,32 +48,10 @@ public class LevelChooseScreen implements Screen {
         camera.update();
         stage = new Stage(viewport, batch);
 
+        //Input
         Gdx.input.setInputProcessor(stage);
-    }
 
-    @Override
-    public void render(float delta) {
-        Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        for(IViewable view : views){
-            view.render(batch);
-        }
-
-        stage.act();
-        stage.draw();
-    }
-
-    @Override
-    public void resize(int width, int height){
-        Gdx.app.log("GameScreen", "resizing");
-        viewport.update(width, height);
-        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
-        camera.update();
-    }
-
-    @Override
-    public void show(){
+        //Buttons and stuff
         Gdx.app.log("GameScreen", "showing");
 
         //Create Table
@@ -111,21 +87,49 @@ public class LevelChooseScreen implements Screen {
         //Add table to stage
         stage.addActor(mainTable);
 
+
+    }
+
+    @Override
+    public void render(float delta) {
+        Gdx.gl.glClearColor(.1f, .12f, .16f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        for(IViewable view : views){
+            view.render(batch);
+        }
+
+        stage.act();
+        stage.draw();
+    }
+
+    @Override
+    public void resize(int width, int height){
+        Gdx.app.log("LevelChooseScreen", "resizing");
+        viewport.update(width, height);
+        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+        camera.update();
+    }
+
+    @Override
+    public void show(){
+        Gdx.app.log("LevelChooseScreen", "Showing");
+
     }
 
     @Override
     public void hide(){
-        Gdx.app.log("GameScreen", "hide called");
+        Gdx.app.log("LevelChooseScreen", "hide called");
     }
 
     @Override
     public  void pause(){
-        Gdx.app.log("GameScreen", "pause called");
+        Gdx.app.log("LevelChooseScreen", "pause called");
     }
 
     @Override
     public void resume(){
-        Gdx.app.log("GameScreen", "resume called");
+        Gdx.app.log("LevelChooseScreen", "resume called");
     }
 
     @Override
