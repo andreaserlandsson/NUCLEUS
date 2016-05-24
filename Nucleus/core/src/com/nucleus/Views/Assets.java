@@ -1,21 +1,23 @@
 package com.nucleus.Views;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Assets {
-    public static AssetManager audioAssets = new AssetManager();
-    public static AssetManager textureAssets = new AssetManager();
+    private static AssetManager audioAssets = new AssetManager();
+    private static AssetManager textureAssets = new AssetManager();
+    private static AssetManager skinAssets = new AssetManager();
 
     private static Map<String, String> audio = new HashMap<String, String>();
     private static Map<String, String> texture = new HashMap<String, String>();
+    private static Map<String, String> skins = new HashMap<String, String>();
 
 
     public static void loadMusicFiles() {
@@ -24,10 +26,9 @@ public class Assets {
         for (FileHandle entry : musicPath.list()) {
             audio.put(entry.name(), entry.path());
             System.out.println("path == " +entry.path() + "\n" + " name = " + entry.name());
-
         }
         loadMusic();
-        finishLoading();
+        finishLoading(audioAssets);
 
         System.out.println(audioAssets.getLoadedAssets());
     }
@@ -37,18 +38,31 @@ public class Assets {
         texturePath = Gdx.files.internal("graphics/");
 
         for (FileHandle entry : texturePath.list()) {
-            texture.put(entry.path(), entry.name());
-            System.out.println("Path ====== "+entry.path());
-            System.out.println("namn ==== " +entry.name());
+            texture.put(entry.name(), entry.path());
         }
+        loadTexture();
+        finishLoading(textureAssets);
+        System.out.println(textureAssets.getLoadedAssets());
     }
+
+    /*public static void loadSkinFiles() {
+        FileHandle skinPath;
+        skinPath = Gdx.files.internal("menu/skins/");
+
+        for (FileHandle entry : skinPath.list()) {
+            skins.put(entry.name(),entry.path());
+        }
+        loadSkins();
+        finishLoading(skinAssets);
+    } */
+
 
     public static void loadMusic () {
         if (audio != null) {
             for (Map.Entry entry : audio.entrySet()) {
                 audioAssets.load((String) entry.getValue(), Music.class);
-                System.out.println("key ====== " +entry.getKey());
-                System.out.println("namn på låt == " + entry.getValue());
+               // System.out.println("key ====== " +entry.getKey());
+               // System.out.println("namn på låt == " + entry.getValue());
 
             }
         }
@@ -57,77 +71,53 @@ public class Assets {
     public static void loadTexture() {
         if (texture != null) {
             for (Map.Entry entry : texture.entrySet()) {
-                textureAssets.load((String) entry.getValue(), Skin.class);
-                //audioAssets.finishLoading();
-
-                //System.out.println("key ====== " +entry.getKey());
-                //System.out.println("namn på grafisk skit == " + entry.getValue());
+                textureAssets.load((String) entry.getValue(), Texture.class);
+                System.out.println("key ====== " +entry.getKey());
+                System.out.println("namn på grafisk skit == " + entry.getValue());
             }
         }
     }
-
-    //obsolete?? ? ? ? ? ? ? ? ? ?
-    public static void getMusic (String str) {
-        if (audio != null) {
-            for (Map.Entry entry : audio.entrySet()) {
-                if (entry.getKey().equals(str)) {
-                    audioAssets.load((String) entry.getValue(), Music.class);
-                }
+    /*
+    public static void loadSkins() {
+        if (skins != null) {
+            for (Map.Entry entry : skins.entrySet()) {
+                skinAssets.load((String) entry.getValue(), Skin.class);
             }
         }
-    }
+    } */
 
-    public static Music playMusic(String song) {
-        String songFile = audio.get(song);
-        System.out.println(songFile + " " + song);
-        if (songFile != null) {
-            Music music = audioAssets.get(songFile,Music.class);
-            if (music != null) {
-                return music;
-            }
-        }
-        return null;
-    }
-
-    public static Music stopMusic(String song) {
+    public static Music getSong(String song) {
+        Music music = null;
         String songFile = audio.get(song);
         if (songFile != null) {
-            Music music = audioAssets.get(songFile,Music.class);
+            music = audioAssets.get(songFile, Music.class);
             return music;
         }
-    return null;
+        return music;
     }
 
-    public static Music playSound(String sound) {
-        String soundFile = audio.get(sound);
-        if (soundFile != null) {
-            Music soundEffect = audioAssets.get(soundFile,Music.class);
-            return soundEffect;
+    public static Texture getTexture(String picture) {
+        Texture pic = null;
+        String textPath = texture.get(picture);
+        if (textPath != null) {
+            pic = textureAssets.get(textPath, Texture.class);
+            return pic;
         }
-        return null;
+        return pic;
     }
 
-    public static Music pauseMusic(String song) {
-        String songFile = audio.get(song);
-        if(songFile != null){
-            Music music = audioAssets.get(songFile,Music.class);
-            return music;
+    public static Skin getSkin(String s) {
+        Skin skinFile = null;
+        String skinPath = skins.get(s);
+        if (skinPath != null) {
+            skinFile = skinAssets.get(skinPath, Skin.class);
+            return skinFile;
         }
-        return null;
+    return skinFile;
     }
 
-    public static Music resumeMusic (String song) {
-        String songFile = audio.get(song);
-        if (songFile != null) {
-            Music music = audioAssets.get(songFile, Music.class);
-            return music;
-        }
-        return null;
-    }
-
-
-    public static void finishLoading(){
-        while(!(audioAssets.update()));
+    public static void finishLoading(AssetManager assetManager){
+        while(!(assetManager.update()));
     }
 
 }
