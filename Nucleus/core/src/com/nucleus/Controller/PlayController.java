@@ -1,15 +1,16 @@
 package com.nucleus.Controller;
 
+import com.badlogic.gdx.Screen;
 import com.nucleus.Model.Level;
 import com.nucleus.Utils.Vector;
+import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
 
 public class PlayController implements ControllerState {
 
-    Level level;
-    Vector lastTouch = new Vector(0,0);
+    private PlayScreen screen;
 
-    public PlayController(Level level) {
-        this.level = level;
+    public PlayController(PlayScreen screen) {
+        this.screen = screen;
     }
 
     public void touch(int screenX, int screenY, int pointer, int button){
@@ -23,10 +24,7 @@ public class PlayController implements ControllerState {
     }
 
     public void drag(int screenX, int screenY, int pointer){
-        Vector newTouch = new Vector(screenX, screenY);
-        Vector delta = newTouch.subtract(this.lastTouch);
-        level.getMolecule().setRotation(lastTouch, newTouch);
-        this.lastTouch = newTouch;
+        screen.drag(screenX, screenY, pointer);
         return;
     }
 }

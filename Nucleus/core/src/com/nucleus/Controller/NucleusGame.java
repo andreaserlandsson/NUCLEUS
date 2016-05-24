@@ -2,14 +2,10 @@ package com.nucleus.Controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.Model.Level;
-import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.OptionsScreen;
-import com.nucleus.Views.libGDXGraphics.Screens.PauseDialog;
 import com.nucleus.Views.libGDXGraphics.Screens.StartScreen;
 
 
@@ -26,33 +22,24 @@ public class NucleusGame extends Game {
     }
 
     public void goToStartScreen(ClickListener listener){
+        screen = new StartScreen(listener);
         Gdx.app.log("levelButton", "received");
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new StartScreen(listener));
-
-    }
-
-    public void goToLevel(int levelNum, Level level, EventListener listener){
-
-        Gdx.app.log("levelButton", "received");
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(levelNum, level, listener));
-
+        goToScreen(screen);
     }
 
     public void goToLevelChooser(ClickListener listener){
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelChooseScreen(listener));
-
+        screen = new LevelChooseScreen(listener);
+        goToScreen(screen);
     }
 
     public void goToOptions(ClickListener listener){
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new OptionsScreen(listener));
+        screen = new OptionsScreen(listener);
+        goToScreen(screen);
     }
 
-    public void showPauseDialog(SpriteBatch batch){
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new PauseDialog());
-    }
-
-    private void options(){
-
+    public void goToScreen(Screen screen){
+        Gdx.app.log("goToScreen", "accessed");
+        ((Game)Gdx.app.getApplicationListener()).setScreen(screen);
     }
 
     public void exit(){
