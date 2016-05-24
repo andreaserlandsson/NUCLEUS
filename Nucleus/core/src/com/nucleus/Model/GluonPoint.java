@@ -1,6 +1,6 @@
 package com.nucleus.Model;
 
-import com.nucleus.Collisions.ICollidable;
+import com.nucleus.Model.Collisions.ICollidable;
 
 public class GluonPoint implements IGluonPoint, ICollidable {
 

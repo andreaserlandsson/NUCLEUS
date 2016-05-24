@@ -1,8 +1,8 @@
 package com.nucleus.Controller;
 
 import com.nucleus.Model.MusicPlayerData;
-import com.nucleus.ThirdParty.libGDXSounds.INMusicPlayerAdapter;
-import com.nucleus.ThirdParty.libGDXSounds.NMusicPlayerAdapter;
+import com.nucleus.Views.libGDXSounds.INMusicPlayerAdapter;
+import com.nucleus.Views.libGDXSounds.NMusicPlayerAdapter;
 
 
 public class MusicController {

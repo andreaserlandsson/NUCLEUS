@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.List;
 
-public interface ILevel {
+public interface ILevel  {
 
     boolean isGameLost();
     boolean isGameWon();
