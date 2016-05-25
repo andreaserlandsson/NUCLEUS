@@ -52,7 +52,7 @@ public class ButtonListener extends ClickListener {
         }
 
         else if (label.equals("Label: OK")){
-            controller.closeSelectionErrorDialog();
+            controller.goToLevelChooser();
         }
 
         else if (label.equals("Label: Play Again")) {

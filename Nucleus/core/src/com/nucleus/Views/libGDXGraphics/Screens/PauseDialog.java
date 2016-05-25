@@ -21,8 +21,6 @@ public class PauseDialog extends ScreenAdapter {
     private ILevel level;
     private EventListener listener;
 
-    private boolean goToMainMenu = false;
-
     public PauseDialog(SpriteBatch batch, ILevel level, EventListener listener){
 
         this.listener = listener;
@@ -35,7 +33,6 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void show() {
-        goToMainMenu = false;
         Gdx.input.setInputProcessor(stage);
 
         //Create Table
@@ -67,7 +64,6 @@ public class PauseDialog extends ScreenAdapter {
         mainTable.add(level2Button).width(100).pad(10);
         mainTable.row();
         mainTable.add(level3Button).width(100).pad(10);
-
 
         //Add table to stage
         stage.addActor(mainTable);
