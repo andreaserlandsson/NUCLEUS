@@ -4,21 +4,21 @@ import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.Molecule;
 import com.nucleus.Utils.Vector;
+import mocks.MockGluon;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import mocks.MockGluon;
 
-import static org.junit.Assert.assertTrue;
 
 public class GluonPointRotationTest {
 
     Vector v = new Vector(1,1);
-    MockGluon g1 = new MockGluon(v,1,1);
-    IGluonPoint[] gluonPoints = {g1};
+    IGluonPoint gluonPoint = new MockGluon(v,1,1);
+    IGluonPoint[] gluonPoints = new IGluonPoint[]{gluonPoint};
 
     //a molecule consisting of one gluonpoint
-    IMolecule m = new Molecule(0,0,gluonPoints);
+    IMolecule molecule = new Molecule(0,0,gluonPoints);
 
     Vector centre = new Vector(0,0);
     Vector gluonPos = new Vector(0,0);
@@ -27,13 +27,13 @@ public class GluonPointRotationTest {
     //Test for rotation 90 degrees right, and that the method correctly returns the new values.
     @Test
     public void rotate90DegreesRight(){
-        gluonPoints[0].getPosition().setCoordinates(1,1);
-        double angle = -90.0;
+        gluonPos.setCoordinates(1,0);
+        double rotation = -90.0;
         //gluon rotates around (0,0), from pos (1,0) down to (0,-1)
-        m.rotateGluon(gluonPoints[0], centre, gluonPoints[0].getPosition(), angle);
-
-        assertTrue(gluonPoints[0].getPosition().getX() == 1);
-        assertTrue(gluonPoints[0].getPosition().getY() == -1);
+        molecule.rotateGluon(gluonPoint, centre, gluonPos, rotation);
+        Vector result = new Vector(0,1);
+        assertTrue(gluonPoint.getPosition().getX() - result.getX() < 0.001);
+        assertTrue(gluonPoint.getPosition().getY() - result.getY() < 0.001);
     }
 
 
@@ -41,13 +41,12 @@ public class GluonPointRotationTest {
     @Test
     public void rotate90DegreesLeft(){
         gluonPos.setCoordinates(1,1);
-        double angle = 90.0;
+        double rotation = 90.0;
         //gluonpoint rotates around (0,0) from pos(1,1), with 90 degrees, to pos (-1,1)
-        m.rotateGluon(gluonPoints[0], centre,gluonPoints[0].getPosition(),angle);
-
+        molecule.rotateGluon(gluonPoint, centre, gluonPoint.getPosition(),rotation);
         Vector result = new Vector(-1,1);
-        assertTrue(gluonPoints[0].getPosition().getX() == result.getX());
-        assertTrue(gluonPoints[0].getPosition().getY() == result.getY());
+        assertTrue(gluonPoint.getPosition().getX() - result.getX() < 0.001);
+        assertTrue(gluonPoint.getPosition().getY() - result.getY() < 0.001);
     }
 
 
@@ -57,24 +56,23 @@ public class GluonPointRotationTest {
         gluonPos.setCoordinates(1,1);
         double leftRotation = 90.0;
         double rightRotation = -90;
-        m.rotateGluon(gluonPoints[0],centre,gluonPoints[0].getPosition(),leftRotation);
-        m.rotateGluon(gluonPoints[0],centre,gluonPoints[0].getPosition(),rightRotation);
+        molecule.rotateGluon(gluonPoint,centre,gluonPoint.getPosition(),leftRotation);
+        molecule.rotateGluon(gluonPoint,centre,gluonPoint.getPosition(),rightRotation);
         Vector result = new Vector(1,1);
-        assertTrue(gluonPoints[0].getPosition().getX() == result.getX());
-        assertTrue(gluonPoints[0].getPosition().getX() == result.getY());
+        assertTrue(gluonPoint.getPosition().getX() - result.getX() < 0.001);
+        assertTrue(gluonPoint.getPosition().getX() - result.getX() < 0.001);
     }
 
     @Test
     public void rotate90DegreesRightThenLeft(){
 
         gluonPos.setCoordinates(1,1);
-        double rightRotation = -90;
-        double leftRotation = 180;
-        m.rotateGluon(gluonPoints[0],centre,gluonPoints[0].getPosition(),rightRotation);
-        m.rotateGluon(gluonPoints[0],centre,gluonPoints[0].getPosition(),leftRotation);
-        Vector result = new Vector(-1,1);
-        assertTrue(gluonPoints[0].getPosition().getX() == result.getX());
-        assertTrue(gluonPoints[0].getPosition().getY() == result.getY());
+        double rotation = -90;
+        molecule.rotateGluon(gluonPoint, centre, gluonPoint.getPosition(),rotation);
+        molecule.rotateGluon(gluonPoint, centre, gluonPoint.getPosition(),-rotation);
+        Vector result = new Vector(1,1);
+        assertTrue(gluonPoint.getPosition().getX() - result.getX() < 0.001);
+        assertTrue(gluonPoint.getPosition().getY() - result.getX() < 0.001);
 
     }
 
@@ -84,10 +82,10 @@ public class GluonPointRotationTest {
     public void negativeValuesAndRotationTest(){
         gluonPos.setCoordinates(-1,-1);
         double rotation = 45.0;
-        m.rotateGluon(gluonPoints[0],centre,gluonPoints[0].getPosition(),rotation);
+        molecule.rotateGluon(gluonPoint,centre,gluonPoint.getPosition(),rotation);
         Vector result = new Vector(1.11E-16f,1.414f);
-        assertTrue(Math.abs(gluonPoints[0].getPosition().getX()-result.getX()) < 0.001);
-        assertTrue(Math.abs(gluonPoints[0].getPosition().getY()-result.getY()) < 0.001);
+        assertTrue(gluonPoint.getPosition().getX()-result.getX() < 0.001);
+        assertTrue(gluonPoint.getPosition().getY()-result.getY() < 0.001);
     }
 
 
@@ -96,10 +94,10 @@ public class GluonPointRotationTest {
     public void oneDegreeRotation (){
         gluonPos.setCoordinates(1,1);
         double rotation = 1;
-        m.rotateGluon(gluonPoints[0],centre,gluonPoints[0].getPosition(),rotation);
+        molecule.rotateGluon(gluonPoint,centre,gluonPos,rotation);
         Vector result = new Vector(0.9823f,1.017f);
-        assertTrue(Math.abs(gluonPoints[0].getPosition().getX()-result.getX()) < 0.001);
-        assertTrue(Math.abs(gluonPoints[0].getPosition().getY()-result.getY()) < 0.001);
+        assertTrue(gluonPoint.getPosition().getX()-result.getX() < 0.001);
+        assertTrue(gluonPoint.getPosition().getY()-result.getY() < 0.001);
     }
 
 }

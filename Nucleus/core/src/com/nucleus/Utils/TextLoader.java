@@ -14,14 +14,13 @@ import com.badlogic.gdx.utils.Array;
 public class TextLoader extends AsynchronousAssetLoader<Text, TextLoader.TextParameter> {
 
     public class TextParameter extends AssetLoaderParameters<Text> {
-
     }
+
     Text text;
 
     public TextLoader(FileHandleResolver resolver) {
         super(resolver);
     }
-
 
     public void loadAsync(AssetManager manager, String fileName, FileHandle file, TextParameter parameter) {
         this.text = new Text(file);

@@ -16,8 +16,4 @@ public class Text {
     public String toString() {
         return this.str;
     }
-
-    public void dispose(){
-        this.str = new String("".getBytes());
-    }
 }

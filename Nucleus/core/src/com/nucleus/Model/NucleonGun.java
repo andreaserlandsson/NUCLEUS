@@ -1,5 +1,7 @@
 package com.nucleus.Model;
 
+import com.nucleus.Utils.Vector;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -83,7 +85,7 @@ public class NucleonGun implements INucleonGun {
                 break;
             }
 
-        com.nucleus.Utils.Vector velocityVect = new com.nucleus.Utils.Vector(width/2.0f,height/2.0f).subtract(a.getPosition());
+        Vector velocityVect = new Vector(width/2.0f,height/2.0f).subtract(a.getPosition());
         a.setVelocity(difficultyMultiplier*velocityVect.getX()/3, difficultyMultiplier*velocityVect.getY()/3);
         return a;
     }

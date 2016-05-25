@@ -28,7 +28,7 @@ public class GameCreator {
         if (screen.equals("start")){
 
         }
-    };
+    }
 
 
 }

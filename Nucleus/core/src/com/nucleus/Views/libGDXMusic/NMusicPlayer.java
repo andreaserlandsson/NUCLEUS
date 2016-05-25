@@ -64,7 +64,6 @@ public class NMusicPlayer implements INMusicPlayer {
     public void switchSong(String newSong) {
         Music music = Assets.getSong(newSong);
         if (music != null) {
-
             music.setVolume(masterVolume);
             music.play();
             if (currentlyPlaying != null) {
@@ -73,19 +72,6 @@ public class NMusicPlayer implements INMusicPlayer {
                 }
             }
             currentlyPlaying = music;
-        }
-    }
-
-    public void pauseMusic() {
-        if (currentlyPlaying != null) {
-            currentlyPlaying.pause();
-        }
-    }
-
-    public void resumeMusic() {
-        if (currentlyPlaying != null){
-            currentlyPlaying.play();
-            currentlyPlaying.setVolume(masterVolume);
         }
     }
 

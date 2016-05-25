@@ -8,7 +8,6 @@ import org.junit.Test;
 public class LevelDataTest {
 
     //Test to get all correct values from leveldata.
-    //THIS SHOULD NOT BE DONE; WE SHOULD NOT USE GETTERS??
 
     @Test
     public void levelDataIndexTest(){

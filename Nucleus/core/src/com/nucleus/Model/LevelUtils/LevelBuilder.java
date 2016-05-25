@@ -21,9 +21,9 @@ public class LevelBuilder {
         try {
             levelData = LevelParser.levelParse(levelNr, width, height);
         } catch (LevelNotExistingException e) {
-           e.printStackTrace(); //level does not exist, catches exception.
-                                //Should possibly be higher u
-            // p.
+           e.printStackTrace();
+            //level does not exist, catches exception.
+            //Should be higher up..
         }
         
         // Fill a <INucleon> list with all protons and neutrons that it can pass onto the Gun.

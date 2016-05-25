@@ -1,5 +1,7 @@
 package com.nucleus.Model;
 
+import com.nucleus.Utils.Vector;
+
 /**
  * Created by erik on 19/04/16.
  */
@@ -9,7 +11,7 @@ public class Proton extends Nucleon {
         super();
     }
 
-    public Proton(com.nucleus.Utils.Vector position, com.nucleus.Utils.Vector vector){
+    public Proton(Vector position, Vector vector){
         super(position, vector);
     }
 }
