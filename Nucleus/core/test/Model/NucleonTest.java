@@ -1,15 +1,14 @@
 package Model;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-
-import com.nucleus.Model.Nucleon;
 import com.nucleus.Model.INucleon;
+import com.nucleus.Model.Nucleon;
 import com.nucleus.Utils.Vector;
 
-/**
- * Created by erik on 19/04/16.
- */
+import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class NucleonTest {
 
     @Test
