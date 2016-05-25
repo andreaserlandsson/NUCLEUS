@@ -47,7 +47,7 @@ public class MoleculeTest {
         molecule1.setRotation(new Vector(100,100), new Vector(65,23));
         assertFalse(molecule1.getRotation() == 0);
 
-        float rRotation = -8.26f;
+        float rRotation = 8.279f;
         assertTrue(molecule1.getRotation()-rRotation < 0.001);
     }
 
@@ -96,7 +96,7 @@ public class MoleculeTest {
         Vector newTouch = new Vector(105,100);
 
         molecule2.setRotation(lastTouch,newTouch);
-        float result = -43.288f;
+        float result = 43.288f;
         assertFalse(molecule2.getRotation() == 10);
         assertTrue(molecule2.getRotation() -result < 0.001);
     }
@@ -116,13 +116,13 @@ public class MoleculeTest {
         assertFalse(gluon2.getPosition().getY() == 200.0);
         assertFalse(gluon3.getPosition().getX() == 200.0);
         assertFalse(gluon3.getPosition().getY() == 200.0);
-        
+
         assertTrue(gluon1.getPosition().getX() - 126.613f < 0.001);
-        assertTrue(gluon1.getPosition().getY() - 63.00f < 0.001);
+        assertTrue(gluon1.getPosition().getY() - 126.613f < 0.001);
         assertTrue(gluon2.getPosition().getX() - 253.226f < 0.001);
-        assertTrue(gluon2.getPosition().getY() - 126f < 0.001);
-        assertTrue(gluon3.getPosition().getX() - 379.8400f < 0.001);
-        assertTrue(gluon3.getPosition().getY() - 189.001f < 0.001);
+        assertTrue(gluon2.getPosition().getY() - 253.226f < 0.001);
+        assertTrue(gluon3.getPosition().getX() - 379.840f < 0.001);
+        assertTrue(gluon3.getPosition().getY() - 379.840f < 0.001);
     }
 
     @Test
