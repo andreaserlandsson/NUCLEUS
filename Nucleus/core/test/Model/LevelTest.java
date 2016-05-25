@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import mocks.MockGluon;
 import mocks.MockMolecule;
+import mocks.MockNucleon;
 import mocks.MockNucleonGun;
 
 import static junit.framework.TestCase.assertFalse;
@@ -27,16 +28,28 @@ import static org.junit.Assert.assertTrue;
  * Created by erik on 19/04/16.
  */
 public class LevelTest {
-    private int width = 0;
-    private int height = 0;
-    private int levelNumber = 0;
-    private Vector gluonPositions = new Vector(1,1);
-    private int pNeeded = 0;
-    private int nNeeded = 0;
-    private ArrayList<INucleon> nucleons = new ArrayList<INucleon>();
-    private INucleonGun gun = new MockNucleonGun(nucleons);
-    private IGluonPoint[] gluons;
-    private IMolecule molecule = new MockMolecule(gluons);
+    int width = 0;
+    int height = 0;
+    int levelNumber = 0;
+    Vector gluonPositions = new Vector(1,1);
+    int pNeeded = 0;
+    int nNeeded = 0;
+
+    Vector nucleonPos = new Vector(0,0);
+    Vector nucleonVel = new Vector(0,0);
+    INucleon mockNucleon = new MockNucleon(nucleonPos,nucleonVel);
+    ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
+
+    Vector v1 = new Vector(100,100);
+    Vector v2 = new Vector(200,200);
+    Vector v3 = new Vector(300,300);
+    IGluonPoint gluon1 = new MockGluon(v1,1,1);
+    IGluonPoint gluon2 = new MockGluon(v2,1,1);
+    IGluonPoint gluon3 = new MockGluon(v3,1,1);
+    IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
+
+    INucleonGun gun = new MockNucleonGun(nucleonList);
+    MockMolecule molecule = new MockMolecule(gluons);
 
     Level level = new Level(levelNumber, width, height, gun, molecule, gluons);
 
@@ -72,20 +85,31 @@ public class LevelTest {
 
     @Test
     public void testIsGameWon(){
-        //System.out.println(level.isGameLost() + " - " + level.isGameWon());
-        //level.update(1);
-        //System.out.println(level.isGameLost() + " - " + level.isGameWon());
-        //assertTrue(level.isGameWon());
+        molecule.setFull(false);
+        assertTrue(!level.isGameWon());
+        molecule.setFull(true);
+        level.checkWinGame();
+        assertTrue(level.isGameWon());
 
     }
 
     @Test
     public void testIsGameLost(){
 
+        molecule.setFull(true);
+        assertTrue(!level.isGameLost());
+        molecule.setFull(false);
+        level.loseGame();
+        assertTrue(level.isGameLost());
+
     }
 
     @Test
     public void testIsGamePaused(){
+
+        assertTrue(!level.isGamePaused());
+        level.pause();
+        assertTrue(level.isGamePaused());
 
     }
 
@@ -98,26 +122,41 @@ public class LevelTest {
 
     @Test
     public void testGetNucleonGun(){
+
         assertTrue(level.getNucleonGun() == this.gun);
+
     }
 
     @Test
     public void testGetAirBorneNucleons(){
 
+        nucleonList.add(mockNucleon);
+        assertTrue(level.getAirborneNucleons().size() == 0);
+        assertTrue(level.getAirborneNucleons().add(nucleonList.get(0)));
+        assertTrue(level.getAirborneNucleons().size() == 1);
+        assertTrue(level.getAirborneNucleons().remove(nucleonList.get(0)));
+        assertTrue(level.getAirborneNucleons().size() == 0);
+
     }
 
     @Test
     public void testGetMolecule(){
+
         assertTrue(level.getMolecule() == this.molecule);
+
     }
 
     @Test
     public void testGetGluons(){
+
         assertTrue(level.getGluons() == this.gluons);
+
     }
 
     @Test
     public void testAddAirBorneNucleon(){
+
+        
 
     }
 

@@ -11,6 +11,7 @@ public class MockMolecule implements IMolecule {
 
     private float rotation = 0;
     private IGluonPoint[] gluons;
+    private boolean isFull =false;
 
     public MockMolecule(IGluonPoint[] gluons){
         this.gluons = gluons;
@@ -25,7 +26,20 @@ public class MockMolecule implements IMolecule {
     }
 
     public boolean isFull() { //dummy value
-        return false;
+
+        if (isFull) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void setFull(boolean full){
+        if(full) {
+            isFull = true;
+        } else if (!full) {
+            isFull = false;
+        }
     }
 
     public void rotateGluon(IGluonPoint gluon, Vector v1, Vector v2, double d) {

@@ -9,6 +9,8 @@ public interface ILevel  {
 
     boolean isGameLost();
     boolean isGameWon();
+    void checkWinGame();
+    void loseGame();
 
     boolean isGamePaused();
 

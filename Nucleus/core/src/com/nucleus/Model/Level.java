@@ -111,7 +111,7 @@ public class Level extends Observable implements ILevel {
 
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
-    private void checkWinGame() {
+    public void checkWinGame() {
         if (molecule.isFull()) {
                 setChanged();
                 notifyObservers("won");
@@ -121,7 +121,7 @@ public class Level extends Observable implements ILevel {
         }
     }
 
-    private void loseGame(){
+    public void loseGame(){
         currentState = GameState.PAUSEDLOSE;
     }
 
@@ -163,7 +163,6 @@ public class Level extends Observable implements ILevel {
         currentState = GameState.PAUSED;
         setChanged();
         notifyObservers("pause");
-        Gdx.app.log("GameScreen", "pause called");
     }
 
     public void resume(){
