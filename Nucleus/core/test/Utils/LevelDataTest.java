@@ -2,11 +2,8 @@ package Utils;
 
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.LevelUtils.LevelData;
-
-import org.junit.Test;
-
 import static org.junit.Assert.assertTrue;
-
+import org.junit.Test;
 
 public class LevelDataTest {
 
@@ -28,13 +25,10 @@ public class LevelDataTest {
     //Test that it sets correct positions and amount of nucleons to each gluonpoint.
     @Test
     public void oneGluonPointTest() {
-        int[] mockLevel = new int[]{0, 1, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] mockLevel = new int[] {0, 1, 3, 4, 5, 6, 7, 8, 9, 10};
         LevelData levelData = new LevelData(mockLevel,1,1);
-        //IGluonPoint[] mockGluons = levelData.getGluonPoints();
         IGluonPoint[] mockGluons = levelData.gluonPoints;
         assertTrue(mockGluons.length == mockLevel[levelData.gluonAmountIndex]);
-        System.out.println(mockGluons[0].getPosition().getX());
-        System.out.println(mockLevel[levelData.firstGluonIndex]);
         assertTrue(mockGluons[0].getPosition().getX() == mockLevel[levelData.firstGluonIndex]);
         assertTrue(mockGluons[0].getPosition().getY() == mockLevel[levelData.firstGluonIndex+ 1]);
         assertTrue(mockGluons[0].getProtonsNeeded() == mockLevel[levelData.firstGluonIndex+ 2]);
