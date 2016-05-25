@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.NAssetsData;
-import com.nucleus.Views.Assets;
+import com.nucleus.Utils.Assets;
 
 /**
  * Created by Quaxi on 24/05/16.

@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.NAssetsData;
-import com.nucleus.Views.Assets;
+import com.nucleus.Utils.Assets;
 
 /**
  * Created by erik on 28/04/16.

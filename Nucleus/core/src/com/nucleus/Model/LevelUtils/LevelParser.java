@@ -1,7 +1,7 @@
 package com.nucleus.Model.LevelUtils;
 
 import com.nucleus.Model.NAssetsData;
-import com.nucleus.Views.Assets;
+import com.nucleus.Utils.Assets;
 
 
 // A class for reading and parsing .txt files that will be levels.
