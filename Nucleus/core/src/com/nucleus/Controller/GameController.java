@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.nucleus.Model.Level;
 import com.nucleus.Model.NAssetsData;
-import com.nucleus.LevelUtils.LevelBuilder;
+import com.nucleus.Model.LevelUtils.LevelBuilder;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.OptionsScreen;

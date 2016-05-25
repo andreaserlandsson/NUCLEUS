@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.NAssetsData;
-import com.nucleus.Views.Assets;
+import com.nucleus.Utils.Assets;
 
 /**
  * Created by erik on 28/04/16.
@@ -80,15 +80,19 @@ public class MoleculeViewable implements IViewableRotateble {
 
 
     private void loadTextures(int levelNumber){
-        this.moleculeTexture = Assets.getTexture(NAssetsData.getLevel(levelNumber));
+        this.moleculeTexture = Assets.getTexture(NAssetsData.getLevelPicture(levelNumber));
         moleculeTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         this.moleculeTextureRegion = new TextureRegion(moleculeTexture, moleculeTexture.getWidth(), moleculeTexture.getHeight());
+
         this.halfProton = Assets.getTexture(NAssetsData.PROTONHALF);
         halfProton.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
         this.halfNeutron = Assets.getTexture(NAssetsData.NEUTRONHALF);
         halfNeutron.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
         this.halfProtonComplete = Assets.getTexture(NAssetsData.PROTONHALFCOMPLETE);
         halfProtonComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
         this.halfNeutronComplete = Assets.getTexture(NAssetsData.NEUTRONHALFCOMPLETE);
         halfNeutronComplete.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }

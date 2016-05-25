@@ -27,16 +27,21 @@ public class NAssetsData {
     public static final String WINSOUND = "winSound.mp3";
     public static final String LOSESOUND = "loseSound.mp3";
 
-    public static final String LEVEL = ".png";
+    public static final String LEVELLEVEL = "level_";
+    public static final String LEVELPICTURE = ".png";
 
     //Method to return the correct texture for a level.
-    public static String getLevel (int levelNr) {
-        return Integer.toString(levelNr) + LEVEL;
+    public static String getLevelPicture (int levelNr) {
+        return Integer.toString(levelNr) + LEVELPICTURE;
     }
 
     //Method to return the correct song for a level.
     public static String getLevelSong(int levelNr) {
         return LEVELMUSIC + Integer.toString(levelNr) + ".mp3";
+    }
+
+    public static String getLevelLevel(int levelNr) {
+        return LEVELLEVEL + Integer.toString(levelNr) + ".txt";
     }
 
 }

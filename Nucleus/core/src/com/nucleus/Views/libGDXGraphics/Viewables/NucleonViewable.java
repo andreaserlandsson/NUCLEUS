@@ -7,7 +7,7 @@ import com.nucleus.Model.INucleon;
 import com.nucleus.Model.NAssetsData;
 import com.nucleus.Model.Proton;
 import com.nucleus.Utils.Vector;
-import com.nucleus.Views.Assets;
+import com.nucleus.Utils.Assets;
 
 import java.util.List;
 

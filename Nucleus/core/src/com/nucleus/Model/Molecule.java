@@ -50,7 +50,7 @@ public class Molecule implements IMolecule {
         float effectiveRotationLength = delta.scalar(rOrthoUnit);
         com.nucleus.Utils.Vector rotationVector = rOrthoUnit.multiply(effectiveRotationLength);
         float rotationAngle = (float) Math.atan(rotationVector.abs()/r.abs());
-        if (effectiveRotationLength>0)
+        if (effectiveRotationLength<0)
             rotationAngle = -rotationAngle;
         return rotationMultiplier * rotationAngle;
     }

@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.nucleus.Model.ILevel;
-import com.nucleus.LevelUtils.LevelBuilder;
-import com.nucleus.Views.Assets;
+import com.nucleus.Model.LevelUtils.LevelBuilder;
+import com.nucleus.Utils.Assets;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
@@ -27,8 +27,14 @@ public class StartScreen extends NucleusScreen implements Screen {
     public StartScreen(EventListener listener) {
         super();
         // Creating level
-        level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Assets.loadTextureFiles();
+
+        Assets.loadTextFiles();
+        level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        //temporary to see that loading texture works
+        views.add(new BackgroundViewable());
+        views.add(new NucleonViewable(level.getAirborneNucleons()));
 
         //Initialising graphics
         views.add(new BackgroundViewable());

@@ -1,7 +1,8 @@
-package com.nucleus.Views;
+package com.nucleus.Utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,19 +14,23 @@ public class Assets {
     //Paths to the different directories where the files are located.
     private static final String PATHTOMUSIC = "music/";
     private static final String PATHTOTEXTURE = "graphics/";
+    private static final String PATHTOTXT = "levels/leveldata/";
+
 
     //Two assetManagers, one for each type of file.
     private static AssetManager audioAssets = new AssetManager();
     private static AssetManager textureAssets = new AssetManager();
+    private static AssetManager txtAssets = new AssetManager();
 
     //Two HashMaps which holds the location and key to all different files.
     private static Map<String, String> audio = new HashMap<String, String>();
     private static Map<String, String> texture = new HashMap<String, String>();
-
+    private static Map<String, String > txt = new HashMap<String, String>();
 
     //Loads all the music from the filepath into the hashMap.
     //Then calls on loadMusic() and wait for the assets to be loaded.
     public static void loadMusicFiles() {
+
         FileHandle musicPath;
         musicPath = Gdx.files.internal(PATHTOMUSIC);
         for (FileHandle entry : musicPath.list()) {
@@ -47,6 +52,23 @@ public class Assets {
         finishLoading(textureAssets);
     }
 
+    public static void loadTextFiles() {
+        FileHandle txtPath;
+        txtPath = Gdx.files.internal(PATHTOTXT);
+
+
+        for (FileHandle entry : txtPath.list()) {
+            txt.put(entry.name(), entry.path());
+
+            System.out.println(entry.name());
+            System.out.println(entry.path());
+
+        }
+
+        loadText();
+        finishLoading(txtAssets);
+        System.out.println(txtAssets.getLoadedAssets());}
+
     //Loads all the music that is in the hashMap into the assetManger
     //for audio. The value is the path to each file.
     public static void loadMusic () {
@@ -63,6 +85,15 @@ public class Assets {
         if (texture != null) {
             for (Map.Entry entry : texture.entrySet()) {
                 textureAssets.load((String) entry.getValue(), Texture.class);
+            }
+        }
+    }
+
+    public static void loadText() {
+        setTxtLoader(txtAssets);
+        if (txt != null) {
+            for (Map.Entry entry : txt.entrySet()) {
+                txtAssets.load((String) entry.getValue(), Text.class);
             }
         }
     }
@@ -91,11 +122,25 @@ public class Assets {
         return pic;
     }
 
+    public static Text getFile(String file){
+        Text text = null;
+        String filePath = txt.get(file);
+        if (filePath != null) {
+            text = txtAssets.get(filePath, Text.class);
+            return text;
+        }
+        return text;
+    }
+
     //Makes sure that the assetManger finishes loading each object.
     //This is done as assetManager.load() only places objects in a loading queue.
     //Update() actually loads the objects in the queue.
     public static void finishLoading(AssetManager assetManager){
         while(!(assetManager.update()));
+    }
+
+    private static void setTxtLoader(AssetManager assetManager) {
+        assetManager.setLoader(Text.class, new TextLoader(new InternalFileHandleResolver()));
     }
 
 }

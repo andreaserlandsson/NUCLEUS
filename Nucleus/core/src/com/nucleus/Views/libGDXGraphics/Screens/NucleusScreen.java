@@ -33,6 +33,8 @@ public class NucleusScreen {
         viewport.apply();
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         camera.update();
+        camera = new OrthographicCamera(1080, 1920);
+        camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         stage = new Stage(viewport, batch);
 

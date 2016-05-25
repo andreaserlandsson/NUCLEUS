@@ -1,4 +1,4 @@
-package com.nucleus.LevelUtils;
+package com.nucleus.Model.LevelUtils;
 
 /**
  * Created by paki on 5/4/16.
