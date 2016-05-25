@@ -71,6 +71,18 @@ public class GameController {
 
     }
 
+    public void showSelectionErrorDialog(){
+        if(screen instanceof LevelChooseScreen){
+            ((LevelChooseScreen) screen).showSelectionError();
+        }
+    }
+
+    public void closeSelectionErrorDialog(){
+        if(screen instanceof LevelChooseScreen){
+            ((LevelChooseScreen) screen).closeSelectionError();
+        }
+    }
+
     protected void goToOptions() {
         screen = new OptionsScreen(listener);
         goToScreen(screen);

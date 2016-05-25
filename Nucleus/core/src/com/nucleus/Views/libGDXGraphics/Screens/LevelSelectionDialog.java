@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.nucleus.Model.ILevel;
 
 /**
  * Created by erik on 25/05/16.
@@ -19,19 +18,15 @@ public class LevelSelectionDialog extends ScreenAdapter{
     private SpriteBatch batch;
     private Stage stage;
     protected Skin skin;
-    private ILevel level;
     private EventListener listener;
 
-    private boolean goToMainMenu = false;
 
-    public LevelSelectionDialog(SpriteBatch batch, ILevel level, EventListener listener){
 
+    public LevelSelectionDialog(SpriteBatch batch, EventListener listener){
         this.listener = listener;
         this.batch = batch;
-        this.level = level;
         this.stage = new Stage();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
-
     }
 
     @Override
@@ -42,7 +37,7 @@ public class LevelSelectionDialog extends ScreenAdapter{
         Table mainTable = new Table();
 
         mainTable.setFillParent(true);
-        mainTable.center();
+        mainTable.bottom();
         mainTable.padBottom(150f);
 
         //Create buttons

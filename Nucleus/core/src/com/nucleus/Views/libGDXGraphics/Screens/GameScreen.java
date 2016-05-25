@@ -54,6 +54,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
         viewsRot.add(new MoleculeViewable(levelNumber, level.getMolecule()));
 
         pauseDialog = new PauseDialog(batch, level, listener);
+
         //Add observers
         level.addObserver(this);
 
