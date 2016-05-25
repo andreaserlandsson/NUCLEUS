@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Model.ILevel;
-import com.nucleus.LevelUtils.LevelBuilder;
+import com.nucleus.Model.LevelUtils.LevelBuilder;
 import com.nucleus.Views.Assets;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
@@ -38,8 +38,12 @@ public class StartScreen implements Screen {
     public StartScreen(EventListener listener) {
 
         // Creating level
-        level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         Assets.loadTextureFiles();
+        Assets.loadTextFiles();
+        level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+//        Text hej = Assets.getFile("level_0.txt");
+  //      System.out.println(hej.toString());
+
 
 
         //temporary to see that loading texture works
