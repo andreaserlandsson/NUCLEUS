@@ -10,6 +10,9 @@ public interface INucleon {
 
     void update(float delta);
 
+    float getX();
+    float getY();
+
     void setPosition(float x, float y);
     void setVelocity(float x, float y);
 

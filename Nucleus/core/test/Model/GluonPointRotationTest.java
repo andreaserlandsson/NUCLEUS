@@ -27,13 +27,12 @@ public class GluonPointRotationTest {
     //Test for rotation 90 degrees right, and that the method correctly returns the new values.
     @Test
     public void rotate90DegreesRight(){
-        gluonPoints[0].getPosition().setCoordinates(1,0);
+        gluonPoints[0].getPosition().setCoordinates(1,1);
         double angle = -90.0;
         //gluon rotates around (0,0), from pos (1,0) down to (0,-1)
         m.rotateGluon(gluonPoints[0], centre, gluonPoints[0].getPosition(), angle);
 
-        //here the x-coordinate of new position is close to 0, but exact?
-        //assertTrue(gluonPoints[0].getPosition().getX() == 0);
+        assertTrue(gluonPoints[0].getPosition().getX() == 1);
         assertTrue(gluonPoints[0].getPosition().getY() == -1);
     }
 
@@ -65,6 +64,19 @@ public class GluonPointRotationTest {
         assertTrue(gluonPoints[0].getPosition().getX() == result.getY());
     }
 
+    @Test
+    public void rotate90DegreesRightThenLeft(){
+
+        gluonPos.setCoordinates(1,1);
+        double rightRotation = -90;
+        double leftRotation = 180;
+        m.rotateGluon(gluonPoints[0],centre,gluonPoints[0].getPosition(),rightRotation);
+        m.rotateGluon(gluonPoints[0],centre,gluonPoints[0].getPosition(),leftRotation);
+        Vector result = new Vector(-1,1);
+        assertTrue(gluonPoints[0].getPosition().getX() == result.getX());
+        assertTrue(gluonPoints[0].getPosition().getY() == result.getY());
+
+    }
 
     //Hardcoded values with small error marginal for calculating the new position,
     //as we no longer have fixed values of 1's and 0's.

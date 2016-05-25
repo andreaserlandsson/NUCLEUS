@@ -1,10 +1,11 @@
 package mocks;
 
+import com.nucleus.Model.Collisions.ICollidable;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Utils.Vector;
 
 
-public class MockNucleon implements INucleon {
+public class MockNucleon implements INucleon, ICollidable {
     private Vector position;
     private Vector velocity;
     private final int radius = 3;   //Dummy value. Sizes will be used for collision detection purposes
@@ -24,6 +25,16 @@ public class MockNucleon implements INucleon {
         position = position.add(velocity.multiply(delta));
     }
 
+    @Override
+    public float getX() {
+        return position.getX();
+    }
+
+    @Override
+    public float getY() {
+        return position.getY();
+    }
+
     public Vector getPosition(){
         return position;
     }
@@ -33,7 +44,7 @@ public class MockNucleon implements INucleon {
 
 
     public void setPosition(float x, float y){
-        position.setCoordinates(x, y);
+        this.position.setCoordinates(x, y);
     }
     public void setVelocity(float x, float y){
         velocity.setCoordinates(x, y);

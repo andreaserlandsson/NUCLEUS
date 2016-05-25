@@ -18,7 +18,7 @@ public class NormalPlayState implements ControllerState {
         if ((screenX > screen.getWidth() - 50) && screenY < 68) { // if you touch the upper right corner you pause the game
             screen.getLevel().pause();
         }
-        
+
     }
 
     public void drag(int screenX, int screenY, int pointer){

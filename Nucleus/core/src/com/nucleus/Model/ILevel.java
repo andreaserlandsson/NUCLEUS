@@ -6,8 +6,8 @@ public interface ILevel  {
 
     boolean isGameLost();
     boolean isGameWon();
-
     boolean isGamePaused();
+    void setGamePaused();
 
     int getLevelNumber();
     int getWidth();
@@ -15,11 +15,11 @@ public interface ILevel  {
     INucleonGun getNucleonGun();
     List<INucleon> getAirborneNucleons();
     IMolecule getMolecule();
+    IGluonPoint[] getGluons();
     void addAirborneNucleon(INucleon nucleon);
     void removeOutOfBoundsNucleons();
-    void update(float delta);
-    IGluonPoint[] getGluons();
     void pause();
     void resume();
+    void update(float delta);
 
 }

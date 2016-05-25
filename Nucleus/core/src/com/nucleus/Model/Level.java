@@ -128,7 +128,7 @@ public class Level extends Observable implements ILevel {
         notifyObservers("lost");
     }
 
-    public void checkAllNucleonsStatus(){
+    private void checkAllNucleonsStatus(){
         INucleon collidingNucleon = null;
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
@@ -166,7 +166,6 @@ public class Level extends Observable implements ILevel {
         currentState = GameState.PAUSED;
         setChanged();
         notifyObservers("pause");
-        Gdx.app.log("GameScreen", "pause called");
     }
 
     public void resume(){
