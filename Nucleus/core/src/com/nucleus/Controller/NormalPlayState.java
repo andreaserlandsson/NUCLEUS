@@ -4,12 +4,12 @@ import com.nucleus.Model.ILevel;
 import com.nucleus.Utils.Vector;
 import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
 
-public class PlayController implements ControllerState {
+public class NormalPlayState implements ControllerState {
 
     private PlayScreen screen;
     Vector lastTouch = new Vector(0,0);
 
-    public PlayController(PlayScreen screen) {
+    public NormalPlayState(PlayScreen screen) {
         this.screen = screen;
     }
 

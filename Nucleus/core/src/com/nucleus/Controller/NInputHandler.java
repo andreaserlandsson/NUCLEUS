@@ -10,7 +10,7 @@ public class NInputHandler extends NInputProcessor {
 
     public NInputHandler(PlayScreen screen){
         this.screen = screen;
-        controlGame = new PlayController(screen);
+        controlGame = new NormalPlayState(screen);
         currentState = controlGame;
     }
 
