@@ -111,7 +111,7 @@ public class Level extends Observable implements ILevel {
 
     //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
 
-    public void checkWinGame() {
+    private void checkWinGame() {
         if (molecule.isFull()) {
                 setChanged();
                 notifyObservers("won");
@@ -121,11 +121,11 @@ public class Level extends Observable implements ILevel {
         }
     }
 
-    public void loseGame(){
+    private void loseGame(){
         currentState = GameState.PAUSEDLOSE;
     }
 
-    public void checkAllNucleonsStatus(){
+    private void checkAllNucleonsStatus(){
         INucleon collidingNucleon = null;
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){

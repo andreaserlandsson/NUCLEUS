@@ -88,7 +88,7 @@ public class LevelTest {
         molecule.setFull(false);
         assertTrue(!level.isGameWon());
         molecule.setFull(true);
-        level.checkWinGame();
+        level.update(1); // this also tests the CheckWinGame() method called via the update() method
         assertTrue(level.isGameWon());
 
     }
@@ -99,7 +99,7 @@ public class LevelTest {
         molecule.setFull(true);
         assertTrue(!level.isGameLost());
         molecule.setFull(false);
-        level.loseGame();
+        level.update(1); // this also tests the loseGame() method called via the update() method
         assertTrue(level.isGameLost());
 
     }
@@ -156,7 +156,11 @@ public class LevelTest {
     @Test
     public void testAddAirBorneNucleon(){
 
-        
+        nucleonList.add(mockNucleon);
+        level.addAirborneNucleon(nucleonList.get(0));
+        assertTrue(level.getAirborneNucleons().size() == 1);
+        level.addAirborneNucleon(nucleonList.get(0));
+        assertTrue(level.getAirborneNucleons().size() == 2);
 
     }
 
@@ -168,25 +172,7 @@ public class LevelTest {
     @Test
     public void testRemoveOutOfBoundsNucleons(){
 
-    }
-
-    @Test
-    public void testRemoveNucleon(){
-
-    }
-
-    @Test
-    public void testCheckWinGame(){
-
-    }
-
-    @Test
-    public void testLoseGame(){
-
-    }
-
-    @Test
-    public void testCheckAllNucleonsStatus(){
+        //this also tests the removeNucleon method
 
     }
 
@@ -202,6 +188,13 @@ public class LevelTest {
 
     @Test
     public void testUpdate(){
+
+        //this also tests the checkWinGame method
+
+        //this also  tests checkAllNucleonsStatus() which in turn tests
+            //the checkWinGame method
+            //the loseGame method
+            //the removeNucleon method
 
     }
 
