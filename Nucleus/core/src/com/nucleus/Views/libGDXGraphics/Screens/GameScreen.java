@@ -8,7 +8,7 @@ import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
-import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotateble;
+import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotatable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.PauseViewable;
@@ -35,7 +35,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
 
 
     private List<IViewable> views = new ArrayList<IViewable>();
-    private List<IViewableRotateble> viewsRot = new ArrayList<IViewableRotateble>();
+    private List<IViewableRotatable> viewsRot = new ArrayList<IViewableRotatable>();
 
     private boolean renderPauseDialog = false;
 
@@ -80,7 +80,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
                 view.render(batch);
             }
 
-            for (IViewableRotateble viewRot : viewsRot) {
+            for (IViewableRotatable viewRot : viewsRot) {
                 if (viewRot.getRotationRequirement().equals("Molecule"))
                 viewRot.render(batch, level.getMolecule().getRotation());
             }
