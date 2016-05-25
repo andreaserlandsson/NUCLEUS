@@ -8,7 +8,7 @@ import com.nucleus.Model.Level;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
-import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotateble;
+import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotatable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.PauseViewable;
@@ -28,16 +28,16 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
 
     private final int levelNumber;
     private Level level;
-    private boolean winLoseScreenShow = false;
+    private boolean renderEndGameScreen = false;
     private WinLoseDialog endGameDialog;
     private PauseDialog pauseDialog;
     private EventListener listener;
 
 
     private List<IViewable> views = new ArrayList<IViewable>();
-    private List<IViewableRotateble> viewsRot = new ArrayList<IViewableRotateble>();
+    private List<IViewableRotatable> viewsRot = new ArrayList<IViewableRotatable>();
 
-    private boolean pauseDialogIsShowing = false;
+    private boolean renderPauseDialog = false;
 
     public GameScreen(Level level, EventListener listener){
 
@@ -64,18 +64,16 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
     @Override
     public void render(float delta) {
 
-        if (winLoseScreenShow) {
+        if (renderEndGameScreen) {
             endGameDialog.render(delta);
 
-        } else if (pauseDialogIsShowing) {
+        } else if (renderPauseDialog) {
             pauseDialog.render(delta);
 
         } else {
 
-            pauseDialogIsShowing = false;
-
+            //renderPauseDialog = false;
             level.update(delta);
-
             Gdx.gl.glClearColor(0, 0, 0, 1);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -83,7 +81,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
                 view.render(batch);
             }
 
-            for (IViewableRotateble viewRot : viewsRot) {
+            for (IViewableRotatable viewRot : viewsRot) {
                 if (viewRot.getRotationRequirement().equals("Molecule"))
                 viewRot.render(batch, level.getMolecule().getRotation());
             }
@@ -95,7 +93,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
         pauseDialog.show();
-        pauseDialogIsShowing = true;
+        renderPauseDialog = true;
 
     }
 
@@ -103,10 +101,9 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
         pauseDialog.resume();
-        pauseDialogIsShowing = false;
+        renderPauseDialog = false;
 
     }
-
 
     @Override
     public int getWidth() {
@@ -133,13 +130,13 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
         }
         if (arg.toString().equals("won")){
             Gdx.app.log("GameScreen", "Won");
-            winLoseScreenShow = true;
+            renderEndGameScreen = true;
             endGameDialog = new WinDialog(batch, level, listener);
             endGameDialog.show();
         }
         if (arg.toString().equals("lost")){
             Gdx.app.log("GameScreen", "Lost");
-            winLoseScreenShow = true;
+            renderEndGameScreen = true;
             endGameDialog = new LoseDialog(batch, level, listener);
             endGameDialog.show();
 

@@ -12,7 +12,7 @@ import com.nucleus.Utils.Assets;
 /**
  * Created by erik on 28/04/16.
  */
-public class MoleculeViewable implements IViewableRotateble {
+public class MoleculeViewable implements IViewableRotatable {
     private Texture moleculeTexture, halfProton, halfNeutron, halfProtonComplete, halfNeutronComplete;
     private TextureRegion moleculeTextureRegion;
     private IGluonPoint[] gluonPoints;
