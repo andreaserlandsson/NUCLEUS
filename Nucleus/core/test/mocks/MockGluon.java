@@ -1,12 +1,13 @@
 package mocks;
 
+import com.nucleus.Model.Collisions.ICollidable;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Utils.Vector;
 
 /**
  * Created by erik on 22/04/16.
  */
-public class MockGluon implements IGluonPoint {
+public class MockGluon implements IGluonPoint, ICollidable {
 
     private Vector position;
     private int currentProtons;

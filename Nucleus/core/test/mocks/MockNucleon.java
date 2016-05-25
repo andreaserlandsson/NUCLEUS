@@ -43,7 +43,7 @@ public class MockNucleon implements INucleon {
 
 
     public void setPosition(float x, float y){
-        position.setCoordinates(x, y);
+        this.position.setCoordinates(x, y);
     }
     public void setVelocity(float x, float y){
         velocity.setCoordinates(x, y);
