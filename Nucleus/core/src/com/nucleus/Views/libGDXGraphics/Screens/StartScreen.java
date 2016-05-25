@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Utils.LevelUtils.LevelBuilder;
+import com.nucleus.LevelUtils.LevelBuilder;
 import com.nucleus.Views.Assets;
 import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;

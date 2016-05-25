@@ -1,4 +1,4 @@
-package com.nucleus.Utils.LevelUtils;
+package com.nucleus.LevelUtils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -8,7 +8,7 @@ public class LevelParser {
 
 
     //private static int[] intList;   //obsolete?
-    public static LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {
+    public static com.nucleus.LevelUtils.LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {
         return splitLevelString((readFromFile(level)), width, height);
     }
 
@@ -36,7 +36,7 @@ public class LevelParser {
 
 
     //split a string where there is a new line
-    private static LevelData splitLevelString (String str, int width, int height) {
+    private static com.nucleus.LevelUtils.LevelData splitLevelString (String str, int width, int height) {
         String temp = str.replaceAll(" ", "\n");
         String[] strings = temp.split("\n");
         int[] levelField = new int[strings.length];
@@ -44,7 +44,7 @@ public class LevelParser {
         {
             levelField[i] = Integer.parseInt(strings[i]);
         }
-        return new LevelData(levelField, width, height);
+        return new com.nucleus.LevelUtils.LevelData(levelField, width, height);
     }
 
 }

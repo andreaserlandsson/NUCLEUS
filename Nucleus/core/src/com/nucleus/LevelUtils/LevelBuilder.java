@@ -1,4 +1,4 @@
-package com.nucleus.Utils.LevelUtils;
+package com.nucleus.LevelUtils;
 
 import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.INucleon;

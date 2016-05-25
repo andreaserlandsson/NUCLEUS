@@ -1,4 +1,4 @@
-package com.nucleus.Utils.LevelUtils;
+package com.nucleus.LevelUtils;
 
 import com.nucleus.Model.GluonPoint;
 import com.nucleus.Model.IGluonPoint;
