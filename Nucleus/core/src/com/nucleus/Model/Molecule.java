@@ -23,15 +23,6 @@ public class Molecule implements IMolecule {
         return gluons.length;
     }
 
-//    public void setRotation(float rot){
-//        rotation = rotation + rot;
-//        //temporärt
-//        for (IGluonPoint gluon : gluons) {
-//            Vector newPos = rotate(centerT, gluon.getPosition(), rot);
-//            gluon.setPosition(newPos.getX(), newPos.getY());
-//        }
-//    }
-
     public void setRotation(com.nucleus.Utils.Vector lastTouch, com.nucleus.Utils.Vector newTouch){
         float angle = calculateRotationAngle(lastTouch, newTouch);
         rotation = rotation + angle;
@@ -59,7 +50,7 @@ public class Molecule implements IMolecule {
         return rotation;
     }
 
-    public boolean isFull() { //dummy value
+    public boolean isFull() {
         for (IGluonPoint gluon : gluons) {
             if (!(gluon.isFull())) {
                 return false;

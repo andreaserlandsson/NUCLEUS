@@ -56,8 +56,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
         pauseDialog = new PauseDialog(batch, level, listener);
         //Add observers
         level.addObserver(this);
-        //batch = new SpriteBatch();
-        //batch.setProjectionMatrix(camera.combined);
+
 
     }
 
@@ -91,23 +90,6 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
     }
 
 
-
-    @Override
-    public void resize(int width, int height){
-        Gdx.app.log("GameScreen", "resizing");
-    }
-
-    @Override
-    public void show(){
-        Gdx.app.log("GameScreen", "showing");
-
-    }
-
-    @Override
-    public void hide(){
-        Gdx.app.log("GameScreen", "hide called");
-    }
-
     @Override
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
@@ -122,11 +104,6 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
         pauseDialog.resume();
         pauseDialogIsShowing = false;
 
-    }
-
-    @Override
-    public void dispose() {
-        // Leave blank
     }
 
 
