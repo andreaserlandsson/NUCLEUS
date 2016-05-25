@@ -172,13 +172,7 @@ public class LevelTest {
     @Test
     public void testIsOutOfBoundsCheck(){
 
-    /*public boolean isOutOfBoundsCheck(INucleon nucleon){
-        float x = nucleon.getPosition().getX();
-        float y = nucleon.getPosition().getY();
-        float bufferSize = 50; //nucleons aren't considered out of bounds until their "trails" are completely off-screen
-        return x - nucleon.getRadius()>=width+bufferSize || x + nucleon.getRadius()<=0-bufferSize ||
-                y - nucleon.getRadius()>=height+bufferSize || y + nucleon.getRadius()<=0-bufferSize; // getRadius is 3
-    }*/
+
 
         Vector nucleonVel1 = new Vector(1,1);
         Vector nucleonVel2 = new Vector(1,1);
@@ -196,20 +190,9 @@ public class LevelTest {
     @Test
     public void testRemoveOutOfBoundsNucleons(){
 
-    /* public void removeOutOfBoundsNucleons(){ // checks if any nucleons in airborne Nucleons is out of bounds
-        for (int i=0; i<airborneNucleons.size(); i++){
-            INucleon nucleon = airborneNucleons.get(i);
-            if (isOutOfBoundsCheck(nucleon)){
-                removeNucleon(nucleon);
-                i--;
-            }
-        }
-    }*/
 
         //this also tests the removeNucleon method
-    /* private void removeNucleon(INucleon nucleon){
-        airborneNucleons.remove(nucleon);
-    }*/
+
 
         Vector nucleonVel1 = new Vector(1,1);
         Vector nucleonVel2 = new Vector(1,1);
@@ -232,16 +215,6 @@ public class LevelTest {
     @Test
     public void testPauseAndResume(){
 
-    /*public void pause() {
-        currentState = GameState.PAUSED;
-        setChanged();
-        notifyObservers("pause");
-    }*/
-
-    /* public void resume(){
-        currentState = GameState.RUNNING;
-        setChanged();
-    }*/
 
         level.pause();
         assertTrue(level.isGamePaused());
@@ -258,54 +231,6 @@ public class LevelTest {
 
     @Test
     public void testUpdate(){
-
-    /*public void update(float delta){
-        if(currentState==GameState.RUNNING) {
-            checkWinGame();
-            runTime += delta;
-            checkAllNucleonsStatus() {
-                INucleon collidingNucleon = null;
-                for (IGluonPoint gluon : gluons) {
-                    for (INucleon nucleon : airborneNucleons){
-                        if (com.nucleus.Model.Collisions.CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
-                            if (nucleon.getClass().equals(Proton.class)) {
-                                if (gluon.getProtonsNeeded() > 0){
-                                    gluon.addProton();
-                                    collidingNucleon = nucleon;
-                                    checkWinGame();
-                                } else {
-                                    loseGame();
-                                }
-                            }
-                            else {
-                                if (gluon.getNeutronsNeeded() > 0){
-                                    gluon.addNeutron();
-                                    collidingNucleon = nucleon;
-                                    checkWinGame();
-                                } else {
-                                    loseGame();
-                                }
-                            }
-                        }
-                    }
-                    if (collidingNucleon != null) {
-                        removeNucleon(collidingNucleon);
-                    }
-                }
-        if (collidingNucleon != null){
-            removeNucleon(collidingNucleon);
-        }
-            }
-            if (runTime - lastUpdateTime >= updateTime && !gun.isEmpty()) {
-                lastUpdateTime = runTime;
-                airborneNucleons.add(gun.shoot());
-            }
-            for (INucleon nucleon : airborneNucleons) {
-                nucleon.update(delta);
-            }
-            removeOutOfBoundsNucleons();
-        }
-    }*/
 
         //this also tests the checkWinGame method
 
