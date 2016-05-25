@@ -17,7 +17,7 @@ public class ButtonListener extends ClickListener {
 
     /**
      * Listens for inputs from buttons
-     * @param event the evet that happend
+     * @param event the event that happened
      * @param x coordinate for the touch
      * @param y coordinate for the touch
      */
@@ -67,6 +67,9 @@ public class ButtonListener extends ClickListener {
             controller.goToStartScreen();
         }
 
-        controller.playClickSound();
+        if (event.isHandled()) {
+            controller.playClickSound();
+        }
+
     }
 }

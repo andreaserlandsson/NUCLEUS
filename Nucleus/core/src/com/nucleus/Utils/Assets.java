@@ -30,15 +30,16 @@ public class Assets {
     //Loads all the music from the filepath into the hashMap.
     //Then calls on loadMusic() and wait for the assets to be loaded.
     public static void loadMusicFiles() {
-
         FileHandle musicPath;
         musicPath = Gdx.files.internal(PATHTOMUSIC);
+
         for (FileHandle entry : musicPath.list()) {
             audio.put(entry.name(), entry.path());
         }
         loadMusic();
         finishLoading(audioAssets);
     }
+
     //Loads all the textures from the filepath into the hashMap.
     //Then calls on loadMusic() and wait for the assets to be loaded.
     public static void loadTextureFiles() {
@@ -52,22 +53,18 @@ public class Assets {
         finishLoading(textureAssets);
     }
 
+    //Loads all the textfiles from the filepath into the hashMap.
+    //Then calls on loadText() and wait for the assets to be loaded.
     public static void loadTextFiles() {
         FileHandle txtPath;
         txtPath = Gdx.files.internal(PATHTOTXT);
 
-
         for (FileHandle entry : txtPath.list()) {
             txt.put(entry.name(), entry.path());
-
-            System.out.println(entry.name());
-            System.out.println(entry.path());
-
         }
-
         loadText();
         finishLoading(txtAssets);
-        System.out.println(txtAssets.getLoadedAssets());}
+    }
 
     //Loads all the music that is in the hashMap into the assetManger
     //for audio. The value is the path to each file.
@@ -89,6 +86,8 @@ public class Assets {
         }
     }
 
+    //Loads all the textfiles that is in the hashMap into the assetManger
+    //for textures. The value is the path to each file.
     public static void loadText() {
         setTxtLoader(txtAssets);
         if (txt != null) {
@@ -139,8 +138,9 @@ public class Assets {
         while(!(assetManager.update()));
     }
 
+    //As .txt is not a default loader for the AssetManager, we have to define it here.
+    //Uses the TextLoader class that is also created for this purpose only.
     private static void setTxtLoader(AssetManager assetManager) {
         assetManager.setLoader(Text.class, new TextLoader(new InternalFileHandleResolver()));
     }
-
 }
