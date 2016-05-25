@@ -11,16 +11,16 @@ import com.nucleus.Utils.Assets;
  */
 public class PauseViewable implements IViewable {
     private Texture pause;
-    private static final int REDUCE_IMAGE_FACTOR = 10;
 
     public PauseViewable(){
         this.pause = Assets.getTexture(NAssetsData.PAUSE);
+        pause.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
     @Override
     public void render(SpriteBatch batch){
         batch.begin();
-        batch.draw(pause, Gdx.graphics.getWidth() - pause.getWidth(), REDUCE_IMAGE_FACTOR, pause.getWidth()-REDUCE_IMAGE_FACTOR, pause.getHeight()-REDUCE_IMAGE_FACTOR);
+        batch.draw(pause, Gdx.graphics.getWidth() - pause.getWidth()-10, pause.getHeight()/2 - 3 );
         batch.end();
     }
 }
