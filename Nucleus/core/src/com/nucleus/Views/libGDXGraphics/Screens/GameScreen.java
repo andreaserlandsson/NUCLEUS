@@ -56,7 +56,6 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
         pauseDialog = new PauseDialog(batch, level, listener);
         //Add observers
         level.addObserver(this);
-
         //batch = new SpriteBatch();
         //batch.setProjectionMatrix(camera.combined);
 

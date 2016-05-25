@@ -27,13 +27,11 @@ public class CountdownViewable implements IViewable {
         this.gun = gun;
     }
 
-
-
     @Override
     public void render(SpriteBatch batch) {
 
         batch.begin();
-        font = new BitmapFont(Gdx.files.internal("menu/default.fnt"), true);
+        font = new BitmapFont(Gdx.files.internal("menu/default.fnt"), false);
 
         batch.draw(protonInGun,10,Gdx.graphics.getHeight() - protonInGun.getHeight(),30,30);
         batch.draw(neutronInGun,10,Gdx.graphics.getHeight() - neutronInGun.getHeight()-30,30,30);
@@ -41,11 +39,11 @@ public class CountdownViewable implements IViewable {
 
         font.setColor(247/255f, 157/255f, 150/255f, 1f);
         font.draw(batch, Integer.toString(gun.getProtonsInGun()),
-                45, Gdx.graphics.getHeight() - protonInGun.getHeight());
+                40, Gdx.graphics.getHeight()-13);
 
         font.setColor(158/255f,210/255f , 150/255f, 1f);
         font.draw(batch, Integer.toString(gun.getNeutronsInGun()),
-                45, Gdx.graphics.getHeight() - protonInGun.getHeight() - 30);
+                40, Gdx.graphics.getHeight() - 43);
 
         batch.end();
 

@@ -38,6 +38,7 @@ public class NucleusScreen {
 
         stage = new Stage(viewport, batch);
 
+
         //Setting inputHandler
         Gdx.input.setInputProcessor(stage);
     }
