@@ -3,16 +3,10 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.LevelUtils.LevelBuilder;
 import com.nucleus.Utils.Assets;
@@ -26,19 +20,15 @@ import java.util.List;
 /**
  * Created by Quaxi on 04/05/16.
  */
-public class StartScreen implements Screen {
-    private SpriteBatch batch;
-    protected Stage stage;
-    private Viewport viewport;
-    private OrthographicCamera camera;
-    protected Skin skin;
+public class StartScreen extends NucleusScreen implements Screen {
     private ILevel level;
     private List<IViewable> views = new ArrayList<IViewable>();
 
     public StartScreen(EventListener listener) {
-
+        super();
         // Creating level
         Assets.loadTextureFiles();
+
         Assets.loadTextFiles();
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
@@ -49,17 +39,6 @@ public class StartScreen implements Screen {
         //Initialising graphics
         views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
-        batch = new SpriteBatch();
-        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
-        camera = new OrthographicCamera();
-        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
-        viewport.apply();
-        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
-        camera.update();
-        stage = new Stage(viewport, batch);
-
-        //Setting inputHandler
-        Gdx.input.setInputProcessor(stage);
 
         //Create Table
         Table mainTable = new Table();
@@ -71,7 +50,6 @@ public class StartScreen implements Screen {
         TextButton playButton = new TextButton("Play", skin);
         TextButton optionsButton = new TextButton("Options", skin);
         TextButton exitButton = new TextButton("Exit", skin);
-
 
         //Add listeners to buttons
         playButton.addListener(listener);
@@ -119,7 +97,6 @@ public class StartScreen implements Screen {
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         camera.update();
     }
-
 
     @Override
     public void show(){

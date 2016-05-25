@@ -2,8 +2,6 @@ package com.nucleus.Views.libGDXGraphics.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Model.Level;
@@ -24,7 +22,9 @@ import java.util.Observer;
 /**
  * Created by erik on 25/04/16.
  */
-public class GameScreen implements PlayScreen, Observer {
+
+public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
+
 
     private final int levelNumber;
     private Level level;
@@ -36,8 +36,7 @@ public class GameScreen implements PlayScreen, Observer {
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private List<IViewableRotateble> viewsRot = new ArrayList<IViewableRotateble>();
-    private OrthographicCamera cam;
-    private static SpriteBatch batch;
+
     private boolean pauseDialogIsShowing = false;
 
     public GameScreen(Level level, EventListener listener){
@@ -45,8 +44,7 @@ public class GameScreen implements PlayScreen, Observer {
         this.level = level;
         this.listener = listener;
         this.levelNumber = level.getLevelNumber();
-        this.cam = new OrthographicCamera(1080, 1920);
-        cam.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //
 
         //Adding views
         views.add(new BackgroundViewable());
@@ -59,8 +57,6 @@ public class GameScreen implements PlayScreen, Observer {
         //Add observers
         level.addObserver(this);
 
-        batch = new SpriteBatch();
-        batch.setProjectionMatrix(cam.combined);
 
     }
 
@@ -94,23 +90,6 @@ public class GameScreen implements PlayScreen, Observer {
     }
 
 
-
-    @Override
-    public void resize(int width, int height){
-        Gdx.app.log("GameScreen", "resizing");
-    }
-
-    @Override
-    public void show(){
-        Gdx.app.log("GameScreen", "showing");
-
-    }
-
-    @Override
-    public void hide(){
-        Gdx.app.log("GameScreen", "hide called");
-    }
-
     @Override
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
@@ -125,11 +104,6 @@ public class GameScreen implements PlayScreen, Observer {
         pauseDialog.resume();
         pauseDialogIsShowing = false;
 
-    }
-
-    @Override
-    public void dispose() {
-        // Leave blank
     }
 
 

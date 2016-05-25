@@ -20,7 +20,7 @@ public class PauseViewable implements IViewable {
     @Override
     public void render(SpriteBatch batch){
         batch.begin();
-        batch.draw(pause, Gdx.graphics.getWidth() - pause.getWidth()-10, pause.getHeight()/2 - 3 );
+        batch.draw(pause, Gdx.graphics.getWidth() - pause.getWidth() -10, Gdx.graphics.getHeight() - pause.getHeight() -10);
         batch.end();
     }
 }
