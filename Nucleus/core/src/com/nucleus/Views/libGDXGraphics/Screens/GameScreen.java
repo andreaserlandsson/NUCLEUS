@@ -64,28 +64,30 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
     @Override
     public void render(float delta) {
 
-        if (renderEndGameScreen) {
-            endGameDialog.render(delta);
+        //renderPauseDialog = false;
+        level.update(delta);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        } else if (renderPauseDialog) {
-            pauseDialog.render(delta);
+        for (IViewable view : views) {
+            view.render(batch);
+        }
 
-        } else {
-
-            //renderPauseDialog = false;
-            level.update(delta);
-            Gdx.gl.glClearColor(0, 0, 0, 1);
-            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-            for (IViewable view : views) {
-                view.render(batch);
-            }
-
-            for (IViewableRotatable viewRot : viewsRot) {
-                if (viewRot.getRotationRequirement().equals("Molecule"))
+        for (IViewableRotatable viewRot : viewsRot) {
+            if (viewRot.getRotationRequirement().equals("Molecule")) {
                 viewRot.render(batch, level.getMolecule().getRotation());
             }
         }
+
+        if (renderEndGameScreen) {
+
+            endGameDialog.render(delta);
+
+        } else if (renderPauseDialog) {
+
+            pauseDialog.render(delta);
+        }
+
     }
 
 

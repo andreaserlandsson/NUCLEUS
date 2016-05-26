@@ -51,7 +51,9 @@ public class LevelTest {
 
     @Test
     public void thisAlwaysPasses() {
+
         assertTrue(true);
+
     }
 
     @Test
@@ -214,6 +216,7 @@ public class LevelTest {
         level.pause();
         level.pause();
         assertTrue(level.isGamePaused());
+
     }
 
     @Test

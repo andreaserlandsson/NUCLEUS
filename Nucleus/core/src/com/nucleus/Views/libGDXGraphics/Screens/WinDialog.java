@@ -13,9 +13,7 @@ import com.nucleus.Views.libGDXMusic.NMusicPlayer;
  */
 
 public class WinDialog extends WinLoseDialog {
-    private SpriteBatch batch;
-    private ILevel level;
-    private EventListener listener;
+
     private INMusicPlayer musicPlayer;
     public WinDialog(SpriteBatch batch, ILevel level, EventListener listener) {
         super(listener);

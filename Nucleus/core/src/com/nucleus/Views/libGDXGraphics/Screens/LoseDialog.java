@@ -12,9 +12,6 @@ import com.nucleus.Views.libGDXMusic.NMusicPlayer;
  */
 public class LoseDialog extends WinLoseDialog {
 
-    private SpriteBatch batch;
-    private ILevel level;
-    private EventListener listener;
     private INMusicPlayer musicPlayer;
 
     public LoseDialog(SpriteBatch batch, ILevel level, EventListener listener) {
