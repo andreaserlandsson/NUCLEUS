@@ -12,7 +12,18 @@ import static org.junit.Assert.assertTrue;
 public class NucleonTest {
 
     @Test
+    public void testEmptyNucleonConstructor() {
+
+        INucleon nuclonEmpty = new Nucleon();
+        assertTrue(nuclonEmpty.getPosition() == null);
+        assertTrue(nuclonEmpty.getVelocity() == null);
+        assertTrue(nuclonEmpty.getRadius() == 10);
+
+    }
+
+    @Test
     public void testUpdate() {
+
         INucleon nucleon = new Nucleon(new Vector(10,10), new Vector(10,10));
         nucleon.update(100);
         assertFalse(nucleon.getPosition().getX() == 10);

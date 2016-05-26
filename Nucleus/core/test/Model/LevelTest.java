@@ -1,11 +1,15 @@
 package Model;
 
 import com.nucleus.Model.IGluonPoint;
+import com.nucleus.Model.ILevel;
 import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.INucleonGun;
+import com.nucleus.Model.IObservable;
+import com.nucleus.Model.IObserver;
 import com.nucleus.Model.Level;
 import com.nucleus.Model.Neutron;
+import com.nucleus.Model.ObservableHelper;
 import com.nucleus.Model.Proton;
 import com.nucleus.Model.Collisions.Vector;
 
@@ -46,8 +50,9 @@ public class LevelTest {
     INucleonGun gun2 = new MockNucleonGun(nucleonList2);
     MockMolecule molecule = new MockMolecule(gluons);
 
-    Level level = new Level(levelNumber, width, height, gun, molecule, gluons);
-    Level level2 = new Level(levelNumber, width, height, gun2, molecule, gluons);
+    ILevel level = new Level(levelNumber, width, height, gun, molecule, gluons);
+    ILevel level2 = new Level(levelNumber, width, height, gun2, molecule, gluons);
+    ILevel level3 = new Level(levelNumber, width, height, gun, molecule, gluons);
 
     @Test
     public void thisAlwaysPasses() {
@@ -59,6 +64,44 @@ public class LevelTest {
     @Test
     @Ignore
     public void thisIsIgnored() {
+    }
+
+
+    @Test
+    public void testObserver() {
+
+        ObservableHelper<Level.GameState> obsHelper = new ObservableHelper<Level.GameState>();
+
+        assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING));
+
+        IObserver<Level.GameState> o = new IObserver<Level.GameState>() {
+            @Override
+            public void onObservation(IObservable<Level.GameState> o, Level.GameState arg) {
+                if (arg.equals(Level.GameState.RUNNING)) {
+                    level3.pause();
+                } else if (arg.equals(Level.GameState.PAUSED)) {
+                    level3.resume();
+                }
+            }
+        };
+
+
+        level3.addObserver(o);
+        level3.removeObserver(o);
+        obsHelper.addObserver(o);
+
+        obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
+
+        assertTrue(level3.getCurrentState().equals(Level.GameState.PAUSED));
+
+        obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
+        assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING));
+
+        obsHelper.removeObserver(o);
+
+        obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
+        assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING)); // note that the state did not change
+
     }
 
     @Test

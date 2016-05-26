@@ -6,6 +6,8 @@ import com.nucleus.Model.Collisions.Vector;
 public interface IGluonPoint {
     boolean isFull();
     Vector getPosition();
+    float getX();
+    float getY();
     void setPosition(Vector vect);
     int getRadius();
     void addProton();

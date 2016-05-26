@@ -10,8 +10,8 @@ public class Nucleon implements INucleon, ICollidable {
 
     private Vector position;
     private Vector velocity;
-    private final int RADIUS = 10;   //Dummy value. Sizes will be used for collision detection purposes
-                                    //and will be properly determined later.
+    private final int RADIUS = 10;   //Sizes will be used for collision detection purposes
+
     public Nucleon(){
     }
 

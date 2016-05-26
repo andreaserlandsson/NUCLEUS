@@ -7,10 +7,6 @@ import com.nucleus.Model.Collisions.Vector;
  */
 public class Proton extends Nucleon {
 
-    public Proton(){
-        super();
-    }
-
     public Proton(Vector position, Vector vector){
         super(position, vector);
     }

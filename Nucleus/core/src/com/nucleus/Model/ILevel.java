@@ -12,6 +12,7 @@ public interface ILevel<E extends Enum<E>> extends IObservable  {
     IMolecule getMolecule();
     IGluonPoint[] getGluons();
     void addAirborneNucleon(INucleon nucleon);
+    boolean isOutOfBoundsCheck(INucleon nucleon);
     void removeOutOfBoundsNucleons();
     void pause();
     void resume();
