@@ -1,6 +1,7 @@
 package Model;
 
 import com.nucleus.Model.IGluonPoint;
+import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.INucleonGun;
 import com.nucleus.Model.Level;
@@ -41,6 +42,14 @@ public class LevelTest {
     IGluonPoint gluon2 = new MockGluon(v2, 1, 1);
     IGluonPoint gluon3 = new MockGluon(v3, 1, 1);
     IGluonPoint[] gluons = {gluon1, gluon2, gluon3};
+
+    Vector v4 = new Vector(100, 100);
+    Vector v5 = new Vector(200, 200);
+    Vector v6 = new Vector(300, 300);
+    IGluonPoint gluon4 = new MockGluon(v1, 1, 1);
+    IGluonPoint gluon5 = new MockGluon(v2, 1, 1);
+    IGluonPoint gluon6 = new MockGluon(v3, 1, 1);
+    IGluonPoint[] gluons2 = {gluon4, gluon5, gluon6};
 
     INucleonGun gun = new MockNucleonGun(nucleonList);
     INucleonGun gun2 = new MockNucleonGun(nucleonList2);
@@ -142,12 +151,17 @@ public class LevelTest {
 
         assertTrue(level.getMolecule() == this.molecule);
 
+        IMolecule newMolecule = new MockMolecule(gluons);
+        assertTrue(level.getMolecule() != newMolecule);
+
     }
 
     @Test
     public void testGetGluons() {
 
         assertTrue(level.getGluons() == this.gluons);
+
+        assertTrue(level.getGluons() != gluons2);
 
     }
 
@@ -209,8 +223,17 @@ public class LevelTest {
         assertTrue(level.isGamePaused());
         level.resume();
         assertTrue(!level.isGamePaused());
+
         level.pause();
         assertTrue(level.isGamePaused());
+        level.resume();
+        assertTrue(!level.isGamePaused());
+
+        level.pause();
+        level.pause();
+        assertTrue(level.isGamePaused());
+
+        level.resume();
         level.resume();
         assertTrue(!level.isGamePaused());
         level.pause();
