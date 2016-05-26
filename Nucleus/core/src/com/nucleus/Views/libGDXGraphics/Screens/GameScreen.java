@@ -50,9 +50,9 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
     @Override
     public void render(float delta) {
-        level.update(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        level.update(delta);
 
         for (IViewable view : views) {
             view.render(batch);
