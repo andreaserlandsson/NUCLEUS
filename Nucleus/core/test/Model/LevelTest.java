@@ -25,9 +25,6 @@ public class LevelTest {
     int width = 5;
     int height = 5;
     int levelNumber = 0;
-    Vector gluonPositions = new Vector(1, 1);
-    int pNeeded = 1;
-    int nNeeded = 1;
 
     Vector nucleonPos = new Vector(0, 0);
     Vector nucleonVel = new Vector(0, 0);
@@ -43,13 +40,7 @@ public class LevelTest {
     IGluonPoint gluon3 = new MockGluon(v3, 1, 1);
     IGluonPoint[] gluons = {gluon1, gluon2, gluon3};
 
-    Vector v4 = new Vector(100, 100);
-    Vector v5 = new Vector(200, 200);
-    Vector v6 = new Vector(300, 300);
-    IGluonPoint gluon4 = new MockGluon(v1, 1, 1);
-    IGluonPoint gluon5 = new MockGluon(v2, 1, 1);
-    IGluonPoint gluon6 = new MockGluon(v3, 1, 1);
-    IGluonPoint[] gluons2 = {gluon4, gluon5, gluon6};
+    IGluonPoint[] gluons2 = {gluon1, gluon2, gluon3};
 
     INucleonGun gun = new MockNucleonGun(nucleonList);
     INucleonGun gun2 = new MockNucleonGun(nucleonList2);
