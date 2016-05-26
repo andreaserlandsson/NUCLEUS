@@ -97,7 +97,6 @@ public class Level implements ILevel, IObservable {
                 y - nucleon.getRadius()>=height+bufferSize || y + nucleon.getRadius()<=0-bufferSize;
     }
 
-    //TODO: Check so this still works correctly with tests
     public void removeOutOfBoundsNucleons(){ // checks if any nucleons in airborne Nucleons is out of bounds
         for (int i=0; i<airborneNucleons.size(); i++){
             INucleon nucleon = airborneNucleons.get(i);

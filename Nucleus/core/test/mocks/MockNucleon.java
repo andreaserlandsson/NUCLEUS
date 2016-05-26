@@ -25,12 +25,11 @@ public class MockNucleon implements INucleon, ICollidable {
         position = position.add(velocity.multiply(delta));
     }
 
-    @Override
+
     public float getX() {
         return position.getX();
     }
 
-    @Override
     public float getY() {
         return position.getY();
     }

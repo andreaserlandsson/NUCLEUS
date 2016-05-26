@@ -104,38 +104,54 @@ public class LevelTest {
 
     @Test
     public void testIsGameWon() {
+
         molecule.setFull(false);
-        assertTrue(!level.isGameWon());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
         molecule.setFull(true);
         level.update(1); // this also tests the CheckWinGame() method called via the update() method
-        assertTrue(level.isGameWon());
-
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
     }
 
     @Test
     public void testIsGameLost() {
 
         molecule.setFull(true);
-        assertTrue(!level.isGameLost());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
+
         molecule.setFull(false);
         level.update(1); // this also tests the loseGame() method called via the update() method
-        assertTrue(level.isGameLost());
+        //assertTrue(level.isGameLost());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
     }
 
     @Test
     public void testIsGamePaused() {
 
-        assertTrue(!level.isGamePaused());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
         level.pause();
-        assertTrue(level.isGamePaused());
-
-    }
-
-    @Test
-    public void testSetGamePauesd() {
-        level.setGamePaused();
-        assertTrue(level.isGamePaused());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
     }
 
@@ -232,26 +248,28 @@ public class LevelTest {
     @Test
     public void testPauseAndResume() {
 
-        level.pause();
-        assertTrue(level.isGamePaused());
-        level.resume();
-        assertTrue(!level.isGamePaused());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
         level.pause();
-        assertTrue(level.isGamePaused());
-        level.resume();
-        assertTrue(!level.isGamePaused());
-
-        level.pause();
-        level.pause();
-        assertTrue(level.isGamePaused());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
         level.resume();
-        level.resume();
-        assertTrue(!level.isGamePaused());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
         level.pause();
-        level.pause();
-        assertTrue(level.isGamePaused());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
     }
 
@@ -289,14 +307,20 @@ public class LevelTest {
         level.update(1);
         level.update(1);//this adds an other proton to the allready full gluon -> loseGame() is called
 
-        assertTrue(level.isGameLost());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
         nucleonList2.add(new Neutron(nucleonPos, nucleonVel));
 
         level2.update(1);
         level2.update(1);//this adds an other neutron to the allready full gluon -> loseGame() is called
 
-        assertTrue(level2.isGameLost());
+        assertTrue(!level2.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level2.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level2.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(level2.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
     }
 
