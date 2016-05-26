@@ -3,7 +3,7 @@ package com.nucleus.Views.libGDXGraphics.Viewables;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.nucleus.Model.NAssetsData;
+import com.nucleus.Views.NAssetsData;
 import com.nucleus.Utils.Assets;
 
 /**

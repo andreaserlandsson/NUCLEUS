@@ -10,9 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.nucleus.Model.ILevel;
-import com.nucleus.Model.NAssetsData;
-import com.nucleus.Views.libGDXMusic.INMusicPlayer;
-import com.nucleus.Views.libGDXMusic.NMusicPlayer;
+
 
 /**
  * Created by andreaserlandsson on 24/05/16.

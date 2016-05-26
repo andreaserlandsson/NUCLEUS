@@ -1,6 +1,6 @@
 package com.nucleus.Model.LevelUtils;
 
-import com.nucleus.Model.NAssetsData;
+import com.nucleus.Views.NAssetsData;
 import com.nucleus.Utils.Assets;
 
 

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nucleus.Model.INucleon;
-import com.nucleus.Model.NAssetsData;
+import com.nucleus.Views.NAssetsData;
 import com.nucleus.Model.Proton;
 import com.nucleus.Utils.Vector;
 import com.nucleus.Utils.Assets;
@@ -61,35 +61,37 @@ public class NucleonViewable implements IViewable {
             if (nucleon.getClass() == Proton.class){
                 float x = nucleon.getPosition().getX();
                 float y = nucleon.getPosition().getY();
-                batch.draw(proton, x  - nucleon.getRadius(),y  - nucleon.getRadius());
+                batch.draw(proton, x  - 2*nucleon.getRadius(),y  - 2*nucleon.getRadius());
                 batch.draw(protonLargeTrailRegion,
                         //TODO fix 2px offset
-                        x-1,
-                        y + nucleon.getRadius() - 1,
-                        (float) (nucleon.getRadius() + 0.5),
+                        x - nucleon.getRadius()-1,
+                        y - 1,
+                        (float) (nucleon.getRadius()),
                         0,
                         protonLargeTrail.getWidth(),
                         protonLargeTrail.getHeight(),
                         1.0f,
                         1.0f,
-                        vectorToRadians(nucleon.getVelocity()));
+                        //0);
+                       vectorToRadians(nucleon.getVelocity()));
 
             }
             else{
                 float x = nucleon.getPosition().getX();
                 float y = nucleon.getPosition().getY();
-                batch.draw(neutron, x - nucleon.getRadius(),  y - nucleon.getRadius());
+                batch.draw(neutron, x - 2*nucleon.getRadius(),  y - 2*nucleon.getRadius());
                 batch.draw(neutronLargeTrailRegion,
                         //TODO fix 2px offset
-                        x-1,
-                        y + nucleon.getRadius() - 1,
-                        (float) (nucleon.getRadius() + 0.5),
+                        x - nucleon.getRadius(),
+                        y - 1,
+                        (float) (nucleon.getRadius()),
                         0,
                         neutronLargeTrail.getWidth(),
                         neutronLargeTrail.getHeight(),
                         1.0f,
                         1.0f,
-                        vectorToRadians(nucleon.getVelocity()));
+                       // 90);
+                       vectorToRadians(nucleon.getVelocity()));
             }
         }
         batch.end();
