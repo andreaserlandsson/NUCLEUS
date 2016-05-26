@@ -19,7 +19,7 @@ public class LevelChooseScreen extends NucleusScreen {
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private Button[] buttons;
-    private com.nucleus.Views.libGDXGraphics.Dialog.LevelSelectionDialog levelSelectionDialog;
+    private LevelSelectionDialog levelSelectionDialog;
 
     private boolean errorShowing = false;
 
@@ -64,13 +64,12 @@ public class LevelChooseScreen extends NucleusScreen {
         stage.addActor(mainTable);
         stage.addActor(secondTable);
 
-        levelSelectionDialog = new com.nucleus.Views.libGDXGraphics.Dialog.LevelSelectionDialog(listener);
+        levelSelectionDialog = new LevelSelectionDialog(listener);
 
     }
 
     public void showSelectionError(){
         Gdx.app.log("Level selection error", "showing");
-        errorShowing = true;
         levelSelectionDialog.show();
     }
 
@@ -78,7 +77,6 @@ public class LevelChooseScreen extends NucleusScreen {
     public void render(float delta){
         super.render(delta);
         levelSelectionDialog.render(delta);
-
     }
 
 }

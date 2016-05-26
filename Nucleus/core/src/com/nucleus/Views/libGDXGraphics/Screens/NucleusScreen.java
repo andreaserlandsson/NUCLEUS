@@ -74,6 +74,7 @@ public abstract class NucleusScreen implements Screen {
     @Override
     public void hide(){
         Gdx.app.log("NucleusScreen", "hiding");
+        dispose();
     }
 
     @Override
@@ -88,6 +89,6 @@ public abstract class NucleusScreen implements Screen {
 
     @Override
     public void dispose() {
-        // Leave blank
+
     }
 }

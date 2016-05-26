@@ -19,7 +19,6 @@ import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 public class ApplicationController {
 
 
-    private NucleusGame game;
     private ButtonEventHandler listener;
     private GameInputHandler controller;
     private INMusicPlayer musicPlayer;
@@ -27,7 +26,6 @@ public class ApplicationController {
     private Level level;
 
     public ApplicationController() {
-        game = new NucleusGame();
         controller = new GameInputHandler((GameScreen) screen);
         musicPlayer = NMusicPlayer.getInstance();
     }
@@ -91,7 +89,7 @@ public class ApplicationController {
     }
 
     public void exit() {
-        game.exit();
+        Gdx.app.exit();
     }
 
     public void toggleSound() {

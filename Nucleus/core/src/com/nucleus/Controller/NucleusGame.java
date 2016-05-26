@@ -30,10 +30,6 @@ public class NucleusGame extends Game {
         musicPlayer.playMusic(NAssetsData.MENUMUSIC);
     }
 
-    public void exit(){
-        Gdx.app.exit();
-    }
-
     @Override
     public void dispose(){
         super.dispose();

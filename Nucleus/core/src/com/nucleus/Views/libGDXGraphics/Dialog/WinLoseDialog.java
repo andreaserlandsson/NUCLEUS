@@ -15,7 +15,7 @@ import com.nucleus.Model.ILevel;
 /**
  * Created by andreaserlandsson on 24/05/16.
  */
-public class WinLoseDialog extends ScreenAdapter {
+public abstract class WinLoseDialog extends ScreenAdapter {
 
     protected Stage stage;
     protected Skin skin;
