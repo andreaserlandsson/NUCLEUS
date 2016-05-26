@@ -6,7 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 
 import java.util.ArrayList;
@@ -23,14 +22,9 @@ public class LevelChooseScreen extends NucleusScreen {
 
     private boolean errorShowing = false;
 
-    public LevelChooseScreen(ClickListener listener, int numOfButtons)
-    {
+    public LevelChooseScreen(ClickListener listener, int numOfButtons) {
         super();
 
-        //Initialising graphics
-        views.add(new BackgroundViewable());
-
-        //Buttons and stuff
         Gdx.app.log("GameScreen", "showing");
 
         //Create Table
@@ -77,12 +71,6 @@ public class LevelChooseScreen extends NucleusScreen {
         Gdx.app.log("Level selection error", "showing");
         errorShowing = true;
         levelSelectionDialog.show();
-    }
-
-    public void closeSelectionError(){
-        Gdx.app.log("Level selection error", "closed");
-        errorShowing = false;
-        levelSelectionDialog.dispose();
     }
 
     @Override

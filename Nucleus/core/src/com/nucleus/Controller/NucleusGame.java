@@ -2,6 +2,7 @@ package com.nucleus.Controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.nucleus.AssetHandler.Assets;
 import com.nucleus.AssetHandler.NAssetsData;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
@@ -15,6 +16,10 @@ public class NucleusGame extends Game {
         Gdx.app.log("NucleusGame", "created");
         Gdx.app.log("Height", Integer.toString(Gdx.graphics.getHeight()));
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
+
+        Assets.loadTextureFiles();
+        Assets.loadTextFiles();
+
         ApplicationController controller = new ApplicationController();
         controller.setListener(new ButtonEventHandler(controller));
         controller.goToStartScreen();

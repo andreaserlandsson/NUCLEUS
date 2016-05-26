@@ -7,36 +7,23 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.nucleus.Model.ILevel;
 import com.nucleus.LevelBuilder.LevelBuilder;
-import com.nucleus.AssetHandler.Assets;
-import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.Model.ILevel;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Quaxi on 04/05/16.
  */
 public class StartScreen extends NucleusScreen implements Screen {
     private ILevel level;
-    private List<IViewable> views = new ArrayList<IViewable>();
 
     public StartScreen(EventListener listener) {
         super();
         // Creating level
-        Assets.loadTextureFiles();
-        Assets.loadTextFiles();
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        //temporary to see that loading texture works
-        views.add(new BackgroundViewable());
-        views.add(new NucleonViewable(level.getAirborneNucleons()));
-
         //Initialising graphics
-        views.add(new BackgroundViewable());
         views.add(new NucleonViewable(level.getAirborneNucleons()));
 
         //Create Table
