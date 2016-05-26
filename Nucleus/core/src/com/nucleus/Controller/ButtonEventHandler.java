@@ -7,11 +7,11 @@ import com.nucleus.Views.LevelPermissions;
 /**
  * Created by Quaxi on 10/05/16.
  */
-public class ButtonListener extends ClickListener {
+public class ButtonEventHandler extends ClickListener {
 
     private GameController controller;
 
-    public ButtonListener(GameController controller) {
+    public ButtonEventHandler(GameController controller) {
         this.controller = controller;
     }
 

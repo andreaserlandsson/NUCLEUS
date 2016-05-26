@@ -1,6 +1,8 @@
 package com.nucleus.Model;
 
 
+import com.nucleus.Utils.Vector;
+
 public class Molecule implements IMolecule {
     private float rotation=0;
     private int width;
@@ -15,7 +17,7 @@ public class Molecule implements IMolecule {
         this.height = height;
     }
 
-    public void setRotation(com.nucleus.Utils.Vector lastTouch, com.nucleus.Utils.Vector newTouch){
+    public void setRotation(Vector lastTouch, Vector newTouch){
         float angle = calculateRotationAngle(lastTouch, newTouch);
         rotation = rotation + angle;
 

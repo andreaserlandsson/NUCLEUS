@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.nucleus.Model.Level;
-import com.nucleus.Model.NAssetsData;
+import com.nucleus.Views.NAssetsData;
 import com.nucleus.Model.LevelUtils.LevelBuilder;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
@@ -20,7 +20,7 @@ public class GameController {
 
 
     private NucleusGame game;
-    private ButtonListener listener;
+    private ButtonEventHandler listener;
     private NInputHandler controller;
     private INMusicPlayer musicPlayer;
     private Screen screen;
@@ -32,7 +32,7 @@ public class GameController {
         musicPlayer = NMusicPlayer.getInstance();
     }
 
-    public void setListener(ButtonListener listener) {
+    public void setListener(ButtonEventHandler listener) {
         this.listener = listener;
     }
 
