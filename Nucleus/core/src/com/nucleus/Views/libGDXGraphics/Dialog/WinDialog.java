@@ -1,8 +1,6 @@
-package com.nucleus.Views.libGDXGraphics.Screens;
+package com.nucleus.Views.libGDXGraphics.Dialog;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.nucleus.Model.ILevel;
 import com.nucleus.AssetHandler.NAssetsData;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
