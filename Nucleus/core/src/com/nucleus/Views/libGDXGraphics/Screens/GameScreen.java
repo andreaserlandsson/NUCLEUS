@@ -7,6 +7,9 @@ import com.nucleus.Model.ILevel;
 import com.nucleus.Model.IObservable;
 import com.nucleus.Model.IObserver;
 import com.nucleus.Model.Level;
+import com.nucleus.Views.libGDXGraphics.Dialog.PauseDialog;
+import com.nucleus.Views.libGDXGraphics.Dialog.WinDialog;
+import com.nucleus.Views.libGDXGraphics.Dialog.WinLoseDialog;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotatable;
@@ -29,7 +32,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
     private Level level;
 
     private WinLoseDialog endGameDialog;
-    private PauseDialog pauseDialog;
+    private com.nucleus.Views.libGDXGraphics.Dialog.PauseDialog pauseDialog;
     private EventListener listener;
 
     private List<IViewableRotatable> viewsRot = new ArrayList<IViewableRotatable>();
@@ -117,7 +120,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         }
         if (arg == Level.GameState.PAUSEDLOSE){
             Gdx.app.log("GameScreen", "Lost");
-            endGameDialog = new LoseDialog(listener);
+            endGameDialog = new com.nucleus.Views.libGDXGraphics.Dialog.LoseDialog(listener);
             endGameDialog.show();
         }
     }
