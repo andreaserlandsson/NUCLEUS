@@ -5,11 +5,11 @@ import java.util.ArrayList;
 /**
  * Created by erik on 26/05/16.
  */
-public class Observable<E> implements IObservable<E>{
+public class ObservableHelper<E> implements IObservable<E>{
 
     private ArrayList<IObserver<E>> observers;
 
-    public Observable() {
+    public ObservableHelper() {
         this.observers = new ArrayList<IObserver<E>>();
     }
 

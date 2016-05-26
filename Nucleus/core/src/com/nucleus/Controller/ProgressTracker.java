@@ -3,18 +3,18 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.nucleus.Model.ILevel;
-
-import java.util.Observable;
-import java.util.Observer;
+import com.nucleus.Model.IObservable;
+import com.nucleus.Model.IObserver;
+import com.nucleus.Model.Level;
 
 /**
  * Created by erik on 16/05/16.
  */
-public class ProgressTracker implements Observer{
+public class ProgressTracker implements IObserver<Level.GameState> {
     private static Preferences prefs = Gdx.app.getPreferences("prefs");
-    private Observable level;
+    private IObservable level;
 
-    public ProgressTracker(Observable level){
+    public ProgressTracker(IObservable level){
         this.level = level;
         level.addObserver(this);
     }
@@ -31,10 +31,9 @@ public class ProgressTracker implements Observer{
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        if (arg.equals("won")){
-            ILevel lvl = (ILevel)level;
-            writeCompletedLevels(lvl.getLevelNumber());
+    public void onObservation(IObservable o, Level.GameState arg) {
+        if (arg.equals(Level.GameState.PAUSEDWIN)){
+            writeCompletedLevels(((ILevel) o).getLevelNumber());
         }
     }
 }

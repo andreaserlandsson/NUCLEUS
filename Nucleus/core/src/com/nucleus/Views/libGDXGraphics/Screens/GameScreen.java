@@ -4,8 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.Model.ILevel;
+import com.nucleus.Model.IObservable;
+import com.nucleus.Model.IObserver;
 import com.nucleus.Model.Level;
-import com.nucleus.Views.libGDXGraphics.Viewables.BackgroundViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotatable;
@@ -15,15 +16,13 @@ import com.nucleus.Views.libGDXGraphics.Viewables.PauseViewable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 
 /**
  * Created by erik on 25/04/16.
  */
 
-public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
+public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<Level.GameState> {
 
 
     private final int levelNumber;
@@ -73,16 +72,11 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
                 viewRot.render(batch, level.getMolecule().getRotation());
             }
         }
-
         if (renderEndGameScreen) {
-
             endGameDialog.render(delta);
-
         } else if (renderPauseDialog) {
-
             pauseDialog.render(delta);
         }
-
     }
 
 
@@ -118,20 +112,20 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        if (arg.toString().equals("pause")){
+    public void onObservation(IObservable<Level.GameState> o, Level.GameState arg) {
+        if (arg == Level.GameState.PAUSED){
             pause();
         }
-        if (arg.toString().equals("resume")){
+        if (arg == Level.GameState.RUNNING){
             resume();
         }
-        if (arg.toString().equals("won")){
+        if (arg == Level.GameState.PAUSEDWIN){
             Gdx.app.log("GameScreen", "Won");
             renderEndGameScreen = true;
             endGameDialog = new WinDialog(listener);
             endGameDialog.show();
         }
-        if (arg.toString().equals("lost")){
+        if (arg == Level.GameState.PAUSEDLOSE){
             Gdx.app.log("GameScreen", "Lost");
             renderEndGameScreen = true;
             endGameDialog = new LoseDialog(listener);

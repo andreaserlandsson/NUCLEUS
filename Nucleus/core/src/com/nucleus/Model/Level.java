@@ -5,18 +5,19 @@ import com.nucleus.Model.Collisions.ICollidable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
-public class Level extends Observable implements ILevel {
+public class Level implements ILevel, IObservable {
     private int levelNumber;
     private int width;
     private int height;
 
     private float runTime = 0;
     private float lastUpdateTime = 0;
-    private float updateTime = 1;
+    private float updateInterval = 1;
 
-    private enum GameState{
+    private ObservableHelper<GameState> obsHelper = new ObservableHelper<GameState>();
+
+    public enum GameState{
         RUNNING,
         PAUSED,
         PAUSEDWIN,
@@ -37,6 +38,17 @@ public class Level extends Observable implements ILevel {
         this.gun = gun;
         this.molecule = molecule;
         this.gluons = gluons;
+        this.obsHelper = new ObservableHelper();
+    }
+
+    @Override
+    public void addObserver(IObserver o) {
+        obsHelper.addObserver(o);
+    }
+
+    @Override
+    public void removeObserver(IObserver o) {
+        obsHelper.removeObserver(o);
     }
 
     public int getLevelNumber() {
@@ -114,9 +126,8 @@ public class Level extends Observable implements ILevel {
 
     private void checkWinGame() {
         if (molecule.isFull()) {
-            setChanged();
-            notifyObservers("won");
             currentState = GameState.PAUSEDWIN;
+            obsHelper.update(this, currentState);
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
             loseGame();
         }
@@ -124,8 +135,9 @@ public class Level extends Observable implements ILevel {
 
     private void loseGame(){
         currentState = GameState.PAUSEDLOSE;
-        setChanged();
-        notifyObservers("lost");
+        //setChanged();
+        //notifyObservers("lost");
+        obsHelper.update(this, currentState);
     }
 
     private void checkAllNucleonsStatus(){
@@ -164,15 +176,12 @@ public class Level extends Observable implements ILevel {
 
     public void pause() {
         currentState = GameState.PAUSED;
-        setChanged();
-        notifyObservers("pause");
+        obsHelper.update(this, currentState);
     }
 
     public void resume(){
         currentState = GameState.RUNNING;
-        setChanged();
-        notifyObservers("resume");
-        setChanged();
+        obsHelper.update(this, currentState);
     }
 
     public void update(float delta){
@@ -180,7 +189,7 @@ public class Level extends Observable implements ILevel {
             checkWinGame();
             runTime += delta;
             checkAllNucleonsStatus();
-            if (runTime - lastUpdateTime >= updateTime && !gun.isEmpty()) {
+            if (runTime - lastUpdateTime >= updateInterval && !gun.isEmpty()) {
                 lastUpdateTime = runTime;
                 airborneNucleons.add(gun.shoot());
             }
