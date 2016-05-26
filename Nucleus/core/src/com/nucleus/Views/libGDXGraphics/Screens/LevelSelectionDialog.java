@@ -15,16 +15,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
  */
 public class LevelSelectionDialog extends ScreenAdapter{
 
-    private SpriteBatch batch;
     private Stage stage;
     protected Skin skin;
     private EventListener listener;
 
 
 
-    public LevelSelectionDialog(SpriteBatch batch, EventListener listener){
+    public LevelSelectionDialog(EventListener listener){
         this.listener = listener;
-        this.batch = batch;
         this.stage = new Stage();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
     }

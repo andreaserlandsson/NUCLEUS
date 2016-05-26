@@ -8,13 +8,11 @@ import com.nucleus.Utils.Vector;
  */
 public class Nucleon implements INucleon, ICollidable {
 
-    private com.nucleus.Utils.Vector position;
-    private com.nucleus.Utils.Vector velocity;
+    private Vector position;
+    private Vector velocity;
     private final int RADIUS = 10;   //Dummy value. Sizes will be used for collision detection purposes
                                     //and will be properly determined later.
-
     public Nucleon(){
-
     }
 
     public Nucleon(Vector position, Vector vector){

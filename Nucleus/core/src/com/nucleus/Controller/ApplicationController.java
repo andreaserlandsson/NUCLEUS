@@ -4,8 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.nucleus.Model.Level;
-import com.nucleus.Model.NAssetsData;
-import com.nucleus.Model.LevelUtils.LevelBuilder;
+import com.nucleus.AssetHandler.NAssetsData;
+import com.nucleus.LevelBuilder.LevelBuilder;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.LevelChooseScreen;
 import com.nucleus.Views.libGDXGraphics.Screens.OptionsScreen;
@@ -16,23 +16,23 @@ import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 /**
  * Created by Quaxi on 24/05/16.
  */
-public class GameController {
+public class ApplicationController {
 
 
     private NucleusGame game;
-    private ButtonListener listener;
-    private NInputHandler controller;
+    private ButtonEventHandler listener;
+    private GameInputHandler controller;
     private INMusicPlayer musicPlayer;
     private Screen screen;
     private Level level;
 
-    public GameController() {
+    public ApplicationController() {
         game = new NucleusGame();
-        controller = new NInputHandler((GameScreen) screen);
+        controller = new GameInputHandler((GameScreen) screen);
         musicPlayer = NMusicPlayer.getInstance();
     }
 
-    public void setListener(ButtonListener listener) {
+    public void setListener(ButtonEventHandler listener) {
         this.listener = listener;
     }
 
@@ -48,7 +48,7 @@ public class GameController {
         //this.levelNum = levelNum;
         screen = new GameScreen(level, listener);
         Gdx.input.setInputProcessor(controller);
-        Gdx.input.setInputProcessor(new NInputHandler((GameScreen) screen));
+        Gdx.input.setInputProcessor(new GameInputHandler((GameScreen) screen));
         goToScreen(screen);
 
         //starting level music
@@ -58,7 +58,7 @@ public class GameController {
     }
 
     protected void resumeLevel(){
-        Gdx.input.setInputProcessor(new NInputHandler((GameScreen) screen));
+        Gdx.input.setInputProcessor(new GameInputHandler((GameScreen) screen));
         level.resume();
     }
 

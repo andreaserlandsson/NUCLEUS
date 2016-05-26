@@ -23,7 +23,7 @@ public class InvertedPlayState implements ControllerState {
 
     public void drag(int screenX, int screenY, int pointer){
         ILevel level = screen.getLevel();
-        Vector newTouch = new Vector(-screenX, -screenY);
+        Vector newTouch = new Vector(screenX, screenY);
         newTouch.subtract(this.lastTouch);
         level.getMolecule().setRotation(lastTouch, newTouch);
         this.lastTouch = newTouch;

@@ -1,7 +1,7 @@
 package com.nucleus.Views.libGDXMusic;
 
 import com.badlogic.gdx.audio.Music;
-import com.nucleus.Utils.Assets;
+import com.nucleus.AssetHandler.Assets;
 
     //Singleton class to prevent multiple instances.
 public class NMusicPlayer implements INMusicPlayer {

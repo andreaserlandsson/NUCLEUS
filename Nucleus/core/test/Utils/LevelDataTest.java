@@ -1,7 +1,7 @@
 package Utils;
 
 import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.LevelUtils.LevelData;
+import com.nucleus.LevelBuilder.LevelData;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 

@@ -2,13 +2,13 @@ package com.nucleus.Controller;
 
 import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
 
-public class NInputHandler extends NInputProcessor {
+public class GameInputHandler extends NInputProcessor {
 
     ControllerState controlGame;
     ControllerState currentState;
     private PlayScreen screen;
 
-    public NInputHandler(PlayScreen screen){
+    public GameInputHandler(PlayScreen screen){
         this.screen = screen;
         controlGame = new NormalPlayState(screen);
         currentState = controlGame;

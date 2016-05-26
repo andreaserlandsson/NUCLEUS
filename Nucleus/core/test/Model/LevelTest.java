@@ -1,6 +1,7 @@
 package Model;
 
 import com.nucleus.Model.IGluonPoint;
+import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.INucleonGun;
 import com.nucleus.Model.Level;
@@ -42,6 +43,14 @@ public class LevelTest {
     IGluonPoint gluon3 = new MockGluon(v3, 1, 1);
     IGluonPoint[] gluons = {gluon1, gluon2, gluon3};
 
+    Vector v4 = new Vector(100, 100);
+    Vector v5 = new Vector(200, 200);
+    Vector v6 = new Vector(300, 300);
+    IGluonPoint gluon4 = new MockGluon(v1, 1, 1);
+    IGluonPoint gluon5 = new MockGluon(v2, 1, 1);
+    IGluonPoint gluon6 = new MockGluon(v3, 1, 1);
+    IGluonPoint[] gluons2 = {gluon4, gluon5, gluon6};
+
     INucleonGun gun = new MockNucleonGun(nucleonList);
     INucleonGun gun2 = new MockNucleonGun(nucleonList2);
     MockMolecule molecule = new MockMolecule(gluons);
@@ -51,7 +60,9 @@ public class LevelTest {
 
     @Test
     public void thisAlwaysPasses() {
+
         assertTrue(true);
+
     }
 
     @Test
@@ -64,18 +75,30 @@ public class LevelTest {
 
         assertTrue(level.getLevelNumber() == 0);
 
+        assertTrue(!(level.getLevelNumber() > 0));
+
+        assertTrue(!(level.getLevelNumber() < 0));
+
     }
 
     @Test
     public void testGetWidth() {
 
         assertTrue(level.getWidth() == 5);
+
+        assertTrue(!(level.getWidth() > 5));
+
+        assertTrue(!(level.getWidth() < 5));
     }
 
     @Test
     public void testGetHeight() {
 
         assertTrue(level.getHeight() == 5);
+
+        assertTrue(!(level.getHeight() > 5));
+
+        assertTrue(!(level.getHeight() < 5));
 
     }
 
@@ -119,7 +142,8 @@ public class LevelTest {
     @Test
     public void testGetNucleonGun() {
 
-        assertTrue(level.getNucleonGun() == this.gun);
+        assertTrue(level.getNucleonGun() == gun);
+        assertTrue(level.getNucleonGun() != gun2);
 
     }
 
@@ -138,14 +162,19 @@ public class LevelTest {
     @Test
     public void testGetMolecule() {
 
-        assertTrue(level.getMolecule() == this.molecule);
+        assertTrue(level.getMolecule() == molecule);
+
+        IMolecule newMolecule = new MockMolecule(gluons);
+        assertTrue(level.getMolecule() != newMolecule);
 
     }
 
     @Test
     public void testGetGluons() {
 
-        assertTrue(level.getGluons() == this.gluons);
+        assertTrue(level.getGluons() == gluons);
+
+        assertTrue(level.getGluons() != gluons2);
 
     }
 
@@ -163,7 +192,6 @@ public class LevelTest {
     @Test
     public void testIsOutOfBoundsCheck() {
 
-
         Vector nucleonVel1 = new Vector(1, 1);
         Vector nucleonVel2 = new Vector(1, 1);
         Vector nucleonPos1 = new Vector(1, 1);
@@ -178,7 +206,10 @@ public class LevelTest {
     }
 
     @Test
-    public void testRemoveOutOfBoundsNucleons() {
+    public void testRemoveOutOfBoundsNucleons(){
+
+
+        //this also tests the removeNucleon method
 
         Vector nucleonVel1 = new Vector(1, 1);
         Vector nucleonVel2 = new Vector(1, 1);
@@ -205,17 +236,34 @@ public class LevelTest {
         assertTrue(level.isGamePaused());
         level.resume();
         assertTrue(!level.isGamePaused());
+
         level.pause();
         assertTrue(level.isGamePaused());
+        level.resume();
+        assertTrue(!level.isGamePaused());
+
+        level.pause();
+        level.pause();
+        assertTrue(level.isGamePaused());
+
+        level.resume();
         level.resume();
         assertTrue(!level.isGamePaused());
         level.pause();
         level.pause();
         assertTrue(level.isGamePaused());
+
     }
 
     @Test
-    public void testUpdate() {
+    public void testUpdate(){
+
+        //this also tests the checkWinGame method
+
+        //this also  tests checkAllNucleonsStatus() which in turn tests
+            //the checkWinGame method
+            //the loseGame method
+            //the removeNucleon method
 
         gluon1.setPosition(nucleonPos);
 

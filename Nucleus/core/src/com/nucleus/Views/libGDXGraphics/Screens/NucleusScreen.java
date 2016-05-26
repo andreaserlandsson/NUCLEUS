@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by erik on 24/05/16.
  */
-public class NucleusScreen implements Screen {
+public abstract class NucleusScreen implements Screen {
     protected SpriteBatch batch;
     protected Stage stage;
     protected Viewport viewport;

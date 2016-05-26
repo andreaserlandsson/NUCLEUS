@@ -1,5 +1,6 @@
 package com.nucleus.Model;
 
+import com.nucleus.Utils.Vector;
 
 public class Molecule implements IMolecule {
     private float rotation=0;
@@ -15,23 +16,23 @@ public class Molecule implements IMolecule {
         this.height = height;
     }
 
-    public void setRotation(com.nucleus.Utils.Vector lastTouch, com.nucleus.Utils.Vector newTouch){
+    public void setRotation(Vector lastTouch, Vector newTouch){
         float angle = calculateRotationAngle(lastTouch, newTouch);
         rotation = rotation + angle;
 
         for(IGluonPoint gluon : gluons){
-            rotateGluon(gluon, new com.nucleus.Utils.Vector(width / 2, height / 2), gluon.getPosition(), angle);
+            rotateGluon(gluon, new Vector(width / 2, height / 2), gluon.getPosition(), angle);
         }
 
     }
 
-    private float calculateRotationAngle(com.nucleus.Utils.Vector lastTouch, com.nucleus.Utils.Vector newTouch){
-        com.nucleus.Utils.Vector delta = newTouch.subtract(lastTouch);
-        com.nucleus.Utils.Vector r = lastTouch.subtract(new com.nucleus.Utils.Vector(width/2.0f, height/2.0f));
-        com.nucleus.Utils.Vector rOrthogonal = new com.nucleus.Utils.Vector(r.getY(), -r.getX());
-        com.nucleus.Utils.Vector rOrthoUnit = rOrthogonal.multiply((1/rOrthogonal.abs()));
+    private float calculateRotationAngle(Vector lastTouch, Vector newTouch){
+        Vector delta = newTouch.subtract(lastTouch);
+        Vector r = lastTouch.subtract(new Vector(width/2.0f, height/2.0f));
+        Vector rOrthogonal = new Vector(r.getY(), -r.getX());
+        Vector rOrthoUnit = rOrthogonal.multiply((1/rOrthogonal.abs()));
         float effectiveRotationLength = delta.scalar(rOrthoUnit);
-        com.nucleus.Utils.Vector rotationVector = rOrthoUnit.multiply(effectiveRotationLength);
+        Vector rotationVector = rOrthoUnit.multiply(effectiveRotationLength);
         float rotationAngle = (float) Math.atan(rotationVector.abs()/r.abs());
         if (effectiveRotationLength<0)
             rotationAngle = -rotationAngle;
@@ -51,12 +52,12 @@ public class Molecule implements IMolecule {
         return true;
     }
 
-    public void rotateGluon(IGluonPoint gluon, com.nucleus.Utils.Vector center, com.nucleus.Utils.Vector position, double angle) {
+    public void rotateGluon(IGluonPoint gluon, Vector center, Vector position, double angle) {
         angle = -angle * Math.PI/180;
-        com.nucleus.Utils.Vector deltaPos = position.subtract(center);
+        Vector deltaPos = position.subtract(center);
         float nPosX = (float)(deltaPos.getX()*Math.cos(angle) + deltaPos.getY()*Math.sin(angle));
         float nPosY = (float)(-deltaPos.getX() * Math.sin(angle) + deltaPos.getY()*Math.cos(angle));
-        com.nucleus.Utils.Vector newPos = new com.nucleus.Utils.Vector(nPosX, nPosY).add(center);
+        Vector newPos = new Vector(nPosX, nPosY).add(center);
         gluon.setPosition(newPos);
     }
 

@@ -1,4 +1,4 @@
-package com.nucleus.Utils;
+package com.nucleus.AssetHandler;
 
 import com.badlogic.gdx.assets.loaders.AsynchronousAssetLoader;
 import com.badlogic.gdx.assets.AssetDescriptor;
@@ -8,9 +8,7 @@ import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 
-/**
- * Created by paki on 5/25/16.
- */
+
 public class TextLoader extends AsynchronousAssetLoader<Text, TextLoader.TextParameter> {
 
     public class TextParameter extends AssetLoaderParameters<Text> {
