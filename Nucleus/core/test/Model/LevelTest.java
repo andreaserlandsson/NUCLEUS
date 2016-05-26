@@ -75,18 +75,30 @@ public class LevelTest {
 
         assertTrue(level.getLevelNumber() == 0);
 
+        assertTrue(!(level.getLevelNumber() > 0));
+
+        assertTrue(!(level.getLevelNumber() < 0));
+
     }
 
     @Test
     public void testGetWidth() {
 
         assertTrue(level.getWidth() == 5);
+
+        assertTrue(!(level.getWidth() > 5));
+
+        assertTrue(!(level.getWidth() < 5));
     }
 
     @Test
     public void testGetHeight() {
 
         assertTrue(level.getHeight() == 5);
+
+        assertTrue(!(level.getHeight() > 5));
+
+        assertTrue(!(level.getHeight() < 5));
 
     }
 
@@ -130,7 +142,8 @@ public class LevelTest {
     @Test
     public void testGetNucleonGun() {
 
-        assertTrue(level.getNucleonGun() == this.gun);
+        assertTrue(level.getNucleonGun() == gun);
+        assertTrue(level.getNucleonGun() != gun2);
 
     }
 
@@ -149,7 +162,7 @@ public class LevelTest {
     @Test
     public void testGetMolecule() {
 
-        assertTrue(level.getMolecule() == this.molecule);
+        assertTrue(level.getMolecule() == molecule);
 
         IMolecule newMolecule = new MockMolecule(gluons);
         assertTrue(level.getMolecule() != newMolecule);
@@ -159,7 +172,7 @@ public class LevelTest {
     @Test
     public void testGetGluons() {
 
-        assertTrue(level.getGluons() == this.gluons);
+        assertTrue(level.getGluons() == gluons);
 
         assertTrue(level.getGluons() != gluons2);
 
