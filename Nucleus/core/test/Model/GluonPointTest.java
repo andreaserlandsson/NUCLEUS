@@ -2,7 +2,7 @@ package Model;
 
 import com.nucleus.Model.GluonPoint;
 import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import org.junit.Test;
 

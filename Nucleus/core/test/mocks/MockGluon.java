@@ -2,7 +2,7 @@ package mocks;
 
 import com.nucleus.Model.Collisions.ICollidable;
 import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 /**
  * Created by erik on 22/04/16.

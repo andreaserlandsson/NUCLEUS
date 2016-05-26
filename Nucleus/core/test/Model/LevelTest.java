@@ -7,7 +7,7 @@ import com.nucleus.Model.INucleonGun;
 import com.nucleus.Model.Level;
 import com.nucleus.Model.Neutron;
 import com.nucleus.Model.Proton;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import org.junit.Ignore;
 import org.junit.Test;

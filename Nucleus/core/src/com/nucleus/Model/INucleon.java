@@ -1,12 +1,14 @@
 package com.nucleus.Model;
 
+import com.nucleus.Model.Collisions.Vector;
+
 /**
  * Created by paki on 4/21/16.
  */
 public interface INucleon {
 
-    com.nucleus.Utils.Vector getPosition();
-    com.nucleus.Utils.Vector getVelocity();
+    Vector getPosition();
+    Vector getVelocity();
 
     void update(float delta);
 

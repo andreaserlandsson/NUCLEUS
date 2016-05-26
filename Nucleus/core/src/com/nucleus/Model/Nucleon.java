@@ -1,7 +1,7 @@
 package com.nucleus.Model;
 
 import com.nucleus.Model.Collisions.ICollidable;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 /**
  * Created by erik on 19/04/16.
