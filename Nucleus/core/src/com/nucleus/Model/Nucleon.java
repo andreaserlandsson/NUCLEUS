@@ -1,7 +1,7 @@
 package com.nucleus.Model;
 
 import com.nucleus.Model.Collisions.ICollidable;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 /**
  * Created by erik on 19/04/16.
@@ -22,14 +22,6 @@ public class Nucleon implements INucleon, ICollidable {
 
     public void update(float delta){
         position = position.add(velocity.multiply(delta));
-    }
-
-    public float getX(){
-        return position.getX();
-    }
-
-    public float getY(){
-        return position.getY();
     }
 
     public Vector getPosition(){

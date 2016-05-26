@@ -1,10 +1,12 @@
 package com.nucleus.Model;
 
 
+import com.nucleus.Model.Collisions.Vector;
+
 public interface IGluonPoint {
     boolean isFull();
-    com.nucleus.Utils.Vector getPosition();
-    void setPosition(com.nucleus.Utils.Vector vect);
+    Vector getPosition();
+    void setPosition(Vector vect);
     int getRadius();
     void addProton();
     int getProtonsNeeded();

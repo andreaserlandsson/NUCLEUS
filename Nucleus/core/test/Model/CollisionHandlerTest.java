@@ -5,7 +5,7 @@ import com.nucleus.Model.Collisions.CollisionHandler;
 import com.nucleus.Model.Collisions.ICollidable;
 import com.nucleus.Model.IGluonPoint;
 import com.nucleus.Model.INucleon;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import static  org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

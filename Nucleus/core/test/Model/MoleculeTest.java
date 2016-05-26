@@ -6,7 +6,7 @@ import org.junit.Test;
 import mocks.MockGluon;
 
 import com.nucleus.Model.IMolecule;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import com.nucleus.Model.Molecule;
 import com.nucleus.Model.IGluonPoint;

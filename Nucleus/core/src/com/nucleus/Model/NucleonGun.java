@@ -1,6 +1,6 @@
 package com.nucleus.Model;
 
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import java.util.ArrayList;
 import java.util.Random;

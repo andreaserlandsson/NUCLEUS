@@ -1,7 +1,7 @@
 package com.nucleus.Controller;
 
 import com.nucleus.Model.ILevel;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
 
 public class InvertedPlayState implements ControllerState {

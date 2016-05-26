@@ -9,7 +9,7 @@ import com.nucleus.Model.Molecule;
 import com.nucleus.Model.Neutron;
 import com.nucleus.Model.NucleonGun;
 import com.nucleus.Model.Proton;
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import java.util.ArrayList;
 import java.util.Collections;

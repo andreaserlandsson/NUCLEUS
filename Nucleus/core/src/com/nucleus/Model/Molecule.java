@@ -1,6 +1,6 @@
 package com.nucleus.Model;
 
-import com.nucleus.Utils.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 public class Molecule implements IMolecule {
     private float rotation=0;
