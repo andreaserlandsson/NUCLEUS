@@ -12,15 +12,16 @@ import com.nucleus.AssetHandler.Assets;
 /**
  * Created by erik on 28/04/16.
  */
-public class MoleculeViewable implements IViewableRotatable {
+public class MoleculeViewable implements IViewable {
+    private IMolecule molecule;
     private Texture moleculeTexture, halfProton, halfNeutron, halfProtonComplete, halfNeutronComplete;
     private TextureRegion moleculeTextureRegion;
     private IGluonPoint[] gluonPoints;
-    private final String rotationRequirement = "Molecule";
 
     //TODO: add support for loading different level textures
     public MoleculeViewable(int levelNumber, IMolecule molecule){
         gluonPoints = molecule.getGluons();
+        this.molecule = molecule;
         loadTextures(levelNumber);
     }
 
@@ -54,7 +55,7 @@ public class MoleculeViewable implements IViewableRotatable {
         }
     }
 
-    public void render(SpriteBatch batch, float rotation){
+    public void render(SpriteBatch batch){
         batch.begin();
 
         batch.draw(moleculeTextureRegion,
@@ -66,18 +67,12 @@ public class MoleculeViewable implements IViewableRotatable {
                 moleculeTexture.getHeight(),
                 1.0f,
                 1.0f,
-                rotation);
+                molecule.getRotation());
 
         drawGluons(batch);
 
         batch.end();
     }
-
-    @Override
-    public String getRotationRequirement() {
-        return rotationRequirement;
-    }
-
 
     private void loadTextures(int levelNumber){
         this.moleculeTexture = Assets.getTexture(NAssetsData.getLevelPicture(levelNumber));

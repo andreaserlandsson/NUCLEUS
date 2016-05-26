@@ -12,13 +12,9 @@ import com.nucleus.Views.libGDXGraphics.Dialog.WinDialog;
 import com.nucleus.Views.libGDXGraphics.Dialog.WinLoseDialog;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
-import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotatable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.PauseViewable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -32,10 +28,8 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
     private Level level;
 
     private WinLoseDialog endGameDialog;
-    private com.nucleus.Views.libGDXGraphics.Dialog.PauseDialog pauseDialog;
+    private PauseDialog pauseDialog;
     private EventListener listener;
-
-    private List<IViewableRotatable> viewsRot = new ArrayList<IViewableRotatable>();
 
     public GameScreen(Level level, EventListener listener){
         super();
@@ -47,7 +41,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         views.add(new PauseViewable());
-        viewsRot.add(new MoleculeViewable(levelNumber, level.getMolecule()));
+        views.add(new MoleculeViewable(levelNumber, level.getMolecule()));
         pauseDialog = new PauseDialog(listener);
 
         //Add observers
@@ -62,12 +56,6 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
         for (IViewable view : views) {
             view.render(batch);
-        }
-
-        for (IViewableRotatable viewRot : viewsRot) {
-            if (viewRot.getRotationRequirement().equals("Molecule")) {
-                viewRot.render(batch, level.getMolecule().getRotation());
-            }
         }
         if (level.getCurrentState() == Level.GameState.PAUSEDLOSE ||
                 level.getCurrentState() == Level.GameState.PAUSEDWIN) {
