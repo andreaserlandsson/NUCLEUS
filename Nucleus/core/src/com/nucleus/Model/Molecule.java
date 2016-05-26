@@ -15,14 +15,6 @@ public class Molecule implements IMolecule {
         this.height = height;
     }
 
-    public IGluonPoint getGluonPoint(int i) {
-        return gluons[i];
-    }
-
-    public int getNrOfGluonPoint(){
-        return gluons.length;
-    }
-
     public void setRotation(com.nucleus.Utils.Vector lastTouch, com.nucleus.Utils.Vector newTouch){
         float angle = calculateRotationAngle(lastTouch, newTouch);
         rotation = rotation + angle;

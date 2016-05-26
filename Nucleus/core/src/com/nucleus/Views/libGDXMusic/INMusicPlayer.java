@@ -9,8 +9,6 @@ public interface INMusicPlayer {
     void stopMusic();
     void playSound(String sound);
     void switchSong(String newSong);
-    void pauseMusic();
-    void resumeMusic();
     void setMasterVolume(float volume);
     float getMasterVolume();
 }

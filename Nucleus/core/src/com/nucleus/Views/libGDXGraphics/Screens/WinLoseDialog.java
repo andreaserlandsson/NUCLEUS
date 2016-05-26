@@ -19,7 +19,6 @@ public class WinLoseDialog extends ScreenAdapter {
 
     private Stage stage;
     protected Skin skin;
-    private INMusicPlayer musicPlayer;
     private EventListener listener;
     protected String title = "test text";
 
@@ -31,7 +30,6 @@ public class WinLoseDialog extends ScreenAdapter {
 
     @Override
     public void show() {
-        musicPlayer = NMusicPlayer.getInstance();
         stage = new Stage();
         goToMainMenu = false;
         Gdx.input.setInputProcessor(stage);

@@ -28,7 +28,6 @@ public class StartScreen extends NucleusScreen implements Screen {
         super();
         // Creating level
         Assets.loadTextureFiles();
-
         Assets.loadTextFiles();
         level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 

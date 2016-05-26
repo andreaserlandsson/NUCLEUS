@@ -1,6 +1,6 @@
 package com.nucleus.Model;
 
-import com.badlogic.gdx.Gdx;
+import com.nucleus.Model.Collisions.CollisionHandler;
 import com.nucleus.Model.Collisions.ICollidable;
 
 import java.util.ArrayList;
@@ -114,9 +114,9 @@ public class Level extends Observable implements ILevel {
 
     private void checkWinGame() {
         if (molecule.isFull()) {
-                setChanged();
-                notifyObservers("won");
-                currentState = GameState.PAUSEDWIN;
+            setChanged();
+            notifyObservers("won");
+            currentState = GameState.PAUSEDWIN;
         } else if (gun.isEmpty() && airborneNucleons.isEmpty()) {
             loseGame();
         }
@@ -132,7 +132,7 @@ public class Level extends Observable implements ILevel {
         INucleon collidingNucleon = null;
         for (IGluonPoint gluon : gluons) {
             for (INucleon nucleon : airborneNucleons){
-                if (com.nucleus.Model.Collisions.CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
+                if (CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
                     if (nucleon.getClass().equals(Proton.class)) {
                         if (gluon.getProtonsNeeded() > 0){
                             gluon.addProton();

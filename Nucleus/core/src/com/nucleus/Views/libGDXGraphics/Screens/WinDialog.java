@@ -17,7 +17,6 @@ public class WinDialog extends WinLoseDialog {
     private ILevel level;
     private EventListener listener;
     private INMusicPlayer musicPlayer;
-
     public WinDialog(SpriteBatch batch, ILevel level, EventListener listener) {
         super(listener);
         this.musicPlayer = NMusicPlayer.getInstance();

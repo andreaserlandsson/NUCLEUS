@@ -19,25 +19,22 @@ import static org.junit.Assert.assertTrue;
  */
 public class MoleculeTest {
 
-    Vector v1 = new Vector(100,100);
-    Vector v2 = new Vector(200,200);
-    Vector v3 = new Vector(300,300);
-    //the positions for all gluons.
-
-    IGluonPoint gluon1 = new MockGluon(v1,1,1);
-    IGluonPoint gluon2 = new MockGluon(v2,1,1);
-    IGluonPoint gluon3 = new MockGluon(v3,1,1);
-
-    IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
-
-
-    //molecule with three different gluonpoints.
-
-
-    IMolecule molecule = new Molecule(0,0,gluons);
-
     @Test
     public void testGetRotation(){
+
+        Vector v1 = new Vector(100,100);
+        Vector v2 = new Vector(200,200);
+        Vector v3 = new Vector(300,300);
+        //the positions for all gluons.
+
+        IGluonPoint gluon1 = new MockGluon(v1,1,1);
+        IGluonPoint gluon2 = new MockGluon(v2,1,1);
+        IGluonPoint gluon3 = new MockGluon(v3,1,1);
+
+        IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
+
+
+        //molecule with three different gluonpoints.
 
         IMolecule molecule1 = new Molecule(0,0,gluons);
 
@@ -56,6 +53,22 @@ public class MoleculeTest {
         //Got a molecule with 3 different gluonpoints.
         //The molecule won't be full until all those are full..
 
+        Vector v1 = new Vector(100,100);
+        Vector v2 = new Vector(200,200);
+        Vector v3 = new Vector(300,300);
+        //the positions for all gluons.
+
+        IGluonPoint gluon1 = new MockGluon(v1,1,1);
+        IGluonPoint gluon2 = new MockGluon(v2,1,1);
+        IGluonPoint gluon3 = new MockGluon(v3,1,1);
+
+        IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
+
+
+        //molecule with three different gluonpoints.
+
+
+        IMolecule molecule = new Molecule(0,0,gluons);
         assertFalse(gluon1.isFull());
         assertFalse(gluon2.isFull());
         assertFalse(gluon3.isFull());
@@ -91,6 +104,22 @@ public class MoleculeTest {
     @Test
     public void testSetRotation(){
 
+        Vector v1 = new Vector(100,100);
+        Vector v2 = new Vector(200,200);
+        Vector v3 = new Vector(300,300);
+        //the positions for all gluons.
+
+        IGluonPoint gluon1 = new MockGluon(v1,1,1);
+        IGluonPoint gluon2 = new MockGluon(v2,1,1);
+        IGluonPoint gluon3 = new MockGluon(v3,1,1);
+
+        IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
+
+
+        //molecule with three different gluonpoints.
+
+
+
         IMolecule molecule2 = new Molecule(0,0,gluons);
         Vector lastTouch = new Vector(5,50);
         Vector newTouch = new Vector(105,100);
@@ -103,9 +132,23 @@ public class MoleculeTest {
 
     @Test
     public void testSetRotation2(){
+        Vector v1 = new Vector(100,100);
+        Vector v2 = new Vector(200,200);
+        Vector v3 = new Vector(300,300);
+        //the positions for all gluons.
+
+        IGluonPoint gluon1 = new MockGluon(v1,1,1);
+        IGluonPoint gluon2 = new MockGluon(v2,1,1);
+        IGluonPoint gluon3 = new MockGluon(v3,1,1);
+
+        IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
+
+
+        //molecule with three different gluonpoints.
+
+        IMolecule molecule = new Molecule(0,0,gluons);
         Vector center = new Vector(100,100);
         Vector position = new Vector(200,100);
-
 
         //new position should be (100, 200) with rotation 90 degrees
         molecule.setRotation(center,position);
@@ -127,6 +170,22 @@ public class MoleculeTest {
 
     @Test
     public void testRotateGluon() {
+        Vector v1 = new Vector(100,100);
+        Vector v2 = new Vector(200,200);
+        Vector v3 = new Vector(300,300);
+        //the positions for all gluons.
+
+        IGluonPoint gluon1 = new MockGluon(v1,1,1);
+        IGluonPoint gluon2 = new MockGluon(v2,1,1);
+        IGluonPoint gluon3 = new MockGluon(v3,1,1);
+
+        IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
+
+
+        //molecule with three different gluonpoints.
+
+        IMolecule molecule = new Molecule(0,0,gluons);
+
         IGluonPoint gluon = new MockGluon(v1, 1, 1);
         molecule.rotateGluon(gluon, v1, v2, 2.0);
 
@@ -135,6 +194,31 @@ public class MoleculeTest {
 
         assertTrue(gluon.getPosition().getX() == 196.44913f);
         assertTrue(gluon.getPosition().getY() == 203.42903f);
+
+    }
+
+    @Test
+    public void testGetGluons(){
+        Vector v1 = new Vector(100,100);
+        Vector v2 = new Vector(200,200);
+        Vector v3 = new Vector(300,300);
+        //the positions for all gluons.
+
+        IGluonPoint gluon1 = new MockGluon(v1,1,1);
+        IGluonPoint gluon2 = new MockGluon(v2,1,1);
+        IGluonPoint gluon3 = new MockGluon(v3,1,1);
+
+        IGluonPoint[] gluons = {gluon1,gluon2,gluon3};
+
+        //molecule with three different gluonpoints.
+
+        IMolecule molecule = new Molecule(0,0,gluons);
+
+        IGluonPoint[] g = molecule.getGluons();
+        assertTrue(g[0] == gluon1);
+        assertTrue(g[1] == gluon2);
+        assertTrue(g[2] == gluon3);
+
 
     }
 

@@ -1,6 +1,7 @@
 package com.nucleus.Model;
 
 import com.nucleus.Model.Collisions.ICollidable;
+import com.nucleus.Utils.Vector;
 
 /**
  * Created by erik on 19/04/16.
@@ -16,7 +17,7 @@ public class Nucleon implements INucleon, ICollidable {
 
     }
 
-    public Nucleon(com.nucleus.Utils.Vector position, com.nucleus.Utils.Vector vector){
+    public Nucleon(Vector position, Vector vector){
         this.position = position;
         this.velocity = vector;
     }
@@ -33,11 +34,11 @@ public class Nucleon implements INucleon, ICollidable {
         return position.getY();
     }
 
-    public com.nucleus.Utils.Vector getPosition(){
+    public Vector getPosition(){
         return position;
     }
 
-    public com.nucleus.Utils.Vector getVelocity(){
+    public Vector getVelocity(){
         return velocity;
     }
 
