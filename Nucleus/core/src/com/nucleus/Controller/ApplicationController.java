@@ -16,19 +16,19 @@ import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 /**
  * Created by Quaxi on 24/05/16.
  */
-public class GameController {
+public class ApplicationController {
 
 
     private NucleusGame game;
     private ButtonEventHandler listener;
-    private NInputHandler controller;
+    private GameInputHandler controller;
     private INMusicPlayer musicPlayer;
     private Screen screen;
     private Level level;
 
-    public GameController() {
+    public ApplicationController() {
         game = new NucleusGame();
-        controller = new NInputHandler((GameScreen) screen);
+        controller = new GameInputHandler((GameScreen) screen);
         musicPlayer = NMusicPlayer.getInstance();
     }
 
@@ -48,7 +48,7 @@ public class GameController {
         //this.levelNum = levelNum;
         screen = new GameScreen(level, listener);
         Gdx.input.setInputProcessor(controller);
-        Gdx.input.setInputProcessor(new NInputHandler((GameScreen) screen));
+        Gdx.input.setInputProcessor(new GameInputHandler((GameScreen) screen));
         goToScreen(screen);
 
         //starting level music
@@ -58,7 +58,7 @@ public class GameController {
     }
 
     protected void resumeLevel(){
-        Gdx.input.setInputProcessor(new NInputHandler((GameScreen) screen));
+        Gdx.input.setInputProcessor(new GameInputHandler((GameScreen) screen));
         level.resume();
     }
 

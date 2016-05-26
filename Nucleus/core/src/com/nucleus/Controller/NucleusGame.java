@@ -15,7 +15,7 @@ public class NucleusGame extends Game {
         Gdx.app.log("NucleusGame", "created");
         Gdx.app.log("Height", Integer.toString(Gdx.graphics.getHeight()));
         Gdx.app.log("Width", Integer.toString(Gdx.graphics.getWidth()));
-        GameController controller = new GameController();
+        ApplicationController controller = new ApplicationController();
         controller.setListener(new ButtonEventHandler(controller));
         controller.goToStartScreen();
 

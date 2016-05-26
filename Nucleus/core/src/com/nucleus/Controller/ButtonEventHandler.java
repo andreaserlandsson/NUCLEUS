@@ -9,9 +9,9 @@ import com.nucleus.Views.LevelPermissions;
  */
 public class ButtonEventHandler extends ClickListener {
 
-    private GameController controller;
+    private ApplicationController controller;
 
-    public ButtonEventHandler(GameController controller) {
+    public ButtonEventHandler(ApplicationController controller) {
         this.controller = controller;
     }
 
