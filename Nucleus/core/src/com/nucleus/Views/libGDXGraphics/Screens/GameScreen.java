@@ -7,18 +7,14 @@ import com.nucleus.Model.ILevel;
 import com.nucleus.Model.IObservable;
 import com.nucleus.Model.IObserver;
 import com.nucleus.Model.Level;
-import com.nucleus.Views.libGDXGraphics.Dialog.PauseDialog;
-import com.nucleus.Views.libGDXGraphics.Dialog.WinDialog;
-import com.nucleus.Views.libGDXGraphics.Dialog.WinLoseDialog;
+import com.nucleus.Views.libGDXGraphics.Dialogs.PauseDialog;
+import com.nucleus.Views.libGDXGraphics.Dialogs.WinDialog;
+import com.nucleus.Views.libGDXGraphics.Dialogs.WinLoseDialog;
 import com.nucleus.Views.libGDXGraphics.Viewables.CountdownViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
-import com.nucleus.Views.libGDXGraphics.Viewables.IViewableRotatable;
 import com.nucleus.Views.libGDXGraphics.Viewables.MoleculeViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.PauseViewable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -29,15 +25,13 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
 
     private final int levelNumber;
-    private Level level;
+    private ILevel level;
 
     private WinLoseDialog endGameDialog;
-    private com.nucleus.Views.libGDXGraphics.Dialog.PauseDialog pauseDialog;
+    private PauseDialog pauseDialog;
     private EventListener listener;
 
-    private List<IViewableRotatable> viewsRot = new ArrayList<IViewableRotatable>();
-
-    public GameScreen(Level level, EventListener listener){
+    public GameScreen(ILevel level, EventListener listener){
         super();
         this.level = level;
         this.listener = listener;
@@ -47,7 +41,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         views.add(new PauseViewable());
-        viewsRot.add(new MoleculeViewable(levelNumber, level.getMolecule()));
+        views.add(new MoleculeViewable(levelNumber, level.getMolecule()));
         pauseDialog = new PauseDialog(listener);
 
         //Add observers
@@ -56,18 +50,12 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
     @Override
     public void render(float delta) {
-        level.update(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        level.update(delta);
 
         for (IViewable view : views) {
             view.render(batch);
-        }
-
-        for (IViewableRotatable viewRot : viewsRot) {
-            if (viewRot.getRotationRequirement().equals("Molecule")) {
-                viewRot.render(batch, level.getMolecule().getRotation());
-            }
         }
         if (level.getCurrentState() == Level.GameState.PAUSEDLOSE ||
                 level.getCurrentState() == Level.GameState.PAUSEDWIN) {
@@ -120,7 +108,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         }
         if (arg == Level.GameState.PAUSEDLOSE){
             Gdx.app.log("GameScreen", "Lost");
-            endGameDialog = new com.nucleus.Views.libGDXGraphics.Dialog.LoseDialog(listener);
+            endGameDialog = new com.nucleus.Views.libGDXGraphics.Dialogs.LoseDialog(listener);
             endGameDialog.show();
         }
     }

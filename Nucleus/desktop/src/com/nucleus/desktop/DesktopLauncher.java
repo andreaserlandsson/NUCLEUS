@@ -1,12 +1,18 @@
 package com.nucleus.desktop;
 
 
-import com.nucleus.Controller.GameCreator;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.nucleus.Controller.NucleusGame;
 
 public class DesktopLauncher {
 
-
 	public static void main (String[] arg) {
-		new GameCreator();
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "NucleusGame";
+		config.width = 280;
+		config.height = 512;
+		config.samples = 4;
+		new LwjglApplication(new NucleusGame(), config);
 	}
 }

@@ -6,7 +6,7 @@ import com.nucleus.Model.Collisions.ICollidable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Level implements ILevel, IObservable {
+public class Level implements ILevel {
     private int levelNumber;
     private int width;
     private int height;

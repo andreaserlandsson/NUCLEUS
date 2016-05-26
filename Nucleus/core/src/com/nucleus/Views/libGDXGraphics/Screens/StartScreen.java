@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.nucleus.LevelBuilder.LevelBuilder;
 import com.nucleus.Model.ILevel;
 import com.nucleus.Views.libGDXGraphics.Viewables.IViewable;
 import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
@@ -18,10 +17,11 @@ import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 public class StartScreen extends NucleusScreen implements Screen {
     private ILevel level;
 
-    public StartScreen(EventListener listener) {
+    public StartScreen(EventListener listener, ILevel level) {
         super();
+        this.level = level;
         // Creating level
-        level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         //Initialising graphics
         views.add(new NucleonViewable(level.getAirborneNucleons()));
@@ -82,31 +82,6 @@ public class StartScreen extends NucleusScreen implements Screen {
         viewport.update(width, height);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         camera.update();
-    }
-
-    @Override
-    public void show(){
-        Gdx.app.log("StartScreen", "showing");
-    }
-
-    @Override
-    public void hide(){
-        Gdx.app.log("StartScreen", "hide called");
-    }
-
-    @Override
-    public  void pause(){
-        Gdx.app.log("StartScreen", "pause called");
-    }
-
-    @Override
-    public void resume(){
-        Gdx.app.log("StartScreen", "resume called");
-    }
-
-    @Override
-    public void dispose() {
-        skin.dispose();
     }
 }
 
