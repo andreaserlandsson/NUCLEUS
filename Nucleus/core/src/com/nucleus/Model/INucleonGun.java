@@ -8,6 +8,4 @@ public interface INucleonGun {
     boolean isEmpty();
     int getProtonsInGun();
     int getNeutronsInGun();
-    int getAmmoLeft();
-
 }

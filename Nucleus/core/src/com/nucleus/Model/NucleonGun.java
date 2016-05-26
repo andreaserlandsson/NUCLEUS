@@ -25,11 +25,7 @@ public class NucleonGun implements INucleonGun {
         this.difficultyMultiplier = difficultyMultiplier;
     }
 
-    //Temporary method
-    public int getAmmoLeft(){
-        return nucleonList.size();
-    }
-
+    @Override
     public int getProtonsInGun(){
         int nbrOfProtons = 0;
         for(int i = 0; i < nucleonList.size(); i++){
@@ -40,6 +36,7 @@ public class NucleonGun implements INucleonGun {
         return nbrOfProtons;
     }
 
+    @Override
     public int getNeutronsInGun(){
         int nbrOfNeutrons = 0;
         for(int i = 0; i < nucleonList.size(); i++){
