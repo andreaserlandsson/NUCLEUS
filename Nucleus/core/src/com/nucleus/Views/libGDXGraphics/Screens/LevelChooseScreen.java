@@ -54,10 +54,20 @@ public class LevelChooseScreen extends NucleusScreen {
             mainTable.row();
         }
 
+        Table secoundTable = new Table();
+        secoundTable.setFillParent(true);
+        secoundTable.center().bottom();
+        mainTable.padBottom(150f);
+        TextButton mainMenu = new TextButton("Main Menu", skin);
+        secoundTable.addListener(listener);
+        secoundTable.add(mainMenu).width(100).pad(100);
+
+
         stage.addListener(listener);
 
         //Add table to stage
         stage.addActor(mainTable);
+        stage.addActor(secoundTable);
 
         levelSelectionDialog = new LevelSelectionDialog(batch, listener);
 
