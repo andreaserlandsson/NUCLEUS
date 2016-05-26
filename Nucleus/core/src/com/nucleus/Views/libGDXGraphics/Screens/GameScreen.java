@@ -27,16 +27,12 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
     private final int levelNumber;
     private Level level;
-    private boolean renderEndGameScreen = false;
+
     private WinLoseDialog endGameDialog;
     private PauseDialog pauseDialog;
     private EventListener listener;
 
-
-    //private List<IViewable> views = new ArrayList<IViewable>();
     private List<IViewableRotatable> viewsRot = new ArrayList<IViewableRotatable>();
-
-    private boolean renderPauseDialog = false;
 
     public GameScreen(Level level, EventListener listener){
         super();
@@ -53,8 +49,6 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
         //Add observers
         level.addObserver(this);
-
-
     }
 
     @Override
@@ -72,9 +66,10 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
                 viewRot.render(batch, level.getMolecule().getRotation());
             }
         }
-        if (renderEndGameScreen) {
+        if (level.getCurrentState() == Level.GameState.PAUSEDLOSE ||
+                level.getCurrentState() == Level.GameState.PAUSEDWIN) {
             endGameDialog.render(delta);
-        } else if (renderPauseDialog) {
+        } else if (level.getCurrentState() == Level.GameState.PAUSED) {
             pauseDialog.render(delta);
         }
     }
@@ -84,16 +79,12 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
     public void pause(){
         Gdx.app.log("GameScreen", "pause called");
         pauseDialog.show();
-        renderPauseDialog = true;
-
     }
 
     @Override
     public void resume(){
         Gdx.app.log("GameScreen", "resume called");
         pauseDialog.resume();
-        renderPauseDialog = false;
-
     }
 
     @Override
@@ -121,16 +112,13 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         }
         if (arg == Level.GameState.PAUSEDWIN){
             Gdx.app.log("GameScreen", "Won");
-            renderEndGameScreen = true;
             endGameDialog = new WinDialog(listener);
             endGameDialog.show();
         }
         if (arg == Level.GameState.PAUSEDLOSE){
             Gdx.app.log("GameScreen", "Lost");
-            renderEndGameScreen = true;
             endGameDialog = new LoseDialog(listener);
             endGameDialog.show();
-
         }
     }
 }

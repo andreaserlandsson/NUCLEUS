@@ -45,7 +45,6 @@ public class ApplicationController {
 
         this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         ProgressTracker progressTracker = new ProgressTracker(level);
-        //this.levelNum = levelNum;
         screen = new GameScreen(level, listener);
         Gdx.input.setInputProcessor(controller);
         Gdx.input.setInputProcessor(new GameInputHandler((GameScreen) screen));

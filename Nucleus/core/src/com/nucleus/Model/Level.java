@@ -63,18 +63,8 @@ public class Level implements ILevel, IObservable {
         return height;
     }
 
-    public boolean isGameWon() {
-        return currentState==GameState.PAUSEDWIN;
-    }
-
-    public boolean isGameLost() {
-        return currentState==GameState.PAUSEDLOSE;
-    }
-
-    public boolean isGamePaused() { return currentState==GameState.PAUSED; }
-
-    public void setGamePaused() {
-        currentState = GameState.PAUSED;
+    public GameState getCurrentState(){
+        return currentState;
     }
 
     public INucleonGun getNucleonGun(){
@@ -135,8 +125,6 @@ public class Level implements ILevel, IObservable {
 
     private void loseGame(){
         currentState = GameState.PAUSEDLOSE;
-        //setChanged();
-        //notifyObservers("lost");
         obsHelper.update(this, currentState);
     }
 

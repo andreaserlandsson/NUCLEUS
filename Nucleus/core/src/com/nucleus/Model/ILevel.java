@@ -4,11 +4,6 @@ import java.util.List;
 
 public interface ILevel  {
 
-    boolean isGameLost();
-    boolean isGameWon();
-    boolean isGamePaused();
-    void setGamePaused();
-
     int getLevelNumber();
     int getWidth();
     int getHeight();
