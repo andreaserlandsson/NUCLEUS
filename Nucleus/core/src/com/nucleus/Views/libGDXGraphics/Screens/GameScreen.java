@@ -29,7 +29,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
 
     private final int levelNumber;
-    private Level level;
+    private ILevel level;
 
     private WinLoseDialog endGameDialog;
     private com.nucleus.Views.libGDXGraphics.Dialog.PauseDialog pauseDialog;
@@ -37,7 +37,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
     private List<IViewableRotatable> viewsRot = new ArrayList<IViewableRotatable>();
 
-    public GameScreen(Level level, EventListener listener){
+    public GameScreen(ILevel level, EventListener listener){
         super();
         this.level = level;
         this.listener = listener;

@@ -18,10 +18,11 @@ import com.nucleus.Views.libGDXGraphics.Viewables.NucleonViewable;
 public class StartScreen extends NucleusScreen implements Screen {
     private ILevel level;
 
-    public StartScreen(EventListener listener) {
+    public StartScreen(EventListener listener, ILevel level) {
         super();
+        this.level = level;
         // Creating level
-        level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         //Initialising graphics
         views.add(new NucleonViewable(level.getAirborneNucleons()));

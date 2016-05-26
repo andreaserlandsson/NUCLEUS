@@ -2,7 +2,7 @@ package com.nucleus.Model;
 
 import java.util.List;
 
-public interface ILevel  {
+public interface ILevel<E extends Enum<E>> extends IObservable  {
 
     int getLevelNumber();
     int getWidth();
@@ -16,5 +16,6 @@ public interface ILevel  {
     void pause();
     void resume();
     void update(float delta);
+    E getCurrentState();
 
 }

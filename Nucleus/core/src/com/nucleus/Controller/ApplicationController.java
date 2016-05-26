@@ -62,8 +62,8 @@ public class ApplicationController {
     }
 
     protected void goToStartScreen(){
-
-        screen = new StartScreen(listener);
+        this.level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        screen = new StartScreen(listener,level);
         musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.switchSong(NAssetsData.MENUMUSIC);
         goToScreen(screen);
