@@ -1,8 +1,7 @@
-package com.nucleus.Views.libGDXGraphics.Dialog;
+package com.nucleus.Views.libGDXGraphics.Dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
