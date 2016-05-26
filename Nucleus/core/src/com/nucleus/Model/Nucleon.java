@@ -24,14 +24,6 @@ public class Nucleon implements INucleon, ICollidable {
         position = position.add(velocity.multiply(delta));
     }
 
-    public float getX(){
-        return position.getX();
-    }
-
-    public float getY(){
-        return position.getY();
-    }
-
     public Vector getPosition(){
         return position;
     }
