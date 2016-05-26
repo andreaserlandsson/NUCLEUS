@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.Model.INucleonGun;
-import com.nucleus.Views.NAssetsData;
-import com.nucleus.Utils.Assets;
+import com.nucleus.AssetHandler.NAssetsData;
+import com.nucleus.AssetHandler.Assets;
 
 /**
  * Created by mirandabannsgard on 16-05-17.

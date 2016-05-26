@@ -1,9 +1,10 @@
-package com.nucleus.Model.LevelUtils;
+package com.nucleus.LevelBuilder;
 
 import com.nucleus.Model.IMolecule;
 import com.nucleus.Model.INucleon;
 import com.nucleus.Model.INucleonGun;
 import com.nucleus.Model.Level;
+import com.nucleus.Model.LevelUtils.LevelNotExistingException;
 import com.nucleus.Model.Molecule;
 import com.nucleus.Model.Neutron;
 import com.nucleus.Model.NucleonGun;

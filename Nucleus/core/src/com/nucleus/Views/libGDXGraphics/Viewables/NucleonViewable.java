@@ -4,10 +4,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nucleus.Model.INucleon;
-import com.nucleus.Views.NAssetsData;
+import com.nucleus.AssetHandler.NAssetsData;
 import com.nucleus.Model.Proton;
 import com.nucleus.Utils.Vector;
-import com.nucleus.Utils.Assets;
+import com.nucleus.AssetHandler.Assets;
 
 import java.util.List;
 

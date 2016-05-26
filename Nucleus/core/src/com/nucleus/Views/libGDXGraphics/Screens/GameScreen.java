@@ -34,26 +34,23 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
     private EventListener listener;
 
 
-    private List<IViewable> views = new ArrayList<IViewable>();
+    //private List<IViewable> views = new ArrayList<IViewable>();
     private List<IViewableRotatable> viewsRot = new ArrayList<IViewableRotatable>();
 
     private boolean renderPauseDialog = false;
 
     public GameScreen(Level level, EventListener listener){
-
+        super();
         this.level = level;
         this.listener = listener;
         this.levelNumber = level.getLevelNumber();
-        //
 
         //Adding views
-        views.add(new BackgroundViewable());
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         views.add(new PauseViewable());
         viewsRot.add(new MoleculeViewable(levelNumber, level.getMolecule()));
-
-        pauseDialog = new PauseDialog(batch, level, listener);
+        pauseDialog = new PauseDialog(listener);
 
         //Add observers
         level.addObserver(this);
@@ -63,8 +60,6 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
 
     @Override
     public void render(float delta) {
-
-        //renderPauseDialog = false;
         level.update(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -133,13 +128,13 @@ public class GameScreen extends NucleusScreen implements PlayScreen, Observer {
         if (arg.toString().equals("won")){
             Gdx.app.log("GameScreen", "Won");
             renderEndGameScreen = true;
-            endGameDialog = new WinDialog(batch, level, listener);
+            endGameDialog = new WinDialog(listener);
             endGameDialog.show();
         }
         if (arg.toString().equals("lost")){
             Gdx.app.log("GameScreen", "Lost");
             renderEndGameScreen = true;
-            endGameDialog = new LoseDialog(batch, level, listener);
+            endGameDialog = new LoseDialog(listener);
             endGameDialog.show();
 
         }

@@ -1,4 +1,4 @@
-package com.nucleus.Views;
+package com.nucleus.AssetHandler;
 
 
 public class NAssetsData {

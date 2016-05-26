@@ -2,7 +2,7 @@ package com.nucleus.Controller;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.nucleus.Views.NAssetsData;
+import com.nucleus.AssetHandler.NAssetsData;
 import com.nucleus.Views.libGDXMusic.INMusicPlayer;
 import com.nucleus.Views.libGDXMusic.NMusicPlayer;
 
