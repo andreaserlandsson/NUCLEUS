@@ -27,6 +27,7 @@ public class ProgressTracker implements IObserver<Level.GameState> {
     public void writeCompletedLevels(int levelNumber){
         if(readCompletedLevels()<levelNumber) {
             prefs.putInteger("progress", levelNumber);
+            prefs.flush();
         }
     }
 

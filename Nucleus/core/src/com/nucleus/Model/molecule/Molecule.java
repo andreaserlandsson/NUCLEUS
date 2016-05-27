@@ -6,7 +6,7 @@ public class Molecule implements IMolecule {
     private float rotation=0;
     private int width;
     private int height;
-    float rotationMultiplier = 40; //A constant that is used to scale the rotation angle
+    private final float ROTATIONMULTIPLIER = 57; //A constant that is used to scale the rotation angle
 
     public IGluonPoint[] gluons;
 
@@ -36,7 +36,7 @@ public class Molecule implements IMolecule {
         float rotationAngle = (float) Math.atan(rotationVector.abs()/r.abs());
         if (effectiveRotationLength<0)
             rotationAngle = -rotationAngle;
-        return rotationMultiplier * rotationAngle;
+        return ROTATIONMULTIPLIER * rotationAngle;
     }
 
     public float getRotation(){

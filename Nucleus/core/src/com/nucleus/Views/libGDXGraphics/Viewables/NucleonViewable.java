@@ -72,7 +72,6 @@ public class NucleonViewable implements IViewable {
                         protonLargeTrail.getHeight(),
                         1.0f,
                         1.0f,
-                        //0);
                        vectorToRadians(nucleon.getVelocity()));
 
             }

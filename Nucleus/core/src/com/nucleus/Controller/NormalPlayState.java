@@ -1,7 +1,7 @@
 package com.nucleus.Controller;
 
-import com.nucleus.Model.level.ILevel;
 import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.level.ILevel;
 import com.nucleus.Views.libGDXGraphics.Screens.PlayScreen;
 
 public class NormalPlayState implements ControllerState {
