@@ -1,8 +1,8 @@
 package mocks;
 
-import com.nucleus.Model.Collisions.ICollidable;
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.collisions.ICollidable;
+import com.nucleus.Model.molecule.IGluonPoint;
+import com.nucleus.Model.collisions.Vector;
 
 /**
  * Created by erik on 22/04/16.

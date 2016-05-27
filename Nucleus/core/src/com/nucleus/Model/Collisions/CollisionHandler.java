@@ -1,4 +1,4 @@
-package com.nucleus.Model.Collisions;
+package com.nucleus.Model.collisions;
 
 public class CollisionHandler {
     public static boolean collision(ICollidable c1, ICollidable c2){

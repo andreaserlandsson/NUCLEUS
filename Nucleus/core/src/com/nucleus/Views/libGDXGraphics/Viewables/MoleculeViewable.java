@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.IMolecule;
+import com.nucleus.Model.molecule.IGluonPoint;
+import com.nucleus.Model.molecule.IMolecule;
 import com.nucleus.AssetHandler.NAssetsData;
 import com.nucleus.AssetHandler.Assets;
 

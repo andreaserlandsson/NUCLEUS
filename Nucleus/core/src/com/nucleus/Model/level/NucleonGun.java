@@ -1,6 +1,9 @@
-package com.nucleus.Model;
+package com.nucleus.Model.level;
 
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.particles.INucleon;
+import com.nucleus.Model.particles.Neutron;
+import com.nucleus.Model.particles.Proton;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,7 +13,7 @@ import java.util.Random;
  */
 public class NucleonGun implements INucleonGun {
 
-    private ArrayList<INucleon> nucleonList = new ArrayList<com.nucleus.Model.INucleon>();
+    private ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
     private int arrayIndex;
     private int width;
     private int height;

@@ -1,17 +1,17 @@
 package Model;
 
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.ILevel;
-import com.nucleus.Model.IMolecule;
-import com.nucleus.Model.INucleon;
-import com.nucleus.Model.INucleonGun;
-import com.nucleus.Model.IObservable;
-import com.nucleus.Model.IObserver;
-import com.nucleus.Model.Level;
-import com.nucleus.Model.Neutron;
-import com.nucleus.Model.ObservableHelper;
-import com.nucleus.Model.Proton;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.molecule.IGluonPoint;
+import com.nucleus.Model.level.ILevel;
+import com.nucleus.Model.molecule.IMolecule;
+import com.nucleus.Model.particles.INucleon;
+import com.nucleus.Model.level.INucleonGun;
+import com.nucleus.Model.collisions.IObservable;
+import com.nucleus.Model.collisions.IObserver;
+import com.nucleus.Model.level.Level;
+import com.nucleus.Model.particles.Neutron;
+import com.nucleus.Model.level.ObservableHelper;
+import com.nucleus.Model.particles.Proton;
+import com.nucleus.Model.collisions.Vector;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -99,7 +99,7 @@ public class LevelTest {
 
         obsHelper.removeObserver(o);
 
-        obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
+        obsHelper.update(level3, (Level.GameState) level3.getCurrentState());
         assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING)); // note that the state did not change
 
     }

@@ -1,11 +1,11 @@
 package Model;
 
-import com.nucleus.Model.INucleon;
-import com.nucleus.Model.INucleonGun;
-import com.nucleus.Model.Neutron;
-import com.nucleus.Model.NucleonGun;
-import com.nucleus.Model.Proton;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.particles.INucleon;
+import com.nucleus.Model.level.INucleonGun;
+import com.nucleus.Model.particles.Neutron;
+import com.nucleus.Model.level.NucleonGun;
+import com.nucleus.Model.particles.Proton;
+import com.nucleus.Model.collisions.Vector;
 import org.junit.Test;
 import java.util.ArrayList;
 import mocks.MockNucleon;

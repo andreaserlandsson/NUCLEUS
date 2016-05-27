@@ -1,4 +1,6 @@
-package com.nucleus.Model;
+package com.nucleus.Model.level;
+
+import com.nucleus.Model.particles.INucleon;
 
 /**
  * Created by erik on 22/04/16.

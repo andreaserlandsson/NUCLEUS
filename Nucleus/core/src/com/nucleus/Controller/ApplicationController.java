@@ -3,7 +3,7 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.nucleus.Model.Level;
+import com.nucleus.Model.level.Level;
 import com.nucleus.AssetHandler.NAssetsData;
 import com.nucleus.LevelBuilder.LevelBuilder;
 import com.nucleus.Views.libGDXGraphics.Screens.GameScreen;

@@ -1,7 +1,7 @@
 package Utils;
 
 import org.junit.Test;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.collisions.Vector;
 import static org.junit.Assert.*;
 /**
  * Created by mirandabannsgard on 16-05-05.

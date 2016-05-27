@@ -2,7 +2,7 @@ package com.nucleus.LevelBuilder;
 
 import com.nucleus.AssetHandler.Assets;
 import com.nucleus.AssetHandler.NAssetsData;
-import com.nucleus.Model.LevelUtils.LevelNotExistingException;
+import com.nucleus.Model.LevelNotExistingException;
 
 
 // A class for reading and parsing .txt files that will be levels.

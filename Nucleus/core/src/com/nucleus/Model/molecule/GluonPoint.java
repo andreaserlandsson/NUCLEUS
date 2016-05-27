@@ -1,7 +1,7 @@
-package com.nucleus.Model;
+package com.nucleus.Model.molecule;
 
-import com.nucleus.Model.Collisions.ICollidable;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.collisions.ICollidable;
+import com.nucleus.Model.collisions.Vector;
 
 public class GluonPoint implements IGluonPoint, ICollidable {
 

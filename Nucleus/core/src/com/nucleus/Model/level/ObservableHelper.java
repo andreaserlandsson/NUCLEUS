@@ -1,11 +1,14 @@
-package com.nucleus.Model;
+package com.nucleus.Model.level;
+
+import com.nucleus.Model.collisions.IObservable;
+import com.nucleus.Model.collisions.IObserver;
 
 import java.util.ArrayList;
 
 /**
  * Created by erik on 26/05/16.
  */
-public class ObservableHelper<E> implements IObservable<E>{
+public class ObservableHelper<E> implements IObservable<E> {
 
     private ArrayList<IObserver<E>> observers;
 

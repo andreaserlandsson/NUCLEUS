@@ -2,10 +2,10 @@ package com.nucleus.Controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
-import com.nucleus.Model.ILevel;
-import com.nucleus.Model.IObservable;
-import com.nucleus.Model.IObserver;
-import com.nucleus.Model.Level;
+import com.nucleus.Model.level.ILevel;
+import com.nucleus.Model.collisions.IObservable;
+import com.nucleus.Model.collisions.IObserver;
+import com.nucleus.Model.level.Level;
 
 /**
  * Created by erik on 16/05/16.

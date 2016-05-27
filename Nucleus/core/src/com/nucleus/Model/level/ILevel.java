@@ -1,8 +1,13 @@
-package com.nucleus.Model;
+package com.nucleus.Model.level;
+
+import com.nucleus.Model.collisions.IObservable;
+import com.nucleus.Model.molecule.IGluonPoint;
+import com.nucleus.Model.molecule.IMolecule;
+import com.nucleus.Model.particles.INucleon;
 
 import java.util.List;
 
-public interface ILevel<E extends Enum<E>> extends IObservable  {
+public interface ILevel<E extends Enum<E>> extends IObservable {
 
     int getLevelNumber();
     int getWidth();

@@ -3,10 +3,10 @@ package com.nucleus.Views.libGDXGraphics.Viewables;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.nucleus.Model.INucleon;
+import com.nucleus.Model.particles.INucleon;
 import com.nucleus.AssetHandler.NAssetsData;
-import com.nucleus.Model.Proton;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.particles.Proton;
+import com.nucleus.Model.collisions.Vector;
 import com.nucleus.AssetHandler.Assets;
 
 import java.util.List;

@@ -1,11 +1,11 @@
 package Model;
 
 
-import com.nucleus.Model.Collisions.CollisionHandler;
-import com.nucleus.Model.Collisions.ICollidable;
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.INucleon;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.Model.collisions.CollisionHandler;
+import com.nucleus.Model.collisions.ICollidable;
+import com.nucleus.Model.molecule.IGluonPoint;
+import com.nucleus.Model.particles.INucleon;
+import com.nucleus.Model.collisions.Vector;
 
 import static  org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

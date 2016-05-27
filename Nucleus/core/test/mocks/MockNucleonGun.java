@@ -1,9 +1,9 @@
 package mocks;
 
-import com.nucleus.Model.INucleon;
-import com.nucleus.Model.INucleonGun;
-import com.nucleus.Model.Neutron;
-import com.nucleus.Model.Proton;
+import com.nucleus.Model.particles.INucleon;
+import com.nucleus.Model.level.INucleonGun;
+import com.nucleus.Model.particles.Neutron;
+import com.nucleus.Model.particles.Proton;
 
 import java.util.ArrayList;
 
