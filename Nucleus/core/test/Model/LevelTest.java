@@ -11,7 +11,7 @@ import com.nucleus.Model.level.Level;
 import com.nucleus.Model.particles.Neutron;
 import com.nucleus.Model.level.ObservableHelper;
 import com.nucleus.Model.particles.Proton;
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import org.junit.Ignore;
 import org.junit.Test;

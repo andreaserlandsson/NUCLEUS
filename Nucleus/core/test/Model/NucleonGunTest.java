@@ -5,7 +5,7 @@ import com.nucleus.Model.level.INucleonGun;
 import com.nucleus.Model.particles.Neutron;
 import com.nucleus.Model.level.NucleonGun;
 import com.nucleus.Model.particles.Proton;
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 import org.junit.Test;
 import java.util.ArrayList;
 import mocks.MockNucleon;

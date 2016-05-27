@@ -1,6 +1,6 @@
 package com.nucleus.Model.level;
 
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 import com.nucleus.Model.particles.INucleon;
 import com.nucleus.Model.particles.Neutron;
 import com.nucleus.Model.particles.Proton;

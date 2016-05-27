@@ -1,4 +1,4 @@
-package Utils;
+package LevelBuilder;
 
 import com.nucleus.Model.molecule.IGluonPoint;
 import com.nucleus.LevelBuilder.LevelData;

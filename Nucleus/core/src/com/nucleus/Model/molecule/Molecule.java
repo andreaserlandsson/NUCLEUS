@@ -1,6 +1,6 @@
 package com.nucleus.Model.molecule;
 
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 import com.nucleus.Model.molecule.IGluonPoint;
 import com.nucleus.Model.molecule.IMolecule;
 

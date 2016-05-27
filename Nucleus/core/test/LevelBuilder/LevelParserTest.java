@@ -1,4 +1,4 @@
-package Utils;
+package LevelBuilder;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;

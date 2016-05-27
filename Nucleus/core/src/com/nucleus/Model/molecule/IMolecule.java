@@ -1,6 +1,6 @@
 package com.nucleus.Model.molecule;
 
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 public interface IMolecule {
 

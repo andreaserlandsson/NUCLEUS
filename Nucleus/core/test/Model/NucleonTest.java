@@ -2,7 +2,7 @@ package Model;
 
 import com.nucleus.Model.particles.INucleon;
 import com.nucleus.Model.particles.Nucleon;
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import org.junit.Test;
 

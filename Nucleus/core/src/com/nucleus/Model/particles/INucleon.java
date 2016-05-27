@@ -1,6 +1,6 @@
 package com.nucleus.Model.particles;
 
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 /**
  * Created by paki on 4/21/16.

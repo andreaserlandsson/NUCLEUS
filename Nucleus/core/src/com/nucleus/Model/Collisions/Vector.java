@@ -1,4 +1,4 @@
-package com.nucleus.Model.collisions;
+package com.nucleus.Model.Collisions;
 
 /**
  * Created by erik on 21/04/16.

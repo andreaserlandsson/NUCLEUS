@@ -2,7 +2,7 @@ package com.nucleus.LevelBuilder;
 
 import com.nucleus.Model.molecule.GluonPoint;
 import com.nucleus.Model.molecule.IGluonPoint;
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 public class LevelData {
     public IGluonPoint[] gluonPoints;
