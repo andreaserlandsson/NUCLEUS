@@ -1,5 +1,6 @@
 package com.nucleus.LevelBuilder;
 
+import com.nucleus.Model.level.ObservableHelper;
 import com.nucleus.Model.molecule.IMolecule;
 import com.nucleus.Model.particles.INucleon;
 import com.nucleus.Model.level.INucleonGun;
@@ -46,7 +47,7 @@ public class LevelBuilder {
 
             INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList, levelData.difficultyMultiplier);
             IMolecule molecule = new Molecule(width,height, levelData.gluonPoints);
-            return new Level(levelNr, width, height, nucleonGun, molecule, levelData.gluonPoints);
+            return new Level(levelNr, width, height, nucleonGun, molecule, levelData.gluonPoints, new ObservableHelper<Level.GameState>());
         }
         return null;
 

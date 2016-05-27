@@ -36,14 +36,14 @@ public class Level implements ILevel {
     private IMolecule molecule;
     private IGluonPoint[] gluons;
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, IGluonPoint[] gluons, ObservableHelper<GameState> obs){
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
         this.gluons = gluons;
-        this.obsHelper = new ObservableHelper();
+        this.obsHelper = obs;
     }
 
     @Override
