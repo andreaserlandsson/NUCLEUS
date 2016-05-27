@@ -11,7 +11,7 @@ import com.nucleus.Model.level.Level;
 import com.nucleus.Model.particles.Neutron;
 import com.nucleus.Model.level.ObservableHelper;
 import com.nucleus.Model.particles.Proton;
-import com.nucleus.Model.collisions.Vector;
+import com.nucleus.Model.Collisions.Vector;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -50,9 +50,11 @@ public class LevelTest {
     INucleonGun gun2 = new MockNucleonGun(nucleonList2);
     MockMolecule molecule = new MockMolecule(gluons);
 
-    ILevel level = new Level(levelNumber, width, height, gun, molecule, gluons);
-    ILevel level2 = new Level(levelNumber, width, height, gun2, molecule, gluons);
-    ILevel level3 = new Level(levelNumber, width, height, gun, molecule, gluons);
+    ObservableHelper<Level.GameState> obsHelper = new ObservableHelper<Level.GameState>();
+
+    ILevel level = new Level(levelNumber, width, height, gun, molecule, gluons,obsHelper);
+    ILevel level2 = new Level(levelNumber, width, height, gun2, molecule, gluons,obsHelper);
+    ILevel level3 = new Level(levelNumber, width, height, gun, molecule, gluons,obsHelper);
 
     @Test
     public void thisAlwaysPasses() {
@@ -70,10 +72,6 @@ public class LevelTest {
     @Test
     public void testObserver() {
 
-        ObservableHelper<Level.GameState> obsHelper = new ObservableHelper<Level.GameState>();
-
-        assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING));
-
         IObserver<Level.GameState> o = new IObserver<Level.GameState>() {
             @Override
             public void onObservation(IObservable<Level.GameState> o, Level.GameState arg) {
@@ -85,22 +83,25 @@ public class LevelTest {
             }
         };
 
+        assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING));
 
+        obsHelper.addObserver(o);
+        obsHelper.removeObserver(o);
         level3.addObserver(o);
         level3.removeObserver(o);
-        obsHelper.addObserver(o);
 
-        obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
+        o.onObservation(level3,(Level.GameState)level3.getCurrentState());
+        //obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
 
         assertTrue(level3.getCurrentState().equals(Level.GameState.PAUSED));
 
-        obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
+        o.onObservation(level3,(Level.GameState)level3.getCurrentState());
+        //obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
         assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING));
 
-        obsHelper.removeObserver(o);
-
-        obsHelper.update(level3, (Level.GameState) level3.getCurrentState());
-        assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING)); // note that the state did not change
+        o.onObservation(level3,(Level.GameState)level3.getCurrentState());
+        //obsHelper.update(level3, (Level.GameState) level3.getCurrentState());
+        assertTrue(level3.getCurrentState().equals(Level.GameState.PAUSED));
 
     }
 
