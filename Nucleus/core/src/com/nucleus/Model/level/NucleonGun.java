@@ -51,7 +51,6 @@ public class NucleonGun implements INucleonGun {
     }
 
     @Override
-    //TODO: some sort of normalization of the velocity vector for easier manipulation according to difficultyMultiplier
     public INucleon shoot() {
         INucleon a = nucleonList.get(arrayIndex);
         nucleonList.remove(arrayIndex);

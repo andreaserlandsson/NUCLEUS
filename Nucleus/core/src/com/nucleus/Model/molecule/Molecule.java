@@ -1,8 +1,6 @@
 package com.nucleus.Model.molecule;
 
 import com.nucleus.Model.Collisions.Vector;
-import com.nucleus.Model.molecule.IGluonPoint;
-import com.nucleus.Model.molecule.IMolecule;
 
 public class Molecule implements IMolecule {
     private float rotation=0;

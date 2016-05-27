@@ -116,8 +116,6 @@ public class Level implements ILevel {
         airborneNucleons.remove(nucleon);
     }
 
-    //TODO: add difficulty multiplier which alters how often the gun shoots and how fast the nucleons fly
-
     private void checkWinGame() {
         if (molecule.isFull()) {
             currentState = GameState.PAUSEDWIN;
