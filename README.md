@@ -13,3 +13,28 @@ Hannes Lagerroth, committing as Quaxi
 Miranda Bånnsgård, committing as Dumlis
 
 Andréas Erlandsson, committing as fishur
+
+
+      To run the project, first download the repository using
+      
+      git clone https://github.com/fishur/NUCLEUS
+      
+      in your terminal to prefered location.
+      
+      
+      Go inside the folder where you have cloned the desktop using
+      
+      cd/path/to/project/NUCLEUS/nucleus/
+      
+      in your terminal.
+      
+      
+      From there run the commando
+      
+      gradlew desktop:run
+      
+      alternatively
+      
+      ./gradlew desktop:run
+      
+      to run the project.
