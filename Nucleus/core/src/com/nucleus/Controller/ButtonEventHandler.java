@@ -52,7 +52,7 @@ public class ButtonEventHandler extends ClickListener {
         }
 
         else if (label.equals("Label: Level 3")) {
-            if(true)//LevelPermissions.checkLevelPermission(3))
+            if(LevelPermissions.checkLevelPermission(3))
                 controller.startLevel(3);
             else{
                 controller.showSelectionErrorDialog();

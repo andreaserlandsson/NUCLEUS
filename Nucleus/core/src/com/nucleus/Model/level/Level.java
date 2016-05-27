@@ -18,7 +18,7 @@ public class Level implements ILevel {
 
     private float runTime = 0;
     private float lastUpdateTime = 0;
-    private float updateInterval = 1;
+    private float updateInterval;
 
     private ObservableHelper<GameState> obsHelper = new ObservableHelper<GameState>();
 
@@ -44,6 +44,7 @@ public class Level implements ILevel {
         this.molecule = molecule;
         this.gluons = gluons;
         this.obsHelper = obs;
+        this.updateInterval = 1;
     }
 
     @Override
