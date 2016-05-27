@@ -24,12 +24,12 @@ Andréas Erlandsson, committing as fishur
       
       Go inside the folder where you have cloned the desktop using
       
-      cd/path/to/project/NUCLEUS/nucleus/
+      cd  /path/to/project/NUCLEUS/nucleus/
       
       in your terminal.
       
       
-      From there run the commando
+      When correctly positioned; run the commando
       
       gradlew desktop:run
       
