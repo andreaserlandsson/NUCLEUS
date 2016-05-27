@@ -1,6 +1,6 @@
 package com.nucleus.Model.level;
 
-import com.nucleus.Model.collisions.IObserver;
+import com.nucleus.Model.nucleusObservers.IObserver;
 import com.nucleus.Model.collisions.CollisionHandler;
 import com.nucleus.Model.collisions.ICollidable;
 import com.nucleus.Model.molecule.IGluonPoint;

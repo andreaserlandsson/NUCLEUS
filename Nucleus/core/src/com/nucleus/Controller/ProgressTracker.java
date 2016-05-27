@@ -3,8 +3,8 @@ package com.nucleus.Controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.nucleus.Model.level.ILevel;
-import com.nucleus.Model.collisions.IObservable;
-import com.nucleus.Model.collisions.IObserver;
+import com.nucleus.Model.nucleusObservers.IObservable;
+import com.nucleus.Model.nucleusObservers.IObserver;
 import com.nucleus.Model.level.Level;
 
 /**

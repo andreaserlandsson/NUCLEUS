@@ -1,7 +1,7 @@
 package com.nucleus.Model.level;
 
-import com.nucleus.Model.collisions.IObservable;
-import com.nucleus.Model.collisions.IObserver;
+import com.nucleus.Model.nucleusObservers.IObservable;
+import com.nucleus.Model.nucleusObservers.IObserver;
 
 import java.util.ArrayList;
 
