@@ -18,7 +18,6 @@ public class MoleculeViewable implements IViewable {
     private TextureRegion moleculeTextureRegion;
     private IGluonPoint[] gluonPoints;
 
-    //TODO: add support for loading different level textures
     public MoleculeViewable(int levelNumber, IMolecule molecule){
         gluonPoints = molecule.getGluons();
         this.molecule = molecule;
