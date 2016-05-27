@@ -19,7 +19,7 @@ Andréas Erlandsson, committing as fishur
       
       git clone https://github.com/fishur/NUCLEUS
       
-      in your terminal to prefered location.
+      in your terminal to preferred location.
       
       
       Go inside the folder where you have cloned the desktop using
@@ -29,7 +29,7 @@ Andréas Erlandsson, committing as fishur
       in your terminal.
       
       
-      When correctly positioned; run the commando
+      When correctly positioned, run the commando
       
       gradlew desktop:run
       
