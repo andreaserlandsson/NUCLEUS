@@ -7,7 +7,6 @@ public class GameInputHandler extends NInputProcessor {
     ControllerState controlGame;
     ControllerState currentState;
     ControllerState inverseGame;
-    ControllerState tempState;
     private PlayScreen screen;
     private boolean reverseState = false;
     private static GameInputHandler instance = null;
@@ -24,6 +23,10 @@ public class GameInputHandler extends NInputProcessor {
 
     public void setScreen(PlayScreen screen) {
         this.screen = screen;
+        setController();
+    }
+
+    private void setController() {
         controlGame = new NormalPlayState(screen);
         inverseGame = new InvertedPlayState(screen);
         currentState = controlGame;
@@ -47,15 +50,6 @@ public class GameInputHandler extends NInputProcessor {
     }
 
     public void switchState(){
-        if (currentState == controlGame) {
-            this.currentState = new InvertedPlayState(screen);
-            reverseState = true;
-            System.out.println("state är inverse");
-        } else {
-            this.currentState = new NormalPlayState(screen);
-            reverseState = false;
-
-            System.out.println("state är normal");
-        }
+        reverseState = !reverseState;
     }
 }

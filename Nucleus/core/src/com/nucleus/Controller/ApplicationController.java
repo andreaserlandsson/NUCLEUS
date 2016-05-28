@@ -104,6 +104,5 @@ public class ApplicationController {
 
     public void reverseRotation() {
         controller.switchState();
-        System.out.println("är jag här?");
     }
 }

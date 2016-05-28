@@ -37,10 +37,12 @@ public class OptionsScreen extends NucleusScreen {
         toggleSoundBtn.addListener(listener);
         mainTable.add(toggleSoundBtn).width(150).pad(10);
         mainTable.row();
+
         TextButton reverseRot = new TextButton("Reverse Rotation", skin);
         reverseRot.addListener(listener);
         mainTable.add(reverseRot).width(150).pad(10);
         mainTable.row();
+
         TextButton toMenuBtn = new TextButton("Main Menu", skin);
         toMenuBtn.addListener(listener);
         mainTable.add(toMenuBtn).width(150).pad(10);
