@@ -35,26 +35,11 @@ public class ButtonEventHandler extends ClickListener {
             controller.exit();
         }
 
-        else if (label.equals("Label: Level 1")) {
-            if(LevelPermissions.checkLevelPermission(1))
-                controller.startLevel(1);
-            else{
-
-            }
-        }
-
-        else if (label.equals("Label: Level 2")) {
-            if(LevelPermissions.checkLevelPermission(2))
-                controller.startLevel(2);
-            else{
-                controller.showSelectionErrorDialog();
-            }
-        }
-
-        else if (label.equals("Label: Level 3")) {
-            if(LevelPermissions.checkLevelPermission(3))
-                controller.startLevel(3);
-            else{
+        if (label.contains("Level ")) {
+            if (LevelPermissions.checkLevelPermission(Integer.parseInt(label.substring(label.length() - 1)))) {
+                System.out.println(Integer.parseInt(label.substring(label.length() - 1)));
+                controller.startLevel(Integer.parseInt(label.substring(label.length() - 1)));
+            } else {
                 controller.showSelectionErrorDialog();
             }
         }

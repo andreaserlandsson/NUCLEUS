@@ -25,12 +25,11 @@ public class TextLoader extends AsynchronousAssetLoader<Text, TextLoader.TextPar
     }
 
     public Text loadSync(AssetManager manager, String fileName, FileHandle file, TextParameter parameter) {
-        Text text = this.text;
+        Text newText = this.text;
         this.text = null;
-        return text;
+        return newText;
     }
 
-    @SuppressWarnings("rawtypes")
     public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, TextParameter parameter) {
         return null;
     }

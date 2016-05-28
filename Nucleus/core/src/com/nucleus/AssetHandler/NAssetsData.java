@@ -2,7 +2,7 @@ package com.nucleus.AssetHandler;
 
 
 public class NAssetsData {
-    //Class with strings for all paths for all audio and textures.
+    //Class with strings for all paths for all audio, textfiles and textures.
     //Used to minimize code duplication for each class.
 
     public static final String LEVELMUSIC = "inGame";
