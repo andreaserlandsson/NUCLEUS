@@ -26,7 +26,8 @@ public class ApplicationController {
     private Level level;
 
     public ApplicationController() {
-        controller = new GameInputHandler((GameScreen) screen);
+        controller = GameInputHandler.getInstance();
+        controller.setScreen((GameScreen) screen);
         musicPlayer = NMusicPlayer.getInstance();
     }
 
@@ -45,7 +46,7 @@ public class ApplicationController {
         ProgressTracker progressTracker = new ProgressTracker(level);
         screen = new GameScreen(level, listener);
         Gdx.input.setInputProcessor(controller);
-        Gdx.input.setInputProcessor(new GameInputHandler((GameScreen) screen));
+        controller.setScreen((GameScreen)screen);
         goToScreen(screen);
 
         //starting level music
@@ -55,7 +56,8 @@ public class ApplicationController {
     }
 
     protected void resumeLevel(){
-        Gdx.input.setInputProcessor(new GameInputHandler((GameScreen) screen));
+        Gdx.input.setInputProcessor(controller);
+        //controller.setScreen();
         level.resume();
     }
 
