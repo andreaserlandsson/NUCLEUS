@@ -13,14 +13,6 @@ public class NormalPlayState implements ControllerState {
         this.screen = screen;
     }
 
-    public void touch(int screenX, int screenY, int pointer, int button){
-
-        if ((screenX > screen.getWidth() - 50) && screenY < 68) { // if you touch the upper right corner you pause the game
-            screen.getLevel().pause();
-        }
-
-    }
-
     public void drag(int screenX, int screenY, int pointer){
         ILevel level = screen.getLevel();
         Vector newTouch = new Vector(screenX, screenY);

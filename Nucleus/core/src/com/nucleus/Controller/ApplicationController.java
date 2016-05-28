@@ -98,6 +98,10 @@ public class ApplicationController {
 
     public void playClickSound() {
         musicPlayer.playSound(NAssetsData.BUTTONCLICKEDSOUND);
+    }
 
+    public void reverseRotation() {
+        controller.switchState();
+        System.out.println("är jag här?");
     }
 }

@@ -33,8 +33,8 @@ public class ButtonEventHandler extends ClickListener {
 
         else if (label.equals("Label: Exit")) {
             controller.exit();
-        }
 
+        }
 
         else if (label.equals("Label: OK")){
             controller.goToLevelChooser();
@@ -58,6 +58,10 @@ public class ButtonEventHandler extends ClickListener {
             } else {
                 controller.showSelectionErrorDialog();
             }
+        }
+        else if (label.equals("Label: Reverse Rotation")) {
+            controller.reverseRotation();
+            System.out.println("kom ja hit?");
         }
 
         if (event.isHandled()) {
