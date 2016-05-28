@@ -8,7 +8,7 @@ import com.nucleus.Views.LevelPermissions;
  * Created by Quaxi on 10/05/16.
  */
 public class ButtonEventHandler extends ClickListener {
-
+    private final int LEVELSTRINGINDEX = 13;
     private ApplicationController controller;
 
     public ButtonEventHandler(ApplicationController controller) {
@@ -35,10 +35,9 @@ public class ButtonEventHandler extends ClickListener {
             controller.exit();
         }
 
-        if (label.contains("Level ")) {
-            if (LevelPermissions.checkLevelPermission(Integer.parseInt(label.substring(label.length() - 1)))) {
-                System.out.println(Integer.parseInt(label.substring(label.length() - 1)));
-                controller.startLevel(Integer.parseInt(label.substring(label.length() - 1)));
+        if (label.contains("Label: Level ")) {
+            if (LevelPermissions.checkLevelPermission(Integer.parseInt(label.substring(LEVELSTRINGINDEX)))) {
+                controller.startLevel(Integer.parseInt(label.substring(LEVELSTRINGINDEX)));
             } else {
                 controller.showSelectionErrorDialog();
             }
@@ -48,14 +47,10 @@ public class ButtonEventHandler extends ClickListener {
             controller.goToLevelChooser();
         }
 
-        else if (label.equals("Label: Play Again")) {
+        else if (label.equals("Label: Play Again") || label.equals("Label: Restart Level")) {
             controller.restartLevel();
         }
-
-        else if (label.equals("Label: Restart Level")) {
-            controller.restartLevel();
-        }
-
+        
         else if (label.equals("Label: Continue")) {
             controller.resumeLevel();
         }
