@@ -45,7 +45,7 @@ public class LevelSelectionDialog extends ScreenAdapter{
         //Add listeners to buttons
         okButton.addListener(listener);
 
-        Label levelText = new Label("Level not yet unlocked!", skin);
+        Label levelText = new Label("This level is not yet unlocked!", skin);
         mainTable.add(levelText);
         mainTable.row();
 

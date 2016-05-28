@@ -35,13 +35,6 @@ public class ButtonEventHandler extends ClickListener {
             controller.exit();
         }
 
-        if (label.contains("Label: Level ")) {
-            if (LevelPermissions.checkLevelPermission(Integer.parseInt(label.substring(LEVELSTRINGINDEX)))) {
-                controller.startLevel(Integer.parseInt(label.substring(LEVELSTRINGINDEX)));
-            } else {
-                controller.showSelectionErrorDialog();
-            }
-        }
 
         else if (label.equals("Label: OK")){
             controller.goToLevelChooser();
@@ -50,13 +43,21 @@ public class ButtonEventHandler extends ClickListener {
         else if (label.equals("Label: Play Again") || label.equals("Label: Restart Level")) {
             controller.restartLevel();
         }
-        
+
         else if (label.equals("Label: Continue")) {
             controller.resumeLevel();
         }
 
         else if (label.equals("Label: Main Menu")) {
             controller.goToStartScreen();
+        }
+
+        else if (label.startsWith("Label: Level ")) {
+            if (LevelPermissions.checkLevelPermission(Integer.parseInt(label.substring(LEVELSTRINGINDEX)))) {
+                controller.startLevel(Integer.parseInt(label.substring(LEVELSTRINGINDEX)));
+            } else {
+                controller.showSelectionErrorDialog();
+            }
         }
 
         if (event.isHandled()) {
