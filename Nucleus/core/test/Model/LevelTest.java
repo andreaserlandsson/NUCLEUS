@@ -220,16 +220,7 @@ public class LevelTest {
 
     }
 
-    @Test
-    public void testAddAirBorneNucleon() {
 
-        nucleonList.add(mockNucleon);
-        level.addAirborneNucleon(nucleonList.get(0));
-        assertTrue(level.getAirborneNucleons().size() == 1);
-        level.addAirborneNucleon(nucleonList.get(0));
-        assertTrue(level.getAirborneNucleons().size() == 2);
-
-    }
 
     @Test
     public void testIsOutOfBoundsCheck() {
@@ -261,13 +252,19 @@ public class LevelTest {
         INucleon nucleon1 = new MockNucleon(nucleonPos1, nucleonVel1);
         INucleon nucleon2 = new MockNucleon(nucleonPos2, nucleonVel2);
 
-        level.addAirborneNucleon(nucleon1);
-        level.addAirborneNucleon(nucleon2);
+        ArrayList<INucleon> nucleonList2 = new ArrayList<INucleon>();
 
-        assertTrue(level.getAirborneNucleons().size() == 2);
-        level.removeOutOfBoundsNucleons();
+        nucleonList2.add(nucleon1);
+        nucleonList2.add(nucleon2);
 
-        assertTrue(level.getAirborneNucleons().size() == 1);
+        INucleonGun gun3 = new MockNucleonGun(nucleonList2);
+
+        ILevel level4 = new Level(levelNumber, width, height, gun3, molecule,obsHelper);
+
+        level4.removeOutOfBoundsNucleons();
+
+        assertTrue(!level4.isOutOfBoundsCheck(level4.getNucleonGun().shoot()));
+        assertTrue(level4.isOutOfBoundsCheck(level4.getNucleonGun().shoot()));
 
     }
 
