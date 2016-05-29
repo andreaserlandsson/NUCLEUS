@@ -16,7 +16,7 @@ public class Assets {
      */
     private static final String PATH_TO_MUSIC = "music/";
     private static final String PATH_TO_TEXTURE = "graphics/";
-    private static final String PATHCo_TO_TXT = "levels/leveldata/";
+    private static final String PATH_TO_TXT = "levels/leveldata/";
 
     /**
      * Three AssetManagers, one for each file type.
@@ -34,7 +34,7 @@ public class Assets {
 
     /**
      * The three methods below do the same thing, but for different class types.
-     * They all load their own class from the filepath into the hashmap, and then
+     * They all load their own class from the filepath into the hash map, and then
      * calls on respectively load method and waits for the assets to be loaded.
     */
     public static void loadMusicFiles() {

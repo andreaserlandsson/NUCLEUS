@@ -50,8 +50,8 @@ public class ButtonEventHandler extends ClickListener {
         }
 
         else if (label.startsWith("Label: Level ")) {
-            int LEVELSTRINGINDEX = 13;
-            controller.startLevel(Integer.parseInt(label.substring(LEVELSTRINGINDEX)));
+            int LEVEL_STRING_INDEX = 13;
+            controller.startLevel(Integer.parseInt(label.substring(LEVEL_STRING_INDEX)));
         }
 
         else if (label.equals("Label: Reverse Rotation")) {
