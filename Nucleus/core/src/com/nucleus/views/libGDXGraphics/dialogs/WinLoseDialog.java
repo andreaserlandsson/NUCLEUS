@@ -2,6 +2,7 @@ package com.nucleus.views.libGDXGraphics.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -12,29 +13,23 @@ import com.nucleus.model.level.ILevel;
 
 public abstract class WinLoseDialog extends ScreenAdapter {
 
-    //these are all protected because they will be overwritten in WinDialog and LoseDialog
     protected Stage stage;
     protected Skin skin;
     protected EventListener listener;
+    protected String title = "test text";
     protected ILevel level;
+    protected SpriteBatch batch;
 
-    //this string is the string which will be printed out on the screen
-    protected String title = "Win/Lose Text";
+    private boolean goToMainMenu = false;
 
-    /**
-     * This constructor builds a WinLoseDialog object with the correct listener
-     */
     public WinLoseDialog(EventListener listener) {
         this.listener = listener;
     }
 
-
-    /**
-     * This method sets upp the text and the buttons and add them to a listener which callas on the co-responding action
-     */
     @Override
     public void show() {
         stage = new Stage();
+        goToMainMenu = false;
         Gdx.input.setInputProcessor(stage);
 
 
@@ -53,9 +48,7 @@ public abstract class WinLoseDialog extends ScreenAdapter {
 
         stage.addListener(listener);
 
-        //Add listeners to buttons. This listener calls on the clicked(...)-method in ButtonEventHandler
-        //where it co-responds with a if-state which in turn restarts the level if you press "Play Again"
-        //and goes to main menu if you press "Main Menu"
+        //Add listeners to buttons
         level2Button.addListener(listener);
         level3Button.addListener(listener);
 
@@ -72,6 +65,11 @@ public abstract class WinLoseDialog extends ScreenAdapter {
         //Add table to stage
         stage.addActor(mainTable);
 
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        //stage.setViewport(width, height);
     }
 
     @Override

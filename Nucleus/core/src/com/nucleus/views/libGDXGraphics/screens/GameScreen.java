@@ -8,14 +8,15 @@ import com.nucleus.model.level.ILevel;
 import com.nucleus.model.nucleusObservers.IObservable;
 import com.nucleus.model.nucleusObservers.IObserver;
 import com.nucleus.model.level.Level;
-import com.nucleus.views.libGDXGraphics.dialogs.PauseDialog;
-import com.nucleus.views.libGDXGraphics.viewables.CountdownViewable;
-import com.nucleus.views.libGDXGraphics.viewables.IViewable;
-import com.nucleus.views.libGDXGraphics.viewables.MoleculeViewable;
-import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
-import com.nucleus.views.libGDXGraphics.viewables.PauseViewable;
-import com.nucleus.views.libGDXGraphics.dialogs.WinDialog;
-import com.nucleus.views.libGDXGraphics.dialogs.WinLoseDialog;
+import com.nucleus.views.libGDXGraphics.Dialogs.PauseDialog;
+import com.nucleus.views.libGDXGraphics.Viewables.CountdownViewable;
+import com.nucleus.views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.Viewables.PauseViewable;
+
+
+/**
+ * Created by erik on 25/04/16.
+ */
 
 public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<Level.GameState> {
 

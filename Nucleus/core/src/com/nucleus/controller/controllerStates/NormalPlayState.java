@@ -1,4 +1,4 @@
-package com.nucleus.controller;
+package com.nucleus.controller.controllerStates;
 
 import com.nucleus.model.collision.Vector;
 import com.nucleus.model.level.ILevel;
@@ -20,5 +20,16 @@ public class NormalPlayState implements ControllerState {
         level.getMolecule().setRotation(lastTouch, newTouch);
         this.lastTouch = newTouch;
         return;
+    }
+
+    @Override
+    public void setScreen(PlayScreen screen) {
+        this.screen = screen;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Normal";
     }
 }
