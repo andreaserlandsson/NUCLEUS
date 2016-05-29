@@ -5,16 +5,15 @@ import com.nucleus.AssetHandler.NAssetsData;
 import com.nucleus.Model.LevelNotExistingException;
 
 
-// A class for reading and parsing .txt files that will be levels.
+// A class for strings from level.txt files.
+// Returns a levelData object, filled with the necessary specifics for the level.
 public class LevelParser {
-
-
-    //private static int[] intList;   //obsolete?
+    
     public static LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {
         return splitLevelString((readFromFile(level)), width, height);
     }
 
-    // method to read from a file and return a single String.
+    // Gets the file from the assetManager, and returns it as a single string.
     private static String readFromFile(int level) throws LevelNotExistingException {
         String levelString = "";
         try {
@@ -25,9 +24,7 @@ public class LevelParser {
         return levelString;
     }
 
-
-
-    //split a string where there is a new line
+    // Splits the string, puts it into an int Array and returns it as a levelData object.
     private static LevelData splitLevelString (String str, int width, int height) {
         String temp = str.replaceAll(" ", "\n");
         String[] strings = temp.split("\n");
@@ -38,5 +35,4 @@ public class LevelParser {
         }
         return new LevelData(levelField, width, height);
     }
-
 }

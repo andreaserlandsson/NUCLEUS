@@ -4,6 +4,7 @@ import com.nucleus.Model.molecule.GluonPoint;
 import com.nucleus.Model.molecule.IGluonPoint;
 import com.nucleus.Model.Collisions.Vector;
 
+    //Data class for a level. Parses an int-array with and delegates the values to said variables.
 public class LevelData {
     public IGluonPoint[] gluonPoints;
     public int levelNo;
