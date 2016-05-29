@@ -10,16 +10,15 @@ public class BackgroundViewable implements IViewable {
     private Texture bg;
 
     /**
-     * Loads this BackgroundViewable with its texture
+     * Sets the BackgroundViewable with corresponding image.
      */
     public BackgroundViewable(){
         this.bg = Assets.getTexture(NAssetsData.BACKGROUND);
     }
 
     /**
-     * Redraws the background
-     *
-     * @param batch
+     * Renders the background.
+     * @param batch The batch that renders all sprite's.
      */
     @Override
     public void render(SpriteBatch batch){
