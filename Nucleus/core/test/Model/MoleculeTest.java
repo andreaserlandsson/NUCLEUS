@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import mocks.MockGluon;
 
-import com.nucleus.Model.molecule.IMolecule;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.model.molecule.IMolecule;
+import com.nucleus.model.collision.Vector;
 
-import com.nucleus.Model.molecule.Molecule;
-import com.nucleus.Model.molecule.IGluonPoint;
+import com.nucleus.model.molecule.Molecule;
+import com.nucleus.model.molecule.IGluonPoint;
 
 
 import static  org.junit.Assert.assertFalse;
@@ -44,7 +44,7 @@ public class MoleculeTest {
         molecule1.setRotation(new Vector(100,100), new Vector(65,23));
         assertFalse(molecule1.getRotation() == 0);
 
-        float rRotation = 8.279f;
+        float rRotation = 11.798f;
         assertTrue(molecule1.getRotation()-rRotation < 0.001);
     }
 
@@ -125,7 +125,8 @@ public class MoleculeTest {
         Vector newTouch = new Vector(105,100);
 
         molecule2.setRotation(lastTouch,newTouch);
-        float result = 43.288f;
+        float result = 61.685f;
+
         assertFalse(molecule2.getRotation() == 10);
         assertTrue(molecule2.getRotation() -result < 0.001);
     }
@@ -160,12 +161,12 @@ public class MoleculeTest {
         assertFalse(gluon3.getPosition().getX() == 200.0);
         assertFalse(gluon3.getPosition().getY() == 200.0);
 
-        assertTrue(gluon1.getPosition().getX() - 126.613f < 0.001);
-        assertTrue(gluon1.getPosition().getY() - 126.613f < 0.001);
-        assertTrue(gluon2.getPosition().getX() - 253.226f < 0.001);
-        assertTrue(gluon2.getPosition().getY() - 253.226f < 0.001);
-        assertTrue(gluon3.getPosition().getX() - 379.840f < 0.001);
-        assertTrue(gluon3.getPosition().getY() - 379.840f < 0.001);
+        assertTrue(gluon1.getPosition().getX() - 45.042f < 0.001);
+        assertTrue(gluon1.getPosition().getY() - 134.056f < 0.001);
+        assertTrue(gluon2.getPosition().getX() - 90.084f < 0.001);
+        assertTrue(gluon2.getPosition().getY() - 268.113f < 0.001);
+        assertTrue(gluon3.getPosition().getX() - 135.127f < 0.001);
+        assertTrue(gluon3.getPosition().getY() - 402.169f < 0.001);
     }
 
     @Test

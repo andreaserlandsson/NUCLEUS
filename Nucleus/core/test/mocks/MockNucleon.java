@@ -1,8 +1,8 @@
 package mocks;
 
-import com.nucleus.Model.Collisions.ICollidable;
-import com.nucleus.Model.particles.INucleon;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.model.collision.ICollidable;
+import com.nucleus.model.particles.INucleon;
+import com.nucleus.model.collision.Vector;
 
 
 public class MockNucleon implements INucleon, ICollidable {
