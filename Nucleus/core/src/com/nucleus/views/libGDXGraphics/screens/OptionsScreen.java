@@ -1,23 +1,28 @@
 package com.nucleus.views.libGDXGraphics.screens;
 
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.views.libGDXGraphics.dialogs.TextDialog;
 import com.nucleus.views.libGDXGraphics.viewables.BackgroundViewable;
 import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OptionsScreen extends NucleusScreen {
+public class OptionsScreen extends NucleusScreen implements DialogScreen {
 
     private List<IViewable> views = new ArrayList<IViewable>();
+    private TextDialog dialog;
+    private EventListener listener;
 
 
     public OptionsScreen(ClickListener listener){
         super();
 
+        this.listener = listener;
         views.add(new BackgroundViewable());
 
         //initates the table
@@ -58,4 +63,17 @@ public class OptionsScreen extends NucleusScreen {
 
     }
 
+    public void showTextDialog(String text){
+        dialog = new TextDialog(listener, text, false);
+        dialog.show();
+    }
+
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        if (dialog != null){
+            dialog.render(delta);
+        }
+    }
 }

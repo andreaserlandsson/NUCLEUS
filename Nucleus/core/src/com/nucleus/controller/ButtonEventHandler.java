@@ -52,11 +52,12 @@ public class ButtonEventHandler extends ClickListener {
             controller.goToStartScreen();
         }
 
+        //TODO: change logic from handler to controller
         else if (label.startsWith("Label: Level ")) {
             if (LevelPermissions.checkLevelPermission(Integer.parseInt(label.substring(LEVELSTRINGINDEX)))) {
                 controller.startLevel(Integer.parseInt(label.substring(LEVELSTRINGINDEX)));
             } else {
-                controller.showSelectionErrorDialog();
+                controller.showTextDialog("Level Not Unlocked");
             }
         }
 
