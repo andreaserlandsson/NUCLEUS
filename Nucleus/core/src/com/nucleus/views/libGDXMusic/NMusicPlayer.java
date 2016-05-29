@@ -87,6 +87,7 @@ public class NMusicPlayer implements INMusicPlayer {
 
     /**
      *  Switches the current song to the new song. If the current song is the new song, do nothing.
+     *  @param newSong The new song to be played.
      */
     public void switchSong(String newSong) {
         Music music = Assets.getSong(newSong);
