@@ -27,6 +27,7 @@ public class CollisionHandlerTest {
         Vector nucleonVel = new Vector(1,1);
         IGluonPoint gluon = new MockGluon(gluonPos,1,1);//should not collide, not even close
         INucleon nucleon = new MockNucleon(nucleonPos, nucleonVel);
+
         assertTrue(!CollisionHandler.collision((ICollidable) gluon,(ICollidable) nucleon));
 
         IGluonPoint gluon2 = new MockGluon(gluonPos,1,1);//on the same position, should collide

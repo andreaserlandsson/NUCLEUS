@@ -50,5 +50,4 @@ public class CountdownViewable implements IViewable {
 
         batch.end();
     }
-
 }
