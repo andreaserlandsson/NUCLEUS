@@ -19,7 +19,6 @@ public abstract class WinLoseDialog extends ScreenAdapter {
     protected Skin skin;
     protected EventListener listener;
     protected String title = "test text";
-    protected ILevel level;
 
     public WinLoseDialog(EventListener listener) {
         this.listener = listener;

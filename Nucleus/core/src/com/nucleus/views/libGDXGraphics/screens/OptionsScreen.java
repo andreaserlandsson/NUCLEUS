@@ -6,11 +6,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.views.libGDXGraphics.dialogs.TextDialog;
-import com.nucleus.views.libGDXGraphics.viewables.BackgroundViewable;
-import com.nucleus.views.libGDXGraphics.viewables.IViewable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class OptionsScreen extends NucleusScreen implements DialogScreen {
