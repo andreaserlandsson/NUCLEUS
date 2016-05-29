@@ -9,27 +9,31 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
-/**
- * Created by erik on 25/05/16.
- */
 public class TextDialog extends ScreenAdapter{
 
     private Stage stage;
     protected Skin skin;
     private EventListener listener;
     private String text;
+    private boolean hasOkButton;
 
 
-    public TextDialog(EventListener listener, String text){
-        this.text = text;
+    /**
+     * This constructor builds a LevelSelectionDialog object with the correct listener
+     */
+    public TextDialog(EventListener listener, String text, boolean b){
         this.listener = listener;
+        this.text = text;
         this.stage = new Stage();
+        this.hasOkButton = b;
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
     }
 
+    /**
+     * This method sets upp the text and the buttons and add them to a listener which callas on the co-responding action
+     */
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(stage);
 
         //Create Table
         Table mainTable = new Table();
@@ -39,19 +43,24 @@ public class TextDialog extends ScreenAdapter{
         mainTable.padBottom(150f);
 
         //Create buttons
-        TextButton okButton = new TextButton("OK", skin);
+        if (hasOkButton){
+            Gdx.input.setInputProcessor(stage);
+            TextButton okButton = new TextButton("OK", skin);
+            //Add listeners to buttons
+            okButton.addListener(listener);
+
+            //Add buttons to table
+            mainTable.add(okButton).width(100).pad(10);
+
+        }
 
         stage.addListener(listener);
 
-        //Add listeners to buttons
-        okButton.addListener(listener);
 
         Label levelText = new Label(text, skin);
         mainTable.add(levelText);
         mainTable.row();
 
-        //Add buttons to table
-        mainTable.add(okButton).width(100).pad(10);
 
         //Add table to stage
         stage.addActor(mainTable);

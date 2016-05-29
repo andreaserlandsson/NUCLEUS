@@ -6,10 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.nucleus.model.level.Level;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.levelBuilder.LevelBuilder;
-import com.nucleus.views.libGDXGraphics.screens.GameScreen;
-import com.nucleus.views.libGDXGraphics.screens.LevelChooseScreen;
-import com.nucleus.views.libGDXGraphics.screens.OptionsScreen;
-import com.nucleus.views.libGDXGraphics.screens.StartScreen;
+import com.nucleus.views.libGDXGraphics.screens.*;
 import com.nucleus.views.libGDXMusic.INMusicPlayer;
 import com.nucleus.views.libGDXMusic.NMusicPlayer;
 
@@ -18,6 +15,7 @@ import com.nucleus.views.libGDXMusic.NMusicPlayer;
  */
 public class ApplicationController {
 
+
     private ButtonEventHandler listener;
     private GameInputHandler controller;
     private INMusicPlayer musicPlayer;
@@ -25,8 +23,7 @@ public class ApplicationController {
     private Level level;
 
     public ApplicationController() {
-        controller = GameInputHandler.getInstance();
-        controller.setScreen((GameScreen) screen);
+        controller = GameInputHandler.getInstance((GameScreen) screen);
         musicPlayer = NMusicPlayer.getInstance();
     }
 
@@ -42,7 +39,8 @@ public class ApplicationController {
     public void startLevel(int levelNum) {
 
         this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        ProgressTracker progressTracker = new ProgressTracker(level);
+        //TODO: remove static reference?
+        new ProgressTracker(level);
         screen = new GameScreen(level, listener);
         Gdx.input.setInputProcessor(controller);
         controller.setScreen((GameScreen)screen);
@@ -69,9 +67,9 @@ public class ApplicationController {
 
     }
 
-    public void showSelectionErrorDialog(){
-        if(screen instanceof LevelChooseScreen){
-            ((LevelChooseScreen) screen).showSelectionError();
+    public void showTextDialog(String text){
+        if(screen instanceof DialogScreen){
+            ((DialogScreen) screen).showTextDialog(text);
         }
     }
 
@@ -95,6 +93,7 @@ public class ApplicationController {
 
     public void toggleSound() {
         musicPlayer.setMasterVolume(1-musicPlayer.getMasterVolume());
+        showTextDialog("Sound " + musicPlayer.getSoundOff());
     }
 
     public void playClickSound() {
@@ -103,5 +102,7 @@ public class ApplicationController {
 
     public void reverseRotation() {
         controller.switchState();
+        Gdx.app.log("Rotation", "Reversed");
+        showTextDialog("Rotation: " + controller.getState().toString());
     }
 }

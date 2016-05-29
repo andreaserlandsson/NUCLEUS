@@ -9,14 +9,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
-/**
- * Created by andreaserlandsson on 17/05/16.
- */
 public class PauseDialog extends ScreenAdapter {
     private Stage stage;
     protected Skin skin;
     private EventListener listener;
 
+    /**
+     * Creates a new pauseDialog with a listener.
+     * @param listener the listener that is set for the dialog.
+     */
     public PauseDialog(EventListener listener){
 
         this.listener = listener;
@@ -26,6 +27,10 @@ public class PauseDialog extends ScreenAdapter {
 
     }
 
+    /**
+     * Creates a table and fills it with buttons.
+     * Sets a listener to each button to be interactable.
+     */
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);

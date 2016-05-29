@@ -24,11 +24,12 @@ public class NucleonViewable implements IViewable {
 
         this.nucleons = nucleons;
 
+
         //Adding textures
-        proton = Assets.getTexture(NAssetsData.PROTON);//Assets.getTexture("proton.png");
-        neutron = Assets.getTexture(NAssetsData.NEUTRON);//Assets.getTexture("neutron.png");
-        protonLargeTrail = Assets.getTexture(NAssetsData.TAILPROTON2) ;//Assets.getTexture("tailProton2.png");
-        neutronLargeTrail = Assets.getTexture(NAssetsData.TAILNEUTRON2);//Assets.getTexture("tailNeutron2.png");
+        proton = Assets.getTexture(NAssetsData.PROTON);
+        neutron = Assets.getTexture(NAssetsData.NEUTRON);
+        protonLargeTrail = Assets.getTexture(NAssetsData.TAILPROTON2) ;
+        neutronLargeTrail = Assets.getTexture(NAssetsData.TAILNEUTRON2);
 
         //Adding filters
         protonLargeTrail.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.MipMapLinearNearest);

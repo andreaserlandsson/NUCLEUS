@@ -10,17 +10,14 @@ import com.nucleus.model.nucleusObservers.IObserver;
 import com.nucleus.model.level.Level;
 import com.nucleus.views.libGDXGraphics.dialogs.PauseDialog;
 import com.nucleus.views.libGDXGraphics.dialogs.WinDialog;
-import com.nucleus.views.libGDXGraphics.dialogs.WinLoseDialog;
 import com.nucleus.views.libGDXGraphics.viewables.CountdownViewable;
 import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import com.nucleus.views.libGDXGraphics.viewables.MoleculeViewable;
 import com.nucleus.views.libGDXGraphics.viewables.PauseViewable;
+import com.nucleus.views.libGDXGraphics.dialogs.WinLoseDialog;
 import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
 
 
-/**
- * Created by erik on 25/04/16.
- */
 
 public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<Level.GameState> {
 
@@ -49,6 +46,10 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         level.addObserver(this);
     }
 
+    /**
+     * This render method renders the game screen and also checks if the game is won,lost or pause
+     * and if so also renders the win-, lose- or pause dialog
+     */
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -94,6 +95,9 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         return level;
     }
 
+    /**
+     * On observation this will check the status of the game and call on the co-responding method
+     */
     @Override
     public void onObservation(IObservable<Level.GameState> o, Level.GameState arg) {
         if (arg == Level.GameState.PAUSED){

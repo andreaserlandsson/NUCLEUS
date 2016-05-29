@@ -1,9 +1,10 @@
 package com.nucleus.model.collision;
 
 /**
- * Created by erik on 21/04/16.
+ * Utility class used for positions and velocities in a two-dimensional space. Use througout the
+ * whole application.
  */
-public class Vector { //KANSKE SKA FLYTTAS TILL UTILS? DEN ANVÄNDS AV MODELL SÅVÄL SOM CONTROLLER
+public class Vector {
     private float x;
     private float y;
 

@@ -1,40 +1,39 @@
 package com.nucleus.controller;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.nucleus.controller.controllerStates.ControllerState;
 import com.nucleus.controller.controllerStates.InvertedPlayState;
+import com.nucleus.controller.controllerStates.NormalPlayState;
 import com.nucleus.views.libGDXGraphics.screens.PlayScreen;
 
 public class GameInputHandler extends NInputProcessor {
 
-    ControllerState controlGame;
+    ControllerState normalGame;
     ControllerState currentState;
     ControllerState inverseGame;
     private PlayScreen screen;
-    private boolean reverseState = false;
     private static GameInputHandler instance = null;
 
-    private GameInputHandler(){
+    private GameInputHandler(PlayScreen screen){
+        this.screen = screen;
+        normalGame = new NormalPlayState(screen);
+        inverseGame = new InvertedPlayState(screen);
+        currentState = normalGame;
     }
 
-    public static GameInputHandler getInstance() {
+    public static GameInputHandler getInstance(PlayScreen screen) {
         if (instance == null){
-            instance = new GameInputHandler();
+            instance = new GameInputHandler(screen);
         }
         return instance;
     }
 
+
     public void setScreen(PlayScreen screen) {
         this.screen = screen;
-        setController();
-    }
-
-    private void setController() {
-        controlGame = new com.nucleus.controller.controllerStates.NormalPlayState(screen);
-        inverseGame = new InvertedPlayState(screen);
-        currentState = controlGame;
-        if (reverseState) {
-            currentState = inverseGame;
-        }
+        normalGame.setScreen(screen);
+        inverseGame.setScreen(screen);
     }
 
     @Override
@@ -52,7 +51,17 @@ public class GameInputHandler extends NInputProcessor {
     }
 
     public void switchState(){
-        reverseState = !reverseState;
+        if (currentState instanceof InvertedPlayState){
+            Gdx.app.log("switchState", "Inverted");
+            currentState = normalGame;
+        }
+        else if (currentState instanceof NormalPlayState){
+            Gdx.app.log("switchState", "Normal");
+            currentState = inverseGame;
+        }
+    }
 
+    public ControllerState getState() {
+        return currentState;
     }
 }

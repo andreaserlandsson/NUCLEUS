@@ -8,16 +8,19 @@ import com.nucleus.model.level.INucleonGun;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.assetHandler.Assets;
 
-/**
- * Created by mirandabannsgard on 16-05-17.
- */
 public class CountdownViewable implements IViewable {
     private Texture protonInGun;
     private Texture neutronInGun;
     private BitmapFont font;
     private INucleonGun gun;
 
-
+    /**
+     * The view of the "ammo", i.e. the amount of protons and neutrons left in the nucleon gun. The
+     * view is two different counter, one in red showing the amount of protons left and one in green
+     * showing the amount of neutron left.
+     *
+     * @param gun
+     */
     public CountdownViewable(INucleonGun gun){
         this.protonInGun = Assets.getTexture(NAssetsData.PROTON);//new Texture("graphics/proton.png");
         this.neutronInGun = Assets.getTexture(NAssetsData.NEUTRON);//new Texture("graphics/neutron.png");
@@ -36,11 +39,12 @@ public class CountdownViewable implements IViewable {
         batch.draw(protonInGun,10,Gdx.graphics.getHeight() - protonInGun.getHeight(),30,30);
         batch.draw(neutronInGun,10,Gdx.graphics.getHeight() - neutronInGun.getHeight()-30,30,30);
 
-
+        //this is the amount of protons left in a red color
         font.setColor(247/255f, 157/255f, 150/255f, 1f);
         font.draw(batch, Integer.toString(gun.getProtonsInGun()),
                 40, Gdx.graphics.getHeight()-13);
 
+        //this the amount of neutrons left in a green color
         font.setColor(158/255f,210/255f , 150/255f, 1f);
         font.draw(batch, Integer.toString(gun.getNeutronsInGun()),
                 40, Gdx.graphics.getHeight() - 43);

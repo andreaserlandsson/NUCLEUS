@@ -22,6 +22,9 @@ public class Level implements ILevel {
 
     private ObservableHelper<GameState> obsHelper = new ObservableHelper<GameState>();
 
+    /**
+     * Enum for the four different states the game can be in.
+     */
     public enum GameState{
         RUNNING,
         PAUSED,
@@ -33,7 +36,17 @@ public class Level implements ILevel {
 
     private INucleonGun gun;
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
-    private com.nucleus.model.molecule.IMolecule molecule;
+    private IMolecule molecule;
+
+    /**
+     * The parameters each level is built of.
+     * @param levelNumber The level number.
+     * @param width the width of the game.
+     * @param height the height of the game.
+     * @param gun the gun used to shoot in nucleons.
+     * @param molecule the molecule we want to build.
+     * @param obs the observers that observed the level.
+     */
 
     public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, ObservableHelper<GameState> obs){
         this.levelNumber = levelNumber;
@@ -83,20 +96,27 @@ public class Level implements ILevel {
         return molecule;
     }
 
-
     /*Function should probably be removed*/
     public void addAirborneNucleon(INucleon nucleon){
         airborneNucleons.add(nucleon);
     }
 
+    /**
+     * Checks if a nucleon is out of bounds, that is off the screen.
+     * @param nucleon The nucleon to check.
+     * @return Returs true if the nucleon is indeed off screen.
+     */
     public boolean isOutOfBoundsCheck(INucleon nucleon){
         float x = nucleon.getPosition().getX();
         float y = nucleon.getPosition().getY();
-        float bufferSize = 50; //nucleons aren't considered out of bounds until their "trails" are completely off-screen
+        float bufferSize = 50;
         return x - nucleon.getRadius()>=width+bufferSize || x + nucleon.getRadius()<=0-bufferSize ||
                 y - nucleon.getRadius()>=height+bufferSize || y + nucleon.getRadius()<=0-bufferSize;
     }
 
+    /**
+     * Remove all nucleons that are out of bounds.
+     */
     public void removeOutOfBoundsNucleons(){ // checks if any nucleons in airborne Nucleons is out of bounds
         for (int i=0; i<airborneNucleons.size(); i++){
             INucleon nucleon = airborneNucleons.get(i);
@@ -125,6 +145,11 @@ public class Level implements ILevel {
         obsHelper.update(this, currentState);
     }
 
+    /**
+     * Checks the positions of all nucleons and gluonPoints if there has been a collision.
+     * If a collision has occurred, add the said nucleon to the gluon point, and check
+     * win and lose conditions.
+     */
     private void checkAllNucleonsStatus(){
         INucleon collidingNucleon = null;
         for (IGluonPoint gluon : molecule.getGluons()) {
@@ -168,6 +193,7 @@ public class Level implements ILevel {
         currentState = GameState.RUNNING;
         obsHelper.update(this, currentState);
     }
+
 
     public void update(float delta){
         if(currentState==GameState.RUNNING) {

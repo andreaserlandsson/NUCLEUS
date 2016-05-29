@@ -5,15 +5,21 @@ import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.model.LevelNotExistingException;
 
 
-// A class for strings from level.txt files.
-// Returns a levelData object, filled with the necessary specifics for the level.
+
 public class LevelParser {
+    /**
+     * Parses the given level and returns the specific LevelData object.
+     * @param level the specific level.
+     * @param width The width of the game.
+     * @param height the height of the game.
+     * @return
+     * @throws LevelNotExistingException Should possible be higher up. Throws when file doesn't exist.
+     */
 
     public static LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {
         return splitLevelString((readFromFile(level)), width, height);
     }
 
-    // Gets the file from the assetManager, and returns it as a single string.
     private static String readFromFile(int level) throws LevelNotExistingException {
         String levelString = "";
         try {
@@ -24,7 +30,13 @@ public class LevelParser {
         return levelString;
     }
 
-    // Splits the string, puts it into an int Array and returns it as a levelData object.
+    /**
+     * Splits the specific levelString and puts the data into an in array.
+     * @param str Level to be parsed.
+     * @param width The width of the game.
+     * @param height the height of the game.
+     * @return The levelData object.
+     */
     private static LevelData splitLevelString (String str, int width, int height) {
         String temp = str.replaceAll(" ", "\n");
         String[] strings = temp.split("\n");

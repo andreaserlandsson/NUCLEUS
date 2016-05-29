@@ -4,13 +4,18 @@ import com.nucleus.model.level.ILevel;
 import com.nucleus.model.collision.Vector;
 import com.nucleus.views.libGDXGraphics.screens.PlayScreen;
 
-public class InvertedPlayState implements com.nucleus.controller.controllerStates.ControllerState {
+public class InvertedPlayState implements ControllerState {
 
     private PlayScreen screen;
     Vector lastTouch = new Vector(0,0);
 
     public InvertedPlayState(PlayScreen screen) {
         this.screen = screen;
+    }
+
+    @Override
+    public String toString() {
+        return "Inverted";
     }
 
     public void drag(int screenX, int screenY, int pointer){
@@ -20,5 +25,10 @@ public class InvertedPlayState implements com.nucleus.controller.controllerState
         level.getMolecule().setRotation(newTouch, lastTouch);
         this.lastTouch = newTouch;
         return;
+    }
+
+    @Override
+    public void setScreen(PlayScreen screen) {
+        this.screen = screen;
     }
 }

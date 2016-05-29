@@ -5,13 +5,14 @@ import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.views.libGDXMusic.INMusicPlayer;
 import com.nucleus.views.libGDXMusic.NMusicPlayer;
 
-/**
- * Created by andreaserlandsson on 24/05/16.
- */
 public class LoseDialog extends WinLoseDialog {
 
     private INMusicPlayer musicPlayer;
 
+    /**
+     * Creates a new loseDialog with a title, a new song, and a listener.
+     * @param listener the listener for the dialog.
+     */
     public LoseDialog(EventListener listener) {
         super(listener);
         this.musicPlayer = NMusicPlayer.getInstance();
