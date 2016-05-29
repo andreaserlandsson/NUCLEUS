@@ -10,10 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.nucleus.model.level.ILevel;
 
-
-/**
- * Created by andreaserlandsson on 24/05/16.
- */
 public abstract class WinLoseDialog extends ScreenAdapter {
 
     //these are all protected because they will be overwritten in WinDialog and LoseDialog

@@ -17,11 +17,6 @@ import com.nucleus.views.libGDXGraphics.viewables.PauseViewable;
 import com.nucleus.views.libGDXGraphics.dialogs.WinDialog;
 import com.nucleus.views.libGDXGraphics.dialogs.WinLoseDialog;
 
-
-/**
- * Created by erik on 25/04/16.
- */
-
 public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<Level.GameState> {
 
 

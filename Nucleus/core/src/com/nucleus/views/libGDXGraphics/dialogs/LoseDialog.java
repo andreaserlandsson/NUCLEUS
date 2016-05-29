@@ -5,9 +5,6 @@ import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.views.libGDXMusic.INMusicPlayer;
 import com.nucleus.views.libGDXMusic.NMusicPlayer;
 
-/**
- * Created by andreaserlandsson on 24/05/16.
- */
 public class LoseDialog extends WinLoseDialog {
 
     private INMusicPlayer musicPlayer;

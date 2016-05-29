@@ -9,9 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
-/**
- * Created by andreaserlandsson on 17/05/16.
- */
 public class PauseDialog extends ScreenAdapter {
     private Stage stage;
     protected Skin skin;
