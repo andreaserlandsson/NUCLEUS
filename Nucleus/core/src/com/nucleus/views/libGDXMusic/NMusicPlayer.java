@@ -10,6 +10,8 @@ public class NMusicPlayer implements INMusicPlayer {
     private static INMusicPlayer instance;
     private static float soundEffectVolume = 0.6f;
 
+
+
     private NMusicPlayer(){
         // Private constructor to fulfill singleton requirements.
     }
@@ -45,6 +47,15 @@ public class NMusicPlayer implements INMusicPlayer {
         if (currentlyPlaying != null) {
             currentlyPlaying.stop();
             currentlyPlaying = null;
+        }
+    }
+
+    public String getSoundOff(){
+        if (masterVolume == 0){
+            return "Off";
+        }
+        else {
+            return "On";
         }
     }
 
