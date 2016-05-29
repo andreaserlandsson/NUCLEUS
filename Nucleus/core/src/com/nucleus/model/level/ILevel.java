@@ -15,7 +15,6 @@ public interface ILevel<E extends Enum<E>> extends IObservable {
     INucleonGun getNucleonGun();
     List<INucleon> getAirborneNucleons();
     IMolecule getMolecule();
-    IGluonPoint[] getGluons();
     void addAirborneNucleon(INucleon nucleon);
     boolean isOutOfBoundsCheck(INucleon nucleon);
     void removeOutOfBoundsNucleons();
