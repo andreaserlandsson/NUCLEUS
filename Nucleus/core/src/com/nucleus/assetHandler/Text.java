@@ -2,8 +2,6 @@ package com.nucleus.assetHandler;
 
 import com.badlogic.gdx.files.FileHandle;
 
-    //Wrapper class of the String class
-
 /**
  * Wrapper class of the string class.
  */

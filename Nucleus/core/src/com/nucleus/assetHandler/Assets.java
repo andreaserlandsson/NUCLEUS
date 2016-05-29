@@ -20,12 +20,16 @@ public class Assets {
     private static final String PATHTOTXT = "levels/leveldata/";
 
 
-    //Two assetManagers, one for each type of file.
+    /**
+     * Three AssetManagers, one for each file type.
+     */
     private static AssetManager audioAssets = new AssetManager();
     private static AssetManager textureAssets = new AssetManager();
     private static AssetManager txtAssets = new AssetManager();
 
-    //Two HashMaps which holds the location and key to all different files.
+    /**
+     * Three hashMaps containing all paths and values for each file type.
+     */
     private static Map<String, String> audio = new HashMap<String, String>();
     private static Map<String, String> texture = new HashMap<String, String>();
     private static Map<String, String > txt = new HashMap<String, String>();

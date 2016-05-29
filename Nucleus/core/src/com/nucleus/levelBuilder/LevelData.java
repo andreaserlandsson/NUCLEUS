@@ -25,11 +25,6 @@ public class LevelData {
     public final int difficultyMultiplierIndex = 5;
     public final int firstGluonIndex = 6;
 
-
-    //Sets the variables for a level by parsing the int[] field from
-    //LevelParser.
-    //The first 6 positions of the array always are the same.
-
     /**
      * Sets the variables for a level by parsing the int[] field passed from LevelParser.
      * Fills a list with gluonPoints with their corresponing values for coordinates and nucleons.

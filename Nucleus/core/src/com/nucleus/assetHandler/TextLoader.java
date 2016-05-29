@@ -8,10 +8,6 @@ import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 
-//As there is no default loader for Texts in AssetManager, we implement our own.
-    //Created by guidelines from
-    //https://github.com/libgdx/libgdx/wiki/Managing-your-assets#writing-your-own-loaders
-
 /**
  *  As there is no default loader for Texts in AssetManager, we implement our own.
  * Created by guidelines from

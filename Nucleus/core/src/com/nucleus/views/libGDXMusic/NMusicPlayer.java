@@ -37,10 +37,6 @@ public class NMusicPlayer implements INMusicPlayer {
         Assets.loadMusicFiles();
     }
 
-        // Plays the String by getting the correspondent Music file from the assetmManager.
-        // Sets the volume to the mastervolume, and set an infinite loop.
-        // Sets the currentPlaying to be the song playing, to easier track the current song.
-
     /**
      *  Plays the String by getting the correspondent Music file from the assetManager.
      *  Sets the volume to the mastervolume, and set an infinite loop.
@@ -66,11 +62,7 @@ public class NMusicPlayer implements INMusicPlayer {
             currentlyPlaying = null;
         }
     }
-
-        //Plays a sound effect (eg. buttonClicked).
-        //The sound will be lower than the masterVolume,
-        //but if the sound is muted from options, there is no sound.
-
+    
     /**
      * Plays a sound effect (eg. buttonClicked).
      * The sound will be lower than the masterVolume, and if the volume is muted, mute this sound.
