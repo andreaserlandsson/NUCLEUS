@@ -93,6 +93,7 @@ public class ApplicationController {
 
     public void toggleSound() {
         musicPlayer.setMasterVolume(1-musicPlayer.getMasterVolume());
+        showTextDialog("Sound " + musicPlayer.getSoundOff());
     }
 
     public void playClickSound() {

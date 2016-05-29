@@ -11,4 +11,5 @@ public interface INMusicPlayer {
     void switchSong(String newSong);
     void setMasterVolume(float volume);
     float getMasterVolume();
+    String getSoundOff();
 }
