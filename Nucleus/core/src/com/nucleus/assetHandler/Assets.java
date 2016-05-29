@@ -12,24 +12,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Assets {
-    //Paths to the different directories where the files are located.
+    /**
+     * Paths to the different directories where the files are located.
+     */
     private static final String PATHTOMUSIC = "music/";
     private static final String PATHTOTEXTURE = "graphics/";
     private static final String PATHTOTXT = "levels/leveldata/";
 
 
-    //Two assetManagers, one for each type of file.
+    /**
+     * Three AssetManagers, one for each file type.
+     */
     private static AssetManager audioAssets = new AssetManager();
     private static AssetManager textureAssets = new AssetManager();
     private static AssetManager txtAssets = new AssetManager();
 
-    //Two HashMaps which holds the location and key to all different files.
+    /**
+     * Three hashMaps containing all paths and values for each file type.
+     */
     private static Map<String, String> audio = new HashMap<String, String>();
     private static Map<String, String> texture = new HashMap<String, String>();
     private static Map<String, String > txt = new HashMap<String, String>();
 
-    //Loads all the music from the filepath into the hashMap.
-    //Then calls on loadMusic() and wait for the assets to be loaded.
+    /**
+     * Loads all the music from the filepath into the hashMap.
+     * Then calls on loadMusic() and waits for the assets to be loaded.
+     */
     public static void loadMusicFiles() {
         FileHandle musicPath;
         musicPath = Gdx.files.internal(PATHTOMUSIC);
@@ -41,8 +49,10 @@ public class Assets {
         finishLoading(audioAssets);
     }
 
-    //Loads all the textures from the filepath into the hashMap.
-    //Then calls on loadMusic() and wait for the assets to be loaded.
+    /**
+     * Loads all the textures from the filepath into the hashMap.
+     * Then calls on loadMusic() and waits for the assets to be loaded.
+     */
     public static void loadTextureFiles() {
         FileHandle texturePath;
         texturePath = Gdx.files.internal(PATHTOTEXTURE);
@@ -54,8 +64,10 @@ public class Assets {
         finishLoading(textureAssets);
     }
 
-    //Loads all the textfiles from the filepath into the hashMap.
-    //Then calls on loadText() and wait for the assets to be loaded.
+    /**
+     * Loads all the textfiles from the filepath into the hashMap.
+     * Then calls on loadText() and waits for the assets to be loaded.
+     */
     public static void loadTextFiles() {
         FileHandle txtPath;
         txtPath = Gdx.files.internal(PATHTOTXT);
@@ -67,8 +79,10 @@ public class Assets {
         finishLoading(txtAssets);
     }
 
-    //Loads all the music that is in the hashMap into the assetManger
-    //for audio. The value is the path to each file.
+    /**
+     * Loads all the music that is in the hashMap into the assetManger
+     * for audio. The value is the path to each file.
+     */
     public static void loadMusic () {
         if (audio != null) {
             for (Map.Entry entry : audio.entrySet()) {
@@ -77,9 +91,10 @@ public class Assets {
         }
     }
 
-    //Loads all the textures that is in the hashMap into the assetManger
-    //for textures. The value is the path to each file.
-    public static void loadTexture() {
+    /**
+     * Loads all the textures that is in the hashMap into the assetManger
+     * for textures. The value is the path to each file.
+     */public static void loadTexture() {
         if (texture != null) {
             for (Map.Entry entry : texture.entrySet()) {
                 textureAssets.load((String) entry.getValue(), Texture.class);
@@ -87,8 +102,10 @@ public class Assets {
         }
     }
 
-    //Loads all the textfiles that is in the hashMap into the assetManger
-    //for textures. The value is the path to each file.
+    /**
+     * Loads all the textfiles that is in the hashMap into the assetManger
+     * for texts. The value is the path to each file.
+     */
     public static void loadText() {
         setTxtLoader(txtAssets);
         if (txt != null) {
@@ -98,8 +115,13 @@ public class Assets {
         }
     }
 
-    //Checks if the song is in the hashmap, and if so
-    //gets the song from the audioAsset and returns it.
+    /**
+     * The three following methods works in the same way, and this will be the comment for all of them.
+     * The method checks if the String is in the hashMap for corresponding type.
+     * If it is, the assetManager gets the specific file, and returns it.
+     * @param song the string to be located and returned.
+     * @return returns the corresponding type, in this case a Music.class.
+     */
     public static Music getSong(String song) {
         Music music = null;
         String songFile = audio.get(song);
@@ -110,8 +132,6 @@ public class Assets {
         return music;
     }
 
-    //Checks if the texture is in the hashmap, and if so
-    //gets the texture from the textureAsset and returns it.
     public static Texture getTexture(String picture) {
         Texture pic = null;
         String textPath = texture.get(picture);
@@ -122,8 +142,6 @@ public class Assets {
         return pic;
     }
 
-    //Checks if the texture is in the hashmap, and if so
-    //gets the texture from the textureAsset and returns it.
     public static Text getFile(String file){
         Text text = null;
         String filePath = txt.get(file);
@@ -134,15 +152,21 @@ public class Assets {
         return text;
     }
 
-    //Makes sure that the assetManger finishes loading each object.
-    //This is done as assetManager.load() only places objects in a loading queue.
-    //Update() actually loads the objects in the queue.
+    /**
+     * Makes sure that the assetManger finishes loading each object.
+     * This is done as assetManager.load() only places objects in a loading queue, while
+     * update() actually loads the objects in the queue.
+     * @param assetManager The specific assetManager that needs to load queue'd objects.
+     */
     public static void finishLoading(AssetManager assetManager){
         while(!(assetManager.update()));
     }
 
-    //As .txt is not a default loader for the AssetManager, we have to define it here.
-    //Uses the TextLoader class that is also created for this purpose only.
+    /**
+     * As .txt is not a default loader for the AssetManager, we have to define it here.
+     * Uses the TextLoader class that is also created for this purpose only.
+     * @param assetManager The assetManager that we sets the loading type for.
+     */
     private static void setTxtLoader(AssetManager assetManager) {
         assetManager.setLoader(Text.class, new TextLoader(new InternalFileHandleResolver()));
     }

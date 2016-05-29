@@ -4,7 +4,10 @@ import com.nucleus.model.molecule.GluonPoint;
 import com.nucleus.model.molecule.IGluonPoint;
 import com.nucleus.model.collision.Vector;
 
-    //Data class for a level. Parses an int-array with and delegates the values to said variables.
+
+/**
+ * Data class for a level. Parses an int-array with and delegates the values to said variables.
+ */
 public class LevelData {
     public IGluonPoint[] gluonPoints;
     public int levelNo;
@@ -22,10 +25,13 @@ public class LevelData {
     public final int difficultyMultiplierIndex = 5;
     public final int firstGluonIndex = 6;
 
-
-    //Sets the variables for a level by parsing the int[] field from
-    //LevelParser.
-    //The first 6 positions of the array always are the same.
+    /**
+     * Sets the variables for a level by parsing the int[] field passed from LevelParser.
+     * Fills a list with gluonPoints with their corresponing values for coordinates and nucleons.
+     * @param levelSpecs Int array containing all information for the level.
+     * @param width the width for the level, used for correctly positioning the gluonPoints.
+     * @param height the height for the level, used for correctly positioning the gluonPoints.
+     */
     public LevelData(int [] levelSpecs, int width, int height) {
         this.levelNo = levelSpecs[levelNumberIndex];
         this.noOfGluonPoints = levelSpecs[gluonAmountIndex];
@@ -33,9 +39,6 @@ public class LevelData {
         this.noOfProtons = levelSpecs[protonAmountIndex];
         this.noOfNeutrons = levelSpecs[neutronAmountIndex];
         this.difficultyMultiplier = levelSpecs[difficultyMultiplierIndex];
-
-        //Fills a list with gluonPoints with their corresponding values for
-        // Cordinates and neuclons needed.
 
         gluonPoints = new IGluonPoint[noOfGluonPoints];
         int j = 0;
