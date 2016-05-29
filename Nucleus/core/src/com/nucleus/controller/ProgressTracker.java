@@ -14,7 +14,6 @@ public class ProgressTracker implements IObserver<Level.GameState> {
     private static Preferences prefs = Gdx.app.getPreferences("prefs");
 
     public ProgressTracker(IObservable level){
-        IObservable level1 = level;
         level.addObserver(this);
     }
 

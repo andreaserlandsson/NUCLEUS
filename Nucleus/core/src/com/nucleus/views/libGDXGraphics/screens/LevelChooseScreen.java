@@ -68,11 +68,6 @@ public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
 
     }
 
-    public void showSelectionError(){
-        Gdx.app.log("Level selection error", "showing");
-        levelSelectionDialog.show();
-    }
-
     @Override
     public void render(float delta){
         super.render(delta);
