@@ -83,7 +83,7 @@ public class MoleculeViewable implements IViewable {
     }
 
     /**
-     * Loads this MoleculeViewable with the correct molecule texturesx
+     * Loads this MoleculeViewable with the correct molecule textures
      *
      * @param levelNumber
      */

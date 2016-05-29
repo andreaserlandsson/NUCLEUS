@@ -17,6 +17,7 @@ public class LoseDialog extends WinLoseDialog {
         super(listener);
         this.musicPlayer = NMusicPlayer.getInstance();
         musicPlayer.switchSong(NAssetsData.LOSESOUND);
+        //this changes the printed text to "You Lost"
         this.title = "You Lost";
 
     }
