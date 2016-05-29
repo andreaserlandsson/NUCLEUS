@@ -11,9 +11,6 @@ import com.nucleus.model.level.ILevel;
 import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
 
-/**
- * Created by Quaxi on 04/05/16.
- */
 public class StartScreen extends NucleusScreen implements Screen {
     private ILevel level;
 
@@ -37,7 +34,6 @@ public class StartScreen extends NucleusScreen implements Screen {
         mainTable.center();
         mainTable.padBottom(150f);
 
-        //Create buttons
         TextButton playButton = new TextButton("Play", skin);
         TextButton optionsButton = new TextButton("Options", skin);
         TextButton exitButton = new TextButton("Exit", skin);
@@ -48,6 +44,7 @@ public class StartScreen extends NucleusScreen implements Screen {
         exitButton.addListener(listener);
         stage.addListener(listener);
 
+        //adds a title which will be shown on the screen
         Label nucleusText = new Label("NUCLEUS", skin);
         mainTable.add(nucleusText);
         mainTable.row();
@@ -63,6 +60,10 @@ public class StartScreen extends NucleusScreen implements Screen {
         stage.addActor(mainTable);
     }
 
+    /**
+     * Renders the screen at each game tick.
+     * Also updates the background level that is playing.
+     */
     @Override
     public void render(float delta) {
 
