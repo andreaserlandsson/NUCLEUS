@@ -3,6 +3,7 @@ package com.nucleus.controller;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.nucleus.assetHandler.Assets;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.levelBuilder.LevelBuilder;
 import com.nucleus.model.level.Level;
@@ -37,7 +38,7 @@ public class ApplicationController {
     }
 
     public void goToLevelChooser() {
-        screen = new LevelChooseScreen(listener, 3);
+        screen = new LevelChooseScreen(listener, Assets.getLevelAmount());
         goToScreen(screen);
     }
 

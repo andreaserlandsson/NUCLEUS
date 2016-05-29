@@ -138,6 +138,13 @@ public class Assets {
         return text;
     }
 
+
+    public static int getLevelAmount() {
+
+        //Minus one since the start screen level is not playable
+       return txtAssets.getLoadedAssets()-1;
+    }
+
     /**
      * Makes sure that the assetManger finishes loading each object.
      * This is done as assetManager.load() only places objects in a loading queue, while

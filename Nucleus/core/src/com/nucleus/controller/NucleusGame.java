@@ -34,9 +34,4 @@ public class NucleusGame extends Game {
         musicPlayer.playMusic(NAssetsData.MENUMUSIC);
     }
 
-    @Override
-    public void dispose(){
-        super.dispose();
-    }
-
 }
