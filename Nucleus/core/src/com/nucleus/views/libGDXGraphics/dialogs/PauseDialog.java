@@ -72,7 +72,6 @@ public class PauseDialog extends ScreenAdapter {
 
     @Override
     public void resize(int width, int height) {
-        //stage.setViewport(width, height);
     }
 
     @Override
