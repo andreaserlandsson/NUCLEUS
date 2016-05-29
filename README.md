@@ -15,26 +15,36 @@ Miranda Bånnsgård, committing as Dumlis
 Andréas Erlandsson, committing as fishur
 
 
-      To run the project, first download the repository using
+To run the project, first download the repository using
       
       git clone https://github.com/fishur/NUCLEUS
       
-      in your terminal to preferred location.
+in your terminal to preferred location.
       
       
-      Go inside the folder where you have cloned the desktop using
+Go inside the folder where you have cloned the desktop using
       
       cd  /path/to/project/NUCLEUS/nucleus/
       
-      in your terminal.
+in your terminal.
       
       
-      When correctly positioned, run the commando
+When correctly positioned, run the command
       
       gradlew desktop:run
       
-      alternatively
+alternatively
       
       ./gradlew desktop:run
       
-      to run the project.
+to run the project.
+
+
+To run the tests, locate yourself as previously, and run the command
+      
+      ./gradlew test
+
+The results will be located in 
+
+      /path/to/project/NUCLEUS/Nucleus/core/build/reports/tests/
+
