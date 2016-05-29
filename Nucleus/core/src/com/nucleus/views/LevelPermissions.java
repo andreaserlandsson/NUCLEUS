@@ -9,8 +9,6 @@ public class LevelPermissions {
 
     public static boolean checkLevelPermission(int levelNumber){
         int lvlProgress = prefs.getInteger("progress", 0);
-        if(levelNumber<=lvlProgress+1)
-            return true;
-        return false;
+        return levelNumber <= lvlProgress + 1;
     }
 }

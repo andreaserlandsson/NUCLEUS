@@ -24,7 +24,6 @@ public class InvertedPlayState implements ControllerState {
         newTouch.subtract(this.lastTouch);
         level.getMolecule().setRotation(newTouch, lastTouch);
         this.lastTouch = newTouch;
-        return;
     }
 
     @Override

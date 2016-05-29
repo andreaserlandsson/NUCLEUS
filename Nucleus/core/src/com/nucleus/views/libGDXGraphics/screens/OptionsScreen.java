@@ -15,7 +15,6 @@ import java.util.List;
 
 public class OptionsScreen extends NucleusScreen implements DialogScreen {
 
-    private List<IViewable> views = new ArrayList<IViewable>();
     private TextDialog dialog;
     private EventListener listener;
 
@@ -30,7 +29,6 @@ public class OptionsScreen extends NucleusScreen implements DialogScreen {
         super();
 
         this.listener = listener;
-        views.add(new BackgroundViewable());
 
         //initates the table
         Table mainTable = new Table();

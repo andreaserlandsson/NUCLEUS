@@ -10,6 +10,7 @@ public class GluonPoint implements IGluonPoint, ICollidable {
     private int currentNeutrons;
     private int maxProtons;
     private int maxNeutrons;
+    private int RADIUS;
 
     /**
      * Constructor for GluonPoint,
@@ -21,6 +22,7 @@ public class GluonPoint implements IGluonPoint, ICollidable {
         this.position = positions;
         this.maxProtons = maxProtons;
         this.maxNeutrons = maxNeutrons;
+        RADIUS = 10;
         currentNeutrons = 0;
         currentProtons = 0;
     }
@@ -46,7 +48,6 @@ public class GluonPoint implements IGluonPoint, ICollidable {
     }
 
     public int getRadius(){
-        int RADIUS = 10;
         return RADIUS;
     }
 

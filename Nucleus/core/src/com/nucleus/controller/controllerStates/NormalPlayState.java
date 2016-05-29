@@ -19,7 +19,6 @@ public class NormalPlayState implements ControllerState {
         newTouch.subtract(this.lastTouch);
         level.getMolecule().setRotation(lastTouch, newTouch);
         this.lastTouch = newTouch;
-        return;
     }
 
     @Override
