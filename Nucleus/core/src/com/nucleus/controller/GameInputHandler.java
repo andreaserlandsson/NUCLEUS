@@ -1,17 +1,17 @@
 package com.nucleus.controller;
 
+import com.badlogic.gdx.Gdx;
 import com.nucleus.controller.controllerStates.ControllerState;
 import com.nucleus.controller.controllerStates.InvertedPlayState;
+import com.nucleus.controller.controllerStates.NormalPlayState;
 import com.nucleus.views.libGDXGraphics.screens.PlayScreen;
-import com.sun.jndi.toolkit.ctx.Continuation;
 
 public class GameInputHandler extends NInputProcessor {
 
-    ControllerState controlGame;
+    ControllerState normalGame;
     ControllerState currentState;
     ControllerState inverseGame;
     private PlayScreen screen;
-    private boolean reverseState = false;
     private static GameInputHandler instance = null;
 
     private GameInputHandler(){
@@ -30,12 +30,9 @@ public class GameInputHandler extends NInputProcessor {
     }
 
     private void setController() {
-        controlGame = new com.nucleus.controller.controllerStates.NormalPlayState(screen);
+        normalGame = new NormalPlayState(screen);
         inverseGame = new InvertedPlayState(screen);
-        currentState = controlGame;
-        if (reverseState) {
-            currentState = inverseGame;
-        }
+        currentState = normalGame;
     }
 
     @Override
@@ -53,6 +50,14 @@ public class GameInputHandler extends NInputProcessor {
     }
 
     public void switchState(){
+        if (currentState instanceof InvertedPlayState){
+            Gdx.app.log("switchState", "Inverted");
+            currentState = normalGame;
+        }
+        else if (currentState instanceof NormalPlayState){
+            Gdx.app.log("switchState", "Normal");
+            currentState = inverseGame;
+        }
     }
 
     public ControllerState getState() {
