@@ -4,9 +4,9 @@ import com.nucleus.views.libGDXGraphics.screens.PlayScreen;
 
 public class GameInputHandler extends NInputProcessor {
 
-    com.nucleus.controller.ControllerState controlGame;
-    com.nucleus.controller.ControllerState currentState;
-    com.nucleus.controller.ControllerState inverseGame;
+    ControllerState controlGame;
+    ControllerState currentState;
+    ControllerState inverseGame;
     private PlayScreen screen;
     private boolean reverseState = false;
     private static GameInputHandler instance = null;
@@ -27,7 +27,7 @@ public class GameInputHandler extends NInputProcessor {
     }
 
     private void setController() {
-        controlGame = new com.nucleus.controller.NormalPlayState(screen);
+        controlGame = new NormalPlayState(screen);
         inverseGame = new InvertedPlayState(screen);
         currentState = controlGame;
         if (reverseState) {
