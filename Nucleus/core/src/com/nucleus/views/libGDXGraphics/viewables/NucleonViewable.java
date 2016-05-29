@@ -24,6 +24,7 @@ public class NucleonViewable implements IViewable {
 
         this.nucleons = nucleons;
 
+
         //Adding textures
         proton = Assets.getTexture(NAssetsData.PROTON);
         neutron = Assets.getTexture(NAssetsData.NEUTRON);
