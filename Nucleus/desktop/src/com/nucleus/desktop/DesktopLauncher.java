@@ -3,7 +3,7 @@ package com.nucleus.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.nucleus.Controller.NucleusGame;
+import com.nucleus.controller.NucleusGame;
 
 public class DesktopLauncher {
 

@@ -1,8 +1,8 @@
 package Model;
 
-import com.nucleus.Model.particles.INucleon;
-import com.nucleus.Model.particles.Nucleon;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.model.particles.INucleon;
+import com.nucleus.model.particles.Nucleon;
+import com.nucleus.model.collision.Vector;
 
 import org.junit.Test;
 
