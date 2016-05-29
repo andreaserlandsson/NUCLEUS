@@ -5,9 +5,6 @@ import com.nucleus.model.nucleusObservers.IObserver;
 
 import java.util.ArrayList;
 
-/**
- * Created by erik on 26/05/16.
- */
 public class ObservableHelper<E> implements IObservable<E> {
 
     private ArrayList<IObserver<E>> observers;
