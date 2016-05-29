@@ -3,7 +3,7 @@ package com.nucleus.assetHandler;
 import com.badlogic.gdx.files.FileHandle;
 
 /**
- * Wrapper class for the string class.
+ * Decorator class for the string class.
  */
 public class Text {
     private String str;

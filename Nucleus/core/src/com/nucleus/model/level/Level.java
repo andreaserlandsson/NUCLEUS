@@ -102,7 +102,7 @@ public class Level implements ILevel {
 
     /**
      * Returns a list of the nucleons currently flying through the level
-     * @return
+     * @return list of the currently flying nucleons.
      */
     public List<INucleon> getAirborneNucleons(){
         return airborneNucleons;
