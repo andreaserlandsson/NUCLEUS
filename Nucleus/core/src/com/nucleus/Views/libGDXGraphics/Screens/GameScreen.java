@@ -48,6 +48,10 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         level.addObserver(this);
     }
 
+    /**
+     * This render method renders the game screen and also checks if the game is won,lost or pause
+     * and if so also renders the win-, lose- or pause dialog
+     */
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -93,6 +97,9 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         return level;
     }
 
+    /**
+     * On observation this will check the status of the game and call on the co-responding method
+     */
     @Override
     public void onObservation(IObservable<Level.GameState> o, Level.GameState arg) {
         if (arg == Level.GameState.PAUSED){

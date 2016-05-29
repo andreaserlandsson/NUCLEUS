@@ -19,13 +19,18 @@ public class LevelSelectionDialog extends ScreenAdapter{
     private EventListener listener;
 
 
-
+    /**
+     * This constructor builds a LevelSelectionDialog object with the correct listener
+     */
     public LevelSelectionDialog(EventListener listener){
         this.listener = listener;
         this.stage = new Stage();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
     }
 
+    /**
+     * This method sets upp the text and the buttons and add them to a listener which callas on the co-responding action
+     */
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);
@@ -37,12 +42,13 @@ public class LevelSelectionDialog extends ScreenAdapter{
         mainTable.bottom();
         mainTable.padBottom(150f);
 
-        //Create buttons
+        //Create button
         TextButton okButton = new TextButton("OK", skin);
 
         stage.addListener(listener);
 
-        //Add listeners to buttons
+        //Add listeners to buttons. This listener calls on the clicked(...)-method in ButtonEventHandler
+        //where it co-responds with a if-state which in turn changes the screen back to LevelChooseScreen
         okButton.addListener(listener);
 
         Label levelText = new Label("This level is not yet unlocked!", skin);
@@ -55,11 +61,6 @@ public class LevelSelectionDialog extends ScreenAdapter{
         //Add table to stage
         stage.addActor(mainTable);
 
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        //stage.setViewport(width, height);
     }
 
     @Override
