@@ -36,6 +36,12 @@ public class OptionsScreen extends NucleusScreen implements DialogScreen {
         mainTable.center();
         mainTable.padBottom(150f);
 
+        Table secondTable = new Table();
+        secondTable.setFillParent(true);
+        secondTable.center().bottom();
+        secondTable.pad(100f);
+
+
         //adds the listener to the stage
         stage.addListener(listener);
 
@@ -60,11 +66,12 @@ public class OptionsScreen extends NucleusScreen implements DialogScreen {
 
         TextButton toMenuBtn = new TextButton("Main Menu", skin);
         toMenuBtn.addListener(listener);
-        mainTable.add(toMenuBtn).width(150).pad(10);
-        mainTable.row();
+        secondTable.add(toMenuBtn).width(150).pad(10);
+        secondTable.row();
 
         //adds the table to the stage
         stage.addActor(mainTable);
+        stage.addActor(secondTable);
 
     }
 
