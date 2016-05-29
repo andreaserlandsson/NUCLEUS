@@ -29,6 +29,12 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
     private PauseDialog pauseDialog;
     private EventListener listener;
 
+    /**
+     * Creates a new GameScreen with a level and a listener. This is the screen with the actual game
+     * and where the game is updated and rendered.
+     * @param level The level to be playde
+     * @param listener The listener to be set for the screen.
+     */
     public GameScreen(ILevel level, EventListener listener){
         super();
         this.level = level;
@@ -47,7 +53,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
     }
 
     /**
-     * This render method renders the game screen and also checks if the game is won,lost or pause
+     * Renders the game screen and also checks if the game is won,lost or pause
      * and if so also renders the win-, lose- or pause dialog
      */
     @Override
@@ -96,7 +102,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
     }
 
     /**
-     * On observation this will check the status of the game and call on the co-responding method
+     * On observation this will check the status of the game and call on the corresponding method
      */
     @Override
     public void onObservation(IObservable<Level.GameState> o, Level.GameState arg) {

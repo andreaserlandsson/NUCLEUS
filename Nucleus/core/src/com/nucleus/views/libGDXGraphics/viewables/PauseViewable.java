@@ -10,7 +10,7 @@ public class PauseViewable implements IViewable {
     private Texture pause;
 
     /**
-     * Loads this PauseViewable with its textures
+     * Creates a PauseViewable with the correct textures
      */
     public PauseViewable(){
         this.pause = Assets.getTexture(NAssetsData.PAUSE);
@@ -18,9 +18,8 @@ public class PauseViewable implements IViewable {
     }
 
     /**
-     * Redraws the pause button
-     *
-     * @param batch
+     * Renders the pause button
+     * @param batch The batch to be rendered
      */
     @Override
     public void render(SpriteBatch batch){
