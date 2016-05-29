@@ -8,10 +8,11 @@ import static org.junit.Assert.*;
  */
 public class VectorTest {
 
-    Vector vector = new Vector(1,1);
+
 
     @Test
     public void testSetCoordinates(){
+        Vector vector = new Vector(1,1);
         vector.setCoordinates(2,2);
 
         assertFalse(vector.getX() == 1);
@@ -26,6 +27,7 @@ public class VectorTest {
 
     @Test
     public void testAdd(){
+        Vector vector = new Vector(1,1);
         Vector vector2 = new Vector(2,2);
 
         Vector vector3 = vector.add(vector2);

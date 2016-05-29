@@ -4,9 +4,6 @@ import com.nucleus.model.molecule.IGluonPoint;
 import com.nucleus.model.molecule.IMolecule;
 import com.nucleus.model.collision.Vector;
 
-/**
- * Created by erik on 22/04/16.
- */
 public class MockMolecule implements IMolecule {
 
     private float rotation = 0;
