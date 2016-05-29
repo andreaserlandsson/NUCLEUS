@@ -17,11 +17,16 @@ import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
 public class StartScreen extends NucleusScreen implements Screen {
     private ILevel level;
 
+    /**
+     * Creates the start screen of the application.
+     * Creates buttons for all alternative screens to go to.
+     * @param listener The listener for the screen.
+     * @param level the level that is displayed in the background.
+     */
     public StartScreen(EventListener listener, ILevel level) {
         super();
         this.level = level;
-        // Creating level
-        //level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
 
         //Initialising graphics
         views.add(new NucleonViewable(level.getAirborneNucleons()));

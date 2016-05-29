@@ -14,6 +14,10 @@ public class PauseDialog extends ScreenAdapter {
     protected Skin skin;
     private EventListener listener;
 
+    /**
+     * Creates a new pauseDialog with a listener.
+     * @param listener the listener that is set for the dialog.
+     */
     public PauseDialog(EventListener listener){
 
         this.listener = listener;
@@ -23,6 +27,10 @@ public class PauseDialog extends ScreenAdapter {
 
     }
 
+    /**
+     * Creates a table and fills it with buttons.
+     * Sets a listener to each button to be interactable.
+     */
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);

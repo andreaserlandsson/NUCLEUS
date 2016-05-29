@@ -12,15 +12,17 @@ import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by erik on 23/05/16.
- */
+
 public class OptionsScreen extends NucleusScreen implements DialogScreen {
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private TextDialog dialog;
     private EventListener listener;
 
+    /**
+     * Creates a new option screen with different options with a listener.
+     * @param listener The listener for the screen.
+     */
     public OptionsScreen(ClickListener listener){
         super();
 
