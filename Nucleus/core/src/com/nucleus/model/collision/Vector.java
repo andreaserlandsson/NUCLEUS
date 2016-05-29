@@ -1,8 +1,9 @@
 package com.nucleus.model.collision;
 
 /**
- * Utility class used for positions and velocities in a two-dimensional space. Use throughout the
+ * Utility class used for positions and velocities in a two-dimensional space. Used throughout the
  * whole application.
+ * All methods are different vector-mathematics, such as multiply and subtract.
  */
 public class Vector {
     private float x;

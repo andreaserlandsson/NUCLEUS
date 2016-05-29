@@ -5,7 +5,7 @@ import com.nucleus.model.molecule.IGluonPoint;
 import com.nucleus.model.collision.Vector;
 
 /**
- * Data class for a level. Parses an int-array with and delegates the values to said variables.
+ * Data class for a level. Parses an int-array and delegates the values to said variables.
  */
 
 public class LevelData {
@@ -28,7 +28,7 @@ public class LevelData {
 
         /**
          * Sets the variables for a level by parsing the int[] field passed from LevelParser.
-         * Fills a list with gluonPoints with their corresponing values for coordinates and nucleons.
+         * Fills a list with gluonPoints with their corresponding values for coordinates and nucleons.
          * @param levelSpecs Int array containing all information for the level.
          * @param width the width for the level, used for correctly positioning the gluonPoints.
          * @param height the height for the level, used for correctly positioning the gluonPoints.
