@@ -7,10 +7,14 @@ import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.views.libGDXMusic.INMusicPlayer;
 import com.nucleus.views.libGDXMusic.NMusicPlayer;
 
-
+/**
+ * Extension of Game that handles creating and closing the application
+ */
 public class NucleusGame extends Game {
 
-
+    /**
+     * Initializes the game and goes to the start screen
+     */
     public void create(){
 
         Gdx.app.log("NucleusGame", "created");

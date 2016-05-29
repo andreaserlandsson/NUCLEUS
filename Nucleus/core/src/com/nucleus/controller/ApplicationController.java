@@ -6,12 +6,16 @@ import com.badlogic.gdx.Screen;
 import com.nucleus.model.level.Level;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.levelBuilder.LevelBuilder;
+import com.nucleus.views.LevelPermissions;
 import com.nucleus.views.libGDXGraphics.screens.*;
 import com.nucleus.views.libGDXMusic.INMusicPlayer;
 import com.nucleus.views.libGDXMusic.NMusicPlayer;
 
-public class ApplicationController {
 
+/**
+ * Handles all non-game related user input, such as menus and music.
+ */
+public class ApplicationController {
 
     private ButtonEventHandler listener;
     private GameInputHandler controller;
@@ -33,25 +37,30 @@ public class ApplicationController {
         goToScreen(screen);
     }
 
+    /**
+     * Starts a new level
+     * @param levelNum is an integer of the level number
+     */
     public void startLevel(int levelNum) {
+        if (LevelPermissions.checkLevelPermission(levelNum)) {
+            this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            new ProgressTracker(level);
+            screen = new GameScreen(level, listener);
+            Gdx.input.setInputProcessor(controller);
+            controller.setScreen((GameScreen)screen);
+            goToScreen(screen);
 
-        this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        //TODO: remove static reference?
-        new ProgressTracker(level);
-        screen = new GameScreen(level, listener);
-        Gdx.input.setInputProcessor(controller);
-        controller.setScreen((GameScreen)screen);
-        goToScreen(screen);
-
-        //starting level music
-        musicPlayer = NMusicPlayer.getInstance();
-        musicPlayer.switchSong(NAssetsData.getLevelSong(levelNum));
-
+            //starting level music
+            musicPlayer = NMusicPlayer.getInstance();
+            musicPlayer.switchSong(NAssetsData.getLevelSong(levelNum));
+        } else {
+            showTextDialog("Level Not Unlocked");
+        }
     }
+
 
     protected void resumeLevel(){
         Gdx.input.setInputProcessor(controller);
-        //controller.setScreen();
         level.resume();
     }
 

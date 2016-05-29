@@ -2,7 +2,9 @@ package com.nucleus.controller;
 
 import com.badlogic.gdx.InputProcessor;
 
-
+/**
+ * Concrete implementation of InputProcessor
+ */
 public class NInputProcessor implements InputProcessor {
 
     @Override

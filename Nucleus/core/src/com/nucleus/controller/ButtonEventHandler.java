@@ -4,7 +4,9 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.views.LevelPermissions;
 
-
+/**
+ * Listens to all buttons and delegates it to the ApplicationController
+ */
 public class ButtonEventHandler extends ClickListener {
     private final int LEVELSTRINGINDEX = 13;
     private ApplicationController controller;
@@ -31,7 +33,6 @@ public class ButtonEventHandler extends ClickListener {
 
         else if (label.equals("Label: Exit")) {
             controller.exit();
-
         }
 
         else if (label.equals("Label: OK")){
@@ -50,13 +51,8 @@ public class ButtonEventHandler extends ClickListener {
             controller.goToStartScreen();
         }
 
-        //TODO: change logic from handler to controller
         else if (label.startsWith("Label: Level ")) {
-            if (LevelPermissions.checkLevelPermission(Integer.parseInt(label.substring(LEVELSTRINGINDEX)))) {
-                controller.startLevel(Integer.parseInt(label.substring(LEVELSTRINGINDEX)));
-            } else {
-                controller.showTextDialog("Level Not Unlocked");
-            }
+            controller.startLevel(Integer.parseInt(label.substring(LEVELSTRINGINDEX)));
         }
 
         else if (label.equals("Label: Reverse Rotation")) {

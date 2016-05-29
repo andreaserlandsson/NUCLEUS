@@ -7,6 +7,10 @@ import com.nucleus.controller.NucleusGame;
 
 public class DesktopLauncher {
 
+	/**
+	 * Initializes a game window
+	 * @param arg
+     */
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "NucleusGame";

@@ -15,7 +15,6 @@ public class LevelParser {
      * @return
      * @throws LevelNotExistingException Should possible be higher up. Throws when file doesn't exist.
      */
-
     public static LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {
         return splitLevelString((readFromFile(level)), width, height);
     }

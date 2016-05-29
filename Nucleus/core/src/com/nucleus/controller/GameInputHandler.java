@@ -7,6 +7,10 @@ import com.nucleus.controller.controllerStates.InvertedPlayState;
 import com.nucleus.controller.controllerStates.NormalPlayState;
 import com.nucleus.views.libGDXGraphics.screens.PlayScreen;
 
+
+/**
+ * Handles all input directly related to playing the game
+ */
 public class GameInputHandler extends NInputProcessor {
 
     ControllerState normalGame;
@@ -50,6 +54,9 @@ public class GameInputHandler extends NInputProcessor {
         return true;
     }
 
+    /**
+     * Switches between inverted and normal controls
+     */
     public void switchState(){
         if (currentState instanceof InvertedPlayState){
             Gdx.app.log("switchState", "Inverted");
