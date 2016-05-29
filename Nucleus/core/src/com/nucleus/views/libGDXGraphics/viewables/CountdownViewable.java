@@ -16,10 +16,9 @@ public class CountdownViewable implements IViewable {
 
     /**
      * The view of the "ammo", i.e. the amount of protons and neutrons left in the nucleon gun in the
-     * game view. The view is two different counter, one in red showing the amount of protons left and one in green
+     * game view. The view is two different counters, one in red showing the amount of protons left and one in green
      * showing the amount of neutron left.
-     *
-     * @param gun
+     * @param gun The gun of which the ammo is displayed.
      */
     public CountdownViewable(INucleonGun gun){
         this.protonInGun = Assets.getTexture(NAssetsData.PROTON);//new Texture("graphics/proton.png");

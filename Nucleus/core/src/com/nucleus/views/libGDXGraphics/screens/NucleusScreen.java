@@ -15,6 +15,9 @@ import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstract class for all screens.
+ */
 public abstract class NucleusScreen implements Screen {
     protected SpriteBatch batch;
     protected Stage stage;
@@ -23,6 +26,9 @@ public abstract class NucleusScreen implements Screen {
     protected Skin skin;
     protected List<IViewable> views = new ArrayList<IViewable>();
 
+    /**
+     * Super method for all screens extending this one.
+     */
     public NucleusScreen(){
         views.add(new BackgroundViewable());
         batch = new SpriteBatch();
