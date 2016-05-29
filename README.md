@@ -49,3 +49,4 @@ The results will be located in
 
       /path/to/project/NUCLEUS/Nucleus/core/build/reports/tests/
 
+Gradle version: 2.10
