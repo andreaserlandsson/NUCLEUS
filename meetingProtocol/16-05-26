@@ -1,0 +1,33 @@
+MeetingAgenda
+
+  Date:160526 
+
+  Facilitator:Andréas Erlandsson
+
+  Participants: Herman Carlström, Hannes Lagerroth, Miranda Bånnsgård, Andreas Erlandsson, Erik Jansson
+
+1. Objectives (5 min). Resolve any issues preventing the team to 
+  continue.
+
+	- We have no issues preventing the team from continuing
+
+2. Reports (15 min) from previous meeting
+
+	- game is fully functional and running, small issues while running on android
+	- alla outcomes from previous meeting are done
+
+3. Discussion items (35 min) 
+
+	- 
+
+4. Outcomes and assignments (5 min) 
+
+	- Herman: refactor leveData, assetsManager, levebuilder
+	- Erik: fix observers
+	- Andréas: solve resize while in pause, win and lose.
+	- Hannes: Implement some different gamestates 
+	- Miranda and everyone else when they are done: finnish RAD and SSD  
+
+5. Wrap up
+
+	- Next meeting: 16-05-29 kl.14:00 at Linsen

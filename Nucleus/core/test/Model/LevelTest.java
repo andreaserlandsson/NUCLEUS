@@ -1,12 +1,17 @@
 package Model;
 
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.INucleon;
-import com.nucleus.Model.INucleonGun;
-import com.nucleus.Model.Level;
-import com.nucleus.Model.Neutron;
-import com.nucleus.Model.Proton;
-import com.nucleus.Utils.Vector;
+import com.nucleus.model.molecule.IGluonPoint;
+import com.nucleus.model.level.ILevel;
+import com.nucleus.model.molecule.IMolecule;
+import com.nucleus.model.particles.INucleon;
+import com.nucleus.model.level.INucleonGun;
+import com.nucleus.model.nucleusObservers.IObservable;
+import com.nucleus.model.nucleusObservers.IObserver;
+import com.nucleus.model.level.Level;
+import com.nucleus.model.particles.Neutron;
+import com.nucleus.model.level.ObservableHelper;
+import com.nucleus.model.particles.Proton;
+import com.nucleus.model.collision.Vector;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -24,9 +29,6 @@ public class LevelTest {
     int width = 5;
     int height = 5;
     int levelNumber = 0;
-    Vector gluonPositions = new Vector(1, 1);
-    int pNeeded = 1;
-    int nNeeded = 1;
 
     Vector nucleonPos = new Vector(0, 0);
     Vector nucleonVel = new Vector(0, 0);
@@ -42,16 +44,23 @@ public class LevelTest {
     IGluonPoint gluon3 = new MockGluon(v3, 1, 1);
     IGluonPoint[] gluons = {gluon1, gluon2, gluon3};
 
+    IGluonPoint[] gluons2 = {gluon1, gluon2, gluon3};
+
     INucleonGun gun = new MockNucleonGun(nucleonList);
     INucleonGun gun2 = new MockNucleonGun(nucleonList2);
     MockMolecule molecule = new MockMolecule(gluons);
 
-    Level level = new Level(levelNumber, width, height, gun, molecule, gluons);
-    Level level2 = new Level(levelNumber, width, height, gun2, molecule, gluons);
+    ObservableHelper<Level.GameState> obsHelper = new ObservableHelper<Level.GameState>();
+
+    ILevel level = new Level(levelNumber, width, height, gun, molecule,obsHelper);
+    ILevel level2 = new Level(levelNumber, width, height, gun2, molecule,obsHelper);
+    ILevel level3 = new Level(levelNumber, width, height, gun, molecule,obsHelper);
 
     @Test
     public void thisAlwaysPasses() {
+
         assertTrue(true);
+
     }
 
     @Test
@@ -59,10 +68,51 @@ public class LevelTest {
     public void thisIsIgnored() {
     }
 
+
+    @Test
+    public void testObserver() {
+
+        IObserver<Level.GameState> o = new IObserver<Level.GameState>() {
+            @Override
+            public void onObservation(IObservable<Level.GameState> o, Level.GameState arg) {
+                if (arg.equals(Level.GameState.RUNNING)) {
+                    level3.pause();
+                } else if (arg.equals(Level.GameState.PAUSED)) {
+                    level3.resume();
+                }
+            }
+        };
+
+        assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING));
+
+        obsHelper.addObserver(o);
+        obsHelper.removeObserver(o);
+        level3.addObserver(o);
+        level3.removeObserver(o);
+
+        o.onObservation(level3,(Level.GameState)level3.getCurrentState());
+        //obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
+
+        assertTrue(level3.getCurrentState().equals(Level.GameState.PAUSED));
+
+        o.onObservation(level3,(Level.GameState)level3.getCurrentState());
+        //obsHelper.update(level3, (Level.GameState)level3.getCurrentState());
+        assertTrue(level3.getCurrentState().equals(Level.GameState.RUNNING));
+
+        o.onObservation(level3,(Level.GameState)level3.getCurrentState());
+        //obsHelper.update(level3, (Level.GameState) level3.getCurrentState());
+        assertTrue(level3.getCurrentState().equals(Level.GameState.PAUSED));
+
+    }
+
     @Test
     public void testGetLevelNumber() {
 
         assertTrue(level.getLevelNumber() == 0);
+
+        assertTrue(!(level.getLevelNumber() > 0));
+
+        assertTrue(!(level.getLevelNumber() < 0));
 
     }
 
@@ -70,6 +120,10 @@ public class LevelTest {
     public void testGetWidth() {
 
         assertTrue(level.getWidth() == 5);
+
+        assertTrue(!(level.getWidth() > 5));
+
+        assertTrue(!(level.getWidth() < 5));
     }
 
     @Test
@@ -77,49 +131,70 @@ public class LevelTest {
 
         assertTrue(level.getHeight() == 5);
 
+        assertTrue(!(level.getHeight() > 5));
+
+        assertTrue(!(level.getHeight() < 5));
+
     }
 
     @Test
     public void testIsGameWon() {
+
         molecule.setFull(false);
-        assertTrue(!level.isGameWon());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
         molecule.setFull(true);
         level.update(1); // this also tests the CheckWinGame() method called via the update() method
-        assertTrue(level.isGameWon());
-
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
     }
 
     @Test
     public void testIsGameLost() {
 
         molecule.setFull(true);
-        assertTrue(!level.isGameLost());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
+
         molecule.setFull(false);
         level.update(1); // this also tests the loseGame() method called via the update() method
-        assertTrue(level.isGameLost());
+        //assertTrue(level.isGameLost());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
     }
 
     @Test
     public void testIsGamePaused() {
 
-        assertTrue(!level.isGamePaused());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
         level.pause();
-        assertTrue(level.isGamePaused());
-
-    }
-
-    @Test
-    public void testSetGamePauesd() {
-        level.setGamePaused();
-        assertTrue(level.isGamePaused());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
     }
 
     @Test
     public void testGetNucleonGun() {
 
-        assertTrue(level.getNucleonGun() == this.gun);
+        assertTrue(level.getNucleonGun() == gun);
+        assertTrue(level.getNucleonGun() != gun2);
 
     }
 
@@ -138,14 +213,10 @@ public class LevelTest {
     @Test
     public void testGetMolecule() {
 
-        assertTrue(level.getMolecule() == this.molecule);
+        assertTrue(level.getMolecule() == molecule);
 
-    }
-
-    @Test
-    public void testGetGluons() {
-
-        assertTrue(level.getGluons() == this.gluons);
+        IMolecule newMolecule = new MockMolecule(gluons);
+        assertTrue(level.getMolecule() != newMolecule);
 
     }
 
@@ -163,7 +234,6 @@ public class LevelTest {
     @Test
     public void testIsOutOfBoundsCheck() {
 
-
         Vector nucleonVel1 = new Vector(1, 1);
         Vector nucleonVel2 = new Vector(1, 1);
         Vector nucleonPos1 = new Vector(1, 1);
@@ -178,7 +248,10 @@ public class LevelTest {
     }
 
     @Test
-    public void testRemoveOutOfBoundsNucleons() {
+    public void testRemoveOutOfBoundsNucleons(){
+
+
+        //this also tests the removeNucleon method
 
         Vector nucleonVel1 = new Vector(1, 1);
         Vector nucleonVel2 = new Vector(1, 1);
@@ -201,21 +274,40 @@ public class LevelTest {
     @Test
     public void testPauseAndResume() {
 
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
         level.pause();
-        assertTrue(level.isGamePaused());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
         level.resume();
-        assertTrue(!level.isGamePaused());
+        assertTrue(level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
         level.pause();
-        assertTrue(level.isGamePaused());
-        level.resume();
-        assertTrue(!level.isGamePaused());
-        level.pause();
-        level.pause();
-        assertTrue(level.isGamePaused());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
+
     }
 
     @Test
-    public void testUpdate() {
+    public void testUpdate(){
+
+        //this also tests the checkWinGame method
+
+        //this also  tests checkAllNucleonsStatus() which in turn tests
+            //the checkWinGame method
+            //the loseGame method
+            //the removeNucleon method
 
         gluon1.setPosition(nucleonPos);
 
@@ -241,14 +333,20 @@ public class LevelTest {
         level.update(1);
         level.update(1);//this adds an other proton to the allready full gluon -> loseGame() is called
 
-        assertTrue(level.isGameLost());
+        assertTrue(!level.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(level.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
         nucleonList2.add(new Neutron(nucleonPos, nucleonVel));
 
         level2.update(1);
         level2.update(1);//this adds an other neutron to the allready full gluon -> loseGame() is called
 
-        assertTrue(level2.isGameLost());
+        assertTrue(!level2.getCurrentState().equals(Level.GameState.RUNNING));
+        assertTrue(!level2.getCurrentState().equals(Level.GameState.PAUSED));
+        assertTrue(!level2.getCurrentState().equals(Level.GameState.PAUSEDWIN));
+        assertTrue(level2.getCurrentState().equals(Level.GameState.PAUSEDLOSE));
 
     }
 

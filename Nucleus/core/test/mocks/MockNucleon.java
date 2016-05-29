@@ -1,8 +1,8 @@
 package mocks;
 
-import com.nucleus.Model.Collisions.ICollidable;
-import com.nucleus.Model.INucleon;
-import com.nucleus.Utils.Vector;
+import com.nucleus.model.collision.ICollidable;
+import com.nucleus.model.particles.INucleon;
+import com.nucleus.model.collision.Vector;
 
 
 public class MockNucleon implements INucleon, ICollidable {
@@ -25,12 +25,11 @@ public class MockNucleon implements INucleon, ICollidable {
         position = position.add(velocity.multiply(delta));
     }
 
-    @Override
+
     public float getX() {
         return position.getX();
     }
 
-    @Override
     public float getY() {
         return position.getY();
     }

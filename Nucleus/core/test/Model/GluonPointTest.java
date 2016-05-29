@@ -1,8 +1,8 @@
 package Model;
 
-import com.nucleus.Model.GluonPoint;
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Utils.Vector;
+import com.nucleus.model.molecule.GluonPoint;
+import com.nucleus.model.molecule.IGluonPoint;
+import com.nucleus.model.collision.Vector;
 
 import org.junit.Test;
 
@@ -33,25 +33,23 @@ public class GluonPointTest {
     public void testGetPosition(){
         Vector position = new Vector(10,10);
         IGluonPoint gluonPoint = new GluonPoint(position, 0, 0);
-        assertFalse(gluonPoint.getPosition().getY() == 5);
-        assertTrue(gluonPoint.getPosition().getX() == 10);
-        assertTrue(gluonPoint.getPosition().getY() == 10);
+        assertTrue(gluonPoint.getPosition() == position);
     }
 
     @Test
     public void testGetY(){
         Vector position = new Vector(5,5);
         IGluonPoint gluonPoint = new GluonPoint(position, 0, 0);
-        assertFalse(gluonPoint.getPosition().getY() == 10);
-        assertTrue(gluonPoint.getPosition().getY() == 5);
+        assertFalse(gluonPoint.getY() == 10);
+        assertTrue(gluonPoint.getY() == 5);
     }
 
     @Test
     public void testGetX(){
         Vector position = new Vector(15,15);
         IGluonPoint gluonPoint = new GluonPoint(position, 0, 0);
-        assertFalse(gluonPoint.getPosition().getX() == 5);
-        assertTrue(gluonPoint.getPosition().getX() == 15);
+        assertFalse(gluonPoint.getX() == 5);
+        assertTrue(gluonPoint.getX() == 15);
     }
 
     @Test

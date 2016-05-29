@@ -1,9 +1,9 @@
 package Model;
 
-import com.nucleus.Model.IGluonPoint;
-import com.nucleus.Model.IMolecule;
-import com.nucleus.Model.Molecule;
-import com.nucleus.Utils.Vector;
+import com.nucleus.model.molecule.IGluonPoint;
+import com.nucleus.model.molecule.IMolecule;
+import com.nucleus.model.molecule.Molecule;
+import com.nucleus.model.collision.Vector;
 import mocks.MockGluon;
 import static org.junit.Assert.assertTrue;
 
