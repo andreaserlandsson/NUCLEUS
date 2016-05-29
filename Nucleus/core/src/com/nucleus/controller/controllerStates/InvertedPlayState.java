@@ -26,4 +26,9 @@ public class InvertedPlayState implements ControllerState {
         this.lastTouch = newTouch;
         return;
     }
+
+    @Override
+    public void setScreen(PlayScreen screen) {
+        this.screen = screen;
+    }
 }

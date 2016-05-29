@@ -26,8 +26,7 @@ public class ApplicationController {
     private Level level;
 
     public ApplicationController() {
-        controller = GameInputHandler.getInstance();
-        controller.setScreen((GameScreen) screen);
+        controller = GameInputHandler.getInstance((GameScreen) screen);
         musicPlayer = NMusicPlayer.getInstance();
     }
 
@@ -43,6 +42,7 @@ public class ApplicationController {
     public void startLevel(int levelNum) {
 
         this.level = LevelBuilder.buildLevel(levelNum, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        //TODO: remove static reference?
         ProgressTracker progressTracker = new ProgressTracker(level);
         screen = new GameScreen(level, listener);
         Gdx.input.setInputProcessor(controller);

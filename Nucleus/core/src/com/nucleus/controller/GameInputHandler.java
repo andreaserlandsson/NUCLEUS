@@ -1,6 +1,7 @@
 package com.nucleus.controller;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.nucleus.controller.controllerStates.ControllerState;
 import com.nucleus.controller.controllerStates.InvertedPlayState;
 import com.nucleus.controller.controllerStates.NormalPlayState;
@@ -14,25 +15,25 @@ public class GameInputHandler extends NInputProcessor {
     private PlayScreen screen;
     private static GameInputHandler instance = null;
 
-    private GameInputHandler(){
+    private GameInputHandler(PlayScreen screen){
+        this.screen = screen;
+        normalGame = new NormalPlayState(screen);
+        inverseGame = new InvertedPlayState(screen);
+        currentState = normalGame;
     }
 
-    public static GameInputHandler getInstance() {
+    public static GameInputHandler getInstance(PlayScreen screen) {
         if (instance == null){
-            instance = new GameInputHandler();
+            instance = new GameInputHandler(screen);
         }
         return instance;
     }
 
+
     public void setScreen(PlayScreen screen) {
         this.screen = screen;
-        setController();
-    }
-
-    private void setController() {
-        normalGame = new NormalPlayState(screen);
-        inverseGame = new InvertedPlayState(screen);
-        currentState = normalGame;
+        normalGame.setScreen(screen);
+        inverseGame.setScreen(screen);
     }
 
     @Override

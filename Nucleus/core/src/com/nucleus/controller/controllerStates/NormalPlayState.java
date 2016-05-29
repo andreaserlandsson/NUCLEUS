@@ -21,6 +21,13 @@ public class NormalPlayState implements ControllerState {
         this.lastTouch = newTouch;
         return;
     }
+
+    @Override
+    public void setScreen(PlayScreen screen) {
+        this.screen = screen;
+    }
+
+
     @Override
     public String toString() {
         return "Normal";
