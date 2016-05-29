@@ -8,9 +8,12 @@ import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 
-
+    //As there is no default loader for Texts in AssetManager, we implement our own.
+    //Created by guidelines from
+    //https://github.com/libgdx/libgdx/wiki/Managing-your-assets#writing-your-own-loaders
 public class TextLoader extends AsynchronousAssetLoader<Text, TextLoader.TextParameter> {
 
+        //Inner class for the text parameters. Extends the default AssetLoaderParameters.
     public class TextParameter extends AssetLoaderParameters<Text> {
     }
 
@@ -30,6 +33,8 @@ public class TextLoader extends AsynchronousAssetLoader<Text, TextLoader.TextPar
         return newText;
     }
 
+        //No dependencies required, so return null.
+        //Must however be implemented from AsynchronousAssetLoader.
     public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, TextParameter parameter) {
         return null;
     }

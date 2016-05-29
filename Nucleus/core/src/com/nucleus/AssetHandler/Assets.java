@@ -122,6 +122,8 @@ public class Assets {
         return pic;
     }
 
+    //Checks if the texture is in the hashmap, and if so
+    //gets the texture from the textureAsset and returns it.
     public static Text getFile(String file){
         Text text = null;
         String filePath = txt.get(file);

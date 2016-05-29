@@ -1,6 +1,5 @@
 package com.nucleus.AssetHandler;
 
-
 public class NAssetsData {
     //Class with strings for all paths for all audio, textfiles and textures.
     //Used to minimize code duplication for each class.
@@ -40,6 +39,7 @@ public class NAssetsData {
         return LEVELMUSIC + Integer.toString(levelNr) + ".mp3";
     }
 
+    //Method to return the correct .txt for level
     public static String getLevelLevel(int levelNr) {
         return LEVELLEVEL + Integer.toString(levelNr) + ".txt";
     }
