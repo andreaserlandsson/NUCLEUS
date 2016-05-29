@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 
-public class LevelSelectionDialog extends ScreenAdapter{
+public class TextDialog extends ScreenAdapter{
 
     private Stage stage;
     protected Skin skin;
@@ -20,7 +20,7 @@ public class LevelSelectionDialog extends ScreenAdapter{
     /**
      * This constructor builds a LevelSelectionDialog object with the correct listener
      */
-    public LevelSelectionDialog(EventListener listener){
+    public TextDialog(EventListener listener){
         this.listener = listener;
         this.stage = new Stage();
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
