@@ -1,8 +1,10 @@
 package com.nucleus.model.level;
 
-import com.nucleus.model.nucleusObservers.IObserver;
 import com.nucleus.model.collision.CollisionHandler;
 import com.nucleus.model.collision.ICollidable;
+import com.nucleus.model.molecule.IGluonPoint;
+import com.nucleus.model.molecule.IMolecule;
+import com.nucleus.model.nucleusObservers.IObserver;
 import com.nucleus.model.particles.INucleon;
 import com.nucleus.model.particles.Proton;
 
@@ -34,13 +36,12 @@ public class Level implements ILevel {
     private com.nucleus.model.molecule.IMolecule molecule;
     private com.nucleus.model.molecule.IGluonPoint[] gluons;
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, com.nucleus.model.molecule.IMolecule molecule, com.nucleus.model.molecule.IGluonPoint[] gluons, ObservableHelper<GameState> obs){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, ObservableHelper<GameState> obs){
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
         this.gun = gun;
         this.molecule = molecule;
-        this.gluons = gluons;
         this.obsHelper = obs;
         this.updateInterval = 1;
     }
@@ -79,13 +80,8 @@ public class Level implements ILevel {
         return airborneNucleons;
     }
 
-    public com.nucleus.model.molecule.IMolecule getMolecule(){
+    public IMolecule getMolecule(){
         return molecule;
-    }
-
-    //Possible obsolete, required for bugtesting at the moment
-    public com.nucleus.model.molecule.IGluonPoint[] getGluons() {
-        return gluons;
     }
 
     /*Function should probably be removed*/
@@ -131,7 +127,7 @@ public class Level implements ILevel {
 
     private void checkAllNucleonsStatus(){
         INucleon collidingNucleon = null;
-        for (com.nucleus.model.molecule.IGluonPoint gluon : gluons) {
+        for (IGluonPoint gluon : molecule.getGluons()) {
             for (INucleon nucleon : airborneNucleons){
                 if (CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
                     if (nucleon.getClass().equals(Proton.class)) {
