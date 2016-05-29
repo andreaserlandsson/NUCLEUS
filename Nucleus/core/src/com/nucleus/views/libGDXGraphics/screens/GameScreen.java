@@ -1,17 +1,21 @@
-package com.nucleus.views.libGDXGraphics.Screens;
+package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.nucleus.views.libGDXGraphics.Dialogs.LoseDialog;
+import com.nucleus.views.libGDXGraphics.dialogs.LoseDialog;
 import com.nucleus.model.level.ILevel;
 import com.nucleus.model.nucleusObservers.IObservable;
 import com.nucleus.model.nucleusObservers.IObserver;
 import com.nucleus.model.level.Level;
-import com.nucleus.views.libGDXGraphics.Dialogs.PauseDialog;
-import com.nucleus.views.libGDXGraphics.Viewables.CountdownViewable;
-import com.nucleus.views.libGDXGraphics.Viewables.IViewable;
-import com.nucleus.views.libGDXGraphics.Viewables.PauseViewable;
+import com.nucleus.views.libGDXGraphics.dialogs.PauseDialog;
+import com.nucleus.views.libGDXGraphics.viewables.CountdownViewable;
+import com.nucleus.views.libGDXGraphics.viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.viewables.MoleculeViewable;
+import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
+import com.nucleus.views.libGDXGraphics.viewables.PauseViewable;
+import com.nucleus.views.libGDXGraphics.dialogs.WinDialog;
+import com.nucleus.views.libGDXGraphics.dialogs.WinLoseDialog;
 
 
 /**
@@ -24,7 +28,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
     private final int levelNumber;
     private ILevel level;
 
-    private com.nucleus.views.libGDXGraphics.Dialogs.WinLoseDialog endGameDialog;
+    private WinLoseDialog endGameDialog;
     private PauseDialog pauseDialog;
     private EventListener listener;
 
@@ -36,9 +40,9 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
 
         //Adding views
         views.add(new CountdownViewable(level.getNucleonGun()));
-        views.add(new com.nucleus.views.libGDXGraphics.Viewables.NucleonViewable(level.getAirborneNucleons()));
+        views.add(new NucleonViewable(level.getAirborneNucleons()));
         views.add(new PauseViewable());
-        views.add(new com.nucleus.views.libGDXGraphics.Viewables.MoleculeViewable(levelNumber, level.getMolecule()));
+        views.add(new MoleculeViewable(levelNumber, level.getMolecule()));
         pauseDialog = new PauseDialog(listener);
 
         //Add observers
@@ -107,7 +111,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         }
         if (arg == Level.GameState.PAUSEDWIN){
             Gdx.app.log("GameScreen", "Won");
-            endGameDialog = new com.nucleus.views.libGDXGraphics.Dialogs.WinDialog(listener);
+            endGameDialog = new WinDialog(listener);
             endGameDialog.show();
         }
         if (arg == Level.GameState.PAUSEDLOSE){

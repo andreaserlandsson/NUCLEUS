@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Screens;
+package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -6,7 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.dialogs.LevelSelectionDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class LevelChooseScreen extends NucleusScreen {
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private Button[] buttons;
-    private com.nucleus.views.libGDXGraphics.Dialogs.LevelSelectionDialog levelSelectionDialog;
+    private LevelSelectionDialog levelSelectionDialog;
 
     private boolean errorShowing = false;
 
@@ -63,7 +64,7 @@ public class LevelChooseScreen extends NucleusScreen {
         stage.addActor(mainTable);
         stage.addActor(secondTable);
 
-        levelSelectionDialog = new com.nucleus.views.libGDXGraphics.Dialogs.LevelSelectionDialog(listener);
+        levelSelectionDialog = new LevelSelectionDialog(listener);
 
     }
 

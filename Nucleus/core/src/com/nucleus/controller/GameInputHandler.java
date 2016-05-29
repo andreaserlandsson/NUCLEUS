@@ -1,6 +1,6 @@
 package com.nucleus.controller;
 
-import com.nucleus.views.libGDXGraphics.Screens.PlayScreen;
+import com.nucleus.views.libGDXGraphics.screens.PlayScreen;
 
 public class GameInputHandler extends NInputProcessor {
 

@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Screens;
+package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -8,7 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.nucleus.model.level.ILevel;
-import com.nucleus.views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
 
 /**
  * Created by Quaxi on 04/05/16.
@@ -23,7 +24,7 @@ public class StartScreen extends NucleusScreen implements Screen {
         //level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         //Initialising graphics
-        views.add(new com.nucleus.views.libGDXGraphics.Viewables.NucleonViewable(level.getAirborneNucleons()));
+        views.add(new NucleonViewable(level.getAirborneNucleons()));
 
         //Create Table
         Table mainTable = new Table();
