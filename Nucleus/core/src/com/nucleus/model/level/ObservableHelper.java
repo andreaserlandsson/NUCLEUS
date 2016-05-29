@@ -24,11 +24,13 @@ public class ObservableHelper<E> implements IObservable<E> {
 
     @Override
     public void addObserver(IObserver<E> o) {
-        observers.add(o);
+        if(!observers.contains(o))
+            observers.add(o);
     }
 
     @Override
     public void removeObserver(IObserver<E> o) {
-        observers.remove(o);
+        if(observers.contains(o))
+            observers.remove(o);
     }
 }
