@@ -8,7 +8,7 @@ public class CollisionHandler {
 
     /**
      * @param c1 collidable object number one, usually a gluon.
-     * @param c2 collidable object number two, usually a gluon.
+     * @param c2 collidable object number two, usually a nucleon.
      * @return returns true if a collision occurs.
      */
     public static boolean collision(ICollidable c1, ICollidable c2){

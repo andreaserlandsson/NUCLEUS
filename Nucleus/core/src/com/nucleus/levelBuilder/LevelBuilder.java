@@ -19,7 +19,6 @@ public class LevelBuilder {
 
 
     /**
-
      * Builds level and from all data that is needed for that certain level.
      * Catches the exception thrown in LevelParser when a level does not exist.
      * Should possible be caught higher up, alternatively removed.
@@ -34,8 +33,6 @@ public class LevelBuilder {
             levelData = com.nucleus.levelBuilder.LevelParser.levelParse(levelNr, width, height);
         } catch (LevelNotExistingException e) {
            e.printStackTrace();
-            //level does not exist, catches exception.
-            //Should be higher up..
         }
 
         /**
@@ -43,6 +40,7 @@ public class LevelBuilder {
          * Scrambles it before passing, so that there is a random order of protons/neutrons.
          * If levelData is null, it returns null, as there is no information to be found in the LevelData.
          */
+
         if (levelData != null) {
 
             ArrayList<INucleon> nucleonList = new ArrayList<INucleon>(levelData.noOfProtons + levelData.noOfNeutrons);

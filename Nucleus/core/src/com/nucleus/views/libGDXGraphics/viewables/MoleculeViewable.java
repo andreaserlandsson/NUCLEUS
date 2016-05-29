@@ -9,9 +9,6 @@ import com.nucleus.model.molecule.IMolecule;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.assetHandler.Assets;
 
-/**
- * Created by erik on 28/04/16.
- */
 public class MoleculeViewable implements IViewable {
     private IMolecule molecule;
     private Texture moleculeTexture, halfProton, halfNeutron, halfProtonComplete, halfNeutronComplete;

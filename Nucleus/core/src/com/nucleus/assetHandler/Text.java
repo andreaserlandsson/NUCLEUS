@@ -2,16 +2,20 @@ package com.nucleus.assetHandler;
 
 import com.badlogic.gdx.files.FileHandle;
 
-    //Wrapper class of the String class
+/**
+ * Wrapper class for the string class.
+ */
 public class Text {
     private String str;
 
-    //Sets the file from the .txt file
+    /**
+     * Sets the String to be containing the specific data in the specific file.
+     * @param fileHandle File to be read.
+     */
     public Text (FileHandle fileHandle) {
         this.str = new String(fileHandle.readBytes());
     }
 
-    //Returns the text in in a string format.
     @Override
     public String toString() {
         return this.str;

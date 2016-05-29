@@ -18,9 +18,6 @@ import com.nucleus.views.libGDXGraphics.dialogs.WinLoseDialog;
 import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
 
 
-/**
- * Created by erik on 25/04/16.
- */
 
 public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<Level.GameState> {
 

@@ -1,8 +1,10 @@
 package com.nucleus.assetHandler;
 
 public class NAssetsData {
-    //Class with strings for all paths for all audio, textfiles and textures.
-    //Used to minimize code duplication for each class.
+
+    /**
+     * Class with strings for all values to all different files that is loaded into the assetManaget.
+     */
 
     public static final String LEVELMUSIC = "inGame";
     public static final String MENUMUSIC = "menuSounds.wav";
@@ -29,17 +31,15 @@ public class NAssetsData {
     public static final String LEVELLEVEL = "level_";
     public static final String LEVELPICTURE = ".png";
 
-    //Method to return the correct texture for a level.
+
     public static String getLevelPicture (int levelNr) {
         return Integer.toString(levelNr) + LEVELPICTURE;
     }
 
-    //Method to return the correct song for a level.
     public static String getLevelSong(int levelNr) {
         return LEVELMUSIC + Integer.toString(levelNr) + ".mp3";
     }
 
-    //Method to return the correct .txt for level
     public static String getLevelLevel(int levelNr) {
         return LEVELLEVEL + Integer.toString(levelNr) + ".txt";
     }

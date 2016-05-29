@@ -11,6 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.nucleus.model.level.ILevel;
 
+/**
+ * Abstract class for the win and lose dialogs.
+ */
 public abstract class WinLoseDialog extends ScreenAdapter {
 
     protected Stage stage;
@@ -18,18 +21,18 @@ public abstract class WinLoseDialog extends ScreenAdapter {
     protected EventListener listener;
     protected String title = "test text";
     protected ILevel level;
-    protected SpriteBatch batch;
-
-    private boolean goToMainMenu = false;
 
     public WinLoseDialog(EventListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Creates a main table with buttons, that is set each time a player wins or lose.
+     * Win and Lose dialog both extends this, but alters the title of the windows.
+     */
     @Override
     public void show() {
         stage = new Stage();
-        goToMainMenu = false;
         Gdx.input.setInputProcessor(stage);
 
 
