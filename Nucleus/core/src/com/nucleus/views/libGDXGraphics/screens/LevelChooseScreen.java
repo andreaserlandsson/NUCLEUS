@@ -6,12 +6,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.views.libGDXGraphics.dialogs.LevelSelectionDialog;
+import com.nucleus.views.libGDXGraphics.dialogs.TextDialog;
 
 public class LevelChooseScreen extends NucleusScreen {
 
     private Button[] buttons;
-    private LevelSelectionDialog levelSelectionDialog;
+    private TextDialog textDialog;
 
     public LevelChooseScreen(ClickListener listener, int numOfButtons) {
         super();
@@ -59,19 +59,19 @@ public class LevelChooseScreen extends NucleusScreen {
         stage.addActor(mainTable);
         stage.addActor(secondTable);
 
-        levelSelectionDialog = new LevelSelectionDialog(listener);
+        textDialog = new TextDialog(listener);
 
     }
 
     public void showSelectionError(){
         Gdx.app.log("Level selection error", "showing");
-        levelSelectionDialog.show();
+        textDialog.show();
     }
 
     @Override
     public void render(float delta){
         super.render(delta);
-        levelSelectionDialog.render(delta);
+        textDialog.render(delta);
     }
 
 }
