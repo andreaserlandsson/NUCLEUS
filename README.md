@@ -39,7 +39,7 @@ alternatively
       
 to run the project.
 
-
+SDK IS NEEDED FOR THIS PART
 To run the tests, locate yourself as previously, and run the command
       
       ./gradlew test
