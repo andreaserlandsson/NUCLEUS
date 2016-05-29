@@ -1,6 +1,6 @@
 package com.nucleus.model.collision;
 
-public class Vector { 
+public class Vector {
     private float x;
     private float y;
 
