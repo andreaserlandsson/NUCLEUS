@@ -27,6 +27,9 @@ public class NMusicPlayer implements INMusicPlayer {
         Assets.loadMusicFiles();
     }
 
+        // Plays the String by getting the correspondent Music file from the assetmManager.
+        // Sets the volume to the mastervolume, and set an infinite loop.
+        // Sets the currentPlaying to be the song playing, to easier track the current song.
     public void playMusic(String str) {
         Music music = Assets.getSong(str);
         if (music != null) {
@@ -60,7 +63,8 @@ public class NMusicPlayer implements INMusicPlayer {
         }
     }
 
-        //Switches the current song to the new song.
+        //Switches the current song to the new song. If the current song is the new song,
+        // do nothing
     public void switchSong(String newSong) {
         Music music = Assets.getSong(newSong);
         if (music != null) {
@@ -81,7 +85,6 @@ public class NMusicPlayer implements INMusicPlayer {
         currentlyPlaying.setVolume(masterVolume);
     }
 
-        //get-Method used for the option to mute or unmute the sound.
     public float getMasterVolume(){
         return masterVolume;
     }

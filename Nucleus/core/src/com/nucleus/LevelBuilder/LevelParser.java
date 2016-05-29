@@ -8,7 +8,7 @@ import com.nucleus.Model.LevelNotExistingException;
 // A class for strings from level.txt files.
 // Returns a levelData object, filled with the necessary specifics for the level.
 public class LevelParser {
-    
+
     public static LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {
         return splitLevelString((readFromFile(level)), width, height);
     }
