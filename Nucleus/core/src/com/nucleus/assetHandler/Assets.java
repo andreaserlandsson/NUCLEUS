@@ -7,7 +7,6 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,9 +14,9 @@ public class Assets {
     /**
      * Paths to the three different directories where the music files are located.
      */
-    private static final String PATHTOMUSIC = "music/";
-    private static final String PATHTOTEXTURE = "graphics/";
-    private static final String PATHTOTXT = "levels/leveldata/";
+    private static final String PATH_TO_MUSIC = "music/";
+    private static final String PATH_TO_TEXTURE = "graphics/";
+    private static final String PATHCo_TO_TXT = "levels/leveldata/";
 
     /**
      * Three AssetManagers, one for each file type.
@@ -40,7 +39,7 @@ public class Assets {
     */
     public static void loadMusicFiles() {
         FileHandle musicPath;
-        musicPath = Gdx.files.internal(PATHTOMUSIC);
+        musicPath = Gdx.files.internal(PATH_TO_MUSIC);
 
         for (FileHandle entry : musicPath.list()) {
             audio.put(entry.name(), entry.path());
@@ -51,7 +50,7 @@ public class Assets {
 
     public static void loadTextureFiles() {
         FileHandle texturePath;
-        texturePath = Gdx.files.internal(PATHTOTEXTURE);
+        texturePath = Gdx.files.internal(PATH_TO_TEXTURE);
 
         for (FileHandle entry : texturePath.list()) {
             texture.put(entry.name(), entry.path());
@@ -63,7 +62,7 @@ public class Assets {
 
     public static void loadTextFiles() {
         FileHandle txtPath;
-        txtPath = Gdx.files.internal(PATHTOTXT);
+        txtPath = Gdx.files.internal(PATH_TO_TXT);
 
         for (FileHandle entry : txtPath.list()) {
             txt.put(entry.name(), entry.path());

@@ -3,8 +3,8 @@ package com.nucleus.views.libGDXGraphics.viewables;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.assetHandler.Assets;
+import com.nucleus.assetHandler.NAssetsData;
 
 public class BackgroundViewable implements IViewable {
     private Texture bg;

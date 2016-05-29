@@ -12,7 +12,7 @@ public class LevelParser {
      * @param level the specific level.
      * @param width The width of the game.
      * @param height the height of the game.
-     * @return
+     * @return parsed level data in a LevelData class
      * @throws LevelNotExistingException Should possible be higher up. Throws when file doesn't exist.
      */
     public static LevelData levelParse(int level, int width, int height) throws LevelNotExistingException {

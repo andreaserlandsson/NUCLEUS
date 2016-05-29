@@ -60,7 +60,7 @@ public class Level implements ILevel {
 
     /**
      * Add an observer o to level object's internal list of observers.
-     * @param o
+     * @param o observable to add
      */
     @Override
     public void addObserver(IObserver o) {
@@ -69,7 +69,7 @@ public class Level implements ILevel {
 
     /**
      * Remove an observer o from the level object's internal list of observers.
-     * @param o
+     * @param o observer to remove
      */
     @Override
     public void removeObserver(IObserver o) {

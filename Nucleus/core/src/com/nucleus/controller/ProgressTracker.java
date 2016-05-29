@@ -3,19 +3,18 @@ package com.nucleus.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.nucleus.model.level.ILevel;
+import com.nucleus.model.level.Level;
 import com.nucleus.model.nucleusObservers.IObservable;
 import com.nucleus.model.nucleusObservers.IObserver;
-import com.nucleus.model.level.Level;
 
 /**
  * Tracks the users progress
  */
 public class ProgressTracker implements IObserver<Level.GameState> {
     private static Preferences prefs = Gdx.app.getPreferences("prefs");
-    private IObservable level;
 
     public ProgressTracker(IObservable level){
-        this.level = level;
+        IObservable level1 = level;
         level.addObserver(this);
     }
 

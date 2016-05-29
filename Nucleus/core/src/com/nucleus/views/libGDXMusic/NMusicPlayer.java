@@ -10,7 +10,6 @@ public class NMusicPlayer implements INMusicPlayer {
     private static Music currentlyPlaying;
     private static float masterVolume = 1;
     private static INMusicPlayer instance;
-    private static float soundEffectVolume = 0.6f;
 
 
     /**
@@ -76,7 +75,8 @@ public class NMusicPlayer implements INMusicPlayer {
     public void playSound(String str) {
         Music music = Assets.getSong(str);
         if (music != null) {
-            if (soundEffectVolume<masterVolume) {
+            float soundEffectVolume = 0.6f;
+            if (soundEffectVolume <masterVolume) {
                 music.setVolume(soundEffectVolume);
             } else {
                 music.setVolume(masterVolume);

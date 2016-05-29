@@ -1,7 +1,6 @@
 package com.nucleus.controller;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.nucleus.controller.controllerStates.ControllerState;
 import com.nucleus.controller.controllerStates.InvertedPlayState;
 import com.nucleus.controller.controllerStates.NormalPlayState;

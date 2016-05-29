@@ -1,8 +1,8 @@
 package com.nucleus.levelBuilder;
 
+import com.nucleus.model.collision.Vector;
 import com.nucleus.model.molecule.GluonPoint;
 import com.nucleus.model.molecule.IGluonPoint;
-import com.nucleus.model.collision.Vector;
 
 /**
  * Data class for a level. Parses an int-array and delegates the values to said variables.

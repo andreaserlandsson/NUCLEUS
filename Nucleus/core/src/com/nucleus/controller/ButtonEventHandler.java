@@ -2,13 +2,11 @@ package com.nucleus.controller;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.views.LevelPermissions;
 
 /**
  * Listens to all buttons and delegates it to the ApplicationController
  */
 public class ButtonEventHandler extends ClickListener {
-    private final int LEVELSTRINGINDEX = 13;
     private ApplicationController controller;
 
     public ButtonEventHandler(ApplicationController controller) {
@@ -52,6 +50,7 @@ public class ButtonEventHandler extends ClickListener {
         }
 
         else if (label.startsWith("Label: Level ")) {
+            int LEVELSTRINGINDEX = 13;
             controller.startLevel(Integer.parseInt(label.substring(LEVELSTRINGINDEX)));
         }
 

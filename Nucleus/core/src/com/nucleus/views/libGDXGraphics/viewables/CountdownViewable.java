@@ -4,14 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.nucleus.model.level.INucleonGun;
-import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.assetHandler.Assets;
+import com.nucleus.assetHandler.NAssetsData;
+import com.nucleus.model.level.INucleonGun;
 
 public class CountdownViewable implements IViewable {
     private Texture protonInGun;
     private Texture neutronInGun;
-    private BitmapFont font;
     private INucleonGun gun;
 
     /**
@@ -33,7 +32,7 @@ public class CountdownViewable implements IViewable {
     public void render(SpriteBatch batch) {
 
         batch.begin();
-        font = new BitmapFont(Gdx.files.internal("menu/default.fnt"), false);
+        BitmapFont font = new BitmapFont(Gdx.files.internal("menu/default.fnt"), false);
 
         //draws the pictures of the proton and the neutron
         batch.draw(protonInGun,10,Gdx.graphics.getHeight() - protonInGun.getHeight(),30,30);

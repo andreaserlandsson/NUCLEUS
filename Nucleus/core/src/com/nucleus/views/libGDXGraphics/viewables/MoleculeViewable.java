@@ -4,10 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.nucleus.assetHandler.Assets;
+import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.model.molecule.IGluonPoint;
 import com.nucleus.model.molecule.IMolecule;
-import com.nucleus.assetHandler.NAssetsData;
-import com.nucleus.assetHandler.Assets;
 
 public class MoleculeViewable implements IViewable {
     private IMolecule molecule;

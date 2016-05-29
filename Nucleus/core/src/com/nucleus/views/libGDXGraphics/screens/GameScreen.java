@@ -3,19 +3,19 @@ package com.nucleus.views.libGDXGraphics.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
-import com.nucleus.views.libGDXGraphics.dialogs.LoseDialog;
 import com.nucleus.model.level.ILevel;
+import com.nucleus.model.level.Level;
 import com.nucleus.model.nucleusObservers.IObservable;
 import com.nucleus.model.nucleusObservers.IObserver;
-import com.nucleus.model.level.Level;
+import com.nucleus.views.libGDXGraphics.dialogs.LoseDialog;
 import com.nucleus.views.libGDXGraphics.dialogs.PauseDialog;
 import com.nucleus.views.libGDXGraphics.dialogs.WinDialog;
+import com.nucleus.views.libGDXGraphics.dialogs.WinLoseDialog;
 import com.nucleus.views.libGDXGraphics.viewables.CountdownViewable;
 import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import com.nucleus.views.libGDXGraphics.viewables.MoleculeViewable;
-import com.nucleus.views.libGDXGraphics.viewables.PauseViewable;
-import com.nucleus.views.libGDXGraphics.dialogs.WinLoseDialog;
 import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
+import com.nucleus.views.libGDXGraphics.viewables.PauseViewable;
 
 
 

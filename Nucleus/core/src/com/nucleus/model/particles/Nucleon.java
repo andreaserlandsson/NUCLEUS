@@ -7,7 +7,6 @@ public class Nucleon implements INucleon, ICollidable {
 
     private Vector position;
     private Vector velocity;
-    private final int RADIUS = 10;   //Sizes will be used for collision detection purposes
 
     public Nucleon(Vector position, Vector vector){
         this.position = position;
@@ -35,6 +34,7 @@ public class Nucleon implements INucleon, ICollidable {
     }
 
     public int getRadius(){
+        int RADIUS = 10;
         return RADIUS;
     }
 }

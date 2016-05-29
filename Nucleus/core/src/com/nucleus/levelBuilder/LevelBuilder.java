@@ -1,16 +1,16 @@
 package com.nucleus.levelBuilder;
 
-import com.nucleus.model.level.ObservableHelper;
-import com.nucleus.model.molecule.IMolecule;
-import com.nucleus.model.particles.INucleon;
+import com.nucleus.model.LevelNotExistingException;
+import com.nucleus.model.collision.Vector;
 import com.nucleus.model.level.INucleonGun;
 import com.nucleus.model.level.Level;
-import com.nucleus.model.LevelNotExistingException;
-import com.nucleus.model.molecule.Molecule;
-import com.nucleus.model.particles.Neutron;
 import com.nucleus.model.level.NucleonGun;
+import com.nucleus.model.level.ObservableHelper;
+import com.nucleus.model.molecule.IMolecule;
+import com.nucleus.model.molecule.Molecule;
+import com.nucleus.model.particles.INucleon;
+import com.nucleus.model.particles.Neutron;
 import com.nucleus.model.particles.Proton;
-import com.nucleus.model.collision.Vector;
 
 import java.util.ArrayList;
 import java.util.Collections;

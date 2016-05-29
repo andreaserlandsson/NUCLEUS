@@ -11,8 +11,6 @@ public class GluonPoint implements IGluonPoint, ICollidable {
     private int maxProtons;
     private int maxNeutrons;
 
-    private final int RADIUS = 10;
-
     /**
      * Constructor for GluonPoint,
      * @param positions The position of the gluonpoint
@@ -48,6 +46,7 @@ public class GluonPoint implements IGluonPoint, ICollidable {
     }
 
     public int getRadius(){
+        int RADIUS = 10;
         return RADIUS;
     }
 
