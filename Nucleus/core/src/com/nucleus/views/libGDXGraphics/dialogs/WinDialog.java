@@ -11,7 +11,7 @@ public class WinDialog extends WinLoseDialog {
     private INMusicPlayer musicPlayer;
 
     /**
-     * Creates a new WinDialog (extends WinLoseDialog) object with the correct listener
+     * Creates a new WinDialog (extends WinLoseDialog) with the correct listener.
      */
     public WinDialog(EventListener listener) {
         super(listener);

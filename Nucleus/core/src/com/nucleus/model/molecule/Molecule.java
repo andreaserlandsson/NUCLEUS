@@ -22,6 +22,13 @@ public class Molecule implements IMolecule {
         this.height = height;
     }
 
+    /**
+     * Rotates the molecule using the player's last and second last touch points. The vector difference
+     * of these two points is calculated which then gives the rotation angle. This same
+     * rotation is then applied to the gluon points within the molecule.
+     * @param newTouch the latest point which the player has touched
+     * @param lastTouch the second-latest point the player has touched
+     */
     public void setRotation(Vector lastTouch, Vector newTouch){
         float angle = calculateRotationAngle(lastTouch, newTouch);
         rotation = rotation + angle;
@@ -58,6 +65,13 @@ public class Molecule implements IMolecule {
         return true;
     }
 
+    /**
+     * Rotates a gluon point with simple rotation algebra.
+     * @param gluon the gluon point to be rotated.
+     * @param center the center around which the gluon should be rotated.
+     * @param position the current position of the gluon.
+     * @param angle the angle of which the gluon will be rotated.
+     */
     public void rotateGluon(IGluonPoint gluon, Vector center, Vector position, double angle) {
         angle = -angle * Math.PI/180;
         Vector deltaPos = position.subtract(center);

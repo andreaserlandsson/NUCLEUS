@@ -21,7 +21,9 @@ public class OptionsScreen extends NucleusScreen implements DialogScreen {
 
     /**
      * Creates a new option screen with different options with a listener.
-     * @param listener The listener for the screen.
+     * All different options have a corresponding button, with a listener that talks to the
+     * controller.
+     * @param listener The listener for the screen and buttons.
      */
 
     public OptionsScreen(ClickListener listener){
@@ -50,10 +52,6 @@ public class OptionsScreen extends NucleusScreen implements DialogScreen {
         mainTable.add(optionsText);
         mainTable.row();
 
-
-        //Initializing buttons and adding listeners to the buttons. This listener calls on the
-        //clicked(...)-method in ButtonEventHandler where it co-responds with a if-state which in turn
-        //toggles the sound, reverses the rotations or goes back to the main menu
         TextButton toggleSoundBtn = new TextButton("Toggle Sound", skin);
         toggleSoundBtn.addListener(listener);
         mainTable.add(toggleSoundBtn).width(150).pad(10);

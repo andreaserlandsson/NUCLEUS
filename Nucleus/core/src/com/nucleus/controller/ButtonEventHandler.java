@@ -4,9 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.views.LevelPermissions;
 
-/**
- * Created by Quaxi on 10/05/16.
- */
+
 public class ButtonEventHandler extends ClickListener {
     private final int LEVELSTRINGINDEX = 13;
     private ApplicationController controller;

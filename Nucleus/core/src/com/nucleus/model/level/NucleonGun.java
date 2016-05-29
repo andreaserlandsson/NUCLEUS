@@ -67,28 +67,21 @@ public class NucleonGun implements INucleonGun {
         nucleonList.remove(arrayIndex);
         arrayIndex --;
 
-        //sets the start position for the nucleon
-        Random rand = new Random();
-        int x = rand.nextInt(4);
+        Random random = new Random();
+        int startPosition = random.nextInt(4);
 
-        switch(x){
-            //along the top screen edge
+        switch(startPosition){
             case 0:
-                a.setPosition(rand.nextInt(width) , height);
+                a.setPosition(random.nextInt(width) , height);
                 break;
-            //along the bottom screen edge
             case 1:
-                a.setPosition(rand.nextInt(width) , 0);
+                a.setPosition(random.nextInt(width) , 0);
                 break;
-
-            //along the left screen edge
             case 2:
-                a.setPosition(0 , rand.nextInt(height));
+                a.setPosition(0 , random.nextInt(height));
                 break;
-
-            //along the right screen edge
             case 3:
-                a.setPosition(width, rand.nextInt(height));
+                a.setPosition(width, random.nextInt(height));
                 break;
 
             default:
@@ -103,10 +96,6 @@ public class NucleonGun implements INucleonGun {
 
     @Override
     public boolean isEmpty() {
-        if (arrayIndex >= 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return arrayIndex < 0;
     }
 }

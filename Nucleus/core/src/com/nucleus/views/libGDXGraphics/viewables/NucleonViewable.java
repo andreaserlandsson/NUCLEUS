@@ -18,9 +18,8 @@ public class NucleonViewable implements IViewable {
     private TextureRegion protonLargeTrailRegion, neutronLargeTrailRegion;
 
     /**
-     * Loads this NucleonViewable with the correct textures and nucleons
-     *
-     * @param nucleons
+     * Creates a NucleonViewable with the correct texture for the nucleon and it's tail.
+     * @param nucleons the nucleons to render.
      */
     public NucleonViewable(List<INucleon> nucleons){
 
@@ -46,10 +45,9 @@ public class NucleonViewable implements IViewable {
     }
 
     /**
-     * Is used in render()
-     *
-     * @param v
-     * @return
+     * Private help-method to transform the vector to Radians, for correct rendering of the tails.
+     * @param v Vector to be transformed.
+     * @return the degree in radians.
      */
     private int vectorToRadians(Vector v){
 
@@ -60,9 +58,8 @@ public class NucleonViewable implements IViewable {
     }
 
     /**
-     * Redraws the nucleons as protons and neutrons and with their new positions
-     *
-     * @param batch
+     * Renders the nucleons at their corresponding position.
+     * @param batch the nucleons to be rendered.
      */
     @Override
     public void render(SpriteBatch batch){
