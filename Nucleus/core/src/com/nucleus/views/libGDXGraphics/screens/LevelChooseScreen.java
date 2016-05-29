@@ -1,11 +1,13 @@
 package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.nucleus.views.libGDXGraphics.dialogs.TextDialog;
 import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 
 import java.util.ArrayList;
@@ -14,11 +16,12 @@ import java.util.List;
 /**
  * Created by Quaxi on 04/05/16.
  */
-public class LevelChooseScreen extends NucleusScreen {
+public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private Button[] buttons;
-    private com.nucleus.views.libGDXGraphics.Dialogs.LevelSelectionDialog levelSelectionDialog;
+    private TextDialog levelSelectionDialog;
+    private EventListener listener;
 
     private boolean errorShowing = false;
 
@@ -27,6 +30,7 @@ public class LevelChooseScreen extends NucleusScreen {
 
         Gdx.app.log("GameScreen", "showing");
 
+        this.listener = listener;
         //Create Table
         Table mainTable = new Table();
         mainTable.setFillParent(true);
@@ -62,21 +66,21 @@ public class LevelChooseScreen extends NucleusScreen {
         //Add table to stage
         stage.addActor(mainTable);
         stage.addActor(secondTable);
-
-        levelSelectionDialog = new com.nucleus.views.libGDXGraphics.Dialogs.LevelSelectionDialog(listener);
-
-    }
-
-    public void showSelectionError(){
-        Gdx.app.log("Level selection error", "showing");
-        levelSelectionDialog.show();
     }
 
     @Override
     public void render(float delta){
         super.render(delta);
-        levelSelectionDialog.render(delta);
+        if (levelSelectionDialog != null){
+            levelSelectionDialog.render(delta);
+        }
     }
 
+    @Override
+    public void showTextDialog(String text) {
+        levelSelectionDialog = new TextDialog(listener, text, true);
+        Gdx.app.log("Level selection error", "showing");
+        levelSelectionDialog.show();
+    }
 }
 

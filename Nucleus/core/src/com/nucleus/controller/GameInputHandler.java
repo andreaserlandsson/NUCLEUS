@@ -3,6 +3,7 @@ package com.nucleus.controller;
 import com.nucleus.controller.controllerStates.ControllerState;
 import com.nucleus.controller.controllerStates.InvertedPlayState;
 import com.nucleus.views.libGDXGraphics.screens.PlayScreen;
+import com.sun.jndi.toolkit.ctx.Continuation;
 
 public class GameInputHandler extends NInputProcessor {
 
@@ -52,7 +53,9 @@ public class GameInputHandler extends NInputProcessor {
     }
 
     public void switchState(){
-        reverseState = !reverseState;
+    }
 
+    public ControllerState getState() {
+        return currentState;
     }
 }

@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.nucleus.model.level.Level;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.levelBuilder.LevelBuilder;
+import com.nucleus.views.libGDXGraphics.screens.DialogScreen;
 import com.nucleus.views.libGDXGraphics.screens.GameScreen;
 import com.nucleus.views.libGDXGraphics.screens.LevelChooseScreen;
 import com.nucleus.views.libGDXGraphics.screens.OptionsScreen;
@@ -69,9 +70,9 @@ public class ApplicationController {
 
     }
 
-    public void showSelectionErrorDialog(){
-        if(screen instanceof LevelChooseScreen){
-            ((LevelChooseScreen) screen).showSelectionError();
+    public void showTextDialog(String text){
+        if(screen instanceof DialogScreen){
+            ((DialogScreen) screen).showTextDialog(text);
         }
     }
 
@@ -103,5 +104,7 @@ public class ApplicationController {
 
     public void reverseRotation() {
         controller.switchState();
+        Gdx.app.log("Rotation", "Reversed");
+        showTextDialog("Rotation: " + controller.getState().toString());
     }
 }
