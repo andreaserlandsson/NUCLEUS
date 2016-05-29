@@ -61,7 +61,7 @@ public class LevelBuilder {
 
             INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList, levelData.difficultyMultiplier);
             IMolecule molecule = new Molecule(width,height, levelData.gluonPoints);
-            return new Level(levelNr, width, height, nucleonGun, molecule, levelData.gluonPoints, new ObservableHelper<Level.GameState>());
+            return new Level(levelNr, width, height, nucleonGun, molecule, new ObservableHelper<Level.GameState>());
         }
         return null;
 
