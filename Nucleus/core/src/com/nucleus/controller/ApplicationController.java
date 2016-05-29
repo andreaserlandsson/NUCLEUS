@@ -6,10 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.nucleus.model.level.Level;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.levelBuilder.LevelBuilder;
-import com.nucleus.views.libGDXGraphics.Screens.GameScreen;
-import com.nucleus.views.libGDXGraphics.Screens.LevelChooseScreen;
-import com.nucleus.views.libGDXGraphics.Screens.OptionsScreen;
-import com.nucleus.views.libGDXGraphics.Screens.StartScreen;
+import com.nucleus.views.libGDXGraphics.screens.*;
 import com.nucleus.views.libGDXMusic.INMusicPlayer;
 import com.nucleus.views.libGDXMusic.NMusicPlayer;
 

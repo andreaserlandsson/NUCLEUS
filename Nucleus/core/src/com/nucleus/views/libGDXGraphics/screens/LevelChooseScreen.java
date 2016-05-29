@@ -72,13 +72,13 @@ public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
         stage.addActor(mainTable);
         stage.addActor(secondTable);
 
-        textDialog = new TextDialog(listener);
+
 
     }
 
     public void showSelectionError(){
         Gdx.app.log("Level selection error", "showing");
-        textDialog.show();
+        levelSelectionDialog.show();
     }
 
     @Override
@@ -91,7 +91,7 @@ public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
 
     @Override
     public void showTextDialog(String text) {
-        levelSelectionDialog = new TextDialog(listener, text, true);
+        levelSelectionDialog = new TextDialog(listener, text, false);
         Gdx.app.log("Level selection error", "showing");
         levelSelectionDialog.show();
     }

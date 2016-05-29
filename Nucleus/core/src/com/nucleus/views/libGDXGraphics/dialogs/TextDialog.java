@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Dialogs;
+package com.nucleus.views.libGDXGraphics.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -22,9 +22,11 @@ public class TextDialog extends ScreenAdapter{
     /**
      * This constructor builds a LevelSelectionDialog object with the correct listener
      */
-    public TextDialog(EventListener listener){
+    public TextDialog(EventListener listener, String text, boolean b){
         this.listener = listener;
+        this.text = text;
         this.stage = new Stage();
+        this.hasOkButton = b;
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
     }
 
@@ -44,9 +46,7 @@ public class TextDialog extends ScreenAdapter{
         //Create buttons
         if (hasOkButton){
             Gdx.input.setInputProcessor(stage);
-
             TextButton okButton = new TextButton("OK", skin);
-
             //Add listeners to buttons
             okButton.addListener(listener);
 
