@@ -3,17 +3,11 @@ package com.nucleus.model.particles;
 import com.nucleus.model.collision.ICollidable;
 import com.nucleus.model.collision.Vector;
 
-/**
- * Created by erik on 19/04/16.
- */
 public class Nucleon implements INucleon, ICollidable {
 
     private Vector position;
     private Vector velocity;
     private final int RADIUS = 10;   //Sizes will be used for collision detection purposes
-
-    public Nucleon(){
-    }
 
     public Nucleon(Vector position, Vector vector){
         this.position = position;
