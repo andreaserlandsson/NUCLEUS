@@ -11,8 +11,14 @@ public class GluonPoint implements IGluonPoint, ICollidable {
     private int maxProtons;
     private int maxNeutrons;
 
-    private final int RADIUS = 10; // dummy value will be calibrated later
+    private final int RADIUS = 10;
 
+    /**
+     * Constructor for GluonPoint,
+     * @param positions The position of the gluonpoint
+     * @param maxProtons Maximum number of protons the gluonpoint can have
+     * @param maxNeutrons Maximum number of neutrons the gluonpoint can have
+     */
     public GluonPoint(Vector positions, int maxProtons, int maxNeutrons){
         this.position = positions;
         this.maxProtons = maxProtons;

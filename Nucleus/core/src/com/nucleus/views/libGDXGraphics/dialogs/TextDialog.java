@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Dialogs;
+package com.nucleus.views.libGDXGraphics.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -9,25 +9,25 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
-/**
- * Created by andreaserlandsson on 17/05/16.
- */
-public class PauseDialog extends ScreenAdapter {
+
+public class TextDialog extends ScreenAdapter{
+
     private Stage stage;
     protected Skin skin;
     private EventListener listener;
+    private String text;
+    private boolean hasOkButton;
 
 
     /**
-     * This constructor builds a PauseDialog object with the correct listener
+     * This constructor builds a LevelSelectionDialog object with the correct listener
      */
-    public PauseDialog(EventListener listener){
-
+    public TextDialog(EventListener listener, String text, boolean b){
         this.listener = listener;
-
+        this.text = text;
         this.stage = new Stage();
+        this.hasOkButton = b;
         skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
-
     }
 
     /**
@@ -35,43 +35,42 @@ public class PauseDialog extends ScreenAdapter {
      */
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(stage);
 
         //Create Table
         Table mainTable = new Table();
 
         mainTable.setFillParent(true);
-        mainTable.center();
+        mainTable.bottom();
         mainTable.padBottom(150f);
 
         //Create buttons
-        TextButton continueButton = new TextButton("Continue", skin);
-        TextButton restartButton = new TextButton("Restart Level", skin);
-        TextButton menuButton = new TextButton("Main Menu", skin);
+        if (hasOkButton){
+            Gdx.input.setInputProcessor(stage);
+            TextButton okButton = new TextButton("OK", skin);
+            //Add listeners to buttons
+            okButton.addListener(listener);
+
+            //Add buttons to table
+            mainTable.add(okButton).width(100).pad(10);
+
+        }
 
         stage.addListener(listener);
 
-        //Add listeners to buttons. This listener calls on the clicked(...)-method in ButtonEventHandler
-        //where it co-responds with a if-state which in turn goes back to the game if you press "Continue",
-        //restarts the level if you press "Play Again" and goes to main menu if you press "Main Menu"
-        continueButton.addListener(listener);
-        restartButton.addListener(listener);
-        menuButton.addListener(listener);
 
-        Label pauseLabel = new Label("Game Paused", skin);
-        mainTable.add(pauseLabel);
+        Label levelText = new Label(text, skin);
+        mainTable.add(levelText);
         mainTable.row();
 
-        //Add buttons to table
-        mainTable.add(continueButton).width(100).pad(10);
-        mainTable.row();
-        mainTable.add(restartButton).width(100).pad(10);
-        mainTable.row();
-        mainTable.add(menuButton).width(100).pad(10);
 
         //Add table to stage
         stage.addActor(mainTable);
 
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        //stage.setViewport(width, height);
     }
 
     @Override
@@ -90,6 +89,4 @@ public class PauseDialog extends ScreenAdapter {
         stage.dispose();
         skin.dispose();
     }
-
-
 }

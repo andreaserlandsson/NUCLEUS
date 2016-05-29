@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Viewables;
+package com.nucleus.views.libGDXGraphics.viewables;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

@@ -33,8 +33,7 @@ public class Level implements ILevel {
 
     private INucleonGun gun;
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
-    private com.nucleus.model.molecule.IMolecule molecule;
-    private com.nucleus.model.molecule.IGluonPoint[] gluons;
+    private IMolecule molecule;
 
     public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, ObservableHelper<GameState> obs){
         this.levelNumber = levelNumber;

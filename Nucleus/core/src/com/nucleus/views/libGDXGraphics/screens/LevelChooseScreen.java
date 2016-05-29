@@ -1,12 +1,14 @@
-package com.nucleus.views.libGDXGraphics.Screens;
+package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.dialogs.TextDialog;
+import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +16,12 @@ import java.util.List;
 /**
  * Created by Quaxi on 04/05/16.
  */
-public class LevelChooseScreen extends NucleusScreen {
+public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
 
     private List<IViewable> views = new ArrayList<IViewable>();
     private Button[] buttons;
-    private com.nucleus.views.libGDXGraphics.Dialogs.LevelSelectionDialog levelSelectionDialog;
+    private TextDialog levelSelectionDialog;
+    private EventListener listener;
 
     private boolean errorShowing = false;
 
@@ -27,6 +30,7 @@ public class LevelChooseScreen extends NucleusScreen {
 
         Gdx.app.log("GameScreen", "showing");
 
+        this.listener = listener;
         //Create Table
         Table mainTable = new Table();
         mainTable.setFillParent(true);
@@ -40,14 +44,19 @@ public class LevelChooseScreen extends NucleusScreen {
         mainTable.add(levelText);
         mainTable.row();
 
-        //Initializing buttons
+        //Initializing buttons and adding listeners to the buttons. This listener calls on the
+        //clicked(...)-method in ButtonEventHandler where it co-responds with a if-state which in turn
+        //goes back to the game if you press "Continue", restarts the level if you press "Play Again"
         for (int i = 0; i < buttons.length; i++) {
             buttons[i] = new TextButton("Level " + (i+1), skin);
             buttons[i].addListener(listener);
             mainTable.add(buttons[i]).width(100).pad(10);
             mainTable.row();
         }
-
+        //Here we also add a main menu button which has the same listener which calls on the same
+        //clicked(...)-method in ButtonEventHandler where it co-responds with a if-state which in turn
+        //goes to main menu if you press "Main Menu".
+        //We use a new table which is placed at the bottom so that we button also is place at the button.
         Table secondTable = new Table();
         secondTable.setFillParent(true);
         secondTable.center().bottom();
@@ -63,7 +72,7 @@ public class LevelChooseScreen extends NucleusScreen {
         stage.addActor(mainTable);
         stage.addActor(secondTable);
 
-        levelSelectionDialog = new com.nucleus.views.libGDXGraphics.Dialogs.LevelSelectionDialog(listener);
+
 
     }
 
@@ -75,8 +84,16 @@ public class LevelChooseScreen extends NucleusScreen {
     @Override
     public void render(float delta){
         super.render(delta);
-        levelSelectionDialog.render(delta);
+        if (levelSelectionDialog != null){
+            levelSelectionDialog.render(delta);
+        }
     }
 
+    @Override
+    public void showTextDialog(String text) {
+        levelSelectionDialog = new TextDialog(listener, text, false);
+        Gdx.app.log("Level selection error", "showing");
+        levelSelectionDialog.show();
+    }
 }
 

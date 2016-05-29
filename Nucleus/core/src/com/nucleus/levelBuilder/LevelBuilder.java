@@ -34,6 +34,8 @@ public class LevelBuilder {
             levelData = com.nucleus.levelBuilder.LevelParser.levelParse(levelNr, width, height);
         } catch (LevelNotExistingException e) {
            e.printStackTrace();
+            //level does not exist, catches exception.
+            //Should be higher up..
         }
 
         /**

@@ -1,6 +1,4 @@
 package com.nucleus.model.molecule;
-
-
 import com.nucleus.model.collision.Vector;
 
 public interface IGluonPoint {
@@ -14,8 +12,8 @@ public interface IGluonPoint {
     int getProtonsNeeded();
     void addNeutron();
     int getNeutronsNeeded();
-    public int getCurrentNeutrons();
-    public int getCurrentProtons();
-    public int getMaxNeutrons();
-    public int getMaxProtons();
+    int getCurrentNeutrons();
+    int getCurrentProtons();
+    int getMaxNeutrons();
+    int getMaxProtons();
 }

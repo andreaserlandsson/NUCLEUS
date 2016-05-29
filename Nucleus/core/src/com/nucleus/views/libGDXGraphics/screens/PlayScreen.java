@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Screens;
+package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.Screen;
 import com.nucleus.model.level.ILevel;

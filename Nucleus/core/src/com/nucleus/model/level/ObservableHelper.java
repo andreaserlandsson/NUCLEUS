@@ -29,7 +29,6 @@ public class ObservableHelper<E> implements IObservable<E> {
 
     @Override
     public void removeObserver(IObserver<E> o) {
-        if (observers.contains(o))
-            observers.remove(o);
+        observers.remove(o);
     }
 }
