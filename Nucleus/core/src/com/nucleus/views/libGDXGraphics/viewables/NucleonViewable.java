@@ -17,6 +17,11 @@ public class NucleonViewable implements IViewable {
     private Texture proton, neutron, protonLargeTrail, neutronLargeTrail;
     private TextureRegion protonLargeTrailRegion, neutronLargeTrailRegion;
 
+    /**
+     * Loads this NucleonViewable with the correct textures and nucleons
+     *
+     * @param nucleons
+     */
     public NucleonViewable(List<INucleon> nucleons){
 
         this.nucleons = nucleons;
@@ -40,6 +45,12 @@ public class NucleonViewable implements IViewable {
 
     }
 
+    /**
+     * Is used in render()
+     *
+     * @param v
+     * @return
+     */
     private int vectorToRadians(Vector v){
 
         double angle = Math.atan2(v.getY(), v.getX());
@@ -48,7 +59,11 @@ public class NucleonViewable implements IViewable {
 
     }
 
-
+    /**
+     * Redraws the nucleons as protons and neutrons and with their new positions
+     *
+     * @param batch
+     */
     @Override
     public void render(SpriteBatch batch){
 

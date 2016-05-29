@@ -15,15 +15,15 @@ import com.badlogic.gdx.utils.Array;
      */
 public class TextLoader extends AsynchronousAssetLoader<Text, TextLoader.TextParameter> {
 
-    //Inner class for the text parameters. Extends the default AssetLoaderParameters.
+        /**
+         * Inner class for the text parameters. Extends the default AssetLoaderParameters.
+         */
     public class TextParameter extends AssetLoaderParameters<Text> {
     }
 
     Text text;
 
-        /**
-         * Inner class for the text parameters. Extends the default AssetLoaderParameters.
-         */
+
     public TextLoader(FileHandleResolver resolver) {
         super(resolver);
     }

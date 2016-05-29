@@ -65,6 +65,13 @@ public class Molecule implements IMolecule {
         return true;
     }
 
+    /**
+     * Rotates a gluon point with simple rotation algebra.
+     * @param gluon the gluon point to be rotated.
+     * @param center the center around which the gluon should be rotated.
+     * @param position the current position of the gluon.
+     * @param angle the angle of which the gluon will be rotated.
+     */
     public void rotateGluon(IGluonPoint gluon, Vector center, Vector position, double angle) {
         angle = -angle * Math.PI/180;
         Vector deltaPos = position.subtract(center);

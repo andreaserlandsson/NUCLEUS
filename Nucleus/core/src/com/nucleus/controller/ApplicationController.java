@@ -10,9 +10,6 @@ import com.nucleus.views.libGDXGraphics.screens.*;
 import com.nucleus.views.libGDXMusic.INMusicPlayer;
 import com.nucleus.views.libGDXMusic.NMusicPlayer;
 
-/**
- * Created by Quaxi on 24/05/16.
- */
 public class ApplicationController {
 
 

@@ -21,6 +21,13 @@ public class MoleculeViewable implements IViewable {
         loadTextures(levelNumber);
     }
 
+    /**
+     * Fills the the gluon points with color. Depending on how many more protons the gluon needs the
+     * left half will be filled with color scaled to this. Same thing on the right half only for neutrons
+     * instead.
+     *
+     * @param batch
+     */
     private void drawGluons(SpriteBatch batch){
         for (IGluonPoint gluonPoint : gluonPoints) {
             if (gluonPoint.getNeutronsNeeded() > 0){
@@ -51,6 +58,11 @@ public class MoleculeViewable implements IViewable {
         }
     }
 
+    /**
+     * Redraws the molecule acording to how filled the gluons are and how rotated the molecule is.
+     *
+     * @param batch
+     */
     public void render(SpriteBatch batch){
         batch.begin();
 
@@ -70,6 +82,11 @@ public class MoleculeViewable implements IViewable {
         batch.end();
     }
 
+    /**
+     * Loads this MoleculeViewable with the correct molecule textures
+     *
+     * @param levelNumber
+     */
     private void loadTextures(int levelNumber){
         this.moleculeTexture = Assets.getTexture(NAssetsData.getLevelPicture(levelNumber));
         moleculeTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);

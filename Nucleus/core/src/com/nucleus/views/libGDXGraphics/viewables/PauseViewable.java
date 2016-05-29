@@ -6,17 +6,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.assetHandler.Assets;
 
-/**
- * Created by Quaxi on 24/05/16.
- */
 public class PauseViewable implements IViewable {
     private Texture pause;
 
+    /**
+     * Loads this PauseViewable with its textures
+     */
     public PauseViewable(){
         this.pause = Assets.getTexture(NAssetsData.PAUSE);
         pause.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
+    /**
+     * Redraws the pause button
+     *
+     * @param batch
+     */
     @Override
     public void render(SpriteBatch batch){
         batch.begin();

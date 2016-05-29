@@ -7,9 +7,7 @@ import com.nucleus.model.nucleusObservers.IObservable;
 import com.nucleus.model.nucleusObservers.IObserver;
 import com.nucleus.model.level.Level;
 
-/**
- * Created by erik on 16/05/16.
- */
+
 public class ProgressTracker implements IObserver<Level.GameState> {
     private static Preferences prefs = Gdx.app.getPreferences("prefs");
     private IObservable level;

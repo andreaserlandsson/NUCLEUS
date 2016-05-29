@@ -3,7 +3,7 @@ package com.nucleus.assetHandler;
 public class NAssetsData {
 
     /**
-     * Class with strings for all values to all different files that is loaded into the assetManaget.
+     * Holder class with strings for all values to all different files that is loaded into the assetManager.
      */
 
     public static final String LEVELMUSIC = "inGame";

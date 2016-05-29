@@ -1,8 +1,9 @@
 package com.nucleus.views.libGDXMusic;
 
 
-    // Interface for the MusicPlayer. Makes it possible to easy switch out the libGDX musicPlayer
-    // for another one.
+    /** Interface for the MusicPlayer. Makes it possible to easy switch out the libGDX musicPlayer
+     *  for another one.
+     */
 public interface INMusicPlayer {
     void loadMusic();
     void playMusic(String song);

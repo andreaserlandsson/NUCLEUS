@@ -8,14 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.nucleus.views.libGDXGraphics.dialogs.TextDialog;
-import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by Quaxi on 04/05/16.
- */
 public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
 
     private Button[] buttons;

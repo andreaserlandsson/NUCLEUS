@@ -17,9 +17,11 @@ public class TextDialog extends ScreenAdapter{
     private String text;
     private boolean hasOkButton;
 
-
     /**
-     * This constructor builds a LevelSelectionDialog object with the correct listener
+     * Creates a new TextDialog with a text, a listener and a button.
+     * @param listener the listener.
+     * @param text the text to be displayed.
+     * @param b the boolean for the button.
      */
     public TextDialog(EventListener listener, String text, boolean b){
         this.listener = listener;
@@ -30,7 +32,7 @@ public class TextDialog extends ScreenAdapter{
     }
 
     /**
-     * This method sets upp the text and the buttons and add them to a listener which callas on the co-responding action
+     * Creates a table and fills it with a button and a listener.
      */
     @Override
     public void show() {
@@ -69,7 +71,6 @@ public class TextDialog extends ScreenAdapter{
 
     @Override
     public void resize(int width, int height) {
-        //stage.setViewport(width, height);
     }
 
     @Override
