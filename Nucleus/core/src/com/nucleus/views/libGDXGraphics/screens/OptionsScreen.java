@@ -10,29 +10,34 @@ import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by erik on 23/05/16.
- */
 public class OptionsScreen extends NucleusScreen {
 
     private List<IViewable> views = new ArrayList<IViewable>();
+
 
     public OptionsScreen(ClickListener listener){
         super();
 
         views.add(new BackgroundViewable());
 
+        //initates the table
         Table mainTable = new Table();
         mainTable.setFillParent(true);
         mainTable.center();
         mainTable.padBottom(150f);
 
+        //adds the listener to the stage
         stage.addListener(listener);
 
+        //Adds a string which will be shown on the screen
         Label optionsText = new Label("Options", skin);
         mainTable.add(optionsText);
         mainTable.row();
 
+
+        //Initializing buttons and adding listeners to the buttons. This listener calls on the
+        //clicked(...)-method in ButtonEventHandler where it co-responds with a if-state which in turn
+        //toggles the sound, reverses the rotations or goes back to the main menu
         TextButton toggleSoundBtn = new TextButton("Toggle Sound", skin);
         toggleSoundBtn.addListener(listener);
         mainTable.add(toggleSoundBtn).width(150).pad(10);
@@ -48,6 +53,7 @@ public class OptionsScreen extends NucleusScreen {
         mainTable.add(toMenuBtn).width(150).pad(10);
         mainTable.row();
 
+        //adds the table to the stage
         stage.addActor(mainTable);
 
     }

@@ -11,17 +11,19 @@ import com.nucleus.model.level.ILevel;
 import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
 
-/**
- * Created by Quaxi on 04/05/16.
- */
 public class StartScreen extends NucleusScreen implements Screen {
     private ILevel level;
 
+    /**
+     * This level is level 0, which has no molecule, it just make the start screen have a background
+     * with nucleons moving in the background
+     *
+     * @param listener
+     * @param level
+     */
     public StartScreen(EventListener listener, ILevel level) {
         super();
         this.level = level;
-        // Creating level
-        //level = LevelBuilder.buildLevel(0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         //Initialising graphics
         views.add(new NucleonViewable(level.getAirborneNucleons()));
@@ -32,7 +34,10 @@ public class StartScreen extends NucleusScreen implements Screen {
         mainTable.center();
         mainTable.padBottom(150f);
 
-        //Create buttons
+        //Initializing buttons and adding listeners to the buttons. This listener calls on the
+        //clicked(...)-method in ButtonEventHandler where it co-responds with a if-state which in turn
+        //goes to the Level choose screen if you click "play", goes to the the option screen or exits
+        //the application
         TextButton playButton = new TextButton("Play", skin);
         TextButton optionsButton = new TextButton("Options", skin);
         TextButton exitButton = new TextButton("Exit", skin);
@@ -43,6 +48,7 @@ public class StartScreen extends NucleusScreen implements Screen {
         exitButton.addListener(listener);
         stage.addListener(listener);
 
+        //adds a title which will be shown on the screen
         Label nucleusText = new Label("NUCLEUS", skin);
         mainTable.add(nucleusText);
         mainTable.row();
@@ -58,6 +64,12 @@ public class StartScreen extends NucleusScreen implements Screen {
         stage.addActor(mainTable);
     }
 
+    /**
+     * This screen plays a game in the background and so it calls on level.update(delta),
+     * Gdc.gl.glClear... and renders the views
+     *
+     * @param delta
+     */
     @Override
     public void render(float delta) {
 

@@ -15,9 +15,6 @@ import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by erik on 24/05/16.
- */
 public abstract class NucleusScreen implements Screen {
     protected SpriteBatch batch;
     protected Stage stage;
