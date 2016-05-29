@@ -57,16 +57,15 @@ public class NucleonViewable implements IViewable {
 
         batch.begin();
         batch.enableBlending();
-
+        final int PICOFFSET =1;  //Variable compensating for asymmetrical graphic assets
         for(INucleon nucleon : nucleons){
             if (nucleon.getClass() == Proton.class){
                 float x = nucleon.getPosition().getX();
                 float y = nucleon.getPosition().getY();
                 batch.draw(proton, x  - 2*nucleon.getRadius(),y  - 2*nucleon.getRadius());
                 batch.draw(protonLargeTrailRegion,
-                        //TODO fix 2px offset
-                        x - nucleon.getRadius()-1,
-                        y - 1,
+                        x - nucleon.getRadius()-PICOFFSET,
+                        y - PICOFFSET,
                         (float) (nucleon.getRadius()),
                         0,
                         protonLargeTrail.getWidth(),
@@ -81,16 +80,14 @@ public class NucleonViewable implements IViewable {
                 float y = nucleon.getPosition().getY();
                 batch.draw(neutron, x - 2*nucleon.getRadius(),  y - 2*nucleon.getRadius());
                 batch.draw(neutronLargeTrailRegion,
-                        //TODO fix 2px offset
                         x - nucleon.getRadius(),
-                        y - 1,
+                        y - PICOFFSET,
                         (float) (nucleon.getRadius()),
                         0,
                         neutronLargeTrail.getWidth(),
                         neutronLargeTrail.getHeight(),
                         1.0f,
                         1.0f,
-                       // 90);
                        vectorToRadians(nucleon.getVelocity()));
             }
         }
