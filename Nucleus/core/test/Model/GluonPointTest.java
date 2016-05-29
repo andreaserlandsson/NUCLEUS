@@ -1,8 +1,8 @@
 package Model;
 
-import com.nucleus.Model.molecule.GluonPoint;
-import com.nucleus.Model.molecule.IGluonPoint;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.model.molecule.GluonPoint;
+import com.nucleus.model.molecule.IGluonPoint;
+import com.nucleus.model.collision.Vector;
 
 import org.junit.Test;
 

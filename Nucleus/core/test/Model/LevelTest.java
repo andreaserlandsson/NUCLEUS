@@ -1,17 +1,17 @@
 package Model;
 
-import com.nucleus.Model.molecule.IGluonPoint;
-import com.nucleus.Model.level.ILevel;
-import com.nucleus.Model.molecule.IMolecule;
-import com.nucleus.Model.particles.INucleon;
-import com.nucleus.Model.level.INucleonGun;
-import com.nucleus.Model.nucleusObservers.IObservable;
-import com.nucleus.Model.nucleusObservers.IObserver;
-import com.nucleus.Model.level.Level;
-import com.nucleus.Model.particles.Neutron;
-import com.nucleus.Model.level.ObservableHelper;
-import com.nucleus.Model.particles.Proton;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.model.molecule.IGluonPoint;
+import com.nucleus.model.level.ILevel;
+import com.nucleus.model.molecule.IMolecule;
+import com.nucleus.model.particles.INucleon;
+import com.nucleus.model.level.INucleonGun;
+import com.nucleus.model.nucleusObservers.IObservable;
+import com.nucleus.model.nucleusObservers.IObserver;
+import com.nucleus.model.level.Level;
+import com.nucleus.model.particles.Neutron;
+import com.nucleus.model.level.ObservableHelper;
+import com.nucleus.model.particles.Proton;
+import com.nucleus.model.collision.Vector;
 
 import org.junit.Ignore;
 import org.junit.Test;
