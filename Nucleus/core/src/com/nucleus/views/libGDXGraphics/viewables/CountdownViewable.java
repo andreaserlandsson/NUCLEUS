@@ -15,8 +15,8 @@ public class CountdownViewable implements IViewable {
     private INucleonGun gun;
 
     /**
-     * The view of the "ammo", i.e. the amount of protons and neutrons left in the nucleon gun. The
-     * view is two different counter, one in red showing the amount of protons left and one in green
+     * The view of the "ammo", i.e. the amount of protons and neutrons left in the nucleon gun in the
+     * game view. The view is two different counter, one in red showing the amount of protons left and one in green
      * showing the amount of neutron left.
      *
      * @param gun
@@ -36,6 +36,7 @@ public class CountdownViewable implements IViewable {
         batch.begin();
         font = new BitmapFont(Gdx.files.internal("menu/default.fnt"), false);
 
+        //draws the pictures of the proton and the neutron
         batch.draw(protonInGun,10,Gdx.graphics.getHeight() - protonInGun.getHeight(),30,30);
         batch.draw(neutronInGun,10,Gdx.graphics.getHeight() - neutronInGun.getHeight()-30,30,30);
 
@@ -50,8 +51,6 @@ public class CountdownViewable implements IViewable {
                 40, Gdx.graphics.getHeight() - 43);
 
         batch.end();
-
-
     }
 
 }

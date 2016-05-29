@@ -1,10 +1,10 @@
 package com.nucleus.model.level;
 
+import com.nucleus.model.collision.CollisionHandler;
+import com.nucleus.model.collision.ICollidable;
 import com.nucleus.model.molecule.IGluonPoint;
 import com.nucleus.model.molecule.IMolecule;
 import com.nucleus.model.nucleusObservers.IObserver;
-import com.nucleus.model.collision.CollisionHandler;
-import com.nucleus.model.collision.ICollidable;
 import com.nucleus.model.particles.INucleon;
 import com.nucleus.model.particles.Proton;
 
@@ -47,6 +47,7 @@ public class Level implements ILevel {
      * @param molecule the molecule we want to build.
      * @param obs the observers that observed the level.
      */
+
     public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, ObservableHelper<GameState> obs){
         this.levelNumber = levelNumber;
         this.width = width;
@@ -57,11 +58,19 @@ public class Level implements ILevel {
         this.updateInterval = 1;
     }
 
+    /**
+     * Add an observer o to level object's internal list of observers.
+     * @param o
+     */
     @Override
     public void addObserver(IObserver o) {
         obsHelper.addObserver(o);
     }
 
+    /**
+     * Remove an observer o from the level object's internal list of observers.
+     * @param o
+     */
     @Override
     public void removeObserver(IObserver o) {
         obsHelper.removeObserver(o);
@@ -79,6 +88,10 @@ public class Level implements ILevel {
         return height;
     }
 
+    /**
+     * Returns a GameState enum representing the game's current play state.
+     * @return
+     */
     public GameState getCurrentState(){
         return currentState;
     }
@@ -87,17 +100,16 @@ public class Level implements ILevel {
         return gun;
     }
 
+    /**
+     * Returns a list of the nucleons currently flying through the level
+     * @return
+     */
     public List<INucleon> getAirborneNucleons(){
         return airborneNucleons;
     }
 
     public IMolecule getMolecule(){
         return molecule;
-    }
-
-    /*Function should probably be removed*/
-    public void addAirborneNucleon(INucleon nucleon){
-        airborneNucleons.add(nucleon);
     }
 
     /**
@@ -193,7 +205,12 @@ public class Level implements ILevel {
         obsHelper.update(this, currentState);
     }
 
-
+    /**
+     * The "main loop" of the game. Checks whether the level's NucleonGun should shoot another nucleon,
+     * check's win conditions and removes the nucleons that have flown off-screen from the internal
+     * airbornNucleons list.
+     * @param delta The time since last level update
+     */
     public void update(float delta){
         if(currentState==GameState.RUNNING) {
             checkWinGame();

@@ -8,9 +8,6 @@ import com.nucleus.model.particles.Proton;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Created by erik on 19/04/16.
- */
 public class NucleonGun implements INucleonGun {
 
     private ArrayList<INucleon> nucleonList = new ArrayList<INucleon>();
@@ -19,6 +16,15 @@ public class NucleonGun implements INucleonGun {
     private int height;
     private int difficultyMultiplier;
 
+    /**
+     * Creates a nucleon gun that shoots nucleons in to the level. The gun is level specific,
+     * with different ammo for each level.
+     * @param width the width of the level.
+     * @param height the height of the level.
+     * @param nucleons the amount of nucleons that the gun as as ammo.
+     * @param difficultyMultiplier the difficultyMultiplier for the level, at what speed the
+     *                             nucleons will be shot with.
+     */
     public NucleonGun(int width, int height, ArrayList<INucleon> nucleons, int difficultyMultiplier){
 
         nucleonList = nucleons;
@@ -50,6 +56,11 @@ public class NucleonGun implements INucleonGun {
         return nbrOfNeutrons;
     }
 
+    /**
+     * Shoots a new nucleon to the level. The position is set randomly between one of the four
+     * edges of the screen.
+     * @return the said nucleon.
+     */
     @Override
     public INucleon shoot() {
         INucleon a = nucleonList.get(arrayIndex);

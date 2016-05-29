@@ -18,13 +18,16 @@ import java.util.List;
  */
 public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
 
-    private List<IViewable> views = new ArrayList<IViewable>();
     private Button[] buttons;
     private TextDialog levelSelectionDialog;
     private EventListener listener;
 
-    private boolean errorShowing = false;
-
+    /**
+     * Creates a new LevelChooseScreen with a listener and buttons for each level.
+     * Also adds a main-menu button.
+     * @param listener The listener to be set for the screen.
+     * @param numOfButtons The number of buttons to be created, one for each level.
+     */
     public LevelChooseScreen(ClickListener listener, int numOfButtons) {
         super();
 
@@ -44,19 +47,15 @@ public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
         mainTable.add(levelText);
         mainTable.row();
 
-        //Initializing buttons and adding listeners to the buttons. This listener calls on the
-        //clicked(...)-method in ButtonEventHandler where it co-responds with a if-state which in turn
-        //goes back to the game if you press "Continue", restarts the level if you press "Play Again"
+
         for (int i = 0; i < buttons.length; i++) {
             buttons[i] = new TextButton("Level " + (i+1), skin);
             buttons[i].addListener(listener);
             mainTable.add(buttons[i]).width(100).pad(10);
             mainTable.row();
         }
-        //Here we also add a main menu button which has the same listener which calls on the same
-        //clicked(...)-method in ButtonEventHandler where it co-responds with a if-state which in turn
-        //goes to main menu if you press "Main Menu".
-        //We use a new table which is placed at the bottom so that we button also is place at the button.
+
+
         Table secondTable = new Table();
         secondTable.setFillParent(true);
         secondTable.center().bottom();
@@ -89,6 +88,10 @@ public class LevelChooseScreen extends NucleusScreen implements DialogScreen {
         }
     }
 
+    /**
+     * Shows a text dialog with the text as message.
+     * @param text the message to be displayed.
+     */
     @Override
     public void showTextDialog(String text) {
         levelSelectionDialog = new TextDialog(listener, text, false);

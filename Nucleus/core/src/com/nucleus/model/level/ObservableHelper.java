@@ -5,9 +5,6 @@ import com.nucleus.model.nucleusObservers.IObserver;
 
 import java.util.ArrayList;
 
-/**
- * Created by erik on 26/05/16.
- */
 public class ObservableHelper<E> implements IObservable<E> {
 
     private ArrayList<IObserver<E>> observers;
@@ -24,11 +21,13 @@ public class ObservableHelper<E> implements IObservable<E> {
 
     @Override
     public void addObserver(IObserver<E> o) {
-        observers.add(o);
+        if(!observers.contains(o))
+            observers.add(o);
     }
 
     @Override
     public void removeObserver(IObserver<E> o) {
-        observers.remove(o);
+        if(observers.contains(o))
+            observers.remove(o);
     }
 }

@@ -9,6 +9,10 @@ public class LoseDialog extends WinLoseDialog {
 
     private INMusicPlayer musicPlayer;
 
+    /**
+     * Creates a new loseDialog with a title, a new song, and a listener.
+     * @param listener the listener for the dialog.
+     */
     public LoseDialog(EventListener listener) {
         super(listener);
         this.musicPlayer = NMusicPlayer.getInstance();
