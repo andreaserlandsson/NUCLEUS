@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import mocks.MockGluon;
 
-import com.nucleus.Model.molecule.IMolecule;
-import com.nucleus.Model.Collisions.Vector;
+import com.nucleus.model.molecule.IMolecule;
+import com.nucleus.model.collision.Vector;
 
-import com.nucleus.Model.molecule.Molecule;
-import com.nucleus.Model.molecule.IGluonPoint;
+import com.nucleus.model.molecule.Molecule;
+import com.nucleus.model.molecule.IGluonPoint;
 
 
 import static  org.junit.Assert.assertFalse;

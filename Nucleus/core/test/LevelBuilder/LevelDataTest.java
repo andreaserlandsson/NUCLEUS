@@ -1,7 +1,7 @@
 package LevelBuilder;
 
-import com.nucleus.Model.molecule.IGluonPoint;
-import com.nucleus.LevelBuilder.LevelData;
+import com.nucleus.model.molecule.IGluonPoint;
+import com.nucleus.levelBuilder.LevelData;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
