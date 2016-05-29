@@ -6,10 +6,10 @@ import com.badlogic.gdx.Screen;
 import com.nucleus.model.level.Level;
 import com.nucleus.assetHandler.NAssetsData;
 import com.nucleus.levelBuilder.LevelBuilder;
-import com.nucleus.views.libGDXGraphics.Screens.GameScreen;
-import com.nucleus.views.libGDXGraphics.Screens.LevelChooseScreen;
-import com.nucleus.views.libGDXGraphics.Screens.OptionsScreen;
-import com.nucleus.views.libGDXGraphics.Screens.StartScreen;
+import com.nucleus.views.libGDXGraphics.screens.GameScreen;
+import com.nucleus.views.libGDXGraphics.screens.LevelChooseScreen;
+import com.nucleus.views.libGDXGraphics.screens.OptionsScreen;
+import com.nucleus.views.libGDXGraphics.screens.StartScreen;
 import com.nucleus.views.libGDXMusic.INMusicPlayer;
 import com.nucleus.views.libGDXMusic.NMusicPlayer;
 
@@ -17,7 +17,6 @@ import com.nucleus.views.libGDXMusic.NMusicPlayer;
  * Created by Quaxi on 24/05/16.
  */
 public class ApplicationController {
-
 
     private ButtonEventHandler listener;
     private GameInputHandler controller;

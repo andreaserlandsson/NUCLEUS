@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Dialogs;
+package com.nucleus.views.libGDXGraphics.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;

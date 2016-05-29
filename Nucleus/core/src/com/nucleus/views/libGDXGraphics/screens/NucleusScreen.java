@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Screens;
+package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -9,8 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nucleus.views.libGDXGraphics.Viewables.BackgroundViewable;
-import com.nucleus.views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.viewables.BackgroundViewable;
+import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 
 import java.util.ArrayList;
 import java.util.List;

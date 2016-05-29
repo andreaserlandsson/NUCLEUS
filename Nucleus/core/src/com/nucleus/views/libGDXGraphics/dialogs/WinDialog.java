@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Dialogs;
+package com.nucleus.views.libGDXGraphics.dialogs;
 
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.nucleus.assetHandler.NAssetsData;

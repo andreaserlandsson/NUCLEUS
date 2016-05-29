@@ -1,56 +1,70 @@
-package com.nucleus.views.libGDXGraphics.Dialogs;
+package com.nucleus.views.libGDXGraphics.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.nucleus.model.level.ILevel;
+
 
 /**
- * Created by erik on 25/05/16.
+ * Created by andreaserlandsson on 24/05/16.
  */
-public class LevelSelectionDialog extends ScreenAdapter{
+public abstract class WinLoseDialog extends ScreenAdapter {
 
-    private Stage stage;
+    protected Stage stage;
     protected Skin skin;
-    private EventListener listener;
+    protected EventListener listener;
+    protected String title = "test text";
+    protected ILevel level;
+    protected SpriteBatch batch;
 
+    private boolean goToMainMenu = false;
 
-
-    public LevelSelectionDialog(EventListener listener){
+    public WinLoseDialog(EventListener listener) {
         this.listener = listener;
-        this.stage = new Stage();
-        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
     }
 
     @Override
     public void show() {
+        stage = new Stage();
+        goToMainMenu = false;
         Gdx.input.setInputProcessor(stage);
+
+
+        skin = new Skin(Gdx.files.internal("menu/uiskin.json"));
 
         //Create Table
         Table mainTable = new Table();
 
         mainTable.setFillParent(true);
-        mainTable.bottom();
+        mainTable.center();
         mainTable.padBottom(150f);
 
         //Create buttons
-        TextButton okButton = new TextButton("OK", skin);
+        TextButton level2Button = new TextButton("Play Again", skin);
+        TextButton level3Button = new TextButton("Main Menu", skin);
 
         stage.addListener(listener);
 
         //Add listeners to buttons
-        okButton.addListener(listener);
+        level2Button.addListener(listener);
+        level3Button.addListener(listener);
 
-        Label levelText = new Label("This level is not yet unlocked!", skin);
+        Label levelText = new Label(title, skin);
         mainTable.add(levelText);
         mainTable.row();
 
         //Add buttons to table
-        mainTable.add(okButton).width(100).pad(10);
+        mainTable.add(level2Button).width(100).pad(10);
+        mainTable.row();
+        mainTable.add(level3Button).width(100).pad(10);
+
 
         //Add table to stage
         stage.addActor(mainTable);
@@ -64,18 +78,26 @@ public class LevelSelectionDialog extends ScreenAdapter{
 
     @Override
     public void render(float delta) {
+
         stage.act(delta);
         stage.draw();
+
     }
 
     @Override
     public void hide() {
+
         dispose();
+
     }
 
     @Override
     public void dispose() {
+
         stage.dispose();
         skin.dispose();
+
     }
+
 }
+
