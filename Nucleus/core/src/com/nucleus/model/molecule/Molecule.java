@@ -10,6 +10,12 @@ public class Molecule implements IMolecule {
 
     public IGluonPoint[] gluons;
 
+    /**
+     * Constructor for a molecule.
+     * @param width The width of the molecule
+     * @param height The height of the molecule
+     * @param gluons List of all the gluonpoints the molecule contains
+     */
     public Molecule(int width, int height,IGluonPoint[] gluons){
         this.gluons = gluons;
         this.width = width;

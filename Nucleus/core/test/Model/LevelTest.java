@@ -52,9 +52,9 @@ public class LevelTest {
 
     ObservableHelper<Level.GameState> obsHelper = new ObservableHelper<Level.GameState>();
 
-    ILevel level = new Level(levelNumber, width, height, gun, molecule, gluons,obsHelper);
-    ILevel level2 = new Level(levelNumber, width, height, gun2, molecule, gluons,obsHelper);
-    ILevel level3 = new Level(levelNumber, width, height, gun, molecule, gluons,obsHelper);
+    ILevel level = new Level(levelNumber, width, height, gun, molecule,obsHelper);
+    ILevel level2 = new Level(levelNumber, width, height, gun2, molecule,obsHelper);
+    ILevel level3 = new Level(levelNumber, width, height, gun, molecule,obsHelper);
 
     @Test
     public void thisAlwaysPasses() {
@@ -217,15 +217,6 @@ public class LevelTest {
 
         IMolecule newMolecule = new MockMolecule(gluons);
         assertTrue(level.getMolecule() != newMolecule);
-
-    }
-
-    @Test
-    public void testGetGluons() {
-
-        assertTrue(level.getGluons() == gluons);
-
-        assertTrue(level.getGluons() != gluons2);
 
     }
 
