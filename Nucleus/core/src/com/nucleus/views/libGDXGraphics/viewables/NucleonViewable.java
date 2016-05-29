@@ -11,9 +11,6 @@ import com.nucleus.model.particles.Proton;
 
 import java.util.List;
 
-/**
- * Created by erik on 28/04/16.
- */
 public class NucleonViewable implements IViewable {
 
     private List<INucleon> nucleons;
