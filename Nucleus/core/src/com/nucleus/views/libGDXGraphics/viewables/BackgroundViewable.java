@@ -9,10 +9,18 @@ import com.nucleus.assetHandler.Assets;
 public class BackgroundViewable implements IViewable {
     private Texture bg;
 
+    /**
+     * Loads this BackgroundViewable with its texture
+     */
     public BackgroundViewable(){
         this.bg = Assets.getTexture(NAssetsData.BACKGROUND);
     }
 
+    /**
+     * Redraws the background
+     *
+     * @param batch
+     */
     @Override
     public void render(SpriteBatch batch){
         batch.begin();

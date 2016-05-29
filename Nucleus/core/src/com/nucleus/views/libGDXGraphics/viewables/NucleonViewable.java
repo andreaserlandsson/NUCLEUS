@@ -20,6 +20,11 @@ public class NucleonViewable implements IViewable {
     private Texture proton, neutron, protonLargeTrail, neutronLargeTrail;
     private TextureRegion protonLargeTrailRegion, neutronLargeTrailRegion;
 
+    /**
+     * Loads this NucleonViewable with the correct textures and nucleons
+     *
+     * @param nucleons
+     */
     public NucleonViewable(List<INucleon> nucleons){
 
         this.nucleons = nucleons;
@@ -43,6 +48,12 @@ public class NucleonViewable implements IViewable {
 
     }
 
+    /**
+     * Is used in render()
+     *
+     * @param v
+     * @return
+     */
     private int vectorToRadians(Vector v){
 
         double angle = Math.atan2(v.getY(), v.getX());
@@ -51,7 +62,11 @@ public class NucleonViewable implements IViewable {
 
     }
 
-
+    /**
+     * Redraws the nucleons as protons and neutrons and with their new positions
+     *
+     * @param batch
+     */
     @Override
     public void render(SpriteBatch batch){
 
@@ -64,7 +79,6 @@ public class NucleonViewable implements IViewable {
                 float y = nucleon.getPosition().getY();
                 batch.draw(proton, x  - 2*nucleon.getRadius(),y  - 2*nucleon.getRadius());
                 batch.draw(protonLargeTrailRegion,
-                        //TODO fix 2px offset
                         x - nucleon.getRadius()-1,
                         y - 1,
                         (float) (nucleon.getRadius()),
@@ -81,7 +95,6 @@ public class NucleonViewable implements IViewable {
                 float y = nucleon.getPosition().getY();
                 batch.draw(neutron, x - 2*nucleon.getRadius(),  y - 2*nucleon.getRadius());
                 batch.draw(neutronLargeTrailRegion,
-                        //TODO fix 2px offset
                         x - nucleon.getRadius(),
                         y - 1,
                         (float) (nucleon.getRadius()),
