@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Screens;
+package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.views.libGDXGraphics.Viewables.IViewable;
+import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 
 import java.util.ArrayList;
 import java.util.List;

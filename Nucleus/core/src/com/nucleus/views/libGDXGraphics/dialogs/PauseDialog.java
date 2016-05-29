@@ -1,4 +1,4 @@
-package com.nucleus.views.libGDXGraphics.Dialogs;
+package com.nucleus.views.libGDXGraphics.dialogs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -17,10 +17,6 @@ public class PauseDialog extends ScreenAdapter {
     protected Skin skin;
     private EventListener listener;
 
-
-    /**
-     * This constructor builds a PauseDialog object with the correct listener
-     */
     public PauseDialog(EventListener listener){
 
         this.listener = listener;
@@ -30,9 +26,6 @@ public class PauseDialog extends ScreenAdapter {
 
     }
 
-    /**
-     * This method sets upp the text and the buttons and add them to a listener which callas on the co-responding action
-     */
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);
@@ -51,9 +44,7 @@ public class PauseDialog extends ScreenAdapter {
 
         stage.addListener(listener);
 
-        //Add listeners to buttons. This listener calls on the clicked(...)-method in ButtonEventHandler
-        //where it co-responds with a if-state which in turn goes back to the game if you press "Continue",
-        //restarts the level if you press "Play Again" and goes to main menu if you press "Main Menu"
+        //Add listeners to buttons
         continueButton.addListener(listener);
         restartButton.addListener(listener);
         menuButton.addListener(listener);
@@ -72,6 +63,11 @@ public class PauseDialog extends ScreenAdapter {
         //Add table to stage
         stage.addActor(mainTable);
 
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        //stage.setViewport(width, height);
     }
 
     @Override

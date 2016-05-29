@@ -1,10 +1,11 @@
-package com.nucleus.views.libGDXGraphics.Screens;
+package com.nucleus.views.libGDXGraphics.screens;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.nucleus.views.libGDXGraphics.Viewables.BackgroundViewable;
+import com.nucleus.views.libGDXGraphics.viewables.BackgroundViewable;
+import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class OptionsScreen extends NucleusScreen {
 
-    private List<com.nucleus.views.libGDXGraphics.Viewables.IViewable> views = new ArrayList<com.nucleus.views.libGDXGraphics.Viewables.IViewable>();
+    private List<IViewable> views = new ArrayList<IViewable>();
 
     public OptionsScreen(ClickListener listener){
         super();

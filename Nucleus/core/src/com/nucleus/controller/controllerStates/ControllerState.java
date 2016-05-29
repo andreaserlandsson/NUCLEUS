@@ -1,4 +1,4 @@
-package com.nucleus.controller;
+package com.nucleus.controller.controllerStates;
 
 
 public interface ControllerState {
