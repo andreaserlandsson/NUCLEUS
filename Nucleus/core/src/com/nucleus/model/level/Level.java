@@ -190,9 +190,9 @@ public class Level implements ILevel {
                 }
 
                 //la till
-                if (CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon) && shield.getShieldCap() > 0) {
+                if (CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon) && shield.getCap() > 0) {
                     collidingNucleon = nucleon;
-                    shield.decShieldCap();
+                    shield.decCap();
                 }
                 //detta
 

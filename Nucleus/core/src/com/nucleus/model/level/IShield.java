@@ -7,10 +7,11 @@ import com.nucleus.model.molecule.IMolecule;
  * Created by andreaserlandsson on 05/08/16.
  */
 public interface IShield {
-    void decShieldCap();
-    int getShieldCap();
-    void setShieldCap(int i);
+    void decCap();
+    int getCap();
+    void setCap(int i);
     int getRadius();
     int getCharge();
+    void decCharge();
     Vector getPosition();
 }
