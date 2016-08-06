@@ -19,14 +19,18 @@ public class Shield implements IShield, ICollidable {
     public Shield(IMolecule molecule, int levelWidth, int levelHeight, int charge) {
         this.molecule = molecule;
         this.charge = charge;
-        capacity = 0;
+        this.centerPosition = new Vector(levelHeight/2,levelWidth/2);
 
+        capacity  = 0;
+        radius = levelWidth - 50;
+
+        /*
         if( molecule.getWidth() > molecule.getHeight()) {
             radius = molecule.getWidth();
         } else {
             radius = molecule.getHeight();
         }
-        this.centerPosition = new Vector((float)levelHeight/2,(float)levelWidth/2);
+        */
     }
 
     public void decCap(){

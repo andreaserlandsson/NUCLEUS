@@ -45,8 +45,10 @@ public class GameInputHandler extends NInputProcessor {
             screen.getLevel().pause();
         }
 
-        //här är sköld knappen och aktiveringen
-        if (((screen.getWidth()/2 - 20 < screenX) && (screenX > screen.getWidth()/2 + 20)) &&  screenY < 40) { // if you touch the upper right corner you pause the game
+
+        //här är sköldknappen och aktiveringen
+        if ((screen.getWidth()/2 - 20 < screenX) && (screenX < screen.getWidth()/2 + 20) && screenY < 40) { // if you touch the upper right corner you pause the game
+            System.out.println("här");
             if (screen.getLevel().getShield().getCap() == 0 // sköldden måste vara borta inan man kan ta en ny
                     && screen.getLevel().getShield().getCharge() > 0) { // skölden måste ha "charges kvar"
                 //från controller sätta värden i modell?!?!?!? som det gör nedan!
