@@ -1,5 +1,6 @@
 package com.nucleus.model.level;
 
+import com.nucleus.model.collision.Vector;
 import com.nucleus.model.molecule.IMolecule;
 
 /**
@@ -8,4 +9,7 @@ import com.nucleus.model.molecule.IMolecule;
 public interface IShield {
     void decShieldCap();
     int getShieldCap();
+    void setShieldCap(int i);
+    int getRadius();
+    Vector getPosition();
 }

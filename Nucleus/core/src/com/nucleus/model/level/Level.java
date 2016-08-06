@@ -1,5 +1,6 @@
 package com.nucleus.model.level;
 
+import com.badlogic.gdx.maps.tiled.renderers.IsometricStaggeredTiledMapRenderer;
 import com.nucleus.model.collision.CollisionHandler;
 import com.nucleus.model.collision.ICollidable;
 import com.nucleus.model.molecule.IGluonPoint;
@@ -29,13 +30,13 @@ public class Level implements ILevel {
         RUNNING,
         PAUSED,
         PAUSEDWIN,
-        PAUSEDLOSE,
-        RUNNINGWSHIELD //la till
+        PAUSEDLOSE
     }
 
     private GameState currentState = GameState.RUNNING;
 
     private INucleonGun gun;
+    private IShield shield; // la till
     private List<INucleon> airborneNucleons = new ArrayList<INucleon>();
     private IMolecule molecule;
 
@@ -49,7 +50,7 @@ public class Level implements ILevel {
      * @param obs the observers that observed the level.
      */
 
-    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, ObservableHelper<GameState> obs){
+    public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, ObservableHelper<GameState> obs, IShield shield){
         this.levelNumber = levelNumber;
         this.width = width;
         this.height = height;
@@ -57,6 +58,7 @@ public class Level implements ILevel {
         this.molecule = molecule;
         this.obsHelper = obs;
         this.updateInterval = 1;
+        this.shield = shield; // la till
     }
 
     /**
@@ -186,9 +188,14 @@ public class Level implements ILevel {
                         }
                     }
                 }
-                if (CollisionHandler.collision((ICollidable) , (ICollidable) nucleon)) {
 
+                //la till
+                if (CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon) && shield.getShieldCap() > 0) {
+                    collidingNucleon = nucleon;
+                    shield.decShieldCap();
                 }
+                //detta
+
             }
             if (collidingNucleon != null) {
                 removeNucleon(collidingNucleon);
@@ -239,8 +246,8 @@ public class Level implements ILevel {
         // status? hmmmm njaaa timer... ELLER att den försvinner
         // efter att den absorberat 8 nukleoner.... hmmm... aaa de blir snyggast
 
-        currentState = GameState.RUNNINGWSHIELD;
-        obsHelper.update(this, currentState);
+        //currentState = GameState.RUNNINGWSHIELD;
+        //obsHelper.update(this, currentState);
 
     }
 }

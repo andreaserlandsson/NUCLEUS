@@ -6,6 +6,7 @@ import com.nucleus.model.level.INucleonGun;
 import com.nucleus.model.level.Level;
 import com.nucleus.model.level.NucleonGun;
 import com.nucleus.model.level.ObservableHelper;
+import com.nucleus.model.level.Shield;
 import com.nucleus.model.molecule.IMolecule;
 import com.nucleus.model.molecule.Molecule;
 import com.nucleus.model.particles.INucleon;
@@ -58,7 +59,7 @@ public class LevelBuilder {
 
             INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList, levelData.difficultyMultiplier);
             IMolecule molecule = new Molecule(width,height, levelData.gluonPoints);
-            return new Level(levelNr, width, height, nucleonGun, molecule, new ObservableHelper<Level.GameState>());
+            return new Level(levelNr, width, height, nucleonGun, molecule, new ObservableHelper<Level.GameState>(), new Shield(molecule, width, height)); //added "new Shield(molecule, width, height)"
         }
         return null;
 
