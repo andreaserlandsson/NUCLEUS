@@ -29,7 +29,8 @@ public class Level implements ILevel {
         RUNNING,
         PAUSED,
         PAUSEDWIN,
-        PAUSEDLOSE
+        PAUSEDLOSE,
+        RUNNINGWSHIELD //la till
     }
 
     private GameState currentState = GameState.RUNNING;
@@ -185,6 +186,9 @@ public class Level implements ILevel {
                         }
                     }
                 }
+                if (CollisionHandler.collision((ICollidable) , (ICollidable) nucleon)) {
+
+                }
             }
             if (collidingNucleon != null) {
                 removeNucleon(collidingNucleon);
@@ -225,5 +229,18 @@ public class Level implements ILevel {
             }
             removeOutOfBoundsNucleons();
         }
+    }
+
+    /**
+     * Andréas compliment feature:
+     *
+     */
+    public void shield(){
+        // status? hmmmm njaaa timer... ELLER att den försvinner
+        // efter att den absorberat 8 nukleoner.... hmmm... aaa de blir snyggast
+
+        currentState = GameState.RUNNINGWSHIELD;
+        obsHelper.update(this, currentState);
+
     }
 }

@@ -9,4 +9,6 @@ public interface IMolecule {
     boolean isFull();
     void rotateGluon(IGluonPoint gluon, Vector v1, Vector v2, double d);
     IGluonPoint[] getGluons();
+    int getWidth();
+    int getHeight();
 }

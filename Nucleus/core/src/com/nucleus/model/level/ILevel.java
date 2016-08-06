@@ -18,6 +18,7 @@ public interface ILevel<E extends Enum<E>> extends IObservable {
     void removeOutOfBoundsNucleons();
     void pause();
     void resume();
+    void shield();
     void update(float delta);
     E getCurrentState();
 
