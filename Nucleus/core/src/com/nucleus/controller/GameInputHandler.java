@@ -41,9 +41,20 @@ public class GameInputHandler extends NInputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if ((screenX > screen.getWidth() - 50) && screenY < 68) { // if you touch the upper right corner you pause the game
+        if ((screenX > screen.getWidth() - 50) && screenY < 50) { // if you touch the upper right corner you pause the game
             screen.getLevel().pause();
         }
+
+        //här är sköld knappen och aktiveringen
+        if (((screen.getWidth()/2 - 20 > screenX) && (screenX > screen.getWidth()/2 + 20)) &&  screenY < 40) { // if you touch the upper right corner you pause the game
+            if (screen.getLevel().getShield().getShieldCap() == 0 // sköldden måste vara borta inan man kan ta en ny
+                    && screen.getLevel().getShield().getCharge() > 0) { // skölden måste ha "charges kvar"
+                //från controller sätta värden i modell?!?!?!? som det gör nedan!
+                screen.getLevel().getShield().setShieldCap(5); // man får 5 chrages per gång
+                System.out.println("sköld aktiverad");
+            }
+        }
+
         return true;
     }
 

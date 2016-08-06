@@ -12,13 +12,13 @@ public interface ILevel<E extends Enum<E>> extends IObservable {
     int getWidth();
     int getHeight();
     INucleonGun getNucleonGun();
+    IShield getShield();
     List<INucleon> getAirborneNucleons();
     IMolecule getMolecule();
     boolean isOutOfBoundsCheck(INucleon nucleon);
     void removeOutOfBoundsNucleons();
     void pause();
     void resume();
-    void shield();
     void update(float delta);
     E getCurrentState();
 

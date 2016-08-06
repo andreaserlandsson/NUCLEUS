@@ -242,12 +242,12 @@ public class Level implements ILevel {
      * Andréas compliment feature:
      *
      */
-    public void shield(){
+    public IShield getShield(){
         // status? hmmmm njaaa timer... ELLER att den försvinner
         // efter att den absorberat 8 nukleoner.... hmmm... aaa de blir snyggast
 
         //currentState = GameState.RUNNINGWSHIELD;
         //obsHelper.update(this, currentState);
-
+        return shield;
     }
 }

@@ -11,5 +11,6 @@ public interface IShield {
     int getShieldCap();
     void setShieldCap(int i);
     int getRadius();
+    int getCharge();
     Vector getPosition();
 }

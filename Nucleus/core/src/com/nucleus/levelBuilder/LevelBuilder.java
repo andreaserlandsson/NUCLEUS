@@ -3,6 +3,7 @@ package com.nucleus.levelBuilder;
 import com.nucleus.model.LevelNotExistingException;
 import com.nucleus.model.collision.Vector;
 import com.nucleus.model.level.INucleonGun;
+import com.nucleus.model.level.IShield;
 import com.nucleus.model.level.Level;
 import com.nucleus.model.level.NucleonGun;
 import com.nucleus.model.level.ObservableHelper;
@@ -59,7 +60,10 @@ public class LevelBuilder {
 
             INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList, levelData.difficultyMultiplier);
             IMolecule molecule = new Molecule(width,height, levelData.gluonPoints);
-            return new Level(levelNr, width, height, nucleonGun, molecule, new ObservableHelper<Level.GameState>(), new Shield(molecule, width, height)); //added "new Shield(molecule, width, height)"
+            //added "new Shield(molecule, width, height, shieldCharges)"
+            int shieldCharges = 3;
+            IShield shield = new Shield(molecule, width, height, shieldCharges);
+            return new Level(levelNr, width, height, nucleonGun, molecule, new ObservableHelper<Level.GameState>(),shield);
         }
         return null;
 

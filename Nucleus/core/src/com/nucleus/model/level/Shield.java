@@ -14,9 +14,11 @@ public class Shield implements IShield, ICollidable {
     private Vector centerPosition;
     private int radius;
     private int shieldCapacity;
+    private int charge;
 
-    public Shield(IMolecule molecule, int levelWidth, int levelHeight) {
+    public Shield(IMolecule molecule, int levelWidth, int levelHeight, int charge) {
         this.molecule = molecule;
+        this.charge = charge;
 
         if( molecule.getWidth() > molecule.getHeight()) {
             radius = molecule.getWidth();
@@ -44,5 +46,9 @@ public class Shield implements IShield, ICollidable {
 
     public Vector getPosition() {
         return centerPosition;
+    }
+
+    public int getCharge() {
+        return charge;
     }
 }
