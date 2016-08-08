@@ -45,7 +45,12 @@ public class ShieldViewable implements IViewable {
 
         if (shield.getCap() != 0) {
             batch.draw(shieldCircleTextu, Gdx.graphics.getWidth()/2 - 120 , Gdx.graphics.getHeight()/2 - 120);
-            System.out.println(Gdx.graphics.getWidth());
+
+            //this is the amount of capacity of the shield left in a grey color
+            font.setColor(200/255f, 200/255f, 200/255f, 1f);
+            font.draw(batch, Integer.toString(shield.getCap()),
+                    Gdx.graphics.getWidth()/2 + 40, Gdx.graphics.getHeight()-20);
+
         }
         batch.end();
 

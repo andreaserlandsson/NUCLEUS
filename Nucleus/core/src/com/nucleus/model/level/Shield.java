@@ -24,7 +24,6 @@ public class Shield implements IShield, ICollidable {
         capacity  = 0;
         radius = levelWidth/2 - 20;
 
-        System.out.println(radius);
 
         /*
         if( molecule.getWidth() > molecule.getHeight()) {
