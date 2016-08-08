@@ -166,8 +166,11 @@ public class Level implements ILevel {
      */
     private void checkAllNucleonsStatus(){
         INucleon collidingNucleon = null;
-        for (IGluonPoint gluon : molecule.getGluons()) {
-            for (INucleon nucleon : airborneNucleons){
+
+        // här bytte jag plats på gluons och nucleon for-lopen efterson den efter att ha kollat om den collidat med skölden eller va i den så gick den till nästa gluon och gjorde samma sak... dåligt den tog bort 2 gånger för mycket ibland
+
+        for (INucleon nucleon : airborneNucleons){
+            for (IGluonPoint gluon : molecule.getGluons()) {
                 if (CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
                     if (nucleon.getClass().equals(Proton.class)) {
                         if (gluon.getProtonsNeeded() > 0){
@@ -189,24 +192,27 @@ public class Level implements ILevel {
                     }
                 }
 
-                //la till
-                if ((CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon)
-                        &&
-                        shield.getCap() > 0)
-                            //nedan följer att ta bort alla som är innanför skölden då den aktiveras
-                            || (
-                                (nucleon.getPosition().getX() >= (width-(2*shield.getRadius())/2)) &&
-                                (nucleon.getPosition().getX() <= width - (width-(2*shield.getRadius())/2))
-                                    &&
-                                        (nucleon.getPosition().getY() >= (height-(2*shield.getRadius())/2)) &&
-                                        (nucleon.getPosition().getY() <= height - (height-(2*shield.getRadius())/2 ))
-                            )) {
-                    collidingNucleon = nucleon;
-                    shield.decCap();
-                }
-                //detta
-
             }
+
+            //la till
+            if (((CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon))
+                    //nedan följer att ta bort alla som är innanför skölden då den aktiveras
+                    || (
+                    (nucleon.getPosition().getX() > ((width-2*shield.getRadius())/2)) &&
+                            (nucleon.getPosition().getX() < width - ((width-2*shield.getRadius())/2))
+                            &&
+                            (nucleon.getPosition().getY() > ((height-2*shield.getRadius())/2)) &&
+                            (nucleon.getPosition().getY() < height - ((height-2*shield.getRadius())/2))
+            ))
+                    //nedan kollar så att capaciteten på skölden inte nått noll
+                    &&
+                    shield.getCap() > 0) {
+                collidingNucleon = nucleon;
+                shield.decCap();
+                System.out.println("decad");
+            }
+            //detta
+
             if (collidingNucleon != null) {
                 removeNucleon(collidingNucleon);
             }

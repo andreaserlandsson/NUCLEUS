@@ -35,7 +35,7 @@ public class Shield implements IShield, ICollidable {
     }
 
     public void decCap(){
-        capacity --;
+            capacity --;
     }
 
     public int getCap() {
