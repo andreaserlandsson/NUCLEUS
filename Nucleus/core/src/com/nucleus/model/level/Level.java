@@ -190,7 +190,17 @@ public class Level implements ILevel {
                 }
 
                 //la till
-                if (CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon) && shield.getCap() > 0) {
+                if ((CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon)
+                        &&
+                        shield.getCap() > 0)
+                            //nedan följer att ta bort alla som är innanför skölden då den aktiveras
+                            || (
+                                (nucleon.getPosition().getX() >= (width-(2*shield.getRadius())/2)) &&
+                                (nucleon.getPosition().getX() <= width - (width-(2*shield.getRadius())/2))
+                                    &&
+                                        (nucleon.getPosition().getY() >= (height-(2*shield.getRadius())/2)) &&
+                                        (nucleon.getPosition().getY() <= height - (height-(2*shield.getRadius())/2 ))
+                            )) {
                     collidingNucleon = nucleon;
                     shield.decCap();
                 }

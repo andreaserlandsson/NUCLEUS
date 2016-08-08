@@ -28,6 +28,11 @@ public class NAssetsData {
     public static final String WINSOUND = "winSound.mp3";
     public static final String LOSESOUND = "loseSound.mp3";
 
+    //här är jag
+    public static final String SHIELD = "shield.png";
+    public static final String SHIELDCIRCLE = "circle.png";
+    //till hit
+
     public static final String LEVELLEVEL = "level_";
     public static final String LEVELPICTURE = ".png";
 

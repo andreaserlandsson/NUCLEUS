@@ -16,7 +16,7 @@ import com.nucleus.views.libGDXGraphics.viewables.IViewable;
 import com.nucleus.views.libGDXGraphics.viewables.MoleculeViewable;
 import com.nucleus.views.libGDXGraphics.viewables.NucleonViewable;
 import com.nucleus.views.libGDXGraphics.viewables.PauseViewable;
-
+import com.nucleus.views.libGDXGraphics.viewables.ShieldViewable;
 
 
 public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<Level.GameState> {
@@ -45,6 +45,11 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         views.add(new CountdownViewable(level.getNucleonGun()));
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         views.add(new PauseViewable());
+
+        //
+        views.add(new ShieldViewable(level.getShield()));
+        //
+
         views.add(new MoleculeViewable(levelNumber, level.getMolecule()));
         pauseDialog = new PauseDialog(listener);
 
