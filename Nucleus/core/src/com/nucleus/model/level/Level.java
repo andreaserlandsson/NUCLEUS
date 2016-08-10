@@ -11,6 +11,7 @@ import com.nucleus.model.particles.Proton;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.List;
 
 public class Level implements ILevel {
@@ -168,71 +169,65 @@ public class Level implements ILevel {
     private void checkAllNucleonsStatus(){
         INucleon collidingNucleon = null;
 
-        // här bytte jag plats på gluons och nucleon for-lopen efterson den efter att ha kollat om den collidat med skölden eller va i den så gick den till nästa gluon och gjorde samma sak... dåligt den tog bort 2 gånger för mycket ibland
+        // här gjorde jag om for-loopen så den klara ConcurentModificationException
+        //for (INucleon nucleon : airborneNucleons) {
+        for (Iterator<INucleon> itr = airborneNucleons.iterator(); itr.hasNext();) {
+            INucleon nucleon = itr.next();
 
-        try {
-            for (INucleon nucleon : airborneNucleons) {
+            //la till
+            if (
+                    (shield.getCap() > 0)
+                            &&
+                            ((CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon))
+                                    //nedan följer att ta bort alla som är innanför skölden då den aktiveras
+                                    || ((nucleon.getPosition().getX() > ((width - 2 * shield.getRadius()) / 2)) &&
+                                    (nucleon.getPosition().getX() < width - ((width - 2 * shield.getRadius()) / 2))
+                                    &&
+                                    (nucleon.getPosition().getY() > ((height - 2 * shield.getRadius()) / 2)) &&
+                                    (nucleon.getPosition().getY() < height - ((height - 2 * shield.getRadius()) / 2)))
+                            )
+                //nedan kollar så att capaciteten på skölden inte nått noll
+                    ) {
+                //collidingNucleon = nucleon;
+                itr.remove(); // med nya loopen blir det så här
+                shield.decCap();
+            }
+            //detta
 
-                //la till
-                if (
-                        (shield.getCap() > 0)
-                                &&
-                                ((CollisionHandler.collision((ICollidable) shield, (ICollidable) nucleon))
-                                        //nedan följer att ta bort alla som är innanför skölden då den aktiveras
-                                        || ((nucleon.getPosition().getX() > ((width - 2 * shield.getRadius()) / 2)) &&
-                                        (nucleon.getPosition().getX() < width - ((width - 2 * shield.getRadius()) / 2))
-                                        &&
-                                        (nucleon.getPosition().getY() > ((height - 2 * shield.getRadius()) / 2)) &&
-                                        (nucleon.getPosition().getY() < height - ((height - 2 * shield.getRadius()) / 2)))
-                                )
-                    //nedan kollar så att capaciteten på skölden inte nått noll
-                        ) {
-                    //collidingNucleon = nucleon;
-                    removeNucleon(nucleon);
-                    shield.decCap();
-                    System.out.println("decad");
-                }
-                //detta
-                else {
-                    for (IGluonPoint gluon : molecule.getGluons()) {
-                        if (CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
-                            if (nucleon.getClass().equals(Proton.class)) {
-                                if (gluon.getProtonsNeeded() > 0) {
-                                    gluon.addProton();
-                                    //collidingNucleon = nucleon;
-                                    removeNucleon(nucleon);
-                                    checkWinGame();
-                                } else {
-                                    loseGame();
-                                }
+
+            else {
+                // här bytte jag plats på gluons och nucleon for-lopen efterson den efter att ha kollat om den collidat med skölden eller va i den så gick den till nästa gluon och gjorde samma sak... dåligt den tog bort 2 gånger för mycket ibland
+                for (IGluonPoint gluon : molecule.getGluons()) {
+                    if (CollisionHandler.collision((ICollidable) gluon, (ICollidable) nucleon)) {
+                        if (nucleon.getClass().equals(Proton.class)) {
+                            if (gluon.getProtonsNeeded() > 0) {
+                                gluon.addProton();
+                                itr.remove();// med nya loopen blir det så här
+                                checkWinGame();
                             } else {
-                                if (gluon.getNeutronsNeeded() > 0) {
-                                    gluon.addNeutron();
-                                    collidingNucleon = nucleon;
-                                    removeNucleon(nucleon);
-                                    checkWinGame();
-                                } else {
-                                    loseGame();
-                                }
+                                loseGame();
+                            }
+                        } else {
+                            if (gluon.getNeutronsNeeded() > 0) {
+                                gluon.addNeutron();
+                                itr.remove(); // med nya loopen blir det så här
+                                checkWinGame();
+                            } else {
+                                loseGame();
                             }
                         }
-
                     }
-                }
-
-                if (collidingNucleon != null) {
-                    removeNucleon(collidingNucleon);
-                    System.out.println(collidingNucleon);
 
                 }
             }
-            if (collidingNucleon != null) {
+            /* if (collidingNucleon != null) {
                 removeNucleon(collidingNucleon);
-            }
-        } catch (ConcurrentModificationException e){
 
+            }*/
         }
-
+        /* if (collidingNucleon != null) {
+            removeNucleon(collidingNucleon);
+        } */
     }
 
 
