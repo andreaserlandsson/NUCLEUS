@@ -60,9 +60,12 @@ public class LevelBuilder {
 
             INucleonGun nucleonGun = new NucleonGun(width, height, nucleonList, levelData.difficultyMultiplier);
             IMolecule molecule = new Molecule(width,height, levelData.gluonPoints);
+
             //added "new Shield(molecule, width, height, shieldCharges)"
             int shieldCharges = 3;
-            IShield shield = new Shield(molecule, width, height, shieldCharges);
+            IShield shield = new Shield(width, height, shieldCharges);
+            //
+
             return new Level(levelNr, width, height, nucleonGun, molecule, new ObservableHelper<Level.GameState>(),shield);
         }
         return null;

@@ -50,6 +50,9 @@ public class Level implements ILevel {
      * @param gun the gun used to shoot in nucleons.
      * @param molecule the molecule we want to build.
      * @param obs the observers that observed the level.
+     *
+     * @param shield the shield which on activation protects the molecule
+     *
      */
 
     public Level(int levelNumber, int width, int height, INucleonGun gun, IMolecule molecule, ObservableHelper<GameState> obs, IShield shield){
@@ -264,16 +267,8 @@ public class Level implements ILevel {
         }
     }
 
-    /**
-     * Andréas compliment feature:
-     *
-     */
+    //la till denna
     public IShield getShield(){
-        // status? hmmmm njaaa timer... ELLER att den försvinner
-        // efter att den absorberat 8 nukleoner.... hmmm... aaa de blir snyggast
-
-        //currentState = GameState.RUNNINGWSHIELD;
-        //obsHelper.update(this, currentState);
         return shield;
     }
 }

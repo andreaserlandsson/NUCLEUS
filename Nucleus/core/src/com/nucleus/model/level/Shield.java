@@ -10,28 +10,26 @@ import com.nucleus.model.molecule.IMolecule;
 
 //implement Icollidable so that it can colide
 public class Shield implements IShield, ICollidable {
-    IMolecule molecule;
     private Vector centerPosition;
     private int radius;
     private int capacity;
     private int charge;
 
-    public Shield(IMolecule molecule, int levelWidth, int levelHeight, int charge) {
-        this.molecule = molecule;
+
+    /**
+     * Creats a shield which on activation protects the molecuse absorbing the next 5
+     * incoming nucleons.
+     * @param levelWidth the width of the level
+     * @param levelHeight the height of the level
+     * @param charge the amount of times you will be able to activate the sheild
+     */
+    public Shield(int levelWidth, int levelHeight, int charge) {
         this.charge = charge;
         this.centerPosition = new Vector(levelWidth/2,levelHeight/2);
 
         capacity  = 0;
         radius = levelWidth/2 - 20;
 
-
-        /*
-        if( molecule.getWidth() > molecule.getHeight()) {
-            radius = molecule.getWidth();
-        } else {
-            radius = molecule.getHeight();
-        }
-        */
     }
 
     public void decCap(){

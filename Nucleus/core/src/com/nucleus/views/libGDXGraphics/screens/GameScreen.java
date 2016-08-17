@@ -46,7 +46,7 @@ public class GameScreen extends NucleusScreen implements PlayScreen, IObserver<L
         views.add(new NucleonViewable(level.getAirborneNucleons()));
         views.add(new PauseViewable());
 
-        //
+        //la till detta
         views.add(new ShieldViewable(level.getShield()));
         //
 

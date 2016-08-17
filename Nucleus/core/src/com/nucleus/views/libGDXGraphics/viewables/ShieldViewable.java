@@ -18,7 +18,7 @@ public class ShieldViewable implements IViewable {
     private IShield shield;
 
     /**
-     * Creates a PauseViewable with the correct textures
+     * Creates a ShieldViewable with the correct textures
      */
     public ShieldViewable(IShield shield){
         this.shield = shield;
@@ -28,7 +28,7 @@ public class ShieldViewable implements IViewable {
     }
 
     /**
-     * Renders the pause button
+     * Renders the shield button and how many charges it has left and if activated how many nucleons it can capture (capacity)
      * @param batch The batch to be rendered
      */
     @Override
@@ -38,7 +38,7 @@ public class ShieldViewable implements IViewable {
 
         batch.draw(shieldTextu, Gdx.graphics.getWidth()/2 - 10, Gdx.graphics.getHeight() - 40);
 
-        //this is the amount of charges of the shield left in a white color
+        //this renders the amount of charges of the shield left in a white color
         font.setColor(255/255f, 255/255f, 255/255f, 1f);
         font.draw(batch, Integer.toString(shield.getCharge()),
                 Gdx.graphics.getWidth()/2 + 20, Gdx.graphics.getHeight()-20);
@@ -46,7 +46,7 @@ public class ShieldViewable implements IViewable {
         if (shield.getCap() != 0) {
             batch.draw(shieldCircleTextu, Gdx.graphics.getWidth()/2 - 120 , Gdx.graphics.getHeight()/2 - 120);
 
-            //this is the amount of capacity of the shield left in a grey color
+            //this is the capacity of the shield left in a grey color
             font.setColor(200/255f, 200/255f, 200/255f, 1f);
             font.draw(batch, Integer.toString(shield.getCap()),
                     Gdx.graphics.getWidth()/2 + 40, Gdx.graphics.getHeight()-20);
